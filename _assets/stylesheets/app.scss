@@ -1,6 +1,6 @@
-/* Mainfest file for all stylesheets
- *= require lib/normalize
- *= require lib/foundation
- *= require main
- *= require syntax
- */
+@import
+  "lib/normalize",
+  "lib/foundation",
+  "base",
+  "layout",
+  "modules/header";
