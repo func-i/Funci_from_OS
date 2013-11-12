@@ -1,0 +1,28 @@
+@mixin text-box($color) {
+  border: 1px solid $color;
+  padding: 1.5rem;
+
+  a {
+    color: $color;
+  }
+
+  &:hover {
+    background-color: $color;
+
+    a {
+      color: $dark-gray;
+    }
+  }
+}
+
+.home {
+  margin-top: 6em;
+  
+  .tester-yellow {
+    @include text-box($yellow);
+  }
+
+  .tester-blue {
+    @include text-box($blue);
+  }
+}

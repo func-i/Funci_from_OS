@@ -1,7 +1,21 @@
 header {
-  border-bottom: 1px solid white;
+  nav {
+    @extend .row, .collapse;
 
-  ul {
-    text-align: center;
+    border-bottom: 1px solid white;
+
+    ul {
+      @extend .small-12, .columns;
+
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      text-align: center;
+
+      li {
+        display: inline;
+        padding: 0 .5em;
+      }
+    }
   }
 }
