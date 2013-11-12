@@ -6,3 +6,5 @@ assets:
   debug: true
   cachebust: hard
   gzip: false
+
+gems: [twitter]
