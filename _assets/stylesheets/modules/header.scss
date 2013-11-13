@@ -17,5 +17,9 @@ header {
         padding: 0 .5em;
       }
     }
+
+    .selected {
+      color: $green;
+    }
   }
 }
