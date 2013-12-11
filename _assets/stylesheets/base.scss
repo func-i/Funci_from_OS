@@ -15,12 +15,8 @@ $dark-gray: rgb(45,45,45);
 
 ////////// global mixins //////////
 
-@mixin border($color) {
-  border: 1px solid $color;
-}
-
 @mixin text-square($color) {
-  @include border($color);
+  padding: 1.5rem;
 
   a {
     color: $color;
@@ -55,16 +51,22 @@ a {
 ////////// classes //////////
 
 .square {
+  border-width: 1px;
+  border-style: solid;
 
-  &.text {
-    &.blue {
+  &.blue {
+    border-color: $blue;
+
+    &.text {
       @include text-square($blue);
-      padding: 1.5rem;
     }
+  }
 
-    &.yellow {
+  &.yellow {
+    border-color: $yellow;
+
+    &.text {
       @include text-square($yellow);
-      padding: 1.5rem;
     }
   }
 }

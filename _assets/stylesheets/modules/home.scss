@@ -1,17 +1,3 @@
 #home {
-  @extend .row;
-
   margin-top: 6em;
-  
-  .tester-yellow {
-    @extend .small-6, .columns;
-    
-    @include text-square($yellow);
-  }
-
-  .tester-blue {
-    @extend .small-6, .columns;
-
-    @include text-square($blue);
-  }
 }
