@@ -5,10 +5,34 @@ $yellow:    rgb(255,189,27);
 $green:     rgb(2,125,17);
 $dark-gray: rgb(45,45,45);
 
+////////// fonts //////////
+
+@font-face {
+  font-family: graphik;
+  src: url('Graphik_Regular_Web.eot');
+  src: local(graphik), url('Graphik_Regular_Web') format('opentype');
+}
+
 ////////// global mixins //////////
 
 @mixin border($color) {
   border: 1px solid $color;
+}
+
+@mixin text-square($color) {
+  @include border($color);
+
+  a {
+    color: $color;
+  }
+
+  &:hover {
+    background-color: $color;
+
+    a {
+      color: $dark-gray;
+    }
+  }
 }
 
 ////////// defaults //////////
@@ -16,6 +40,7 @@ $dark-gray: rgb(45,45,45);
 body {
   background-color: $dark-gray;
   color: white;
+  font-family: graphik;
 }
 
 a {
@@ -24,5 +49,22 @@ a {
 
   &:hover {
     text-decoration: underline;
+  }
+}
+
+////////// classes //////////
+
+.square {
+
+  &.text {
+    &.blue {
+      @include text-square($blue);
+      padding: 1.5rem;
+    }
+
+    &.yellow {
+      @include text-square($yellow);
+      padding: 1.5rem;
+    }
   }
 }

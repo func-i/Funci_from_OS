@@ -1,21 +1,3 @@
-@mixin text-box($color) {
-  @include border($color);
-  
-  padding: 1.5rem;
-
-  a {
-    color: $color;
-  }
-
-  &:hover {
-    background-color: $color;
-
-    a {
-      color: $dark-gray;
-    }
-  }
-}
-
 #home {
   @extend .row;
 
@@ -24,12 +6,12 @@
   .tester-yellow {
     @extend .small-6, .columns;
     
-    @include text-box($yellow);
+    @include text-square($yellow);
   }
 
   .tester-blue {
     @extend .small-6, .columns;
 
-    @include text-box($blue);
+    @include text-square($blue);
   }
 }
