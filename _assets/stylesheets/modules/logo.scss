@@ -1,103 +1,80 @@
 #logo {
   position: relative;
 
-  div {
+  div, img {
     display: inline-block;
+    position: absolute;
     height: 3rem;
     width: 3rem;
     text-align: center;
-    padding: .5rem;
     font-size: 2rem;
-    position: absolute;
     left: 0;
 
     &.functional {
-      background-color: $yellow;
 
-      &.f {
-        z-index: 10;
-      }
-
-      &.u {
-        z-index: 9;
-      }
-
-      &.n {
-        z-index: 8;
-      }
-
-      &.c {
-        z-index: 7;
-      }
-
-      &.t {
-        z-index: 6;
-      }
-
-      &.i {
-        z-index: 5;
-      }
-
-      &.o {
-        z-index: 4;
-      }
-
-      &.n-2 {
-        z-index: 3;
-      }
-
-      &.a {
-        z-index: 2;
-      }
-
-      &.l {
-        z-index: 1;
+      &.over {
+        opacity: .4;
       }
     }
 
     &.imperative {
-      background-color: $blue;
       top: 2.5rem;
 
-      &.i {
-        z-index: 10;
-      }
-
-      &.m {
-        z-index: 9;
-      }
-
-      &.p {
-        z-index: 8;
-      }
-
-      &.e {
-        z-index: 7;
-      }
-
-      &.r {
-        z-index: 6;
-      }
-
-      &.a {
-        z-index: 5;
-      }
-
-      &.t {
-        z-index: 4;
-      }
-
-      &.i-2 {
-        z-index: 3;
-      }
-
-      &.v {
-        z-index: 2;
-      }
-
-      &.e-2 {
-        z-index: 1;
+      &.over {
+        opacity: .95;
       }
     }
+  }
+
+  .white {
+    background-color: white;
+  }
+
+  .f {
+    z-index: 30;
+  }
+
+  .f.under {
+    z-index: 28;
+  }
+
+  .f.white {
+    z-index: 26;
+  }
+
+  .u {
+    z-index: 24;
+  }
+
+  .u.under {
+    z-index: 22;
+  }
+
+  .u.white {
+    z-index: 20;
+  }
+
+  .i-2 {
+    z-index: 29;
+  }
+
+  .i-2.under {
+    z-index: 27;
+  }
+
+  .i-2.white {
+    z-index: 25;
+  }
+
+  .m {
+    z-index: 23;
+  }
+
+  .m.under {
+    z-index: 21;
+  }
+
+  .m.white {
+    z-index: 19;
   }
 }
