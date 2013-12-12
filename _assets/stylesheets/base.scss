@@ -36,18 +36,18 @@ $large:  512px;
 
 @mixin text-square($color) {
   padding: 1em;
-  transition: all .3s linear;
-  @include background-image-gradient($color);
-  @include background-size(100%, 210%);
-  background-position: 0 -105%;
-  background-repeat: repeat-x;
+  // transition: all .3s linear;
+  // @include background-image-gradient($color);
+  // @include background-size(100%, 210%);
+  // background-position: 0 -105%;
+  // background-repeat: repeat-x;
 
   a {
     color: $color;
   }
 
   &:hover {
-    background-position: 0 0;
+    // background-position: 0 0;
 
     a {
       color: $dark-gray;
@@ -71,10 +71,16 @@ body {
 }
 
 html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p,
-blockquote, pre, form, fieldset, table, th, td {
+blockquote, pre, form, fieldset, table, th, td, canvas {
   margin: 0;
   padding: 0;
   font-weight: normal;
+}
+
+#canvas {
+    position:absolute;
+    width:100%;
+    height:100%;
 }
 
 a {
@@ -90,10 +96,14 @@ a {
 
 .square {
   overflow: hidden;
+  position: relative;
 
-  border-width: 1px;
-  border-style: solid;
+  // border-width: 1px;
+  // border-style: solid;
 
+  &#right {
+    left: -100px;
+  }
 
   &.small {
     @include square-size($small);
@@ -107,18 +117,18 @@ a {
     @include square-size($large);
   }
 
-  &.blue {
-    border-color: $blue;
+  &[data-color="blue"] {
+    // border-color: $blue;
 
-    &.text {
+    &[data-type="text"] {
       @include text-square($blue);
     }
   }
 
-  &.yellow {
-    border-color: $yellow;
+  &[data-color="yellow"] {
+    // border-color: $yellow;
 
-    &.text {
+    &[data-type="text"] {
       @include text-square($yellow);
     }
   }
