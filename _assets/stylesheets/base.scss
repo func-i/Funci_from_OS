@@ -5,6 +5,11 @@ $yellow:    rgb(255,189,27);
 $green:     rgb(2,125,17);
 $dark-gray: rgb(45,45,45);
 
+////////// square sizes //////////
+$small:  128px;
+$medium: 256px;
+$large:  512px;
+
 ////////// fonts //////////
 
 @font-face {
@@ -15,20 +20,44 @@ $dark-gray: rgb(45,45,45);
 
 ////////// global mixins //////////
 
+@mixin background-image-gradient($color) {
+  background-image: -webkit-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: -moz-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: -o-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: linear-gradient($color, $color 50%, transparent 50%, transparent);
+}
+
+@mixin background-size($width, $height) {
+  -webkit-background-size: $width $height;
+  -moz-background-size: $width $height;
+  -o-background-size: $width $height;
+  background-size: $width $height;
+}
+
 @mixin text-square($color) {
-  padding: 1.5rem;
+  padding: 1em;
+  transition: all .3s linear;
+  @include background-image-gradient($color);
+  @include background-size(100%, 210%);
+  background-position: 0 -105%;
+  background-repeat: repeat-x;
 
   a {
     color: $color;
   }
 
   &:hover {
-    background-color: $color;
+    background-position: 0 0;
 
     a {
       color: $dark-gray;
     }
   }
+}
+
+@mixin square-size($side-length) {
+  width: $side-length;
+  height: $side-length;
 }
 
 ////////// defaults //////////
@@ -37,6 +66,15 @@ body {
   background-color: $dark-gray;
   color: white;
   font-family: graphik;
+  font-size: 112.5%; // 1em = 18px
+  line-height: 1.33;
+}
+
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p,
+blockquote, pre, form, fieldset, table, th, td {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
 
 a {
@@ -51,8 +89,23 @@ a {
 ////////// classes //////////
 
 .square {
+  overflow: hidden;
+
   border-width: 1px;
   border-style: solid;
+
+
+  &.small {
+    @include square-size($small);
+  }
+
+  &.medium {
+    @include square-size($medium);
+  }
+
+  &.large {
+    @include square-size($large);
+  }
 
   &.blue {
     border-color: $blue;
