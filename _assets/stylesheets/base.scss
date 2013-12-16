@@ -78,9 +78,9 @@ blockquote, pre, form, fieldset, table, th, td, canvas {
 }
 
 #canvas {
-    position:absolute;
-    width:100%;
-    height:100%;
+  position:absolute;
+  width:100%;
+  height:100%;
 }
 
 a {
@@ -120,7 +120,7 @@ a {
   &[data-color="blue"] {
     // border-color: $blue;
 
-    &[data-type="text"] {
+    &[data-type="outlined"] {
       @include text-square($blue);
     }
   }
@@ -128,7 +128,7 @@ a {
   &[data-color="yellow"] {
     // border-color: $yellow;
 
-    &[data-type="text"] {
+    &[data-type="outlined"] {
       @include text-square($yellow);
     }
   }
