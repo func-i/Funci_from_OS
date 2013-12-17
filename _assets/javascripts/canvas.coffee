@@ -1,4 +1,47 @@
 @squares = []
+@logoLetters = []
+
+@LOGO_STRING = "FUNCTIONALIMPERATIVE"
+
+class LogoLetter
+  sideLength: 60
+  spritePadding: 2
+  xOverlap: 5
+  yOverlap: 12
+
+  constructor: (args) ->
+    @id            = args.id
+    @ctx           = args.ctx
+    @text          = args.text
+    @anchorLeft    = args.anchor.left
+    @anchorTop     = args.anchor.top
+    @logoImgObject = args.logoImgObject
+    @setWord()
+    @setColor()
+    @initPosition()
+    @setImg()
+
+    logoLetters.push this
+    this
+
+  setWord: ->
+    @word = if @id < 10 then 1 else 2
+
+  setColor: ->
+    colorString = if @word is 1 then "yellow" else "blue"
+    @color = BASE_COLORS[colorString]
+
+  initPosition: ->
+    mult = if @word is 1 then @id else @id - 10
+    leftOffset = (mult * @sideLength) - (mult * @xOverlap)
+    @left = @anchorLeft + leftOffset
+
+    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
+    @top = @anchorTop + topOffset
+
+  setImg: ->
+    ySpriteOffset = @id * (@sideLength + @spritePadding)
+    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @sideLength, @sideLength, @left, @top, @sideLength, @sideLength
 
 class Canvas
   constructor: (args) ->
@@ -27,16 +70,16 @@ class Canvas
     @ctx.globalCompositeOperation = 'multiply'
 
   clear: ->
-    @ctx.save()
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
     @ctx.clearRect 0, 0, @width, @height
-    @ctx.restore()
 
 class Square
   constructor: (args) ->
     @id         = args.id
     @ctx        = args.ctx
     @elem       = args.elem
+    @color      = BASE_COLORS[(@elem.data('color'))]
+    @type       = @elem.data('type')
     @state      = 'static'
     @fillHeight = 0
     @fillSpeed  = 32
@@ -48,26 +91,28 @@ class Square
     @sideLength = @elem.outerHeight()
     @top        = @elem.offset().top
     @left       = @elem.offset().left
-    @color      = BASE_COLORS[(@elem.data('color'))]
-    @type       = @elem.data('type')
 
   draw: ->
     if @type is 'outlined'
       if @state is 'static'
         @fillHeight = 0
-        @ctx.save()
+        # @ctx.save()
         @ctx.lineWidth = "1"
         @ctx.strokeStyle = @color
         @ctx.strokeRect @left, @top, @sideLength, @sideLength 
-        @ctx.restore()
+        # @ctx.restore()
       if @state is 'hover'
-        @ctx.save()
+        # draw border
+        # @ctx.save()
+        @ctx.lineWidth = "1"
         @ctx.strokeStyle = @color
         @ctx.strokeRect @left, @top, @sideLength, (@sideLength + @newFillHeight())
+        # @ctx.restore()
+        # draw filled box
+        # @ctx.save()
         @ctx.fillStyle = @color
         @ctx.fillRect @left, (@top + @sideLength), @sideLength, @newFillHeight()
-        @ctx.restore()
-
+        # @ctx.restore()
 
   newFillHeight: ->
     if @fillHeight > -@sideLength
@@ -80,6 +125,8 @@ animate = (args) ->
   canvas.clear()
   for square in squares
     square.draw()
+  for logoLetter in logoLetters
+    logoLetter.setImg()
   # continue animation
   requestAnimationFrame ->
     animate(canvas: canvas)
@@ -88,16 +135,38 @@ findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
+animationId = undefined;
+
 $ -> 
 
-  # create Canvas object
+  ##### create Canvas object
   args =
     elem: $('canvas')
     bodyWidth: $('body').width()
     bodyHeight: $('body').height()
   canvas = new Canvas(args)
 
-  # find and create Square objects
+  ##### create logo
+  logoPosition = $('#logo').offset()
+  logoSrc = $('#logo').data('imgSrc')
+
+  logoImgObject = new Image()
+  logoImgObject.src = logoSrc
+
+  # wait for image to load
+  logoImgObject.onload = ->
+
+    # loop through letters
+    for index in [0..(LOGO_STRING.length-1)]
+      args =
+        text: LOGO_STRING.charAt(index)
+        anchor: logoPosition
+        logoImgObject: logoImgObject
+        ctx: canvas.ctx
+        id: index
+      logoLetter = new LogoLetter(args)
+
+  ##### find and create Square objects
   $('.square').each (index) ->
     args =
       elem: $(this)
@@ -107,18 +176,19 @@ $ ->
     $(this).data 'id', index
     square.draw()
 
+  ##### handle events
   $('.square').mouseenter ->
     square = findById $(this)
     square.state = 'hover'
+    # start animating
+    animationId = requestAnimationFrame ->
+      animate(canvas: canvas)
 
   $('.square').mouseleave ->
     square = findById $(this)
     square.state = 'static'
-
-
-  # start animating
-  animationId = requestAnimationFrame ->
-    animate(canvas: canvas)
+    # stop animating
+    cancelAnimationFrame(animationId)
 
   $(window).resize ->
     canvas.orient $('body').width(), $('body').height()
