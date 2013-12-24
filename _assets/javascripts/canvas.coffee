@@ -3,46 +3,6 @@
 
 @LOGO_STRING = "FUNCTIONALIMPERATIVE"
 
-class LogoLetter
-  sideLength: 60
-  spritePadding: 2
-  xOverlap: 5
-  yOverlap: 12
-
-  constructor: (args) ->
-    @id            = args.id
-    @ctx           = args.ctx
-    @text          = args.text
-    @anchorLeft    = args.anchor.left
-    @anchorTop     = args.anchor.top
-    @logoImgObject = args.logoImgObject
-    @setWord()
-    @setColor()
-    @initPosition()
-    @setImg()
-
-    logoLetters.push this
-    this
-
-  setWord: ->
-    @word = if @id < 10 then 1 else 2
-
-  setColor: ->
-    colorString = if @word is 1 then "yellow" else "blue"
-    @color = BASE_COLORS[colorString]
-
-  initPosition: ->
-    mult = if @word is 1 then @id else @id - 10
-    leftOffset = (mult * @sideLength) - (mult * @xOverlap)
-    @left = @anchorLeft + leftOffset
-
-    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
-    @top = @anchorTop + topOffset
-
-  setImg: ->
-    ySpriteOffset = @id * (@sideLength + @spritePadding)
-    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @sideLength, @sideLength, @left, @top, @sideLength, @sideLength
-
 class Canvas
   constructor: (args) ->
     @elem       = args.elem
@@ -50,7 +10,6 @@ class Canvas
     @height     = args.bodyHeight
     @pixelRatio = @getPixelRatio()
     @orient @width, @height
-    @setupCtx()
 
   getPixelRatio: ->
     testCtx = @elem[0].getContext('2d')
@@ -64,30 +23,80 @@ class Canvas
     @elem.attr 'width', (@width * @pixelRatio) 
     @elem.attr 'height', (@height * @pixelRatio) 
 
-  setupCtx: ->
-    @ctx = @elem[0].getContext("2d")
-    @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
-    @ctx.globalCompositeOperation = 'multiply'
+class Context
+  constructor: (canvas) ->
+    @width      = canvas.width
+    @height     = canvas.height
+    @pixelRatio = canvas.pixelRatio
+    @ctx        = @getCtx canvas.elem[0]
+
+  getCtx: (canvasElem) ->
+    ctx = canvasElem.getContext "2d"
+    ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
+    ctx.globalCompositeOperation = 'multiply'
+    ctx
 
   clear: ->
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
     @ctx.clearRect 0, 0, @width, @height
 
+class LogoLetter
+  sideLength: 60
+  spritePadding: 2
+  xOverlap: 5
+  yOverlap: 12
+
+  constructor: (args) ->
+    @id            = args.id
+    @ctx           = args.context.ctx
+    @text          = args.text
+    @anchorLeft    = args.anchor.left
+    @anchorTop     = args.anchor.top
+    @logoImgObject = args.logoImgObject
+    @pixelRatio    = args.context.pixelRatio
+    @setWord()
+    @setColor()
+    @resetPosition()
+    @draw()
+
+    logoLetters.push this
+    this
+
+  setWord: ->
+    @word = if @id < 10 then 1 else 2
+
+  setColor: ->
+    colorString = if @word is 1 then "yellow" else "blue"
+    @color = BASE_COLORS[colorString]
+
+  resetPosition: ->
+    mult = if @word is 1 then @id else @id - 10
+    leftOffset = (mult * @sideLength) - (mult * @xOverlap)
+    @left = @anchorLeft + leftOffset
+
+    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
+    @top = @anchorTop + topOffset
+
+  draw: ->
+    ySpriteOffset = @id * (@sideLength + @spritePadding)
+    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @sideLength, @sideLength, @left, @top, @sideLength, @sideLength
+
 class Square
+  fillHeight: 0
+  fillSpeed: 8
+
   constructor: (args) ->
     @id         = args.id
-    @ctx        = args.ctx
+    @ctx        = args.context.ctx
     @elem       = args.elem
     @color      = BASE_COLORS[(@elem.data('color'))]
     @type       = @elem.data('type')
     @state      = 'static'
-    @fillHeight = 0
-    @fillSpeed  = 32
     @orient()
     squares.push this
     this
 
-  orient: () ->
+  orient: ->
     @sideLength = @elem.outerHeight()
     @top        = @elem.offset().top
     @left       = @elem.offset().left
@@ -96,23 +105,17 @@ class Square
     if @type is 'outlined'
       if @state is 'static'
         @fillHeight = 0
-        # @ctx.save()
         @ctx.lineWidth = "1"
         @ctx.strokeStyle = @color
         @ctx.strokeRect @left, @top, @sideLength, @sideLength 
-        # @ctx.restore()
       if @state is 'hover'
         # draw border
-        # @ctx.save()
         @ctx.lineWidth = "1"
         @ctx.strokeStyle = @color
         @ctx.strokeRect @left, @top, @sideLength, (@sideLength + @newFillHeight())
-        # @ctx.restore()
         # draw filled box
-        # @ctx.save()
         @ctx.fillStyle = @color
         @ctx.fillRect @left, (@top + @sideLength), @sideLength, @newFillHeight()
-        # @ctx.restore()
 
   newFillHeight: ->
     if @fillHeight > -@sideLength
@@ -121,30 +124,30 @@ class Square
       @fillHeight = -@sideLength
 
 animate = (args) ->
-  canvas = args.canvas
-  canvas.clear()
+  context = args.context
+  context.clear()
   for square in squares
     square.draw()
   for logoLetter in logoLetters
-    logoLetter.setImg()
+    logoLetter.draw()
   # continue animation
   requestAnimationFrame ->
-    animate(canvas: canvas)
+    animate(context: context)
 
 findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
-animationId = undefined;
+animationId = undefined
 
 $ -> 
-
   ##### create Canvas object
   args =
     elem: $('canvas')
     bodyWidth: $('body').width()
     bodyHeight: $('body').height()
   canvas = new Canvas(args)
+  context = new Context(canvas)
 
   ##### create logo
   logoPosition = $('#logo').offset()
@@ -155,14 +158,13 @@ $ ->
 
   # wait for image to load
   logoImgObject.onload = ->
-
     # loop through letters
     for index in [0..(LOGO_STRING.length-1)]
       args =
         text: LOGO_STRING.charAt(index)
         anchor: logoPosition
         logoImgObject: logoImgObject
-        ctx: canvas.ctx
+        context: context
         id: index
       logoLetter = new LogoLetter(args)
 
@@ -170,7 +172,7 @@ $ ->
   $('.square').each (index) ->
     args =
       elem: $(this)
-      ctx: canvas.ctx
+      context: context
       id: index
     square = new Square(args)
     $(this).data 'id', index
@@ -182,7 +184,7 @@ $ ->
     square.state = 'hover'
     # start animating
     animationId = requestAnimationFrame ->
-      animate(canvas: canvas)
+      animate(context: context)
 
   $('.square').mouseleave ->
     square = findById $(this)
@@ -192,11 +194,6 @@ $ ->
 
   $(window).resize ->
     canvas.orient $('body').width(), $('body').height()
-    canvas.setupCtx()
+    context.getCtx()
     for square in squares
-      square.orient()
-
-
-
-
-      
+      square.orient()     
