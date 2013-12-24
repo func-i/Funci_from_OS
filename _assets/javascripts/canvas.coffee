@@ -108,7 +108,7 @@ class LogoLetter
 
 class Square
   fillHeight: 0
-  fillSpeed: 8
+  fillSpeed: 16
 
   constructor: (args) ->
     @id         = args.id
@@ -148,6 +148,10 @@ class Square
     else
       @fillHeight = -@sideLength
 
+findById = (elem) ->
+  id = elem.data('id')
+  square = _.findWhere squares, id: id
+
 animate = (args) ->
   context = args.context
   context.clear()
@@ -158,29 +162,6 @@ animate = (args) ->
   # continue animation
   requestAnimationFrame ->
     animate(context: context)
-
-findById = (elem) ->
-  id = elem.data('id')
-  square = _.findWhere squares, id: id
-
-mouseIsOnLogo = (ev) ->
-  topLetter = _.min logoLetters, (logoLetter) ->
-    logoLetter.homeTop
-  rightLetter = _.max logoLetters, (logoLetter) ->
-    logoLetter.homeLeft
-  bottomLetter = _.max logoLetters, (logoLetter) ->
-    logoLetter.homeTop
-  leftLetter = _.min logoLetters, (logoLetter) ->
-    logoLetter.homeLeft
-
-  top = topLetter.top
-  right = rightLetter.left + rightLetter.sideLength
-  bottom = bottomLetter.top + bottomLetter.sideLength
-  left = leftLetter.left
-
-  return (ev.offsetX < right and ev.offsetX > left and ev.offsetY < bottom and ev.offsetY > top)
-
-animationId = undefined
 
 $ -> 
   ##### create Canvas object
@@ -234,16 +215,13 @@ $ ->
     square.state = 'static'
 
   # logo
-  $('canvas').mousemove (ev) ->
-    if mouseIsOnLogo(ev)
-      $('body').css('cursor', 'none')
-      for logoLetter in logoLetters
-        distanceFromMouse = logoLetter.getDistanceFromMouse ev.offsetX, ev.offsetY
-        logoLetter.moveFromMouse distanceFromMouse
-    else
-      $('body').css('cursor', 'default')
-      for logoLetter in logoLetters
-        logoLetter.reset()
+  $(document).mousemove (ev) ->
+    for logoLetter in logoLetters
+      distanceFromMouse = logoLetter.getDistanceFromMouse ev.pageX, ev.pageY
+      logoLetter.moveFromMouse distanceFromMouse
+  .mouseleave ->
+    for logoLetter in logoLetters
+      logoLetter.reset()
 
   $(window).resize ->
     canvas.orient $('body').width(), $('body').height()
