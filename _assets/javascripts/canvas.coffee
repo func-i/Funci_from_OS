@@ -43,6 +43,7 @@ class LogoLetter
   spritePadding: 4
   xOverlap: 5
   yOverlap: 12
+  mousemoveEffectDistance: 100
 
   constructor: (args) ->
     @id            = args.id
@@ -56,7 +57,7 @@ class LogoLetter
 
     @setWord()
     @setColor()
-    @resetPosition()
+    @setHomePosition()
     @draw()
 
     logoLetters.push this
@@ -69,17 +70,41 @@ class LogoLetter
     colorString = if @word is 1 then "yellow" else "blue"
     @color = BASE_COLORS[colorString]
 
-  resetPosition: ->
+  setHomePosition: ->
     mult = if @word is 1 then @id else @id - 10
     leftOffset = (mult * @sideLength) - (mult * @xOverlap)
-    @left = @anchorLeft + leftOffset
+    @homeLeft = @anchorLeft + leftOffset
+    @left = @homeLeft
 
     topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
-    @top = @anchorTop + topOffset
+    @homeTop = @anchorTop + topOffset
+    @top = @homeTop
+
+  reset: ->
+    @left = @homeLeft
+    @top = @homeTop
 
   draw: ->
     ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
     @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength, @sideLength
+
+  getDistanceFromMouse: (mouseLeft, mouseTop) ->
+    middleLeft = @left + (@sideLength / 2)
+    middleTop = @top + (@sideLength / 2)
+
+    distanceFromMouse = {}
+    distanceFromMouse.left = mouseLeft - middleLeft
+    distanceFromMouse.top = mouseTop - middleTop
+    return distanceFromMouse
+
+  moveFromMouse: (distanceFromMouse) ->
+    radialDistanceFromMouse = Math.round(Math.sqrt(Math.pow(distanceFromMouse.left, 2) + Math.pow(distanceFromMouse.top, 2)))
+    if (radialDistanceFromMouse <= @mousemoveEffectDistance)
+      mult = (@mousemoveEffectDistance - radialDistanceFromMouse) / @mousemoveEffectDistance
+      @left = Math.round(@homeLeft - (distanceFromMouse.left * mult))
+      @top = Math.round(@homeTop - (distanceFromMouse.top * mult))
+    else
+      @reset()
 
 class Square
   fillHeight: 0
@@ -138,6 +163,23 @@ findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
+mouseIsOnLogo = (ev) ->
+  topLetter = _.min logoLetters, (logoLetter) ->
+    logoLetter.homeTop
+  rightLetter = _.max logoLetters, (logoLetter) ->
+    logoLetter.homeLeft
+  bottomLetter = _.max logoLetters, (logoLetter) ->
+    logoLetter.homeTop
+  leftLetter = _.min logoLetters, (logoLetter) ->
+    logoLetter.homeLeft
+
+  top = topLetter.top
+  right = rightLetter.left + rightLetter.sideLength
+  bottom = bottomLetter.top + bottomLetter.sideLength
+  left = leftLetter.left
+
+  return (ev.offsetX < right and ev.offsetX > left and ev.offsetY < bottom and ev.offsetY > top)
+
 animationId = undefined
 
 $ -> 
@@ -178,22 +220,33 @@ $ ->
     $(this).data 'id', index
     square.draw()
 
+  animationId = requestAnimationFrame ->
+    animate(context: context)
+
   ##### handle events
+  # squares
   $('.square').mouseenter ->
     square = findById $(this)
     square.state = 'hover'
-    # start animating
-    animationId = requestAnimationFrame ->
-      animate(context: context)
 
   $('.square').mouseleave ->
     square = findById $(this)
     square.state = 'static'
-    # stop animating
-    cancelAnimationFrame(animationId)
+
+  # logo
+  $('canvas').mousemove (ev) ->
+    if mouseIsOnLogo(ev)
+      $('body').css('cursor', 'none')
+      for logoLetter in logoLetters
+        distanceFromMouse = logoLetter.getDistanceFromMouse ev.offsetX, ev.offsetY
+        logoLetter.moveFromMouse distanceFromMouse
+    else
+      $('body').css('cursor', 'default')
+      for logoLetter in logoLetters
+        logoLetter.reset()
 
   $(window).resize ->
     canvas.orient $('body').width(), $('body').height()
-    context.getCtx()
+    context.getCtx(canvas.elem[0])
     for square in squares
       square.orient()     
