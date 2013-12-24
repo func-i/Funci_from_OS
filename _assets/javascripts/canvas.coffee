@@ -6,10 +6,8 @@
 class Canvas
   constructor: (args) ->
     @elem       = args.elem
-    @width      = args.bodyWidth
-    @height     = args.bodyHeight
     @pixelRatio = @getPixelRatio()
-    @orient @width, @height
+    @orient args.bodyWidth, args.bodyHeight
 
   getPixelRatio: ->
     testCtx = @elem[0].getContext('2d')
@@ -41,8 +39,8 @@ class Context
     @ctx.clearRect 0, 0, @width, @height
 
 class LogoLetter
-  sideLength: 60
-  spritePadding: 2
+  spriteSideLength: 120
+  spritePadding: 4
   xOverlap: 5
   yOverlap: 12
 
@@ -54,6 +52,8 @@ class LogoLetter
     @anchorTop     = args.anchor.top
     @logoImgObject = args.logoImgObject
     @pixelRatio    = args.context.pixelRatio
+    @sideLength    = @spriteSideLength / 2
+
     @setWord()
     @setColor()
     @resetPosition()
@@ -61,7 +61,7 @@ class LogoLetter
 
     logoLetters.push this
     this
-
+    
   setWord: ->
     @word = if @id < 10 then 1 else 2
 
@@ -78,8 +78,8 @@ class LogoLetter
     @top = @anchorTop + topOffset
 
   draw: ->
-    ySpriteOffset = @id * (@sideLength + @spritePadding)
-    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @sideLength, @sideLength, @left, @top, @sideLength, @sideLength
+    ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
+    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength, @sideLength
 
 class Square
   fillHeight: 0
