@@ -23,20 +23,23 @@ class Canvas
 
 class Context
   constructor: (canvas) ->
+    @canvasElem = canvas.elem[0]
     @width      = canvas.width
     @height     = canvas.height
     @pixelRatio = canvas.pixelRatio
-    @ctx        = @getCtx canvas.elem[0]
+    @getCtx()
+    @setMultiply()
 
-  getCtx: (canvasElem) ->
-    ctx = canvasElem.getContext "2d"
-    ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
-    ctx.globalCompositeOperation = 'multiply'
-    ctx
+  getCtx: ->
+    @ctx = @canvasElem.getContext "2d"
 
-  clear: ->
+  setMultiply: ->
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
-    @ctx.clearRect 0, 0, @width, @height
+    @ctx.globalCompositeOperation = 'multiply'
+
+  clear: (canvasWidth, canvasHeight) ->
+    @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
+    @ctx.clearRect 0, 0, canvasWidth, canvasHeight
 
 class LogoLetter
   spriteSideLength: 120
@@ -153,15 +156,21 @@ findById = (elem) ->
   square = _.findWhere squares, id: id
 
 animate = (args) ->
+  canvas  = args.canvas
   context = args.context
-  context.clear()
+  
+  context.clear canvas.width, canvas.height
   for square in squares
     square.draw()
   for logoLetter in logoLetters
     logoLetter.draw()
+
   # continue animation
   requestAnimationFrame ->
-    animate(context: context)
+    args =
+      canvas: canvas
+      context: context
+    animate(args)
 
 $ -> 
   ##### create Canvas object
@@ -202,7 +211,10 @@ $ ->
     square.draw()
 
   animationId = requestAnimationFrame ->
-    animate(context: context)
+    args =
+      canvas: canvas
+      context: context
+    animate(args)
 
   ##### handle events
   # squares
@@ -225,6 +237,6 @@ $ ->
 
   $(window).resize ->
     canvas.orient $('body').width(), $('body').height()
-    context.getCtx(canvas.elem[0])
+    context.setMultiply()
     for square in squares
-      square.orient()     
+      square.orient()
