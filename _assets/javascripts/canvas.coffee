@@ -270,8 +270,10 @@ $ ->
   $(window).resize ->
     $('.square').each ->
       $(this).css 'height', $(this).outerWidth()
+      
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
+
     for logoLetter in logoLetters
       logoLetter.display = ($(this).innerWidth() >= logoBreakPoint or (logoLetter.id is 0 or logoLetter.id is 10))
     for square in squares

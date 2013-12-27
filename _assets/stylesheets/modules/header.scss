@@ -16,6 +16,12 @@ header {
         display: inline;
         padding: 0 .5em;
       }
+
+      @media screen and (max-width:640px) {
+        li {
+          font-size: .75em;
+        }
+      }
     }
 
     .selected {
