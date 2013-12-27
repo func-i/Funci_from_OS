@@ -26,6 +26,8 @@
 @logoLetters = []
 @LOGO_STRING = "FUNCTIONALIMPERATIVE"
 
+@logoBreakPoint = 640
+
 class Canvas
   constructor: (args) ->
     @elem       = args.elem
@@ -77,6 +79,7 @@ class LogoLetter
     @text          = args.text
     @anchorLeft    = args.anchor.left
     @anchorTop     = args.anchor.top
+    @display       = args.display
     @logoImgObject = args.logoImgObject
     @pixelRatio    = args.context.pixelRatio
     @sideLength    = @spriteSideLength / 2
@@ -187,7 +190,7 @@ animate = (args) ->
   for square in squares
     square.draw()
   for logoLetter in logoLetters
-    logoLetter.draw()
+    logoLetter.draw() if logoLetter.display
 
   # continue animation
   requestAnimationFrame ->
@@ -199,8 +202,7 @@ animate = (args) ->
 $ ->
   ##### make squares square
   $('.square').each ->
-    width = $(this).outerWidth()
-    $(this).css 'height', width 
+    $(this).css 'height', $(this).outerWidth() 
 
   ##### create Canvas object
   args =
@@ -212,8 +214,8 @@ $ ->
 
   ##### create logo
   logoPosition = $('#logo').offset()
-  logoSrc = $('#logo').data('imgSrc')
 
+  logoSrc = $('#logo').data('imgSrc')
   logoImgObject = new Image()
   logoImgObject.src = logoSrc
 
@@ -224,6 +226,7 @@ $ ->
       args =
         text: LOGO_STRING.charAt(index)
         anchor: logoPosition
+        display: ($(window).innerWidth() >= logoBreakPoint or (index is 0 or index is 10))
         logoImgObject: logoImgObject
         context: context
         id: index
@@ -266,9 +269,10 @@ $ ->
 
   $(window).resize ->
     $('.square').each ->
-      width = $(this).outerWidth()
-      $(this).css 'height', width 
+      $(this).css 'height', $(this).outerWidth()
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
+    for logoLetter in logoLetters
+      logoLetter.display = ($(this).innerWidth() >= logoBreakPoint or (logoLetter.id is 0 or logoLetter.id is 10))
     for square in squares
       square.orient()
