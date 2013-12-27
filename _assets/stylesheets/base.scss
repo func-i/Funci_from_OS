@@ -73,6 +73,12 @@ a {
 
 ////////// classes //////////
 
+.main-content {
+  margin: 0 auto;
+  width: 1024px;
+  max-width: 92%;
+}
+
 .square {
   overflow: hidden;
   position: relative;

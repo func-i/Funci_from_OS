@@ -52,7 +52,7 @@
         border: none;
         outline: none;
         display: block;
-        font-size: 18px;
+        font-size: 1em;
         line-height: 46px;
         padding-top: 10px;
         resize: none;
@@ -60,8 +60,9 @@
         width: 100%;
 
         background-color: transparent;
-        background-image: -moz-linear-gradient(top , transparent, transparent 45px, white 0);
-        background-image: -webkit-linear-gradient(top , transparent, transparent 45px, white 0);
+        background-image: -webkit-linear-gradient(top, transparent, transparent 45px, white 0);
+        background-image:    -moz-linear-gradient(top, transparent, transparent 45px, white 0);
+        background-image:         linear-gradient(top, transparent, transparent 45px, white 0);
 
         -webkit-background-size: 100% 46px;
         background-size: 100% 46px;
