@@ -6,9 +6,9 @@ $green:     rgb(2,125,17);
 $dark-gray: rgb(45,45,45);
 
 ////////// square sizes //////////
-$small:  128px;
-$medium: 256px;
-$large:  512px;
+// $small:  128px;
+// $medium: 256px;
+// $large:  512px;
 
 ////////// fonts //////////
 
@@ -20,35 +20,14 @@ $large:  512px;
 
 ////////// global mixins //////////
 
-@mixin background-image-gradient($color) {
-  background-image: -webkit-linear-gradient($color, $color 50%, transparent 50%, transparent);
-  background-image: -moz-linear-gradient($color, $color 50%, transparent 50%, transparent);
-  background-image: -o-linear-gradient($color, $color 50%, transparent 50%, transparent);
-  background-image: linear-gradient($color, $color 50%, transparent 50%, transparent);
-}
-
-@mixin background-size($width, $height) {
-  -webkit-background-size: $width $height;
-  -moz-background-size: $width $height;
-  -o-background-size: $width $height;
-  background-size: $width $height;
-}
-
 @mixin text-square($color) {
-  padding: 1em;
-  // transition: all .3s linear;
-  // @include background-image-gradient($color);
-  // @include background-size(100%, 210%);
-  // background-position: 0 -105%;
-  // background-repeat: repeat-x;
+  padding: 1.4em;
 
   a {
     color: $color;
   }
 
   &:hover {
-    // background-position: 0 0;
-
     a {
       color: $dark-gray;
     }
@@ -62,19 +41,19 @@ $large:  512px;
 
 ////////// defaults //////////
 
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p,
+blockquote, pre, form, fieldset, table, th, td, canvas {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
 body {
   background-color: $dark-gray;
   color: white;
   font-family: graphik;
   font-size: 112.5%; // 1em = 18px
   line-height: 1.33;
-}
-
-html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p,
-blockquote, pre, form, fieldset, table, th, td, canvas {
-  margin: 0;
-  padding: 0;
-  font-weight: normal;
 }
 
 #canvas {
@@ -98,36 +77,25 @@ a {
   overflow: hidden;
   position: relative;
 
-  // border-width: 1px;
-  // border-style: solid;
+  // &.small {
+  //   @include square-size($small);
+  // }
 
-  &#right {
-    left: -100px;
-  }
+  // &.medium {
+  //   @include square-size($medium);
+  // }
 
-  &.small {
-    @include square-size($small);
-  }
-
-  &.medium {
-    @include square-size($medium);
-  }
-
-  &.large {
-    @include square-size($large);
-  }
+  // &.large {
+  //   @include square-size($large);
+  // }
 
   &[data-color="blue"] {
-    // border-color: $blue;
-
     &[data-type="outlined"] {
       @include text-square($blue);
     }
   }
 
   &[data-color="yellow"] {
-    // border-color: $yellow;
-
     &[data-type="outlined"] {
       @include text-square($yellow);
     }

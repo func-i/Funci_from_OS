@@ -125,7 +125,7 @@ class Square
     this
 
   orient: ->
-    @sideLength = @elem.outerHeight()
+    @sideLength = @elem.outerWidth()
     @top        = @elem.offset().top
     @left       = @elem.offset().left
 
@@ -158,7 +158,7 @@ findById = (elem) ->
 animate = (args) ->
   canvas  = args.canvas
   context = args.context
-  
+
   context.clear canvas.width, canvas.height
   for square in squares
     square.draw()
@@ -172,7 +172,12 @@ animate = (args) ->
       context: context
     animate(args)
 
-$ -> 
+$ ->
+  ##### make squares square
+  $('.square').each ->
+    width = $(this).outerWidth()
+    $(this).css 'height', width 
+
   ##### create Canvas object
   args =
     elem: $('canvas')
@@ -236,6 +241,9 @@ $ ->
       logoLetter.reset()
 
   $(window).resize ->
+    $('.square').each ->
+      width = $(this).outerWidth()
+      $(this).css 'height', width 
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
     for square in squares
