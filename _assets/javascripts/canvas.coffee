@@ -142,6 +142,7 @@ class Square
     @elem       = args.elem
     @color      = BASE_COLORS[(@elem.data('color'))]
     @type       = @elem.data('type')
+    @rollover   = @elem.data('rollover') is 'true'
     @state      = 'static'
     @orient()
     squares.push this
@@ -246,11 +247,11 @@ $ ->
 
   ##### handle events
   # squares
-  $('.square').mouseenter ->
+  $('.square[data-rollover="true"]').mouseenter ->
     square = findById $(this)
     square.state = 'hover'
 
-  $('.square').mouseleave ->
+  $('.square[data-rollover="true"]').mouseleave ->
     square = findById $(this)
     square.state = 'static'
 

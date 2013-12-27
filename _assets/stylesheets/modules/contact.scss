@@ -1,0 +1,100 @@
+#contact {
+  #form {
+    padding: 1.4em;
+    overflow: scroll;
+
+    h4, div.field {
+      margin-bottom: 1em;
+    }
+
+    div.text {
+      border-bottom: 1px solid white;
+
+      input {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: $blue;
+      } 
+    }
+
+    div.select {
+      border-bottom: 1px solid white;
+
+      a {
+        &:hover, &:focus {
+          color: $blue;
+          text-decoration: underline;
+        }
+      }
+
+      #selected-option {
+        color: $blue;
+      }
+
+      #expand-arrow {
+        float: right;
+      }
+
+      ul {
+        border: solid 1px $blue;
+        padding: 1em .75em;
+
+        li {
+          list-style: none;
+        }
+      }
+    }
+
+    div.textarea {
+      textarea {
+        color: $blue;
+        border: none;
+        outline: none;
+        display: block;
+        font-size: 18px;
+        line-height: 46px;
+        padding-top: 10px;
+        resize: none;
+        height: 300px;
+        width: 100%;
+
+        background-color: transparent;
+        background-image: -moz-linear-gradient(top , transparent, transparent 45px, white 0);
+        background-image: -webkit-linear-gradient(top , transparent, transparent 45px, white 0);
+
+        -webkit-background-size: 100% 46px;
+        background-size: 100% 46px;
+      }
+    }
+
+    div.submit {
+      float: right;
+
+      input {
+        color: $green;
+        background-color: transparent;
+        border: 1px solid $green;
+        width: 4em;
+        height: 4em;
+        outline: none;
+
+        &:hover, &:focus {
+          color: $dark-gray;
+          background-color: $green;
+        }
+
+        &:active {
+          color: $green;
+          background-color: transparent;
+        }
+      }
+    }
+
+    #form-success {
+      h2 {
+        margin-bottom: 1em;
+      }
+    }
+  }
+}

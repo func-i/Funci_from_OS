@@ -90,13 +90,13 @@ a {
   // }
 
   &[data-color="blue"] {
-    &[data-type="outlined"] {
+    &.text {
       @include text-square($blue);
     }
   }
 
   &[data-color="yellow"] {
-    &[data-type="outlined"] {
+    &.text {
       @include text-square($yellow);
     }
   }
