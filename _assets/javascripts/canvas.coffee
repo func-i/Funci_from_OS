@@ -101,7 +101,7 @@ $ ->
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
 
-    logo.setSizeByScreen $(window).innerWidth()
+    logo.resize $(window).innerWidth()
 
     for square in squares
       square.orient()

@@ -21,7 +21,7 @@ class @Logo
 
   createLogo: ->
     @createSquares()
-    @setSizeByScreen @initScreenWidth
+    @initSize @initScreenWidth
     @draw()
 
   createSquares: ->
@@ -52,9 +52,13 @@ class @Logo
 
     return (mouseLeft < right and mouseLeft > left and mouseTop < bottom and mouseTop > top)
 
-  setSizeByScreen: (screenWidth) ->
+  initSize: (screenWidth) ->
     @full = (screenWidth >= @breakPoint)
     if @full then @expand() else @contract()
+
+  resize: (screenWidth) ->
+    bigEnough = (screenWidth >= @breakPoint)
+    if @full and !bigEnough then @contract()
 
   animate: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
