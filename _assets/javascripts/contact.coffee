@@ -71,9 +71,3 @@ $ ->
 
     mailToLink = "mailto:info@functionalimperative.com?subject=#{interest}&body=" + body
     window.open mailToLink, '_blank'
-
-
-
-
-
-

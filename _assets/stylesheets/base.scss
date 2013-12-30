@@ -5,11 +5,6 @@ $yellow:    rgb(255,189,27);
 $green:     rgb(2,125,17);
 $dark-gray: rgb(45,45,45);
 
-////////// square sizes //////////
-// $small:  128px;
-// $medium: 256px;
-// $large:  512px;
-
 ////////// fonts //////////
 
 @font-face {
@@ -76,24 +71,12 @@ a {
 .main-content {
   margin: 0 auto;
   width: 1024px;
-  max-width: 92%;
+  max-width: 88%;
 }
 
 .square {
   overflow: hidden;
   position: relative;
-
-  // &.small {
-  //   @include square-size($small);
-  // }
-
-  // &.medium {
-  //   @include square-size($medium);
-  // }
-
-  // &.large {
-  //   @include square-size($large);
-  // }
 
   &[data-color="blue"] {
     &.text {
@@ -105,5 +88,13 @@ a {
     &.text {
       @include text-square($yellow);
     }
+  }
+}
+
+@media screen and (max-width:640px) {
+  .square {
+    margin-bottom: 1.5em;
+    left: 0;
+    top: 0;
   }
 }
