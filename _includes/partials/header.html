@@ -1,9 +1,27 @@
 <header>
   <nav>
-    <ul>
-      <li>Manifesto</li>
-      <li>Work</li>
-      <li>About</li>
+    <ul class="first-level">
+      <li>
+        <a href="/manifesto.html"
+          {% if page.url == '/manifesto.html' %}
+            class="selected"
+          {% endif %}>Manifesto
+        </a>
+      </li>
+      <li>
+        <a href="/work.html"
+          {% if page.url == '/work.html' %}
+            class="selected"
+          {% endif %}>Work
+        </a>
+      </li>
+      <li>
+        <a href="/about.html"
+          {% if page.url == '/about.html' %}
+            class="selected"
+          {% endif %}>About
+        </a>
+      </li>
       <li>
         <a href="/contact.html"
           {% if page.url == '/contact.html' %}

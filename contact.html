@@ -4,4 +4,47 @@ title: Functional Imperative | Contact
 description: We build new intricate experiences for the new web.
 ---
 
-{% include pages/contact.html %}
+<div id="contact" class="row collapse main-content">
+  <div class="medium-6 columns">
+    <div id="form" class="square" data-type="outlined" data-color="blue">
+      <form>
+        <h4>General Inquiries</h4>
+
+        <div class="text field">
+          <label>Name: </label>
+          <input name="name" type="text" />
+        </div>
+
+        <div class="text field">
+          <label>Email Address: </label>
+          <input name="email-address" type="text" />
+        </div>
+
+        <div class="select field">
+          <label>Interest: </label>
+          <select name="interest">
+            <option value="Potential client">Potential client</option>
+            <option value="Case studies">Case studies</option>
+            <option value="Site inquiry">Site inquiry</option>
+            <option value="Development questions">Development questions</option>
+            <option value="Jobs">Jobs</option>
+          </select>
+        </div>
+
+        <div class="textarea field">
+          <label>Message: </label>
+          <textarea name="message" maxlength=250></textarea>
+        </div>
+
+        <div class="submit">
+          <input type="submit" name="submit" value="Send" />
+        </div>
+      </form>
+
+      <div id="form-success" style="display: none;">
+        <h2>Thanks!</h2>
+        <p>We'll respond as soon as we can.</p>
+      </div>
+    </div>
+  </div>
+</div>
