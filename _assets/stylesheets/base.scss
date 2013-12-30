@@ -48,7 +48,20 @@ body {
   color: white;
   font-family: graphik;
   font-size: 112.5%; // 1em = 18px
-  line-height: 1.33;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.15;
+  margin-bottom: 1em;
+}
+
+p {
+  line-height: 1.4;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 1.77em;
 }
 
 #canvas {
@@ -72,6 +85,7 @@ a {
   margin: 0 auto;
   width: 1024px;
   max-width: 88%;
+  margin-bottom: 2em;
 }
 
 .square {
@@ -82,11 +96,19 @@ a {
     &.text {
       @include text-square($blue);
     }
+
+    &.image {
+      border: 1px solid $blue;
+    }
   }
 
   &[data-color="yellow"] {
     &.text {
       @include text-square($yellow);
+    }
+
+    &.image {
+      border: 1px solid $yellow;
     }
   }
 }
@@ -97,4 +119,36 @@ a {
     left: 0;
     top: 0;
   }
+}
+
+.free {
+  &.text {
+    padding-right: 1.5em;
+  }
+}
+
+.icon {
+  width: 1024px; // hack to make all squares wide enough to fill foundation grid
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+  * {
+    vertical-align: middle;
+  }
+
+  img {
+    width: 33%;
+  }
+}
+
+////////// clearfix //////////
+
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
 }
