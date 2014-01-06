@@ -3,6 +3,8 @@ header {
     @extend .row, .collapse;
 
     border-bottom: 1px solid white;
+    position: relative;
+    z-index: 1;
 
     > ul {
       @extend .small-12, .columns;
