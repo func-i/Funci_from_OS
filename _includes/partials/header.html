@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <ul class="first-level">
+    <ul>
       <li>
         <a href="/manifesto.html"
           {% if page.url == '/manifesto.html' %}
@@ -8,20 +8,80 @@
           {% endif %}>Manifesto
         </a>
       </li>
+
       <li>
         <a href="/work.html"
           {% if page.url == '/work.html' %}
             class="selected"
           {% endif %}>Work
         </a>
+
+        <div class="bg"></div>
+        <ul>
+          <li>
+            <a href="/work/eventstream.html"
+              {% if page.url == '/work/eventstream.html' %}
+                class="selected"
+              {% endif %}>Eventstream
+            </a>
+          </li>
+          <li>
+            <a href="/work/canlii.html"
+              {% if page.url == '/work/canlii.html' %}
+                class="selected"
+              {% endif %}>CanLII
+            </a>
+          </li>
+          <li>
+            <a href="/work/myoscar.html"
+              {% if page.url == '/work/myoscar.html' %}
+                class="selected"
+              {% endif %}>MyOSCAR
+            </a>
+          </li>
+          <li>
+            <a href="/work/votecompass.html"
+              {% if page.url == '/work/votecompass.html' %}
+                class="selected"
+              {% endif %}>Vote Compass
+            </a>
+          </li>
+        </ul>
       </li>
+
       <li>
         <a href="/about.html"
           {% if page.url == '/about.html' %}
             class="selected"
           {% endif %}>About
         </a>
+
+        <div class="bg"></div>
+        <ul>
+          <li>
+            <a href="/about/jb.html"
+              {% if page.url == '/about/jb.html' %}
+                class="selected"
+              {% endif %}>Josh Borts
+            </a>
+          </li>
+          <li>
+            <a href="/about/jha.html"
+              {% if page.url == '/about/jha.html' %}
+                class="selected"
+              {% endif %}>Jake Hirsch-Allen
+            </a>
+          </li>
+          <li>
+            <a href="/about/kv.html"
+              {% if page.url == '/about/kv.html' %}
+                class="selected"
+              {% endif %}>Khurram Virani
+            </a>
+          </li>
+        </ul>
       </li>
+
       <li>
         <a href="/contact.html"
           {% if page.url == '/contact.html' %}
