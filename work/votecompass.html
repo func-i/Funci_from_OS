@@ -6,8 +6,8 @@ description: We build new intricate experiences for the new web.
 
 <div id="vote-compass" class="row collapse main-content">
   <div class="row collapse">
-    <div class="medium-6 columns">
-      <div class="free text">
+    <div class="large-6 medium-9 columns">
+      <div class="free text first">
         <h2>
           Real-time voting analysis based on an individual’s responses to a series of propositions specifically developed for a given election
         </h2>
@@ -16,14 +16,15 @@ description: We build new intricate experiences for the new web.
         </p>
       </div> 
     </div>
-    <div class="medium-6 columns">
+    <div class="large-6 medium-3 columns">
       <div class="square image" data-color="blue">
         <img src="{% asset_path vote_compass_lg.png %}" alt="Vote Compass">
       </div>
     </div>
   </div>
+
   <div class="row collapse">
-    <div class="medium-6 columns">
+    <div class="large-6 medium-9 columns">
       <div class="free text">
         <h2>
           Minimize loading whilst maximizing up time
@@ -33,9 +34,9 @@ description: We build new intricate experiences for the new web.
         </p>
       </div> 
     </div>
-    <div class="medium-6 columns">
+    <div class="large-6 medium-3 columns">
       <div class="row collapse">
-        <div class="medium-3 medium-offset-6 columns">
+        <div class="small-3 small-offset-6 columns">
           <div class="icon-container arrows-in">
             <div class="square icon arrows-in" data-type="outlined" data-color="yellow">
               <img src="{% asset_path icons/arrows_in.svg %}" alt="arrows_in" />
@@ -44,10 +45,105 @@ description: We build new intricate experiences for the new web.
         </div>
       </div>
       <div class="row collapse">
-        <div class="medium-6 medium-centered columns">
+        <div class="small-6 small-centered columns">
           <div class="icon-container arrows-out">
             <div class="square icon arrows-out" data-type="outlined" data-color="blue">
               <img src="{% asset_path icons/arrows_out.svg %}" alt="arrows_out" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="individual-responses" class="row collapse">
+    <div class="large-6 medium-9 columns">
+      <div class="free text">
+        <h2>
+          Individual’s responses powered by an open database
+        </h2>
+        <p>
+          Based on an individual’s responses to a series of propositions specifically developed for a given election, Vote Compass generates a real-time analysis of how one’s views compare to the apps of each political party vying for office. This analysis is powered by an open database which contains a public record of each party’s stand on the issues included in Vote Compass.
+        </p>
+      </div> 
+    </div>
+    <div class="large-6 medium-3 columns">
+      <div class="row collapse">
+        <div class="small-3 columns">
+          <div class="icon-container two-people">
+            <div class="square icon two-people" data-type="outlined" data-color="blue">
+              <img src="{% asset_path icons/two_people.svg %}" alt="two_people" />
+            </div>
+          </div>
+        </div>
+        <div class="small-6 small-offset-3 columns">
+          <div class="icon-container ballot">
+            <div class="square icon ballot" data-type="outlined" data-color="yellow">
+              <img src="{% asset_path icons/ballot.svg %}" alt="ballot" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="server-response" class="row collapse">
+    <div class="large-6 medium-9 columns">
+      <div class="free text">
+        <h2>
+          Working quickly, we identified issues with server response and page load times. To mitigate we:
+        </h2>
+        <ul>
+          <li>
+            <h3>Minified static assets</h3>
+            <p>Serving images, javascript, css and using a CDN network.</p>
+          </li>
+          <li>
+            <h3>Added a cacheing layer</h3>
+            <p>Using multiple MemCache servers.</p>
+          </li>
+          <li>
+            <h3>Added load balancers</h3>
+            <p>With automatic server scaling to handle surges in traffic.</p>
+          </li>
+          <li>
+            <h3>Optimized long running queries</h3>
+            <p>Which were needlessly locking database rows.</p>
+          </li>
+          <li>
+            <h3>Ran stress tests</h3>
+            <p>Ensuring performance under 2x peak load.</p>
+          </li>
+        </ul>
+        <p>
+          With the changes completed in time, Vote Compass was used by millions of visitors and handled over seven thousand requests per minute at its peak. We are now actively working with Vote Compass as they expand globally.
+        </p>
+      </div> 
+    </div>
+    <div class="large-6 medium-3 columns">
+      <div class="row collapse">
+        <div class="small-6 small-offset-6 large-3 large-offset-6 columns">
+          <div class="icon-container js">
+            <div class="square icon js" data-type="outlined" data-color="yellow">
+              <img src="{% asset_path icons/js.svg %}" alt="js" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-12 columns">
+          <div class="icon-container globe">
+            <div class="square icon globe" data-type="outlined" data-color="blue">
+              <img src="{% asset_path icons/globe.svg %}" alt="globe" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row collapse">
+        <div class="small-6 columns">
+          <div class="icon-container beaker">
+            <div class="square icon beaker" data-type="outlined" data-color="yellow">
+              <img src="{% asset_path icons/beaker.svg %}" alt="beaker" />
             </div>
           </div>
         </div>
