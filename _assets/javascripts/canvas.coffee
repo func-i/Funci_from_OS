@@ -4,25 +4,7 @@ findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
-animationId = undefined
-
-animate = (args) ->
-  canvas  = args.canvas
-  context = args.context
-  logo    = args.logo
-
-  context.clear canvas.width, canvas.height
-  for square in squares
-    square.draw()
-  logo.draw()
-
-  # continue animation
-  requestAnimationFrame ->
-    args =
-      canvas: canvas
-      context: context
-      logo: logo
-    animate(args) 
+@animationId = undefined
 
 $ ->
   ##### make square divs square
@@ -58,12 +40,16 @@ $ ->
     screenWidth: $(window).width()
   logo = new Logo(args)
 
-  animationId = requestAnimationFrame ->
-    args =
-      canvas: canvas
-      context: context
-      logo: logo
-    animate(args)
+  ##### animation loop
+
+  animate = ->
+    context.clear canvas.width, canvas.height
+    for square in squares
+      square.draw()
+    logo.draw()
+
+    # continue animation
+    window.animationId = requestAnimationFrame animate
 
   ##### handle events
 
@@ -72,10 +58,12 @@ $ ->
   $('.square[data-rollover="true"]').mouseenter ->
     square = findById $(this)
     square.state = 'hover'
+    # window.animationId = requestAnimationFrame animate
 
   $('.square[data-rollover="true"]').mouseleave ->
     square = findById $(this)
     square.state = 'static'
+    # cancelAnimationFrame window.animationId
 
   # logo
 
@@ -92,9 +80,17 @@ $ ->
         if logo.full then logo.contract() else logo.expand()
         $(this).unbind('mouseup')
 
-  ##### resize adjustments 
+  ##### resize adjustments
+
+  resizingTimeoutId = undefined
 
   $(window).resize ->
+    # continue if still resizing
+    clearTimeout resizingTimeoutId
+
+    if (window.animationId is 0) or (window.animationId is undefined)
+      window.animationId = requestAnimationFrame animate
+
     $('.square').each ->
       $(this).css 'height', $(this).outerWidth()
 
@@ -105,3 +101,9 @@ $ ->
 
     for square in squares
       square.orient()
+
+    # haven't resized in 300ms!
+    resizingTimeoutId = setTimeout ->
+      cancelAnimationFrame window.animationId
+      window.animationId = 0
+    , 300   

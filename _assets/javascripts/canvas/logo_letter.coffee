@@ -18,7 +18,6 @@ class @LogoLetter
     @setWord()
     @setColor()
     @setHomePosition()
-    @draw()
     
   setWord: ->
     @word = if @id < 10 then 1 else 2
