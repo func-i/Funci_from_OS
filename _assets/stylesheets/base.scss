@@ -184,6 +184,14 @@ a {
   position: relative;
 }
 
+#social-icons {
+  .phone {
+    img {
+      width: 20%;
+    }
+  }
+}
+
 ////////// clearfix //////////
 
 .clearfix:before, .clearfix:after {
