@@ -1,0 +1,33 @@
+#myoscar {
+  .icon-container {
+    &.folder, &.shield {
+      margin-top: 4em;
+    }
+
+    &.tools {
+      margin-top: 6em;
+    }
+  }
+
+  #direct-access {
+    .icons {
+      margin-top: 12em;
+    }
+  }
+}
+
+@media screen and (max-width:640px) {
+  #myoscar {
+    .icon-container {
+      &.folder, &.shield {
+        margin-top: 0;
+      }
+    }
+
+    #direct-access {
+      .icons {
+        margin-top: 0;
+      }
+    }
+  }
+}

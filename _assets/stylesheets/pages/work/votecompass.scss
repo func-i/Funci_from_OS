@@ -3,5 +3,44 @@
     &.arrows-in, &.arrows-out {
       margin-top: 1.5em;
     }
+
+    &.two-people {
+      margin-top: 5em;
+    }
+
+    &.ballot {
+      margin-top: 2.5em;
+    }
+
+    &.js, &.beaker {
+      margin: 2em 0;
+    }
+  }
+
+  #server-response {
+    li {
+      list-style: none;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      color: $yellow;
+    }
+
+    ul {
+      margin-bottom: 3em;
+    }
+
+    .globe img {
+      width: 66%;
+    }
+  }
+}
+
+@media screen and (max-width:640px) {
+  #individual-responses, #server-response {
+    h2 {
+      margin-top: 1.5em;
+    }
   }
 }

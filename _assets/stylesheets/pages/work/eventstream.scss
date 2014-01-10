@@ -1,0 +1,39 @@
+#eventstream {
+  #immersive-experience {
+    margin-bottom: 4em;
+  }
+
+  #complete-features {
+    .free.text {
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 4em;
+    }
+
+    li {
+      padding-left: 1.5em;
+      text-indent: -1.5em;
+      margin-bottom: .5em;
+    }
+
+    li:before {
+      content: "-";
+      padding-right: 1.2em;
+    }
+
+    .icon-container {
+      &.bricks {
+        top: 5em;
+      }
+    }
+  }
+
+  #pushing-boundaries {
+    #bottom-icon-row {
+      margin-top: 3em;
+    }
+  }
+}
