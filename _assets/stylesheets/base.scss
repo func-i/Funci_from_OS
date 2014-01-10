@@ -81,6 +81,18 @@ a {
   }
 }
 
+@media screen and (max-width:1024px) {
+  .main-content {
+    font-size: 80%;
+  }
+}
+
+@media screen and (max-width:640px) {
+  .main-content {
+    font-size: 75%;
+  }
+}
+
 ////////// classes //////////
 
 .main-content {
@@ -135,16 +147,18 @@ a {
 }
 
 @media screen and (max-width:640px) {
-  .image-half {
-    display: none;
-  }
-}
-
-@media screen and (max-width:1024px) {
   .square.text, .square.image {
-    margin: 0 0 1.5em 0 !important; 
+    margin: 0 !important; 
     left: 0 !important;
     top: 0 !important;
+  }
+
+  .square.spacer {
+    margin-bottom: 1.5em !important;
+  }
+
+  .image-half {
+    display: none;
   }
 }
 
@@ -176,6 +190,14 @@ a {
 
 .icon-container {
   position: relative;
+}
+
+#social-icons {
+  .phone {
+    img {
+      width: 20%;
+    }
+  }
 }
 
 ////////// clearfix //////////
