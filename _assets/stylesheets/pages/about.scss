@@ -1,0 +1,43 @@
+#about {
+  #digital-platforms {
+    font-size: 80%;
+  }
+
+  #jha {
+    margin-top: 6em;
+  }
+
+  #kv {
+    position: relative;
+    top: -3em;
+  }
+
+  #jb {
+    position: relative;
+    top: -3em;
+  }
+
+  #business-logos {
+    margin-top: 4em;
+  }
+
+  @media screen and (max-width:640px) {
+    #jha {
+      margin: 0;
+    }
+
+    #kv {
+      position: relative;
+      top: 0;
+    }
+
+    #jb {
+      position: relative;
+      top: 0;
+    }
+
+    #business-logos {
+      margin: 0;
+    }
+  }
+}

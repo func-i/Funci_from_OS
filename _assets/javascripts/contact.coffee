@@ -1,8 +1,8 @@
-# map = new L.mapbox.map "map", "nasercafi.g99p0nel",
-#   center: [43.650097, -79.375151]
-#   zoom: 17
-#   zoomControl: false
-#   attributionControl: false
+map = new L.mapbox.map "map", "nasercafi.g99p0nel",
+  center: [43.650097, -79.375151]
+  zoom: 17
+  zoomControl: false
+  attributionControl: false
 
 $.fn.funciSelect = ->
   select = this
@@ -13,7 +13,7 @@ $.fn.funciSelect = ->
   select.before selectedOption
 
   # create expand arrow
-  arrow = $('<span id="expand-arrow"><a href="#"><i class="fa fa-caret-down"></i></a></span>')
+  arrow = $('<span id="expand-arrow"><a><i class="fa fa-caret-down"></i></a></span>')
   selectedOption.after arrow
 
   # create ul and insert it after select
@@ -24,7 +24,7 @@ $.fn.funciSelect = ->
   # create lis for each option
   select.find('option').each ->
     optionText = $(this).text()
-    ul.append("<li><a href='#'>#{optionText}</a></li>")
+    ul.append("<li><a>#{optionText}</a></li>")
 
   toggleArrow = ->
     if ul.is(":visible")

@@ -1,4 +1,15 @@
 #contact {
+  #address {
+    h2 {
+      margin-bottom: 1em;
+    }
+  }
+
+  #map {
+    height: 512px; // hack for mapbox
+    padding: 1px;
+  }
+
   #form {
     padding: 1.4em;
     overflow: scroll;
