@@ -1,0 +1,67 @@
+#manifesto {
+  .free.text {
+    margin-top: 2em;
+  }
+
+  .blue {
+    h2 {
+      color: $blue;
+    }
+  }
+
+  .yellow {
+    h2 {
+      color: $yellow;
+    }
+  }
+
+  li {
+    list-style: none;
+
+    h2 {
+      margin-bottom: 0;
+    }
+
+    p {
+      margin-bottom: 3em;
+    }
+  }
+
+  .icon-container {
+    &.magnifying-glass {
+      margin-top: 5em;
+    }
+
+    &.two-people {
+      margin-top: 9em;
+    }
+
+    &.faces {
+      margin-top: 15em;
+    }
+
+    &.quotes {
+      margin-top: 3em;
+    }
+
+    &.eye {
+      margin-top: 4em;
+    }
+
+    &.target {
+      margin-top: 15em;
+    }
+
+    &.refinement {
+      margin-top: 11em;
+    }
+
+    &.shield {
+      margin-top: 1em;
+    }
+
+    &.beaker {
+      margin-top: 1em;
+    }
+  }
+}
