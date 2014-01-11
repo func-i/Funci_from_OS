@@ -16,6 +16,12 @@ header {
       margin: 2.333em 0;
       text-align: center;
 
+      @media screen and (max-width:640px) {
+        > li {
+          font-size: .75em;
+        }
+      }
+
       > li {
         position: relative;
         display: inline-block;
@@ -60,12 +66,6 @@ header {
             padding: 0 0 .5em 0;
           }
         }
-      }
-    }
-
-    @media screen and (max-width:640px) {
-      li {
-        font-size: .75em;
       }
     }
 
