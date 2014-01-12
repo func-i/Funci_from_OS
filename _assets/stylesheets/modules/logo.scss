@@ -1,3 +1,13 @@
+#logo-canvas {
+  height: 16em;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
 #logo {
   height: 8rem;
+  position: relative;
+  z-index: 2;
 }

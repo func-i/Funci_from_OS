@@ -1,6 +1,6 @@
 class @Square
   fillHeight: 0
-  fillSpeed: 16
+  fillSpeed: 36
 
   constructor: (args) ->
     @id         = args.id
@@ -19,11 +19,11 @@ class @Square
     @top        = @elem.offset().top
     @left       = @elem.offset().left
 
-  newFillHeight: ->
-    if @fillHeight > -@sideLength
-      @fillHeight -= @fillSpeed
+  setFillHeight: ->
+    if (@fillHeight < @sideLength) and ((@sideLength - @fillHeight) >= @fillSpeed)
+      @fillHeight += @fillSpeed
     else
-      @fillHeight = -@sideLength
+      @fillHeight = @sideLength
 
   draw: ->
     if @type is 'outlined'
@@ -36,7 +36,9 @@ class @Square
         # draw border
         @ctx.lineWidth = "1"
         @ctx.strokeStyle = @color
-        @ctx.strokeRect @left, @top, @sideLength, (@sideLength + @newFillHeight())
+        @ctx.strokeRect @left, @top, @sideLength, (@sideLength - @fillHeight)
         # draw filled box
         @ctx.fillStyle = @color
-        @ctx.fillRect @left, (@top + @sideLength), @sideLength, @newFillHeight()
+        fluidOffsetY = @top + @sideLength - @fillHeight
+        @ctx.fillRect @left, fluidOffsetY, @sideLength, @fillHeight
+        @setFillHeight()

@@ -4,7 +4,12 @@ findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
-@animationId = undefined
+@animationIds = []
+
+stopAnimations = ->
+  for id in animationIds
+    cancelAnimationFrame(id)
+  animationIds.length = 0
 
 $ ->
   ##### make square divs square
@@ -15,11 +20,16 @@ $ ->
   ##### create canvas and context
 
   args =
-    elem: $('canvas')
-    bodyWidth: $('body').width()
-    bodyHeight: $('body').height()
+    elem: $('#canvas')
   canvas = new Canvas(args)
   context = new Context(canvas)
+
+  ##### create logo canvas and context
+
+  args =
+    elem: $('#logo-canvas')
+  logoCanvas = new Canvas(args)
+  logoContext = new Context(logoCanvas)
 
   ##### create squares
 
@@ -36,44 +46,73 @@ $ ->
 
   args =
     elem: $('#logo')
-    context: context
+    context: logoContext
     screenWidth: $(window).width()
   logo = new Logo(args)
 
   ##### animation loop
 
-  animate = ->
-    context.clear canvas.width, canvas.height
-    for square in squares
-      square.draw()
+  animateLogo = ->
+    logoContext.clear 0, 0, logoCanvas.width, logoCanvas.height
     logo.draw()
 
     # continue animation
-    window.animationId = requestAnimationFrame animate
+    animationId = requestAnimationFrame animateLogo
+    # save animation for easy cancelation
+    animationIds.push animationId
+
+  animateSquare = (square) ->
+    context.clear square.left, square.top, square.sideLength, square.sideLength
+    square.draw()
+
+    animationId = requestAnimationFrame -> animateSquare(square)
+    animationIds.push animationId
 
   ##### handle events
 
+  # cancel if mouseleave window
+  $(document).mouseleave ->
+    logo.reset()
+    for square in squares
+      square.state = 'static'
+    setTimeout ->
+      stopAnimations()
+    , 50
+
   # squares
 
-  $('.square[data-rollover="true"]').mouseenter ->
+  $('.square[data-rollover="true"]').mouseover ->
     square = findById $(this)
     square.state = 'hover'
-    # window.animationId = requestAnimationFrame animate
+    animationId = requestAnimationFrame -> animateSquare(square)
+    animationIds.push animationId
 
-  $('.square[data-rollover="true"]').mouseleave ->
+  $('.square[data-rollover="true"]').mouseout ->
     square = findById $(this)
     square.state = 'static'
-    # cancelAnimationFrame window.animationId
+    setTimeout ->
+      stopAnimations()
+    , 200
 
   # logo
 
-  $(document).mousemove (ev) ->
+  $('#logo').mouseover (ev) ->
+    animationId = requestAnimationFrame animateLogo
+    animationIds.push animationId
+
+  $('#logo').mouseout (ev) ->
+    logo.reset()
+    setTimeout ->
+      stopAnimations()
+    , 100
+
+  $('#logo').mousemove (ev) ->
     if logo.full
       logo.animate ev.pageX, ev.pageY
       $(this).mouseleave ->
         logo.reset()
 
-  $('canvas').mousedown (ev) ->
+  $('#logo').mousedown (ev) ->
     if logo.isUnderMouse ev.pageX, ev.pageY
       logo.explode ev.pageX, ev.pageY
       $(this).mouseup ->
@@ -88,22 +127,25 @@ $ ->
     # continue if still resizing
     clearTimeout resizingTimeoutId
 
-    if (window.animationId is 0) or (window.animationId is undefined)
-      window.animationId = requestAnimationFrame animate
-
     $('.square').each ->
       $(this).css 'height', $(this).outerWidth()
+
+    for square in squares
+      square.orient()
+      animationId = requestAnimationFrame -> animateSquare(square)
+      animationIds.push animationId
+
+    logo.resize $(window).innerWidth()
+    animationId = requestAnimationFrame animateLogo
+    animationIds.push animationId
 
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
 
-    logo.resize $(window).innerWidth()
-
-    for square in squares
-      square.orient()
+    logoCanvas.orient $('body').width(), $('body').height()
+    logoContext.setMultiply()
 
     # haven't resized in 300ms!
     resizingTimeoutId = setTimeout ->
-      cancelAnimationFrame window.animationId
-      window.animationId = 0
-    , 300   
+      stopAnimations()
+    , 200   
