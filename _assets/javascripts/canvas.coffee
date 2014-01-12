@@ -68,6 +68,15 @@ $ ->
     animationId = requestAnimationFrame -> animateSquare(square)
     animationIds.push animationId
 
+  animateAllSquares = ->
+    context.clear 0, 0, canvas.width, canvas.height
+    for square in squares
+      square.orient()
+      square.draw()
+
+    animationId = requestAnimationFrame -> animateSquare(square)
+    animationIds.push animationId
+
   ##### handle events
 
   # cancel if mouseleave window
@@ -130,10 +139,8 @@ $ ->
     $('.square').each ->
       $(this).css 'height', $(this).outerWidth()
 
-    for square in squares
-      square.orient()
-      animationId = requestAnimationFrame -> animateSquare(square)
-      animationIds.push animationId
+    animationId = requestAnimationFrame animateAllSquares
+    animationIds.push animationId
 
     logo.resize $(window).innerWidth()
     animationId = requestAnimationFrame animateLogo
