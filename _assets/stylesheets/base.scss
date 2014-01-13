@@ -139,23 +139,19 @@ a {
     }
   }
 
+  &.image {
+    padding: 1px;
+  }
+
   &[data-color="blue"] {
     &.text {
       @include text-square($blue);
-    }
-
-    &.image {
-      border: 1px solid $blue;
     }
   }
 
   &[data-color="yellow"] {
     &.text {
       @include text-square($yellow);
-    }
-
-    &.image {
-      border: 1px solid $yellow;
     }
   }
 
