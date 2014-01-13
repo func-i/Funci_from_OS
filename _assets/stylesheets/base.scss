@@ -21,6 +21,10 @@ $dark-gray: rgb(45,45,45);
   @include background-size(100%, 210%);
   background-position: 0 -105%;
   background-repeat: repeat-x;
+
+  &:hover {
+    background-position: 0 0;
+  }
 }
 
 @mixin text-square($color) {
@@ -32,8 +36,6 @@ $dark-gray: rgb(45,45,45);
   }
 
   &:hover {
-    background-position: 0 0;
-
     a {
       color: $dark-gray;
     }
@@ -127,6 +129,8 @@ a {
   margin-bottom: 2em;
 }
 
+////////// squares ///////////
+
 .square {
   overflow: hidden;
   position: relative;
@@ -187,6 +191,8 @@ a {
   }
 }
 
+////////// free text //////////
+
 .free {
   &.text {
     padding-right: 1.5em;
@@ -198,18 +204,47 @@ a {
   }
 }
 
-.icon {
+////////// icons //////////
+
+.square.icon {
   width: 1024px; // hack to make all squares wide enough to fill foundation grid
   display: table-cell;
-  text-align: center;
-  vertical-align: middle;
+  @include bg-fill-up($green);
 
-  * {
-    vertical-align: middle;
+  a {
+    &:after {
+      content: ""; 
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left:0;
+    }
   }
 
-  img {
+  &:hover {
+    object {
+      opacity: 0;
+      transition: opacity 1s linear;
+
+      &.hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  object {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
     width: 33%;
+    opacity: 1;
+
+    &.hover {
+      opacity: 0;
+    }
   }
 }
 
@@ -219,7 +254,7 @@ a {
 
 #social-icons {
   .phone {
-    img {
+    object {
       width: 20%;
     }
   }
