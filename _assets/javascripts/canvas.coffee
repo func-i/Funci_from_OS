@@ -47,18 +47,18 @@ $ ->
 
   # squares
 
-  $('.square[data-rollover="true"]').mouseover ->
-    square = findById $(this)
-    square.state = 'hover'
-    animationId = requestAnimationFrame -> animateSquare(square, canvas, context)
-    animationIds.push animationId
+  # $('.square[data-rollover="true"]').mouseover ->
+  #   square = findById $(this)
+  #   square.state = 'hover'
+  #   animationId = requestAnimationFrame -> animateSquare(square, canvas, context)
+  #   animationIds.push animationId
 
-  $('.square[data-rollover="true"]').mouseout ->
-    square = findById $(this)
-    square.state = 'static'
-    setTimeout ->
-      stopAnimations()
-    , 200
+  # $('.square[data-rollover="true"]').mouseout ->
+  #   square = findById $(this)
+  #   square.state = 'static'
+  #   setTimeout ->
+  #     stopAnimations()
+  #   , 200
 
   # logo
 

@@ -15,21 +15,45 @@ $dark-gray: rgb(45,45,45);
 
 ////////// global mixins //////////
 
+@mixin bg-fill-up($color) {
+  transition: background-position .3s linear;
+  @include background-image-gradient($color);
+  @include background-size(100%, 210%);
+  background-position: 0 -105%;
+  background-repeat: repeat-x;
+}
+
 @mixin text-square($color) {
+  @include bg-fill-up($color);
+
   a {
+    transition: color .8s linear;
     color: $color;
   }
 
   &:hover {
+    background-position: 0 0;
+
     a {
       color: $dark-gray;
     }
   }
 }
 
-@mixin square-size($side-length) {
-  width: $side-length;
-  height: $side-length;
+/// bg-hover mixins ///
+
+@mixin background-image-gradient($color) {
+  background-image: -webkit-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: -moz-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: -o-linear-gradient($color, $color 50%, transparent 50%, transparent);
+  background-image: linear-gradient($color, $color 50%, transparent 50%, transparent);
+}
+
+@mixin background-size($width, $height) {
+  -webkit-background-size: $width $height;
+  -moz-background-size: $width $height;
+  -o-background-size: $width $height;
+  background-size: $width $height;
 }
 
 ////////// defaults //////////
