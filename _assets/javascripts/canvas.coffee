@@ -5,6 +5,12 @@ findById = (elem) ->
   square = _.findWhere squares, id: id
 
 $ ->
+  onMobile = ->
+    $('body').width() <= 640
+
+  onHome = ->
+    window.location.pathname is "/"
+
   ##### make square divs square
 
   $('.square').each ->
@@ -26,7 +32,7 @@ $ ->
 
   ##### create squares
 
-  $('.square').each (index) ->
+  $('.square[data-type="outlined"]').each (index) ->
     args =
       elem: $(this)
       context: context
@@ -45,20 +51,18 @@ $ ->
 
   ##### handle events
 
-  # squares
+  # icons squares
 
-  # $('.square[data-rollover="true"]').mouseover ->
-  #   square = findById $(this)
-  #   square.state = 'hover'
-  #   animationId = requestAnimationFrame -> animateSquare(square, canvas, context)
-  #   animationIds.push animationId
+  $('.square.icon').mouseover ->
+    square = findById $(this)
+    square.context.clear square.left, square.top, square.sideLength, square.sideLength
+    square.strokeRect "green"
 
-  # $('.square[data-rollover="true"]').mouseout ->
-  #   square = findById $(this)
-  #   square.state = 'static'
-  #   setTimeout ->
-  #     stopAnimations()
-  #   , 200
+  $('.square.icon').mouseout ->
+    square = findById $(this)
+    context.clear 0, 0, canvas.width, canvas.height
+    for square in squares
+      square.draw()
 
   # logo
 
@@ -75,24 +79,23 @@ $ ->
   $('#logo').mousemove (ev) ->
     if logo.full
       logo.animate ev.pageX, ev.pageY
-      $(this).mouseleave ->
-        logo.reset()
+    if logo.isUnderMouse ev.pageX, ev.pageY
+      $(this).css('cursor', 'pointer')
+    else
+      $(this).css('cursor', 'default')
 
   $('#logo').mousedown (ev) ->
-    if logo.isUnderMouse ev.pageX, ev.pageY
-      logo.explode ev.pageX, ev.pageY
-      $(this).mouseup ->
-        if logo.full then logo.contract() else logo.expand()
-        $(this).unbind('mouseup')
-
-  # cancel if mouseleave window
-  $(document).mouseleave ->
-    logo.reset()
-    for square in squares
-      square.state = 'static'
-    setTimeout ->
-      stopAnimations()
-    , 50
+    mouseX = ev.pageX
+    mouseY = ev.pageY
+    if (logo.isUnderMouse mouseX, mouseY) and !onMobile()
+      logo.explode mouseX, mouseY
+    $(this).mouseup ->
+      if !onHome()
+        window.location.replace("/")
+      else
+        unless onMobile()
+          if logo.full then logo.contract() else logo.expand()
+      $(this).unbind('mouseup')
 
   ##### resize adjustments
 
