@@ -1,0 +1,33 @@
+#index {
+  #tweet {
+    margin-top: 5em;
+  }
+
+  #eventstream {
+    top: -5em;
+  }
+
+  #address {
+    margin-top: 3em;
+  }
+
+  #votecompass {
+    top: -7em;
+  }
+
+  #social-icons {
+    margin-top: 2em;
+  }
+}
+
+@media screen and (max-width:1024px) {
+  #index {
+    #tweet {
+      margin-top: 1em;
+    }
+
+    #address {
+      margin: 0;
+    }
+  }
+}
