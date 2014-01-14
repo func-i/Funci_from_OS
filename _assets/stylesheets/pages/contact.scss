@@ -8,6 +8,19 @@
   #map {
     height: 540px; // hack for mapbox
     padding: 1px;
+    margin-top: 5em;
+
+    @media screen and (max-width:640px) {
+      margin: 0;
+    }
+  }
+
+  #jobs {
+    margin-top: 18em;
+  }
+
+  #social-icons {
+    margin-top: 3em;
   }
 
   #form {
