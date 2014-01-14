@@ -146,22 +146,22 @@ a {
   }
 
   &[data-color="blue"] {
-    &[data-type="outlined"] {
-      @include bg-fill-up($blue);
-    }
-
     &.text {
       @include text-square($blue);
+
+      &[data-type="outlined"] {
+        @include bg-fill-up($blue);
+      }
     }
   }
 
   &[data-color="yellow"] {
-    &[data-type="outlined"] {
-      @include bg-fill-up($yellow);
-    }
-
     &.text {
       @include text-square($yellow);
+
+      &[data-type="outlined"] {
+        @include bg-fill-up($yellow);
+      }
     }
   }
 
