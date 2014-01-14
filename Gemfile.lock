@@ -11,8 +11,6 @@ GEM
     commander (4.1.5)
       highline (~> 1.6.11)
     execjs (2.0.2)
-    faraday (0.8.8)
-      multipart-post (~> 1.2.0)
     fast-stemmer (1.0.2)
     ffi (1.9.3)
     highline (1.6.20)
@@ -39,7 +37,6 @@ GEM
     maruku (0.6.1)
       syntax (>= 1.0.0)
     multi_json (1.8.2)
-    multipart-post (1.2.0)
     posix-spawn (0.3.6)
     pygments.rb (0.5.4)
       posix-spawn (~> 0.3.6)
@@ -55,7 +52,6 @@ GEM
     ref (1.0.5)
     safe_yaml (0.9.7)
     sass (3.2.12)
-    simple_oauth (0.2.0)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -66,10 +62,6 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     tilt (1.4.1)
-    twitter (4.8.1)
-      faraday (~> 0.8, < 0.10)
-      multi_json (~> 1.0)
-      simple_oauth (~> 0.2)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -84,4 +76,3 @@ DEPENDENCIES
   rb-fsevent (~> 0.9)
   sass
   therubyracer
-  twitter
