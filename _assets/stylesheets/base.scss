@@ -40,6 +40,14 @@ $dark-gray: rgb(45,45,45);
   }
 }
 
+@mixin text-square-bottom-image {
+  background-position: 0 -45.2%;
+
+  &:hover {
+    background-position: 0 0;
+  }
+}
+
 /// bg-hover mixins ///
 
 @mixin background-image-gradient($color) {
@@ -187,7 +195,7 @@ a {
 
 @media screen and (max-width:640px) {
   .square.text, .square.image, #social-icons {
-    margin: 0 !important; 
+    margin: 0 !important;
     left: 0 !important;
     top: 0 !important;
   }
