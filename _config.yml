@@ -12,5 +12,3 @@ assets:
     - _assets/images
     - _assets/javascripts
     - _assets/stylesheets
-
-gems: [twitter]
