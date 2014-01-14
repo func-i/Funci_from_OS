@@ -6,5 +6,11 @@ assets:
   debug: true
   cachebust: hard
   gzip: false
+  sources:
+    - _assets
+    - _assets/fonts
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
 
 gems: [twitter]
