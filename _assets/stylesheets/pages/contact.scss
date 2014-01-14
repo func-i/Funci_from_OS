@@ -1,4 +1,15 @@
 #contact {
+  #address {
+    h2 {
+      margin-bottom: 1em;
+    }
+  }
+
+  #map {
+    height: 540px; // hack for mapbox
+    padding: 1px;
+  }
+
   #form {
     padding: 1.4em;
     overflow: scroll;
@@ -96,6 +107,22 @@
       h2 {
         margin-bottom: 1em;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 641px) {
+  #contact {
+    #map {
+      height: 256px;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #contact {
+    #map {
+      height: 256px;
     }
   }
 }
