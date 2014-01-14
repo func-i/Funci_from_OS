@@ -87,8 +87,8 @@ $ ->
   $('#logo').mousedown (ev) ->
     mouseX = ev.pageX
     mouseY = ev.pageY
-    if (logo.isUnderMouse mouseX, mouseY) and !onMobile()
-      logo.explode mouseX, mouseY
+    if (logo.isUnderMouse mouseX, mouseY)
+      unless onMobile() then logo.explode mouseX, mouseY
       $(this).mouseup ->
         if !onHome()
           window.location.replace("/")
