@@ -1,4 +1,6 @@
 class @Context
+  clearBuffer: 1
+
   constructor: (canvas) ->
     @canvasElem = canvas.elem[0]
     @width      = canvas.width
@@ -14,6 +16,6 @@ class @Context
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
     @ctx.globalCompositeOperation = 'multiply'
 
-  clear: (canvasWidth, canvasHeight) ->
+  clear: (offsetX, offsetY, width, height) ->
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
-    @ctx.clearRect 0, 0, canvasWidth, canvasHeight
+    @ctx.clearRect (offsetX - @clearBuffer), (offsetY - @clearBuffer), (width + @clearBuffer*2), (height + @clearBuffer*2)

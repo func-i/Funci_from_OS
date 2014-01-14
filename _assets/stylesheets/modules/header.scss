@@ -1,4 +1,7 @@
 header {
+  position: relative;
+  z-index: 3;
+
   nav {
     @extend .row, .collapse;
 
