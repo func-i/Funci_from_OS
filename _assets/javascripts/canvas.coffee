@@ -32,7 +32,7 @@ $ ->
 
   ##### create squares
 
-  $('.square[data-type="outlined"]').each (index) ->
+  $('.square').each (index) ->
     args =
       elem: $(this)
       context: context

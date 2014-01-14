@@ -28,8 +28,6 @@ $dark-gray: rgb(45,45,45);
 }
 
 @mixin text-square($color) {
-  @include bg-fill-up($color);
-
   a {
     transition: color .8s linear;
     color: $color;
@@ -148,12 +146,20 @@ a {
   }
 
   &[data-color="blue"] {
+    &[data-type="outlined"] {
+      @include bg-fill-up($blue);
+    }
+
     &.text {
       @include text-square($blue);
     }
   }
 
   &[data-color="yellow"] {
+    &[data-type="outlined"] {
+      @include bg-fill-up($yellow);
+    }
+
     &.text {
       @include text-square($yellow);
     }
