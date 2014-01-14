@@ -10,7 +10,6 @@ class @Square
     @color      = BASE_COLORS[(@elem.data('color'))]
     @type       = @elem.data('type')
     @rollover   = @elem.data('rollover') is 'true'
-    @state      = 'static'
     @orient()
     squares.push this
     this
@@ -21,10 +20,18 @@ class @Square
     @left       = @elem.offset().left
 
   draw: ->
-    @strokeRect()
+    if @type is "outlined"
+      @strokeRect()
+    else if @type is "filled"
+      @fillRect()
 
   strokeRect: (color) ->
     color = color || @color
     @ctx.lineWidth = "1"
     @ctx.strokeStyle = color
     @ctx.strokeRect @left, @top, @sideLength, @sideLength
+
+  fillRect: (color) ->
+    color = color || @color
+    @ctx.fillStyle = color
+    @ctx.fillRect @left, @top, @sideLength, @sideLength
