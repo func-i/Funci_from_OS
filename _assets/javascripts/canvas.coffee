@@ -89,13 +89,13 @@ $ ->
     mouseY = ev.pageY
     if (logo.isUnderMouse mouseX, mouseY) and !onMobile()
       logo.explode mouseX, mouseY
-    $(this).mouseup ->
-      if !onHome()
-        window.location.replace("/")
-      else
-        unless onMobile()
-          if logo.full then logo.contract() else logo.expand()
-      $(this).unbind('mouseup')
+      $(this).mouseup ->
+        if !onHome()
+          window.location.replace("/")
+        else
+          unless onMobile()
+            if logo.full then logo.contract() else logo.expand()
+        $(this).unbind('mouseup')
 
   ##### resize adjustments
 
