@@ -94,7 +94,7 @@ description: We build new intricate experiences for the new web.
       <div id="business-logos" class="square spacer" data-color="blue">
         <div class="row collapse">
           <div class="small-6 columns">
-            <div class="icon-container linkedin">
+            <div class="icon-container">
               <div class="square" data-type="outlined" data-color="yellow"></div>
             </div>
           </div>
@@ -102,7 +102,8 @@ description: We build new intricate experiences for the new web.
             <div class="icon-container lighthouse">
               <div class="square icon lighthouse" data-type="outlined" data-color="blue">
                 <a href="#">
-                  <img src="{% asset_path icons/twitter.svg %}" alt="twitter" />
+                  <object type="image/svg+xml" data="{% asset_path icons/twitter.svg %}" alt="twitter"></object>
+                  <object class="hover" type="image/svg+xml" data="{% asset_path icons/twitter_rollover.svg %}" alt="twitter"></object>
                 </a>
               </div>
             </div>
@@ -113,13 +114,14 @@ description: We build new intricate experiences for the new web.
             <div class="icon-container email">
               <div class="square icon email" data-type="outlined" data-color="blue">
                 <a href="#">
-                  <img src="{% asset_path icons/email.svg %}" alt="email" />
+                  <object type="image/svg+xml" data="{% asset_path icons/email.svg %}" alt="email"></object>
+                  <object class="hover" type="image/svg+xml" data="{% asset_path icons/email_rollover.svg %}" alt="email"></object>
                 </a>
               </div>
             </div>
           </div>
           <div class="small-6 columns">
-            <div class="icon-container email">
+            <div class="icon-container">
               <div class="square" data-type="outlined" data-color="yellow"></div>
             </div>
           </div>
