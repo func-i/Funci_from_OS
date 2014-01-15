@@ -31,6 +31,10 @@ $dark-gray: rgb(45,45,45);
 
   &:hover {
     background-position: 0 0;
+
+    a {
+      color: $dark-gray;
+    }
   }
 }
 
@@ -38,12 +42,6 @@ $dark-gray: rgb(45,45,45);
   a {
     transition: color .8s linear;
     color: $color;
-  }
-
-  &:hover {
-    a {
-      color: $dark-gray;
-    }
   }
 }
 
@@ -161,7 +159,7 @@ a {
       @include text-square($blue);
 
       &[data-type="outlined"] {
-        @include bg-fill-up($blue);
+        // @include bg-fill-up($blue);
       }
     }
   }
@@ -171,7 +169,7 @@ a {
       @include text-square($yellow);
 
       &[data-type="outlined"] {
-        @include bg-fill-up($yellow);
+        // @include bg-fill-up($yellow);
       }
     }
   }
@@ -186,6 +184,18 @@ a {
       width: inherit;
       max-width: 100%;
       height: auto;
+    }
+  }
+}
+
+.no-touch {
+  .square.text[data-type="outlined"] {
+    &[data-color="blue"] {
+      @include bg-fill-up($blue);
+    }
+    
+    &[data-color="yellow"] {
+      @include bg-fill-up($yellow);
     }
   }
 }
