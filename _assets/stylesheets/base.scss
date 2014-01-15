@@ -125,7 +125,9 @@ h3 {
 a {
   text-decoration: none;
   color: inherit;
+}
 
+.no-touch a {
   &:hover {
     text-decoration: underline;
   }
