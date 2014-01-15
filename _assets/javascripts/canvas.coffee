@@ -57,12 +57,12 @@ $(window).load ->
 
   # icons squares
 
-  $('.square.icon').mouseover ->
+  $('.no-touch .square.icon').mouseover ->
     square = findById $(this)
     square.context.clear square.left, square.top, square.sideLength, square.sideLength
     square.strokeRect "green"
 
-  $('.square.icon').mouseout ->
+  $('.no-touch .square.icon').mouseout ->
     square = findById $(this)
     context.clear 0, 0, canvas.width, canvas.height
     for square in squares
@@ -70,17 +70,19 @@ $(window).load ->
 
   # logo
 
-  $('#logo').mouseover (ev) ->
+  # no-touch
+
+  $('.no-touch #logo').mouseover (ev) ->
     animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
     animationIds.push animationId
 
-  $('#logo').mouseout (ev) ->
+  $('.no-touch #logo').mouseout (ev) ->
     logo.reset()
     setTimeout ->
       stopAnimations()
     , 100
 
-  $('#logo').mousemove (ev) ->
+  $('.no-touch #logo').mousemove (ev) ->
     if logo.full
       logo.animate ev.pageX, ev.pageY
     if logo.isUnderMouse ev.pageX, ev.pageY
@@ -88,7 +90,7 @@ $(window).load ->
     else
       $(this).css('cursor', 'default')
 
-  $('#logo').mousedown (ev) ->
+  $('.no-touch #logo').mousedown (ev) ->
     mouseX = ev.pageX
     mouseY = ev.pageY
     if (logo.isUnderMouse mouseX, mouseY)
@@ -100,6 +102,50 @@ $(window).load ->
           unless onMobile()
             if logo.full then logo.contract() else logo.expand()
         $(this).unbind('mouseup')
+
+  # touch
+
+  $('.touch #logo').hammer().on 'tap', (ev) ->
+    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
+    animationIds.push animationId
+
+    mouseX = ev.gesture.center.pageX
+    mouseY = ev.gesture.center.pageY
+    if (logo.isUnderMouse mouseX, mouseY)
+      unless onMobile()
+        logo.explode mouseX, mouseY
+      setTimeout ->
+        if !onHome()
+          window.location.replace("/")
+        else
+          unless onMobile()
+            if logo.full then logo.contract() else logo.expand()
+      , 100
+    ev.gesture.stopDetect()
+
+  $('.touch #logo').hammer().on 'drag', (ev) ->
+    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
+    animationIds.push animationId
+
+    mouseX = ev.gesture.center.pageX
+    mouseY = ev.gesture.center.pageY
+    if logo.full
+      logo.animate mouseX, mouseY
+
+  $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
+    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
+    animationIds.push animationId
+
+    mouseX = ev.gesture.center.pageX
+    mouseY = ev.gesture.center.pageY
+    if logo.full
+      logo.animate mouseX, mouseY
+
+  $('.touch #logo').hammer().on 'release', (ev) ->
+    logo.reset()
+    setTimeout ->
+      stopAnimations()
+    , 200
 
   ##### resize adjustments
 
