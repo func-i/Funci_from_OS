@@ -250,7 +250,6 @@ a {
 .square.icon {
   width: 1024px; // hack to make all squares wide enough to fill foundation grid
   display: table-cell;
-  @include bg-fill-up($green);
 
   a {
     &:after {
@@ -271,28 +270,30 @@ a {
     right: 0;
     width: 33%;
     opacity: 1;
-  }
-}
 
-.no-touch .square.icon {
-  &:hover {
-    @extend .icon-hover;
-  }
-
-  object {
     &.hover {
       opacity: 0;
     }
   }
 }
 
-.icon-hover {
-  object {
-    opacity: 0;
-    transition: opacity 1s linear;
+.no-touch .square.icon {
+  @include bg-fill-up($green);
 
+  &:hover {
+    object {
+      opacity: 0;
+      transition: opacity 1s linear;
+
+      &.hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  object {
     &.hover {
-      opacity: 1;
+      opacity: 0;
     }
   }
 }
