@@ -173,20 +173,12 @@ a {
   &[data-color="blue"] {
     &.text {
       @include text-square($blue);
-
-      &[data-type="outlined"] {
-        // @include bg-fill-up($blue);
-      }
     }
   }
 
   &[data-color="yellow"] {
     &.text {
       @include text-square($yellow);
-
-      &[data-type="outlined"] {
-        // @include bg-fill-up($yellow);
-      }
     }
   }
 
@@ -269,17 +261,6 @@ a {
     }
   }
 
-  &:hover {
-    object {
-      opacity: 0;
-      transition: opacity 1s linear;
-
-      &.hover {
-        opacity: 1;
-      }
-    }
-  }
-
   object {
     position: absolute;
     margin-left: auto;
@@ -288,9 +269,28 @@ a {
     right: 0;
     width: 33%;
     opacity: 1;
+  }
+}
 
+.no-touch .square.icon {
+  &:hover {
+    @extend .icon-hover;
+  }
+
+  object {
     &.hover {
       opacity: 0;
+    }
+  }
+}
+
+.icon-hover {
+  object {
+    opacity: 0;
+    transition: opacity 1s linear;
+
+    &.hover {
+      opacity: 1;
     }
   }
 }
