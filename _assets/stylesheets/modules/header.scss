@@ -30,7 +30,7 @@ header {
         display: inline-block;
         padding: 0 .75em;
 
-        &:hover {
+        &.menu-activated {
           z-index: 1;
 
           .bg {
@@ -75,5 +75,11 @@ header {
     .selected {
       color: $green;
     }
+  }
+}
+
+.no-touch {
+  header nav > ul > li:hover {
+    @extend .menu-activated;
   }
 }
