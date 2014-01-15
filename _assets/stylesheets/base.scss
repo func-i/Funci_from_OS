@@ -211,6 +211,10 @@ a {
 ////////// free text //////////
 
 .free {
+  a {
+    color: $yellow;
+  }
+
   &.text {
     padding-right: 1.5em;
     margin-top: 4em;
