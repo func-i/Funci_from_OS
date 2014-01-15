@@ -4,11 +4,16 @@
     {% include head.html  %}
   </head>
   <body>
-    <canvas id="canvas"></canvas>
-    {% include partials/header.html %}
-    {% include partials/logo.html %}
-    {{ content }}
-    {% include partials/footer.html %}
-    {% javascript app %}
+    <div id="loading">
+      <img src="{% asset_path loading.gif %}">
+    </div>
+    <div id="body">
+      <canvas id="canvas"></canvas>
+      {% include partials/header.html %}
+      {% include partials/logo.html %}
+      {{ content }}
+      {% include partials/footer.html %}
+      {% javascript app %}
+    </div>
   </body>
 </html>
