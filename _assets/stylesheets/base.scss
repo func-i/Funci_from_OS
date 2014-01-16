@@ -7,11 +7,18 @@ $dark-gray: rgb(45,45,45);
 
 ////////// fonts //////////
 
-@font-face {
-  font-family: graphik;
-  src: url('Graphik_Regular_Web.eot');
-  src: local(graphik), url('Graphik_Regular_Web') format('opentype');
+@mixin embed-font($font-name, $font-filepath-and-name) {
+  @font-face {
+    font-family: $font-name;
+      src: url(asset_path("fonts/"+$font-filepath-and-name+".eot")); /* IE9 Compat Modes */
+      src: url(asset_path("fonts/"+$font-filepath-and-name+".eot?#iefix")) format('embedded-opentype'), /* IE6-IE8 */
+           url(asset_path("fonts/"+$font-filepath-and-name+".woff")) format('woff'), /* Modern Browsers */
+           url(asset_path("fonts/"+$font-filepath-and-name+".ttf"))  format('truetype'), /* Safari, Android, iOS */
+           url(asset_path("fonts/"+$font-filepath-and-name+".svg#svgFontName")) format('svg'); /* Legacy iOS */
+  }
 }
+
+@include embed-font("Graphik", "Graphik-Regular-Web");
 
 ////////// global mixins //////////
 
@@ -76,7 +83,7 @@ blockquote, pre, form, fieldset, table, th, td, canvas {
 body {
   background-color: $dark-gray;
   color: white;
-  font-family: graphik;
+  font-family: "Graphik";
   font-size: 112.5%; // 1em = 18px
 }
 
