@@ -105,6 +105,8 @@ $(window).load ->
 
   # touch
 
+  defaultHammerRelease = true
+
   $('.touch #logo').hammer().on 'tap', (ev) ->
     animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
     animationIds.push animationId
@@ -121,7 +123,7 @@ $(window).load ->
           unless onMobile()
             if logo.full then logo.contract() else logo.expand()
       , 100
-    ev.gesture.stopDetect()
+    defaultHammerRelease = false
 
   $('.touch #logo').hammer().on 'drag', (ev) ->
     animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
@@ -142,10 +144,12 @@ $(window).load ->
       logo.animate mouseX, mouseY
 
   $('.touch #logo').hammer().on 'release', (ev) ->
-    logo.reset()
-    setTimeout ->
-      stopAnimations()
-    , 200
+    if defaultHammerRelease
+      logo.reset()
+      setTimeout ->
+        stopAnimations()
+      , 200
+    defaultHammerRelease = true
 
   document.getElementById('logo').ontouchmove = (ev) ->
     ev.preventDefault()
