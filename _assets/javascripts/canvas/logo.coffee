@@ -9,7 +9,7 @@ class @Logo
     @context         = args.context
     @initScreenWidth = args.screenWidth
     @position        = @elem.offset()
-    @imgSrc          = @elem.data('imgSrc')
+    @imgSrc          = @elem.data('imgSprite')
     @setImg()
     # createLogo() after img is loaded
 

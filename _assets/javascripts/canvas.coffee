@@ -24,13 +24,6 @@ $(window).load ->
   canvas = new Canvas(args)
   context = new Context(canvas)
 
-  ##### create logo canvas and context
-
-  args =
-    elem: $('#logo-canvas')
-  logoCanvas = new Canvas(args)
-  logoContext = new Context(logoCanvas)
-
   ##### create squares
 
   $('.square').each (index) ->
@@ -42,14 +35,36 @@ $(window).load ->
     $(this).data 'id', index
     square.draw()
 
-  ##### create logo
+  ##### create logo canvas and context
 
-  args =
-    elem: $('#logo')
-    canvas: logoCanvas
-    context: logoContext
-    screenWidth: $(window).width()
-  logo = new Logo(args)
+  if blendingSupported
+    # canvas logo
+    args =
+      elem: $('#logo-canvas')
+    logoCanvas = new Canvas(args)
+    logoContext = new Context(logoCanvas)
+
+    args =
+      elem: $('#logo')
+      canvas: logoCanvas
+      context: logoContext
+      screenWidth: $(window).width()
+    logo = new Logo(args)
+  else
+    # fallback logo imgs
+
+    $logo = $('#logo')
+    anchorHtml = "<a href='http://functionalimperative.com' alt='Functional Imperative'></a>"
+    $logo.append anchorHtml
+    $logoAnchor = $logo.find('a')
+
+    imgFullSrc = $logo.data('imgFull')
+    imgFullHtml = "<img class='full' src='#{imgFullSrc}' alt='Functional Imperative' />"
+    $logoAnchor.append imgFullHtml
+
+    imgSmallSrc = $logo.data('imgSmall')
+    imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
+    $logoAnchor.append imgSmallHtml
 
   $('#loading').css('opacity', '0')
   $('#body').css('opacity', '1')
@@ -72,55 +87,63 @@ $(window).load ->
 
   # logo no-touch
 
-  $('.no-touch #logo').mouseover ->
-    LogoEvents.noTouch.mouseover logo
+  $noTouchLogo = $('.no-touch.canvasblending #logo')
 
-  $('.no-touch #logo').mouseout ->
-    LogoEvents.noTouch.mouseout logo
+  unless $noTouchLogo.length is 0
+    $noTouchLogo.mouseover ->
+      LogoEvents.noTouch.mouseover logo
 
-  $('.no-touch #logo').mousemove (ev) ->
-    LogoEvents.noTouch.mousemove logo, ev
+    $noTouchLogo.mouseout ->
+      LogoEvents.noTouch.mouseout logo
 
-  $('.no-touch #logo').mousedown (ev) ->
-    args =
-      logo: logo
-      ev: ev
-      onHome: onHome()
-      onMobile: onMobile() 
-    LogoEvents.noTouch.mousedown args
+    $noTouchLogo.mousemove (ev) ->
+      LogoEvents.noTouch.mousemove logo, ev
+
+    $noTouchLogo.mousedown (ev) ->
+      args =
+        logo: logo
+        ev: ev
+        onHome: onHome()
+        onMobile: onMobile() 
+      LogoEvents.noTouch.mousedown args
 
   # logo touch
 
-  $('.touch #logo').hammer().on 'touch', (ev) ->
-    LogoEvents.startAnimation(logo)
+  $touchLogo = $('.touch.canvasblending #logo')
 
-  $('.touch #logo').hammer().on 'tap', (ev) ->
-    args =
-      logo: logo
-      ev: ev
-      onHome: onHome()
-      onMobile: onMobile()
-    LogoEvents.touch.tap args
+  # if on touch device that supports blending
+  unless $touchLogo.length is 0
+    $touchLogo.hammer().on 'touch', (ev) ->
+      LogoEvents.startAnimation(logo)
 
-    # prevent default hammer release event from firing
-    ev.gesture.stopDetect()
+    $touchLogo.hammer().on 'tap', (ev) ->
+      args =
+        logo: logo
+        ev: ev
+        onHome: onHome()
+        onMobile: onMobile()
+      LogoEvents.touch.tap args
 
-  $('.touch #logo').hammer().on 'drag', (ev) ->
-    args =
-      logo: logo
-      ev: ev
-    LogoEvents.touch.drag args
+      # prevent default hammer release event from firing on tap release
+      ev.gesture.stopDetect()
 
-  # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
-    
-  $('.touch #logo').hammer().on 'release', (ev) ->
-    logo.reset()
-    setTimeout ->
-      stopAnimations()
-    , 200
+    $touchLogo.hammer().on 'drag', (ev) ->
+      args =
+        logo: logo
+        ev: ev
+      LogoEvents.touch.drag args
 
-  document.getElementById('logo').ontouchmove = (ev) ->
-    ev.preventDefault()
+    # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
+      
+    $touchLogo.hammer().on 'release', (ev) ->
+      logo.reset()
+      setTimeout ->
+        stopAnimations()
+      , 200
+
+      # disallow scrolling while playing with the logo
+    $touchLogo[0].ontouchmove = (ev) ->
+        ev.preventDefault()
 
   ##### resize adjustments
 
@@ -136,15 +159,15 @@ $(window).load ->
     animationId = requestAnimationFrame -> animateAllSquares(canvas, context)
     animationIds.push animationId
 
-    logo.resize $(window).innerWidth()
-    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
-    animationIds.push animationId
+    if blendingSupported
+      logo.resize $(window).innerWidth()
+      LogoEvents.startAnimation logo
+
+      logoCanvas.orient $('body').width(), $('body').height()
+      logoContext.setMultiply()
 
     canvas.orient $('body').width(), $('body').height()
     context.setMultiply()
-
-    logoCanvas.orient $('body').width(), $('body').height()
-    logoContext.setMultiply()
 
     # haven't resized in 300ms!
     resizingTimeoutId = setTimeout ->
