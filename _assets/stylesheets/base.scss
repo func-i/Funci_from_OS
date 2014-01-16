@@ -45,14 +45,6 @@ $dark-gray: rgb(45,45,45);
   }
 }
 
-@mixin text-square-bottom-image {
-  background-position: 0 -45.2%;
-
-  &:hover {
-    background-position: 0 0;
-  }
-}
-
 /// bg-hover mixins ///
 
 @mixin background-image-gradient($color) {
@@ -180,34 +172,36 @@ a {
     padding: 1px;
   }
 
-  &[data-color="blue"] {
-    &.text {
+  &.text {
+    &[data-color="blue"] {
       @include text-square($blue);
     }
-  }
 
-  &[data-color="yellow"] {
-    &.text {
+    &[data-color="yellow"] {
       @include text-square($yellow);
     }
-  }
 
-  .image-half {
-    position: absolute;
-    bottom: 1px;
-    right: 1px;
-    left: 1px;
+    &.half-image {
+      background-position: 0 -45.2% !important;
 
-    img {
-      width: inherit;
-      max-width: 100%;
-      height: auto;
+      .image-container {
+        position: absolute;
+        bottom: 1px;
+        right: 1px;
+        left: 1px;
+
+        img {
+          width: inherit;
+          max-width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 }
 
-.no-touch {
-  .square.text[data-type="outlined"] {
+.no-touch .square {
+  &.text[data-type="outlined"] {
     &[data-color="blue"] {
       @include bg-fill-up($blue);
     }
@@ -215,14 +209,22 @@ a {
     &[data-color="yellow"] {
       @include bg-fill-up($yellow);
     }
+
+    &.half-image:hover {
+      background-position: 0 0 !important;
+    }
   }
 }
 
-@media screen and (max-width:800px) {
-  .image-half {
-    display: none;
-  }
-}
+// @media screen and (max-width:800px) {
+//     &.half-image {
+//       background-position: 0 -105%;
+
+//       .image-container {
+//         display: none;
+//       }
+//     }
+//   }
 
 @media screen and (max-width:640px) {
   .square.text, .square.image, #social-icons {
