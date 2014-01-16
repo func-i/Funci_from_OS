@@ -4,7 +4,7 @@ findById = (elem) ->
   id = elem.data('id')
   square = _.findWhere squares, id: id
 
-$ ->
+$(window).load ->
   onMobile = ->
     $('body').width() <= 640
 
@@ -48,6 +48,10 @@ $ ->
     context: logoContext
     screenWidth: $(window).width()
   logo = new Logo(args)
+
+  $('#loading').css('opacity', '0')
+  $('#body').css('opacity', '1')
+  $('#loading').hide()
 
   ##### handle events
 
@@ -124,4 +128,4 @@ $ ->
     # haven't resized in 300ms!
     resizingTimeoutId = setTimeout ->
       stopAnimations()
-    , 200   
+    , 200 
