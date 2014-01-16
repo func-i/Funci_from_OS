@@ -248,24 +248,11 @@ a {
 ////////// icons //////////
 
 .square.icon {
-  width: 1024px; // hack to make all squares wide enough to fill foundation grid
-  display: table-cell;
-
-  a {
-    &:after {
-      content: ""; 
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left:0;
-    }
-  }
-
-  object {
+  img {
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     width: 33%;
@@ -281,7 +268,7 @@ a {
   @include bg-fill-up($green);
 
   &:hover {
-    object {
+    img {
       opacity: 0;
       transition: opacity 1s linear;
 
@@ -291,7 +278,7 @@ a {
     }
   }
 
-  object {
+  img {
     &.hover {
       opacity: 0;
     }
@@ -304,7 +291,7 @@ a {
 
 #social-icons {
   .phone {
-    object {
+    img {
       width: 20%;
     }
   }
