@@ -147,6 +147,9 @@ $(window).load ->
       stopAnimations()
     , 200
 
+  document.getElementById('logo').ontouchmove = (ev) ->
+    ev.preventDefault()
+
   ##### resize adjustments
 
   resizingTimeoutId = undefined
