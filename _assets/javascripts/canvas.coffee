@@ -1,4 +1,5 @@
 @squares = []
+@blendingSupported = Modernizr.canvasblending
 
 findById = (elem) ->
   id = elem.data('id')
@@ -45,13 +46,14 @@ $(window).load ->
 
   args =
     elem: $('#logo')
+    canvas: logoCanvas
     context: logoContext
     screenWidth: $(window).width()
   logo = new Logo(args)
 
   $('#loading').css('opacity', '0')
   $('#body').css('opacity', '1')
-  $('#loading').hide()
+  $('#loading').remove()
 
   ##### handle events
 
@@ -68,88 +70,54 @@ $(window).load ->
     for square in squares
       square.draw()
 
-  # logo
+  # logo no-touch
 
-  # no-touch
+  $('.no-touch #logo').mouseover ->
+    LogoEvents.noTouch.mouseover logo
 
-  $('.no-touch #logo').mouseover (ev) ->
-    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
-    animationIds.push animationId
+  $('.no-touch #logo').mouseout ->
+    LogoEvents.noTouch.mouseout logo
 
-  $('.no-touch #logo').mouseout (ev) ->
+  $('.no-touch #logo').mousemove (ev) ->
+    LogoEvents.noTouch.mousemove logo, ev
+
+  $('.no-touch #logo').mousedown (ev) ->
+    args =
+      logo: logo
+      ev: ev
+      onHome: onHome()
+      onMobile: onMobile() 
+    LogoEvents.noTouch.mousedown args
+
+  # logo touch
+
+  $('.touch #logo').hammer().on 'touch', (ev) ->
+    LogoEvents.startAnimation(logo)
+
+  $('.touch #logo').hammer().on 'tap', (ev) ->
+    args =
+      logo: logo
+      ev: ev
+      onHome: onHome()
+      onMobile: onMobile()
+    LogoEvents.touch.tap args
+
+    # prevent default hammer release event from firing
+    ev.gesture.stopDetect()
+
+  $('.touch #logo').hammer().on 'drag', (ev) ->
+    args =
+      logo: logo
+      ev: ev
+    LogoEvents.touch.drag args
+
+  # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
+    
+  $('.touch #logo').hammer().on 'release', (ev) ->
     logo.reset()
     setTimeout ->
       stopAnimations()
-    , 100
-
-  $('.no-touch #logo').mousemove (ev) ->
-    if logo.full
-      logo.animate ev.pageX, ev.pageY
-    if logo.isUnderMouse ev.pageX, ev.pageY
-      $(this).css('cursor', 'pointer')
-    else
-      $(this).css('cursor', 'default')
-
-  $('.no-touch #logo').mousedown (ev) ->
-    mouseX = ev.pageX
-    mouseY = ev.pageY
-    if (logo.isUnderMouse mouseX, mouseY)
-      unless onMobile() then logo.explode mouseX, mouseY
-      $(this).mouseup ->
-        if !onHome()
-          window.location.replace("/")
-        else
-          unless onMobile()
-            if logo.full then logo.contract() else logo.expand()
-        $(this).unbind('mouseup')
-
-  # touch
-
-  defaultHammerRelease = true
-
-  $('.touch #logo').hammer().on 'tap', (ev) ->
-    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
-    animationIds.push animationId
-
-    mouseX = ev.gesture.center.pageX
-    mouseY = ev.gesture.center.pageY
-    if (logo.isUnderMouse mouseX, mouseY)
-      unless onMobile()
-        logo.explode mouseX, mouseY
-      setTimeout ->
-        if !onHome()
-          window.location.replace("/")
-        else
-          unless onMobile()
-            if logo.full then logo.contract() else logo.expand()
-      , 100
-    defaultHammerRelease = false
-
-  $('.touch #logo').hammer().on 'drag', (ev) ->
-    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
-    animationIds.push animationId
-
-    mouseX = ev.gesture.center.pageX
-    mouseY = ev.gesture.center.pageY
-    if logo.full
-      logo.animate mouseX, mouseY
-
-  $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
-    animationId = requestAnimationFrame -> animateLogo(logo, logoCanvas, logoContext)
-    animationIds.push animationId
-
-    mouseX = ev.gesture.center.pageX
-    mouseY = ev.gesture.center.pageY
-    if logo.full
-      logo.animate mouseX, mouseY
-
-  $('.touch #logo').hammer().on 'release', (ev) ->
-    if defaultHammerRelease
-      logo.reset()
-      setTimeout ->
-        stopAnimations()
-      , 200
-    defaultHammerRelease = true
+    , 200
 
   document.getElementById('logo').ontouchmove = (ev) ->
     ev.preventDefault()

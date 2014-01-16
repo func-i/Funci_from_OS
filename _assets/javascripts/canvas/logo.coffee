@@ -5,6 +5,7 @@ class @Logo
 
   constructor: (args) ->
     @elem            = args.elem
+    @canvas          = args.canvas
     @context         = args.context
     @initScreenWidth = args.screenWidth
     @position        = @elem.offset()
@@ -59,6 +60,21 @@ class @Logo
   resize: (screenWidth) ->
     bigEnough = (screenWidth >= @breakPoint)
     if @full and !bigEnough then @contract()
+
+  changeCursor: (mouseLeft, mouseTop) ->
+    if @isUnderMouse mouseLeft, mouseTop
+      @elem.css 'cursor', 'pointer'
+    else
+      @elem.css 'cursor', 'default'
+
+  handleMouseup: (args) ->
+    onHome   = args.onHome
+    onMobile = args.onMobile
+    if !onHome
+      window.location.replace "/"
+    else
+      unless onMobile
+        if @full then @contract() else @expand()
 
   animate: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
