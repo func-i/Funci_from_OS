@@ -1,11 +1,11 @@
-@LogoEvents =
+@LogoHelper =
   startAnimation: (logo) ->
     animationId = requestAnimationFrame -> animateLogo(logo, logo.canvas, logo.context)
     animationIds.push animationId
 
   noTouch:
     mouseover: (logo) ->
-      LogoEvents.startAnimation(logo)
+      LogoHelper.startAnimation(logo)
 
     mouseout: (logo) ->
       logo.reset()
