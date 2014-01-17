@@ -45,14 +45,14 @@
       onMobile = args.onMobile
 
       if logo.isUnderMouse mouseX, mouseY
-        unless onMobile then logo.explode mouseX, mouseY
-
-      setTimeout ->
-        args =
-          onHome: onHome
-          onMobile: onMobile
-        logo.handleMouseup args
-      , 100
+        logo.explode mouseX, mouseY unless onMobile 
+        window.location.replace("/") unless onHome
+        setTimeout ->
+          args =
+            onHome: onHome
+            onMobile: onMobile
+          logo.handleMouseup args
+        , 100
 
     drag: (args) ->
       logo   = args.logo
