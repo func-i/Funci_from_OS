@@ -53,6 +53,13 @@ header {
           z-index: -5000;
         }
 
+        @media screen and (max-width:640px) {
+          .bg {
+            height: 12em;
+            width: 12em;
+          }
+        }
+
         > ul {
           display: none;
           position: absolute;
