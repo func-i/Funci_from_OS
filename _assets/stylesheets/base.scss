@@ -197,6 +197,16 @@ a {
         }
       }
     }
+
+    @media screen and (max-width:800px) {
+      &.half-image {
+        background-position: 0 -105% !important;
+
+        .image-container {
+          display: none;
+        }
+      }
+    }
   }
 }
 
@@ -215,16 +225,6 @@ a {
     }
   }
 }
-
-// @media screen and (max-width:800px) {
-//     &.half-image {
-//       background-position: 0 -105%;
-
-//       .image-container {
-//         display: none;
-//       }
-//     }
-//   }
 
 @media screen and (max-width:640px) {
   .square.text, .square.image, #social-icons {
