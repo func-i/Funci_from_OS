@@ -106,6 +106,14 @@ class @Logo
     for logoLetter in @logoLetters
       logoLetter.reset()
 
+  squeeze: (pinch) ->
+    for logoLetter in @logoLetters
+      logoLetter.squeeze pinch
+
+  dragLetters: (hold, mouseLeft, mouseTop) ->
+    for logoLetter in hold.heldLetters
+      logoLetter.stickToTouch mouseLeft, mouseTop
+
   draw: ->
     for logoLetter in @logoLetters
       logoLetter.draw() if logoLetter.display

@@ -58,6 +58,9 @@
       logo   = args.logo
       mouseX = args.ev.gesture.center.pageX
       mouseY = args.ev.gesture.center.pageY
+      hold   = args.hold
 
-      if logo.full
-        logo.animate mouseX, mouseY
+      if logo.holding
+        logo.dragLetters hold, mouseX, mouseY
+      else
+        logo.animate mouseX, mouseY if logo.full

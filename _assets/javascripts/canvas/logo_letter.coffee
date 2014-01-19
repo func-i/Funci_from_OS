@@ -4,6 +4,7 @@ class @LogoLetter
   xOverlap: 5
   yOverlap: 12
   mousemoveEffectDistance: 100
+  expansionSize: 4
 
   constructor: (args) ->
     @id            = args.id
@@ -18,7 +19,16 @@ class @LogoLetter
     @setWord()
     @setColor()
     @setHomePosition()
-    
+
+  middle: ->
+    left = @left + (@sideLength / 2)
+    top  = @top + (@sideLength / 2)
+    return { left: left, top: top }
+
+  setFromMiddle: (middleLeft, middleTop) ->
+    @left = middleLeft - (@sideLength / 2)
+    @top  = middleTop - (@sideLength / 2)
+
   setWord: ->
     @word = if @id < 10 then 1 else 2
 
@@ -45,12 +55,9 @@ class @LogoLetter
     @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength, @sideLength
 
   getDistanceFromMouse: (mouseLeft, mouseTop) ->
-    middleLeft = @left + (@sideLength / 2)
-    middleTop = @top + (@sideLength / 2)
-
     distanceFromMouse = {}
-    distanceFromMouse.left = mouseLeft - middleLeft
-    distanceFromMouse.top = mouseTop - middleTop
+    distanceFromMouse.left = mouseLeft - @middle().left
+    distanceFromMouse.top = mouseTop - @middle().top
     return distanceFromMouse
 
   moveFromMouse: (args) ->
@@ -64,3 +71,49 @@ class @LogoLetter
       @top = Math.round(@homeTop - (distanceFromMouse.top * mult))
     else
       @reset()
+
+  squeeze: (pinch) ->
+    diffX = pinch.center.pageX - @middle().left
+    diffY = pinch.center.pageY - @middle().top
+
+    middleLeft = Math.round(@middle().left + (diffX * pinch.multiplier()))
+    middleTop = Math.round(@middle().top + (diffY * pinch.multiplier()))
+
+    console.log diffX, middleLeft, diffY, middleTop
+
+    @setFromMiddle middleLeft, middleTop
+
+  isUnderMouse: (mouseLeft, mouseTop) ->
+    underX = mouseLeft > @left and mouseLeft < (@left + @sideLength)
+    underY = mouseTop > @top and mouseTop < (@top + @sideLength)
+    return (underX and underY)
+
+  expand: ->
+    @sideLength = @sideLength + (@expansionSize * 2)
+    @left = @left - @expansionSize
+    @top = @top - @expansionSize
+
+  contract: ->
+    @left = @left + @expansionSize
+    @top = @top + @expansionSize
+    @sideLength = @sideLength - (@expansionSize * 2)
+
+  stickToTouch: (mouseLeft, mouseTop) ->
+    @left = mouseLeft + @holdOffset.left
+    @top  = mouseTop + @holdOffset.top
+    @savePos()
+
+  savePos: ->
+    @homeLeft = @left
+    @homeTop = @top
+
+
+
+
+
+
+
+
+
+
+

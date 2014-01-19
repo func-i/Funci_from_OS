@@ -133,19 +133,50 @@ $(window).load ->
       # prevent default hammer release event from firing on tap release
       ev.gesture.stopDetect()
 
+    holding = false
+    currentHold = undefined
+
+    $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
+      args =
+        logo: logo
+        mouseX: ev.gesture.center.pageX
+        mouseY: ev.gesture.center.pageY
+      currentHold = new Hold(args)
+      logo.holding = true
+
     $touchLogo.hammer().on 'drag', (ev) ->
       args =
         logo: logo
         ev: ev
+        hold: currentHold
       LogoHelper.touch.drag args
 
-    # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
+    pinchStarted = false
+    currentPinch = undefined
+
+    $touchLogo.hammer().on 'pinchin', (ev) ->
+      ev.gesture.preventDefault()
+
+      center     = ev.gesture.center
+      rawTouches = ev.gesture.touches
+      unless pinchStarted
+        args = 
+          center: center
+          rawTouches: rawTouches
+        currentPinch = new Pinch(args)
+      currentPinch.updatePosition center, rawTouches
+      logo.squeeze currentPinch
+      
+      pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
+      logo.holding = false
+      currentHold.end()
       logo.reset()
       setTimeout ->
         stopAnimations()
       , 200
+      pinchStarted = false
 
   ##### resize adjustments
 
