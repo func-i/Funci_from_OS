@@ -8,7 +8,7 @@
       LogoHelper.startAnimation(logo)
 
     mouseout: (logo) ->
-      logo.reset()
+      logo.returnHome()
       setTimeout ->
         stopAnimations()
       , 100
@@ -34,6 +34,7 @@
             onHome: onHome
             onMobile: onMobile
           logo.handleMouseup args
+          logo.reset()
           logo.elem.unbind 'mouseup'
 
   touch:

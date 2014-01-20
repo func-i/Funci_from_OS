@@ -23,9 +23,7 @@ class @Hold
     for heldLetter in @heldLetters
       heldLetter.expand()
 
-  contractHeldLetters: ->
+  end: ->
     for heldLetter in @heldLetters
       heldLetter.contract()
-
-  end: ->
-    @contractHeldLetters()
+      heldLetter.savePos()

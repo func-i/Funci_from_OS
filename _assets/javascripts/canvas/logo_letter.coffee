@@ -40,15 +40,21 @@ class @LogoLetter
     mult = if @word is 1 then @id else @id - 10
     leftOffset = (mult * @sideLength) - (mult * @xOverlap)
     @homeLeft = @anchorLeft + leftOffset
-    @left = @homeLeft
+    @initHomeLeft = @homeLeft
 
     topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
     @homeTop = @anchorTop + topOffset
+    @initHomeTop = @homeTop
+
+    @returnHome()
+
+  returnHome: ->
+    @left = @homeLeft
     @top = @homeTop
 
   reset: ->
-    @left = @homeLeft
-    @top = @homeTop
+    @left = @homeLeft = @initHomeLeft
+    @top = @homeTop = @initHomeTop
 
   draw: ->
     ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
@@ -70,7 +76,7 @@ class @LogoLetter
       @left = Math.round(@homeLeft - (distanceFromMouse.left * mult))
       @top = Math.round(@homeTop - (distanceFromMouse.top * mult))
     else
-      @reset()
+      @returnHome()
 
   squeeze: (pinch) ->
     diffX = pinch.center.pageX - @middle().left
@@ -78,8 +84,6 @@ class @LogoLetter
 
     middleLeft = Math.round(@middle().left + (diffX * pinch.multiplier()))
     middleTop = Math.round(@middle().top + (diffY * pinch.multiplier()))
-
-    console.log diffX, middleLeft, diffY, middleTop
 
     @setFromMiddle middleLeft, middleTop
 
@@ -101,7 +105,6 @@ class @LogoLetter
   stickToTouch: (mouseLeft, mouseTop) ->
     @left = mouseLeft + @holdOffset.left
     @top  = mouseTop + @holdOffset.top
-    @savePos()
 
   savePos: ->
     @homeLeft = @left

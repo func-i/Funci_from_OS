@@ -151,28 +151,28 @@ $(window).load ->
         hold: currentHold
       LogoHelper.touch.drag args
 
-    pinchStarted = false
-    currentPinch = undefined
+    # pinchStarted = false
+    # currentPinch = undefined
 
-    $touchLogo.hammer().on 'pinchin', (ev) ->
-      ev.gesture.preventDefault()
+    # $touchLogo.hammer().on 'pinchin', (ev) ->
+    #   ev.gesture.preventDefault()
 
-      center     = ev.gesture.center
-      rawTouches = ev.gesture.touches
-      unless pinchStarted
-        args = 
-          center: center
-          rawTouches: rawTouches
-        currentPinch = new Pinch(args)
-      currentPinch.updatePosition center, rawTouches
-      logo.squeeze currentPinch
-      
-      pinchStarted = true
+    #   center     = ev.gesture.center
+    #   rawTouches = ev.gesture.touches
+    #   unless pinchStarted
+    #     args = 
+    #       center: center
+    #       rawTouches: rawTouches
+    #     currentPinch = new Pinch(args)
+    #   currentPinch.updatePosition center, rawTouches
+    #   logo.squeeze currentPinch
+    #   pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
       logo.holding = false
-      currentHold.end()
-      logo.reset()
+      currentHold.end() if currentHold isnt undefined
+      currentHold = undefined
+      logo.returnHome()
       setTimeout ->
         stopAnimations()
       , 200
