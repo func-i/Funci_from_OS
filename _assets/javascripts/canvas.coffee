@@ -189,14 +189,13 @@ $(window).load ->
       context: context
     ResizeHelper.handleResize args
 
-  window.addEventListener "deviceorientation", ->
-    args =
-      logo: logo
-      canvas: canvas
-      context: context
-
+  $(window).bind 'orientationchange', ->
     orientation = window.orientation
 
     if orientation isnt ResizeHelper.windowOrientation
+      args =
+        logo: logo
+        canvas: canvas
+        context: context
       ResizeHelper.handleResize args
       ResizeHelper.windowOrientation = orientation
