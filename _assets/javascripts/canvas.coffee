@@ -180,8 +180,6 @@ $(window).load ->
 
   ##### resize adjustments
 
-  resizingTimeoutId = undefined
-
   $(window).resize ->
     args =
       logo: logo
