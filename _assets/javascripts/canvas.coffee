@@ -113,7 +113,13 @@ $(window).load ->
 
   # if on touch device that supports blending
   unless $touchLogo.length is 0
-    $touchLogo.hammer().on 'touch', (ev) ->
+    $touchLogo.hammer().on 'touch', (ev) -> 
+      mouseX = ev.gesture.center.pageX
+      mouseY = ev.gesture.center.pageY
+
+      # prevent scrolling if playing with logo
+      ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)
+
       LogoHelper.startAnimation(logo)
 
     $touchLogo.hammer().on 'tap', (ev) ->
@@ -140,11 +146,6 @@ $(window).load ->
       setTimeout ->
         stopAnimations()
       , 200
-
-      # disallow scrolling while playing with the logo
-    $touchLogo[0].ontouchmove = (ev) ->
-      console.log ev
-      ev.preventDefault()
 
   ##### resize adjustments
 

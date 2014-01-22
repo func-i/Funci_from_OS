@@ -16,8 +16,8 @@ class @Square
 
   orient: ->
     @sideLength = @elem.outerWidth()
-    @top        = @elem.offset().top
-    @left       = @elem.offset().left
+    @top        = Math.round @elem.offset().top
+    @left       = Math.round @elem.offset().left
 
   draw: ->
     if @type is "outlined"

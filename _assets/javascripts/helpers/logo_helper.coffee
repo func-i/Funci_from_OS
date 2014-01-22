@@ -21,11 +21,12 @@
       logo.changeCursor mouseX, mouseY
 
     mousedown: (args) ->
-      onHome   = args.onHome
-      onMobile = args.onMobile
       logo     = args.logo
       mouseX   = args.ev.pageX
       mouseY   = args.ev.pageY
+      onHome   = args.onHome
+      onMobile = args.onMobile
+
       if logo.isUnderMouse mouseX, mouseY
         unless onMobile then logo.explode mouseX, mouseY
         logo.elem.mouseup ->
@@ -44,19 +45,19 @@
       onMobile = args.onMobile
 
       if logo.isUnderMouse mouseX, mouseY
-        unless onMobile then logo.explode mouseX, mouseY
-
-      setTimeout ->
-        args =
-          onHome: onHome
-          onMobile: onMobile
-        logo.handleMouseup args
-      , 100
+        logo.explode mouseX, mouseY unless onMobile 
+        window.location.replace("/") unless onHome
+        setTimeout ->
+          args =
+            onHome: onHome
+            onMobile: onMobile
+          logo.handleMouseup args
+        , 100
 
     drag: (args) ->
-      logo     = args.logo
-      mouseX   = args.ev.gesture.center.pageX
-      mouseY   = args.ev.gesture.center.pageY
+      logo   = args.logo
+      mouseX = args.ev.gesture.center.pageX
+      mouseY = args.ev.gesture.center.pageY
 
       if logo.full
         logo.animate mouseX, mouseY
