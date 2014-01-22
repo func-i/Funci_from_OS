@@ -7,7 +7,26 @@
 }
 
 #logo {
-  height: 8rem;
+  height: 7rem;
   position: relative;
   z-index: 2;
+  -webkit-user-select: none;
+
+  img {
+    height: 100%;
+
+    &.small {
+      display: none;
+    }
+
+    @media screen and (max-width:640px) {
+      &.full {
+        display: none;
+      }
+
+      &.small {
+        display: inline-block;
+      }
+    }
+  }
 }

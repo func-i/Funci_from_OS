@@ -31,6 +31,10 @@ $dark-gray: rgb(45,45,45);
 
   &:hover {
     background-position: 0 0;
+
+    a {
+      color: $dark-gray;
+    }
   }
 }
 
@@ -38,20 +42,6 @@ $dark-gray: rgb(45,45,45);
   a {
     transition: color .8s linear;
     color: $color;
-  }
-
-  &:hover {
-    a {
-      color: $dark-gray;
-    }
-  }
-}
-
-@mixin text-square-bottom-image {
-  background-position: 0 -45.2%;
-
-  &:hover {
-    background-position: 0 0;
   }
 }
 
@@ -135,7 +125,9 @@ h3 {
 a {
   text-decoration: none;
   color: inherit;
+}
 
+.no-touch a {
   &:hover {
     text-decoration: underline;
   }
@@ -156,7 +148,7 @@ a {
 ////////// classes //////////
 
 .main-content {
-  margin: 0 auto;
+  margin: 2em auto 0;
   width: 1024px;
   max-width: 88%;
   padding-bottom: 2em;
@@ -180,45 +172,59 @@ a {
     padding: 1px;
   }
 
-  &[data-color="blue"] {
-    &.text {
+  &.text {
+    &[data-color="blue"] {
       @include text-square($blue);
-
-      &[data-type="outlined"] {
-        @include bg-fill-up($blue);
-      }
     }
-  }
 
-  &[data-color="yellow"] {
-    &.text {
+    &[data-color="yellow"] {
       @include text-square($yellow);
+    }
 
-      &[data-type="outlined"] {
-        @include bg-fill-up($yellow);
+    &.half-image {
+      background-position: 0 -45.2% !important;
+
+      .image-container {
+        position: absolute;
+        bottom: 1px;
+        right: 1px;
+        left: 1px;
+
+        img {
+          width: inherit;
+          max-width: 100%;
+          height: auto;
+        }
       }
     }
   }
+}
 
-  .image-half {
-    position: absolute;
-    bottom: 1px;
-    right: 1px;
-    left: 1px;
+.no-touch .square {
+  &.text[data-type="outlined"] {
+    &[data-color="blue"] {
+      @include bg-fill-up($blue);
+    }
+    
+    &[data-color="yellow"] {
+      @include bg-fill-up($yellow);
+    }
 
-    img {
-      width: inherit;
-      max-width: 100%;
-      height: auto;
+    &.half-image:hover {
+      background-position: 0 0 !important;
     }
   }
 }
 
-@media screen and (max-width:800px) {
-  .image-half {
-    display: none;
-  }
-}
+// @media screen and (max-width:800px) {
+//     &.half-image {
+//       background-position: 0 -105%;
+
+//       .image-container {
+//         display: none;
+//       }
+//     }
+//   }
 
 @media screen and (max-width:640px) {
   .square.text, .square.image, #social-icons {
@@ -252,23 +258,27 @@ a {
 ////////// icons //////////
 
 .square.icon {
-  width: 1024px; // hack to make all squares wide enough to fill foundation grid
-  display: table-cell;
-  @include bg-fill-up($green);
+  img {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 33%;
+    opacity: 1;
 
-  a {
-    &:after {
-      content: ""; 
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left:0;
+    &.hover {
+      opacity: 0;
     }
   }
+}
+
+.no-touch .square.icon {
+  @include bg-fill-up($green);
 
   &:hover {
-    object {
+    img {
       opacity: 0;
       transition: opacity 1s linear;
 
@@ -278,15 +288,7 @@ a {
     }
   }
 
-  object {
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    width: 33%;
-    opacity: 1;
-
+  img {
     &.hover {
       opacity: 0;
     }
@@ -299,7 +301,7 @@ a {
 
 #social-icons {
   .phone {
-    object {
+    img {
       width: 20%;
     }
   }
