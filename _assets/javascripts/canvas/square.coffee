@@ -4,6 +4,7 @@ class @Square
 
   constructor: (args) ->
     @id         = args.id
+    @canvas     = args.canvas
     @context    = args.context
     @ctx        = @context.ctx
     @elem       = args.elem
@@ -11,13 +12,13 @@ class @Square
     @type       = @elem.data('type')
     @rollover   = @elem.data('rollover') is 'true'
     @orient()
-    squares.push this
-    this
+    @elem       = @elem.data 'obj', this
+    @canvas.squares.push this
 
   orient: ->
     @sideLength = @elem.outerWidth()
-    @top        = Math.round @elem.offset().top
-    @left       = Math.round @elem.offset().left
+    @top        = Math.round(@elem.offset().top) - @canvas.offsetTop
+    @left       = Math.round(@elem.offset().left) - @canvas.offsetLeft
 
   draw: ->
     if @type is "outlined"

@@ -1,9 +1,6 @@
-@squares = []
-@blendingSupported = Modernizr.canvasblending
-
-findById = (elem) ->
-  id = elem.data('id')
-  square = _.findWhere squares, id: id
+window.canvases = []
+window.logo = {}
+@blendingSupported = Modernizr.canvasblending  
 
 $(window).load ->
   onMobile = ->
@@ -12,36 +9,40 @@ $(window).load ->
   onHome = ->
     window.location.pathname is "/"
 
-  ##### make square divs square
+  $('#loading').css('opacity', '0')
+  $('#body').css('opacity', '1')
+  $('#loading').remove()
 
+  ##### make square divs square
   $('.square').each ->
     $(this).css 'height', $(this).outerWidth() 
 
-  ##### create canvas and context
-
-  args =
-    elem: $('#canvas')
-  canvas = new Canvas(args)
-  context = new Context(canvas)
-
-  ##### create squares
-
-  $('.square').each (index) ->
+  ##### create canvases and corresponding contexts
+  $('.canvas').each (index) ->
     args =
-      elem: $(this)
-      context: context
-      id: index
-    square = new Square(args)
-    $(this).data 'id', index
-    square.draw()
+      referenceElem: $(this)
+    canvas = new Canvas(args)
+    context = new Context(canvas)
+
+    canvas.context = context
+    window.canvases.push canvas
+
+    ##### create squares
+    $('.square', this).each (index) ->
+      args =
+        elem: $(this)
+        canvas: canvas
+        context: context
+        id: index
+      square = new Square(args)
+      square.draw()
 
   ##### create logo canvas and context
-
   if blendingSupported
     # canvas logo
     args =
       elem: $('#logo-canvas')
-    logoCanvas = new Canvas(args)
+    logoCanvas = new LogoCanvas(args)
     logoContext = new Context(logoCanvas)
 
     args =
@@ -49,7 +50,7 @@ $(window).load ->
       canvas: logoCanvas
       context: logoContext
       screenWidth: $(window).width()
-    logo = new Logo(args)
+    window.logo = new Logo(args)
   else
     # fallback logo imgs
 
@@ -66,27 +67,21 @@ $(window).load ->
     imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
     $logoAnchor.append imgSmallHtml
 
-  $('#loading').css('opacity', '0')
-  $('#body').css('opacity', '1')
-  $('#loading').remove()
-
   ##### handle events
 
   # icons squares
-
   $('.no-touch .square.icon').mouseover ->
-    square = findById $(this)
+    square = SquareHelper.findSquare $(this)
     square.context.clear square.left, square.top, square.sideLength, square.sideLength
     square.strokeRect "green"
 
   $('.no-touch .square.icon').mouseout ->
-    square = findById $(this)
-    context.clear 0, 0, canvas.width, canvas.height
-    for square in squares
+    square = SquareHelper.findSquare $(this)
+    square.context.clear 0, 0, square.canvas.width, square.canvas.height
+    for square in square.canvas.squares
       square.draw()
 
   # logo no-touch
-
   $noTouchLogo = $('.no-touch.canvasblending #logo')
 
   unless $noTouchLogo.length is 0
@@ -101,14 +96,13 @@ $(window).load ->
 
     $noTouchLogo.mousedown (ev) ->
       args =
-        logo: logo
+        logo: window.logo
         ev: ev
         onHome: onHome()
         onMobile: onMobile() 
       LogoHelper.noTouch.mousedown args
 
   # logo touch
-
   $touchLogo = $('.touch.canvasblending #logo')
 
   # if on touch device that supports blending
@@ -118,13 +112,13 @@ $(window).load ->
       mouseY = ev.gesture.center.pageY
 
       # prevent scrolling if playing with logo
-      ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)
+      ev.gesture.preventDefault() if window.logo.isUnderMouse(mouseX, mouseY)
 
-      LogoHelper.startAnimation(logo)
+      LogoHelper.startAnimation(window.logo)
 
     $touchLogo.hammer().on 'tap', (ev) ->
       args =
-        logo: logo
+        logo: window.logo
         ev: ev
         onHome: onHome()
         onMobile: onMobile()
@@ -138,15 +132,15 @@ $(window).load ->
 
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
       args =
-        logo: logo
+        logo: window.logo
         mouseX: ev.gesture.center.pageX
         mouseY: ev.gesture.center.pageY
       currentHold = new Hold(args)
-      logo.holding = true
+      window.logo.holding = true
 
     $touchLogo.hammer().on 'drag', (ev) ->
       args =
-        logo: logo
+        logo: window.logo
         ev: ev
         hold: currentHold
       LogoHelper.touch.drag args
@@ -169,10 +163,10 @@ $(window).load ->
     #   pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
-      logo.holding = false
+      window.logo.holding = false
       currentHold.end() if currentHold isnt undefined
       currentHold = undefined
-      logo.returnHome()
+      window.logo.returnHome()
       setTimeout ->
         stopAnimations()
       , 200
@@ -181,19 +175,11 @@ $(window).load ->
   ##### resize adjustments
 
   $(window).resize ->
-    args =
-      logo: logo
-      canvas: canvas
-      context: context
-    ResizeHelper.handleResize args
+    ResizeHelper.handleResize()
 
   $(window).bind 'orientationchange', ->
     orientation = window.orientation
 
     if orientation isnt ResizeHelper.windowOrientation
-      args =
-        logo: logo
-        canvas: canvas
-        context: context
-      ResizeHelper.handleResize args
+      ResizeHelper.handleResize()
       ResizeHelper.windowOrientation = orientation

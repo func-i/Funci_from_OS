@@ -1,8 +1,18 @@
 class @Canvas
+  buffer: 4
+
   constructor: (args) ->
-    @elem       = args.elem
+    @referenceElem = args.referenceElem
+    @createElem()
+    @setOffset()
     @pixelRatio = @getPixelRatio()
     @orient()
+    @elem.data 'obj', this
+    @squares = []
+
+  createElem: ->
+    @elem = $('<canvas></canvas>')
+    @referenceElem.prepend @elem
 
   getPixelRatio: ->
     testCtx = @elem[0].getContext('2d')
@@ -10,8 +20,18 @@ class @Canvas
     bspr = testCtx.webkitBackingStorePixelRatio or testCtx.mozBackingStorePixelRatio or testCtx.msBackingStorePixelRatio or testCtx.oBackingStorePixelRatio or testCtx.backingStorePixelRatio or 1
     dpr / bspr
 
+  setOffset: ->
+    @offsetLeft = Math.round @referenceElem.offset().left - (@buffer - @buffer/2)
+    @offsetTop  = Math.round @referenceElem.offset().top - (@buffer - @buffer/2)
+
   orient: ->
-    @width  = @elem.width()
-    @height = @elem.height()
+    @setOffset()
+
+    @width  = @referenceElem.width() + @buffer
+    @height = @referenceElem.height() + @buffer
+
+    @elem.css 'width', (@width)
+    @elem.css 'height', (@height)
+
     @elem.attr 'width', (@width * @pixelRatio) 
-    @elem.attr 'height', (@height * @pixelRatio) 
+    @elem.attr 'height', (@height * @pixelRatio)

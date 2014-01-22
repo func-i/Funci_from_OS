@@ -1,26 +1,23 @@
 @ResizeHelper =
   handleResize: (args) ->
-    logo    = args.logo
-    canvas  = args.canvas
-    context = args.context
-
     $('.square').each ->
       $(this).css 'height', $(this).outerWidth()
 
-    canvas.orient $('body').width(), $('body').height()
-    context.clear 0, 0, canvas.width, canvas.height
-    context.setMultiply()
+    for canvas in window.canvases
+      canvas.orient()
+      canvas.context.clear 0, 0, canvas.width, canvas.height
+      canvas.context.setMultiply()
 
-    for square in squares
-      square.orient()
-      square.draw()
+      for square in canvas.squares
+        square.orient()
+        square.draw()
 
     if blendingSupported
-      logo.canvas.orient $('body').width(), $('body').height()
-      logo.context.clear 0, 0, canvas.width, canvas.height
-      logo.context.setMultiply()
+      window.logo.canvas.orient $('body').width(), $('body').height()
+      window.logo.context.clear 0, 0, logo.canvas.width, logo.canvas.height
+      window.logo.context.setMultiply()
 
-      logo.resize $(window).innerWidth()
-      logo.draw()
+      window.logo.resize $(window).innerWidth()
+      window.logo.draw()
 
   windowOrientation: undefined
