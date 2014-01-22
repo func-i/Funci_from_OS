@@ -91,13 +91,13 @@ $(window).load ->
 
   unless $noTouchLogo.length is 0
     $noTouchLogo.mouseover ->
-      LogoEvents.noTouch.mouseover logo
+      LogoHelper.noTouch.mouseover logo
 
     $noTouchLogo.mouseout ->
-      LogoEvents.noTouch.mouseout logo
+      LogoHelper.noTouch.mouseout logo
 
     $noTouchLogo.mousemove (ev) ->
-      LogoEvents.noTouch.mousemove logo, ev
+      LogoHelper.noTouch.mousemove logo, ev
 
     $noTouchLogo.mousedown (ev) ->
       args =
@@ -105,7 +105,7 @@ $(window).load ->
         ev: ev
         onHome: onHome()
         onMobile: onMobile() 
-      LogoEvents.noTouch.mousedown args
+      LogoHelper.noTouch.mousedown args
 
   # logo touch
 
@@ -114,7 +114,7 @@ $(window).load ->
   # if on touch device that supports blending
   unless $touchLogo.length is 0
     $touchLogo.hammer().on 'touch', (ev) ->
-      LogoEvents.startAnimation(logo)
+      LogoHelper.startAnimation(logo)
 
     $touchLogo.hammer().on 'tap', (ev) ->
       args =
@@ -122,7 +122,7 @@ $(window).load ->
         ev: ev
         onHome: onHome()
         onMobile: onMobile()
-      LogoEvents.touch.tap args
+      LogoHelper.touch.tap args
 
       # prevent default hammer release event from firing on tap release
       ev.gesture.stopDetect()
@@ -131,7 +131,7 @@ $(window).load ->
       args =
         logo: logo
         ev: ev
-      LogoEvents.touch.drag args
+      LogoHelper.touch.drag args
 
     # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
       
@@ -143,33 +143,28 @@ $(window).load ->
 
       # disallow scrolling while playing with the logo
     $touchLogo[0].ontouchmove = (ev) ->
-        ev.preventDefault()
+      console.log ev
+      ev.preventDefault()
 
   ##### resize adjustments
 
   resizingTimeoutId = undefined
 
   $(window).resize ->
-    # continue if still resizing
-    clearTimeout resizingTimeoutId
+    args =
+      logo: logo
+      canvas: canvas
+      context: context
+    ResizeHelper.handleResize args
 
-    $('.square').each ->
-      $(this).css 'height', $(this).outerWidth()
+  window.addEventListener "deviceorientation", ->
+    args =
+      logo: logo
+      canvas: canvas
+      context: context
 
-    animationId = requestAnimationFrame -> animateAllSquares(canvas, context)
-    animationIds.push animationId
+    orientation = window.orientation
 
-    if blendingSupported
-      logo.resize $(window).innerWidth()
-      LogoEvents.startAnimation logo
-
-      logoCanvas.orient $('body').width(), $('body').height()
-      logoContext.setMultiply()
-
-    canvas.orient $('body').width(), $('body').height()
-    context.setMultiply()
-
-    # haven't resized in 300ms!
-    resizingTimeoutId = setTimeout ->
-      stopAnimations()
-    , 200 
+    if orientation isnt ResizeHelper.windowOrientation
+      ResizeHelper.handleResize args
+      ResizeHelper.windowOrientation = orientation
