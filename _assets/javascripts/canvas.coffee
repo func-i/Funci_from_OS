@@ -133,23 +133,52 @@ $(window).load ->
       # prevent default hammer release event from firing on tap release
       ev.gesture.stopDetect()
 
+    holding = false
+    currentHold = undefined
+
+    $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
+      args =
+        logo: logo
+        mouseX: ev.gesture.center.pageX
+        mouseY: ev.gesture.center.pageY
+      currentHold = new Hold(args)
+      logo.holding = true
+
     $touchLogo.hammer().on 'drag', (ev) ->
       args =
         logo: logo
         ev: ev
+        hold: currentHold
       LogoHelper.touch.drag args
 
-    # $('.touch #logo').hammer({hold_timeout: 150}).on 'hold', (ev) ->
+    # pinchStarted = false
+    # currentPinch = undefined
+
+    # $touchLogo.hammer().on 'pinchin', (ev) ->
+    #   ev.gesture.preventDefault()
+
+    #   center     = ev.gesture.center
+    #   rawTouches = ev.gesture.touches
+    #   unless pinchStarted
+    #     args = 
+    #       center: center
+    #       rawTouches: rawTouches
+    #     currentPinch = new Pinch(args)
+    #   currentPinch.updatePosition center, rawTouches
+    #   logo.squeeze currentPinch
+    #   pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
-      logo.reset()
+      logo.holding = false
+      currentHold.end() if currentHold isnt undefined
+      currentHold = undefined
+      logo.returnHome()
       setTimeout ->
         stopAnimations()
       , 200
+      pinchStarted = false
 
   ##### resize adjustments
-
-  resizingTimeoutId = undefined
 
   $(window).resize ->
     args =
@@ -158,14 +187,13 @@ $(window).load ->
       context: context
     ResizeHelper.handleResize args
 
-  window.addEventListener "deviceorientation", ->
-    args =
-      logo: logo
-      canvas: canvas
-      context: context
-
+  $(window).bind 'orientationchange', ->
     orientation = window.orientation
 
     if orientation isnt ResizeHelper.windowOrientation
+      args =
+        logo: logo
+        canvas: canvas
+        context: context
       ResizeHelper.handleResize args
       ResizeHelper.windowOrientation = orientation

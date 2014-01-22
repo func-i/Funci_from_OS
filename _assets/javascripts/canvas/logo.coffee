@@ -75,6 +75,7 @@ class @Logo
     else
       unless onMobile
         if @full then @contract() else @expand()
+        @reset()
 
   animate: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
@@ -94,17 +95,29 @@ class @Logo
     for logoLetter in @logoLetters
       logoLetter.display = true
     @full = true
-    @reset()
+    @returnHome()
 
   contract: ->
     for logoLetter in @logoLetters
       logoLetter.display = (logoLetter.id is 0 or logoLetter.id is 10)
     @full = false
-    @reset()
+    @returnHome()
+
+  returnHome: ->
+    for logoLetter in @logoLetters
+      logoLetter.returnHome()
 
   reset: ->
     for logoLetter in @logoLetters
       logoLetter.reset()
+
+  squeeze: (pinch) ->
+    for logoLetter in @logoLetters
+      logoLetter.squeeze pinch
+
+  dragLetters: (hold, mouseLeft, mouseTop) ->
+    for logoLetter in hold.heldLetters
+      logoLetter.stickToTouch mouseLeft, mouseTop
 
   draw: ->
     for logoLetter in @logoLetters

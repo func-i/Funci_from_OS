@@ -8,7 +8,7 @@
       LogoHelper.startAnimation(logo)
 
     mouseout: (logo) ->
-      logo.reset()
+      logo.returnHome()
       setTimeout ->
         stopAnimations()
       , 100
@@ -34,6 +34,7 @@
             onHome: onHome
             onMobile: onMobile
           logo.handleMouseup args
+          logo.reset()
           logo.elem.unbind 'mouseup'
 
   touch:
@@ -58,6 +59,9 @@
       logo   = args.logo
       mouseX = args.ev.gesture.center.pageX
       mouseY = args.ev.gesture.center.pageY
+      hold   = args.hold
 
-      if logo.full
-        logo.animate mouseX, mouseY
+      if logo.holding
+        logo.dragLetters hold, mouseX, mouseY
+      else
+        logo.animate mouseX, mouseY if logo.full

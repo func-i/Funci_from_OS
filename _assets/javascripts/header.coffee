@@ -14,6 +14,6 @@ $ ->
 
     $clickedA.toggleClass('navigable')
 
-  $('.touch body').click ->
+  $('.touch #body').click ->
     $('header nav li.menu-activated').removeClass('menu-activated')
     $('header nav a.navigable').removeClass('navigable')
