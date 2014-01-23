@@ -45,6 +45,7 @@
       onHome   = args.onHome
       onMobile = args.onMobile
 
+
       if logo.isUnderMouse mouseX, mouseY
         logo.explode mouseX, mouseY unless onMobile 
         window.location.replace("/") unless onHome
@@ -57,6 +58,7 @@
 
     drag: (args) ->
       logo   = args.logo
+      ev     = args.ev
       mouseX = args.ev.gesture.center.pageX
       mouseY = args.ev.gesture.center.pageY
       hold   = args.hold
@@ -65,3 +67,5 @@
         logo.dragLetters hold, mouseX, mouseY
       else
         logo.animate mouseX, mouseY if logo.full
+
+      ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)
