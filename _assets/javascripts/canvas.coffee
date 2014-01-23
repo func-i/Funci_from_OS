@@ -9,10 +9,6 @@ $(window).load ->
   onHome = ->
     window.location.pathname is "/"
 
-  $('#loading').css('opacity', '0')
-  $('#body').css('opacity', '1')
-  $('#loading').remove()
-
   ##### make square divs square
   $('.square').each ->
     $square = $(this)
@@ -75,6 +71,12 @@ $(window).load ->
     imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
     $logoAnchor.append imgSmallHtml
 
+  ##### fade in
+
+  $('#loading').css('opacity', '0')
+  $('#body').css('opacity', '1')
+  $('#loading').remove()
+
   ##### handle events
 
   # icons squares
@@ -115,9 +117,9 @@ $(window).load ->
 
   # if on touch device that supports blending
   unless $touchLogo.length is 0
-    $touchLogo.hammer().on 'touch', (ev) -> 
-      mouseX = ev.gesture.center.pageX
-      mouseY = ev.gesture.center.pageY
+    $touchLogo.hammer().on 'touch', (ev) ->
+      mouseX = ev.gesture.touches[0].pageX
+      mouseY = ev.gesture.touches[0].pageY
 
       # prevent scrolling if playing with logo
       ev.gesture.preventDefault() if window.logo.isUnderMouse(mouseX, mouseY)
@@ -141,8 +143,8 @@ $(window).load ->
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
       args =
         logo: window.logo
-        mouseX: ev.gesture.center.pageX
-        mouseY: ev.gesture.center.pageY
+        mouseX: ev.gesture.touches[0].pageX
+        mouseY: ev.gesture.touches[0].pageY
       currentHold = new Hold(args)
       window.logo.holding = true
 
