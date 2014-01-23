@@ -11,6 +11,8 @@ class @Square
     @color      = BASE_COLORS[(@elem.data('color'))]
     @type       = @elem.data('type')
     @rollover   = @elem.data('rollover') is 'true'
+    @isHalfImage  = @elem.hasClass('half-image')
+    @isImage      = @elem.hasClass('image')
     @orient()
     @elem       = @elem.data 'obj', this
     @canvas.squares.push this
@@ -19,6 +21,15 @@ class @Square
     @sideLength = Math.round @elem.width()
     @top        = Math.round(@elem.offset().top) - @canvas.offsetTop
     @left       = Math.round(@elem.offset().left) - @canvas.offsetLeft
+    @orientHalfImage() if @isHalfImage
+    @orientImage() if @isImage
+
+  orientHalfImage: ->
+    @elem.find('img').css('width', (@elem.width() - 2))
+
+  orientImage: ->
+    console.log @elem.width()
+    @elem.find('img').css('width', (@elem.width() - 3))
 
   draw: ->
     if @type is "outlined"
@@ -30,7 +41,7 @@ class @Square
     color = color || @color
     @ctx.lineWidth = "1"
     @ctx.strokeStyle = color
-    @ctx.strokeRect((@left+.5), (@top+.5), (@sideLength-1), (@sideLength-1)
+    @ctx.strokeRect((@left+.5), (@top+.5), (@sideLength), (@sideLength))
 
   fillRect: (color) ->
     color = color || @color
