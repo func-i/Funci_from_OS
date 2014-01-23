@@ -1,7 +1,11 @@
 @ResizeHelper =
   handleResize: (args) ->
     $('.square').each ->
-      $(this).css 'height', $(this).outerWidth()
+      $square = $(this)
+      $square.css 'width', ''
+      roundedWidth = Math.round($(this).outerWidth())
+      $square.css 'width', roundedWidth
+      $square.css 'height', roundedWidth
 
     for canvas in window.canvases
       canvas.orient()
@@ -10,6 +14,10 @@
 
       for square in canvas.squares
         square.orient()
+
+      canvas.adjustSquarePositions()
+      
+      for square in canvas.squares
         square.draw()
 
     if blendingSupported

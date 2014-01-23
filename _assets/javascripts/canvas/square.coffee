@@ -16,7 +16,7 @@ class @Square
     @canvas.squares.push this
 
   orient: ->
-    @sideLength = @elem.outerWidth()
+    @sideLength = Math.round @elem.width()
     @top        = Math.round(@elem.offset().top) - @canvas.offsetTop
     @left       = Math.round(@elem.offset().left) - @canvas.offsetLeft
 
@@ -30,9 +30,9 @@ class @Square
     color = color || @color
     @ctx.lineWidth = "1"
     @ctx.strokeStyle = color
-    @ctx.strokeRect @left, @top, @sideLength, @sideLength
+    @ctx.strokeRect((@left+.5), (@top+.5), (@sideLength-1), (@sideLength-1)
 
   fillRect: (color) ->
     color = color || @color
     @ctx.fillStyle = color
-    @ctx.fillRect @left, @top, @sideLength, @sideLength
+    @ctx.fillRect(@left, @top, @sideLength, @sideLength)

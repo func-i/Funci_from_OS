@@ -15,7 +15,11 @@ $(window).load ->
 
   ##### make square divs square
   $('.square').each ->
-    $(this).css 'height', $(this).outerWidth() 
+    $square = $(this)
+    $square.css 'width', ''
+    roundedWidth = Math.round $square.width()
+    $square.css 'width', roundedWidth
+    $square.css 'height', roundedWidth
 
   ##### create canvases and corresponding contexts
   $('.canvas').each (index) ->
@@ -35,6 +39,10 @@ $(window).load ->
         context: context
         id: index
       square = new Square(args)
+
+    canvas.adjustSquarePositions()
+
+    for square in canvas.squares
       square.draw()
 
   ##### create logo canvas and context
@@ -145,22 +153,22 @@ $(window).load ->
         hold: currentHold
       LogoHelper.touch.drag args
 
-    # pinchStarted = false
-    # currentPinch = undefined
+    pinchStarted = false
+    currentPinch = undefined
 
-    # $touchLogo.hammer().on 'pinchin', (ev) ->
-    #   ev.gesture.preventDefault()
+    $touchLogo.hammer().on 'pinchin', (ev) ->
+      ev.gesture.preventDefault()
 
-    #   center     = ev.gesture.center
-    #   rawTouches = ev.gesture.touches
-    #   unless pinchStarted
-    #     args = 
-    #       center: center
-    #       rawTouches: rawTouches
-    #     currentPinch = new Pinch(args)
-    #   currentPinch.updatePosition center, rawTouches
-    #   logo.squeeze currentPinch
-    #   pinchStarted = true
+      center     = ev.gesture.center
+      rawTouches = ev.gesture.touches
+      unless pinchStarted
+        args = 
+          center: center
+          rawTouches: rawTouches
+        currentPinch = new Pinch(args)
+      currentPinch.updatePosition center, rawTouches
+      window.logo.squeeze currentPinch
+      pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
       window.logo.holding = false

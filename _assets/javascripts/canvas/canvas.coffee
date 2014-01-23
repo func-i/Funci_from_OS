@@ -35,3 +35,19 @@ class @Canvas
 
     @elem.attr 'width', (@width * @pixelRatio) 
     @elem.attr 'height', (@height * @pixelRatio)
+
+  adjustSquarePositions: ->
+    for currentSquare, i in @squares
+      for otherSquare in @squares.slice (i+1), @squares.length
+        currentSquareRight = currentSquare.left + currentSquare.sideLength
+        if otherSquare.left is (currentSquareRight + 1)
+          otherSquare.left -= 1
+          otherSquare.elem.css 'left', -1
+        else if otherSquare.left is (currentSquareRight - 1)
+          otherSquare.left += 1
+          otherSquare.elem.css 'left', 1
+        else if otherSquare.left is (currentSquareRight + 2)
+          otherSquare.left -= 2
+          otherSquare.elem.css 'left', -2
+        else
+          otherSquare.elem.css 'left', 0

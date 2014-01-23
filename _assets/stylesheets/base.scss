@@ -187,12 +187,13 @@ a {
     }
 
     &.half-image {
-      background-position: 0 -45.2% !important;
+      .text-content {
+        height: 50%;
+      }
 
       .image-container {
         position: absolute;
         bottom: 1px;
-        right: 1px;
         left: 1px;
 
         img {
@@ -205,7 +206,9 @@ a {
 
     @media screen and (max-width:800px) {
       &.half-image {
-        background-position: 0 -105% !important;
+        .text-content {
+          background-position: 0 -105% !important;
+        }
 
         .image-container {
           display: none;
@@ -218,15 +221,33 @@ a {
 .no-touch .square {
   &.text[data-type="outlined"] {
     &[data-color="blue"] {
-      @include bg-fill-up($blue);
+      &:not(.half-image) {
+        @include bg-fill-up($blue);
+      }
+
+      &.half-image {
+        .text-content {
+          @include bg-fill-up($blue);
+        }
+      }
     }
     
     &[data-color="yellow"] {
-      @include bg-fill-up($yellow);
+      &:not(.half-image) {
+        @include bg-fill-up($yellow);
+      }
+
+      &.half-image {
+        .text-content {
+          @include bg-fill-up($yellow);
+        }
+      }
     }
 
     &.half-image:hover {
-      background-position: 0 0 !important;
+      .text-content {
+        background-position: 0 0 !important;
+      }
     }
   }
 }
