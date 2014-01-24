@@ -13,7 +13,7 @@ $(window).load ->
   $('.square').each ->
     $square = $(this)
     $square.css 'width', ''
-    roundedWidth = Math.round $square.width()
+    roundedWidth = Math.round $square.outerWidth()
     $square.css 'width', roundedWidth
     $square.css 'height', roundedWidth
 
