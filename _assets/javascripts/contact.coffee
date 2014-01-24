@@ -10,7 +10,7 @@ $.fn.funciSelect = ->
   select.hide() # hide vanilla select element
 
   # create span that will display selected option
-  selectedOption = $('<span id="selected-option"><a href="#"></a></span>')
+  selectedOption = $('<span id="selected-option"><a></a></span>')
   select.before selectedOption
 
   # create expand arrow
