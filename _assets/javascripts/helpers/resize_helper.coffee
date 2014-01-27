@@ -1,28 +1,31 @@
 @ResizeHelper =
   handleResize: (args) ->
-    logo    = args.logo
-    canvas  = args.canvas
-    context = args.context
-
-    # continue if still resizing
-    clearTimeout resizingTimeoutId
-
     $('.square').each ->
-      $(this).css 'height', $(this).outerWidth()
+      $square = $(this)
+      $square.css 'width', ''
+      roundedWidth = Math.round($(this).outerWidth())
+      $square.css 'width', roundedWidth
+      $square.css 'height', roundedWidth
 
-    SquareHelper.startAnimation canvas, context
+    for canvas in window.canvases
+      canvas.orient()
+      canvas.context.clear 0, 0, canvas.width, canvas.height
+      canvas.context.setMultiply()
+
+      for square in canvas.squares
+        square.orient()
+
+      canvas.adjustSquarePositions()
+      
+      for square in canvas.squares
+        square.draw()
 
     if blendingSupported
-      logo.resize $(window).innerWidth()
-      LogoHelper.startAnimation logo
+      window.logo.canvas.orient $('body').width(), $('body').height()
+      window.logo.context.clear 0, 0, logo.canvas.width, logo.canvas.height
+      window.logo.context.setMultiply()
 
-      logo.canvas.orient $('body').width(), $('body').height()
-      logo.context.setMultiply()
+      window.logo.resize $(window).innerWidth()
+      window.logo.draw()
 
-    canvas.orient $('body').width(), $('body').height()
-    context.setMultiply()
-
-    # haven't resized in 300ms!
-    resizingTimeoutId = setTimeout ->
-      stopAnimations()
-    , 200 
+  windowOrientation: undefined
