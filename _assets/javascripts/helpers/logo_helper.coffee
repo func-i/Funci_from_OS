@@ -40,8 +40,8 @@
   touch:
     tap: (args) ->
       logo     = args.logo
-      mouseX   = args.ev.gesture.center.pageX
-      mouseY   = args.ev.gesture.center.pageY
+      mouseX   = args.ev.gesture.touches[0].pageX
+      mouseY   = args.ev.gesture.touches[0].pageY
       onHome   = args.onHome
       onMobile = args.onMobile
 
@@ -57,11 +57,14 @@
 
     drag: (args) ->
       logo   = args.logo
-      mouseX = args.ev.gesture.center.pageX
-      mouseY = args.ev.gesture.center.pageY
+      ev     = args.ev
+      mouseX = args.ev.gesture.touches[0].pageX
+      mouseY = args.ev.gesture.touches[0].pageY
       hold   = args.hold
 
       if logo.holding
         logo.dragLetters hold, mouseX, mouseY
       else
         logo.animate mouseX, mouseY if logo.full
+
+      ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)

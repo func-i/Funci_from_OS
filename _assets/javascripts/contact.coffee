@@ -1,5 +1,5 @@
 if $('#map').length > 0
-  map = new L.mapbox.map "map", "nasercafi.g99p0nel",
+  map = new L.mapbox.map "mapbox", "nasercafi.g99p0nel",
     center: [43.650097, -79.375151]
     zoom: 17
     zoomControl: false
@@ -10,7 +10,7 @@ $.fn.funciSelect = ->
   select.hide() # hide vanilla select element
 
   # create span that will display selected option
-  selectedOption = $('<span id="selected-option"><a href="#"></a></span>')
+  selectedOption = $('<span id="selected-option"><a></a></span>')
   select.before selectedOption
 
   # create expand arrow
