@@ -40,7 +40,7 @@ class @Square
     color = color || @color
     @ctx.lineWidth = "1"
     @ctx.strokeStyle = color
-    @ctx.strokeRect((@left+.5), (@top+.5), (@sideLength), (@sideLength))
+    @ctx.strokeRect((@left+.5), (@top+.5), @sideLength, @sideLength)
 
   fillRect: (color) ->
     color = color || @color
