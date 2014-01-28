@@ -194,7 +194,7 @@ a {
           color: $dark-gray;
         }
       }
-      
+
       .text-content {
         height: 50%;
       }
@@ -233,11 +233,19 @@ a {
         @include bg-fill-up($blue);
       }
 
-      &.half-image {
-        .text-content {
+      @media screen and (max-width:800px) {
+        &.half-image {
           @include bg-fill-up($blue);
         }
-      }
+      } 
+
+      @media screen and (min-width:801px) {
+        &.half-image {
+          .text-content {
+            @include bg-fill-up($blue);
+          }
+        }
+      }        
     }
     
     &[data-color="yellow"] {
@@ -245,11 +253,19 @@ a {
         @include bg-fill-up($yellow);
       }
 
-      &.half-image {
-        .text-content {
+      @media screen and (max-width:800px) {
+        &.half-image {
           @include bg-fill-up($yellow);
         }
       }
+
+      @media screen and (min-width:801px) {
+        &.half-image {
+          .text-content {
+            @include bg-fill-up($yellow);
+          }
+        }
+      } 
     }
 
     &.half-image:hover {
