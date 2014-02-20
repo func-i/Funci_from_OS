@@ -71,7 +71,8 @@ class @LogoLetter
     @top = @homeTop = @initHomeTop
 
   draw: ->
-    @ctx.drawImage @logoImgObject, 0, @ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength[@logo.size], @sideLength[@logo.size]
+    if (@id is 0 or @id is 10) or @logo.expanded
+      @ctx.drawImage @logoImgObject, 0, @ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength[@logo.size], @sideLength[@logo.size]
 
   getDistanceFromMouse: (mouseLeft, mouseTop) ->
     distanceFromMouse =

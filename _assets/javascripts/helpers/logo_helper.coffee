@@ -16,7 +16,7 @@
     mousemove: (logo, ev) ->
       mouseX = ev.pageX
       mouseY = ev.pageY
-      if logo.size isnt "twoLetters"
+      if logo.expanded
         logo.animate mouseX, mouseY
       logo.changeCursor mouseX, mouseY
 
@@ -27,11 +27,12 @@
       onHome   = args.onHome
 
       if logo.isUnderMouse mouseX, mouseY
+        wasExpanded = logo.expanded
+        logo.expand()
         logo.explode mouseX, mouseY
         logo.elem.mouseup ->
-          args =
-            onHome: onHome
-          logo.handleMouseup args
+          window.location.replace "/" if !onHome
+          if wasExpanded then logo.contract() else logo.expand()
           logo.reset()
           logo.elem.unbind 'mouseup'
 
@@ -43,12 +44,13 @@
       onHome   = args.onHome
 
       if logo.isUnderMouse mouseX, mouseY
+        wasExpanded = logo.expanded
+        logo.expand()
         logo.explode mouseX, mouseY
-        window.location.replace("/") unless onHome
         setTimeout ->
-          args =
-            onHome: onHome
-          logo.handleMouseup args
+          window.location.replace("/") unless onHome
+          if wasExpanded then logo.contract() else logo.expand()
+          logo.reset()
         , 100
 
     drag: (args) ->
