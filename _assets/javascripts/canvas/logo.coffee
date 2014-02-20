@@ -18,12 +18,10 @@ class @Logo
     # createLogo() after img is loaded
 
   setSize: ->
-    if @screenWidth >= @breakPoint.large
-      @size = "large"
-    else if @screenWidth >= @breakPoint.small
-      @size = "small"
-    else
-      @size = "twoLetters"
+    @size = if @screenWidth >= @breakPoint.large then "large" else "small"
+
+  tooDamnSmall: ->
+    @screenWidth < @breakPoint.small
 
   setImg: () ->
     logo = this
@@ -69,13 +67,12 @@ class @Logo
   resize: (screenWidth) ->
     @screenWidth = screenWidth
     @setSize()
+    @contract() if @tooDamnSmall()
     @setHomePosition()
 
   changeCursor: (mouseLeft, mouseTop) ->
-    if @isUnderMouse mouseLeft, mouseTop
-      @elem.css 'cursor', 'pointer'
-    else
-      @elem.css 'cursor', 'default'
+    cursor = if @isUnderMouse(mouseLeft, mouseTop) then 'pointer' else 'default'
+    @elem.css 'cursor', cursor
 
   animate: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
