@@ -50,10 +50,14 @@ class @Logo
       @logoLetters.push logoLetter
 
   isUnderMouse: (mouseLeft, mouseTop) ->
-    topLetter = _.min @logoLetters, (logoLetter) -> logoLetter.homeTop
-    rightLetter = _.max @logoLetters, (logoLetter) -> logoLetter.homeLeft
-    bottomLetter = _.max @logoLetters, (logoLetter) -> logoLetter.homeTop
-    leftLetter = _.min @logoLetters, (logoLetter) -> logoLetter.homeLeft
+    topLetter = _.min @logoLetters, (logoLetter) ->
+      logoLetter.homeTop if logoLetter.isVisible()
+    rightLetter = _.max @logoLetters, (logoLetter) ->
+      logoLetter.homeLeft if logoLetter.isVisible()
+    bottomLetter = _.max @logoLetters, (logoLetter) ->
+      logoLetter.homeTop if logoLetter.isVisible()
+    leftLetter = _.min @logoLetters, (logoLetter) ->
+      logoLetter.homeLeft if logoLetter.isVisible()
 
     top = topLetter.top
     right = rightLetter.left + rightLetter.sideLength[@size]
