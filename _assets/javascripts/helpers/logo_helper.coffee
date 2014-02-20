@@ -16,7 +16,7 @@
     mousemove: (logo, ev) ->
       mouseX = ev.pageX
       mouseY = ev.pageY
-      if logo.full
+      if logo.size isnt "twoLetters"
         logo.animate mouseX, mouseY
       logo.changeCursor mouseX, mouseY
 
@@ -25,14 +25,12 @@
       mouseX   = args.ev.pageX
       mouseY   = args.ev.pageY
       onHome   = args.onHome
-      onMobile = args.onMobile
 
       if logo.isUnderMouse mouseX, mouseY
-        unless onMobile then logo.explode mouseX, mouseY
+        logo.explode mouseX, mouseY
         logo.elem.mouseup ->
           args =
             onHome: onHome
-            onMobile: onMobile
           logo.handleMouseup args
           logo.reset()
           logo.elem.unbind 'mouseup'
@@ -43,15 +41,13 @@
       mouseX   = args.ev.gesture.touches[0].pageX
       mouseY   = args.ev.gesture.touches[0].pageY
       onHome   = args.onHome
-      onMobile = args.onMobile
 
       if logo.isUnderMouse mouseX, mouseY
-        logo.explode mouseX, mouseY unless onMobile 
+        logo.explode mouseX, mouseY
         window.location.replace("/") unless onHome
         setTimeout ->
           args =
             onHome: onHome
-            onMobile: onMobile
           logo.handleMouseup args
         , 100
 
@@ -65,6 +61,6 @@
       if logo.holding
         logo.dragLetters hold, mouseX, mouseY
       else
-        logo.animate mouseX, mouseY if logo.full
+        logo.animate mouseX, mouseY if logo.size isnt "twoLetters"
 
       ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)

@@ -1,17 +1,29 @@
 class @Logo
   logoString: "FUNCTIONALIMPERATIVE"
   logoLetters: []
-  breakPoint: 640
+  breakPoint:
+    large: 640
+    small: 320
 
   constructor: (args) ->
     @elem            = args.elem
     @canvas          = args.canvas
     @context         = args.context
-    @initScreenWidth = args.screenWidth
+    @screenWidth     = args.screenWidth
     @position        = @elem.offset()
     @imgSrc          = @elem.data('imgSprite')
+    @full            = true
+    @setSize()
     @setImg()
     # createLogo() after img is loaded
+
+  setSize: ->
+    if @screenWidth >= @breakPoint.large
+      @size = "large"
+    else if @screenWidth >= @breakPoint.small
+      @size = "small"
+    else
+      @size = "twoLetters"
 
   setImg: () ->
     logo = this
@@ -22,7 +34,7 @@ class @Logo
 
   createLogo: ->
     @createSquares()
-    @initSize @initScreenWidth
+    @resize @screenWidth
     @draw()
 
   createSquares: ->
@@ -32,34 +44,32 @@ class @Logo
         anchor: @position
         logoImgObject: @imgObject
         context: @context
+        logo: this
         id: index
       logoLetter = new LogoLetter(args)
       @logoLetters.push logoLetter
 
   isUnderMouse: (mouseLeft, mouseTop) ->
     topLetter = _.min @logoLetters, (logoLetter) ->
-      logoLetter.homeTop if logoLetter.display
+      logoLetter.homeTop if @size isnt "twoLetters"
     rightLetter = _.max @logoLetters, (logoLetter) ->
-      logoLetter.homeLeft if logoLetter.display
+      logoLetter.homeLeft if @size isnt "twoLetters"
     bottomLetter = _.max @logoLetters, (logoLetter) ->
-      logoLetter.homeTop if logoLetter.display
+      logoLetter.homeTop if @size isnt "twoLetters"
     leftLetter = _.min @logoLetters, (logoLetter) ->
-      logoLetter.homeLeft if logoLetter.display
+      logoLetter.homeLeft if @size isnt "twoLetters"
 
     top = topLetter.top
-    right = rightLetter.left + rightLetter.sideLength
-    bottom = bottomLetter.top + bottomLetter.sideLength
+    right = rightLetter.left + rightLetter.sideLength[@size]
+    bottom = bottomLetter.top + bottomLetter.sideLength[@size]
     left = leftLetter.left
 
     return (mouseLeft < right and mouseLeft > left and mouseTop < bottom and mouseTop > top)
 
-  initSize: (screenWidth) ->
-    @full = (screenWidth >= @breakPoint)
-    if @full then @expand() else @contract()
-
   resize: (screenWidth) ->
-    bigEnough = (screenWidth >= @breakPoint)
-    if @full and !bigEnough then @contract()
+    @screenWidth = screenWidth
+    @setSize()
+    @setHomePosition()
 
   changeCursor: (mouseLeft, mouseTop) ->
     if @isUnderMouse mouseLeft, mouseTop
@@ -69,13 +79,11 @@ class @Logo
 
   handleMouseup: (args) ->
     onHome   = args.onHome
-    onMobile = args.onMobile
     if !onHome
       window.location.replace "/"
     else
-      unless onMobile
-        if @full then @contract() else @expand()
-        @reset()
+      if @full then @contract() else @expand()
+      @reset()
 
   animate: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
@@ -103,6 +111,10 @@ class @Logo
     @full = false
     @returnHome()
 
+  setHomePosition: ->
+    for logoLetter in @logoLetters
+      logoLetter.setHomePosition()
+
   returnHome: ->
     for logoLetter in @logoLetters
       logoLetter.returnHome()
@@ -121,4 +133,4 @@ class @Logo
 
   draw: ->
     for logoLetter in @logoLetters
-      logoLetter.draw() if logoLetter.display
+      logoLetter.draw()

@@ -1,9 +1,22 @@
 class @LogoLetter
   spriteSideLength: 120
   spritePadding: 4
-  xOverlap: 5
-  yOverlap: 12
-  mousemoveEffectDistance: 100
+  sideLength:
+    large: 60
+    small: 35
+    twoLetter: 60
+  xOverlap:
+    large: 5
+    small: 3
+    twoLetter: 5
+  yOverlap:
+    large: 12
+    small: 6
+    twoLetter: 12
+  mousemoveEffectDistance:
+    large: 100
+    small: 50
+    twoLetter: 0
   expansionSize: 4
 
   constructor: (args) ->
@@ -12,22 +25,23 @@ class @LogoLetter
     @text          = args.text
     @anchorLeft    = args.anchor.left
     @anchorTop     = args.anchor.top
+    @logo          = args.logo
     @display       = args.display
     @logoImgObject = args.logoImgObject
     @pixelRatio    = args.context.pixelRatio
-    @sideLength    = @spriteSideLength / 2
+    @ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
     @setWord()
     @setColor()
     @setHomePosition()
 
   middle: ->
-    left = @left + (@sideLength / 2)
-    top  = @top + (@sideLength / 2)
+    left = @left + (@sideLength[@logo.size] / 2)
+    top  = @top + (@sideLength[@logo.size] / 2)
     return { left: left, top: top }
 
   setFromMiddle: (middleLeft, middleTop) ->
-    @left = middleLeft - (@sideLength / 2)
-    @top  = middleTop - (@sideLength / 2)
+    @left = middleLeft - (@sideLength[@logo.size] / 2)
+    @top  = middleTop - (@sideLength[@logo.size] / 2)
 
   setWord: ->
     @word = if @id < 10 then 1 else 2
@@ -38,11 +52,11 @@ class @LogoLetter
 
   setHomePosition: ->
     mult = if @word is 1 then @id else @id - 10
-    leftOffset = (mult * @sideLength) - (mult * @xOverlap)
+    leftOffset = (mult * @sideLength[@logo.size]) - (mult * @xOverlap[@logo.size])
     @homeLeft = @anchorLeft + leftOffset
     @initHomeLeft = @homeLeft
 
-    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap
+    topOffset = if @word is 1 then 0 else @sideLength[@logo.size] - @yOverlap[@logo.size]
     @homeTop = @anchorTop + topOffset
     @initHomeTop = @homeTop
 
@@ -57,18 +71,17 @@ class @LogoLetter
     @top = @homeTop = @initHomeTop
 
   draw: ->
-    ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
-    @ctx.drawImage @logoImgObject, 0, ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength, @sideLength
+    @ctx.drawImage @logoImgObject, 0, @ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength[@logo.size], @sideLength[@logo.size]
 
   getDistanceFromMouse: (mouseLeft, mouseTop) ->
-    distanceFromMouse = {}
-    distanceFromMouse.left = mouseLeft - @middle().left
-    distanceFromMouse.top = mouseTop - @middle().top
+    distanceFromMouse =
+      left: mouseLeft - @middle().left
+      top: mouseTop - @middle().top
     return distanceFromMouse
 
   moveFromMouse: (args) ->
     distanceFromMouse = args.distanceFromMouse
-    mousemoveEffectDistance = args.mousemoveEffectDistance || @mousemoveEffectDistance
+    mousemoveEffectDistance = args.mousemoveEffectDistance || @mousemoveEffectDistance[@logo.size]
 
     radialDistanceFromMouse = Math.round(Math.sqrt(Math.pow(distanceFromMouse.left, 2) + Math.pow(distanceFromMouse.top, 2)))
     if (radialDistanceFromMouse <= mousemoveEffectDistance)
@@ -88,8 +101,8 @@ class @LogoLetter
     @setFromMiddle middleLeft, middleTop
 
   isUnderMouse: (mouseLeft, mouseTop) ->
-    underX = mouseLeft > @left and mouseLeft < (@left + @sideLength)
-    underY = mouseTop > @top and mouseTop < (@top + @sideLength)
+    underX = mouseLeft > @left and mouseLeft < (@left + @sideLength[@logo.size])
+    underY = mouseTop > @top and mouseTop < (@top + @sideLength[@logo.size])
     return (underX and underY)
 
   expand: ->
@@ -109,14 +122,3 @@ class @LogoLetter
   savePos: ->
     @homeLeft = @left
     @homeTop = @top
-
-
-
-
-
-
-
-
-
-
-

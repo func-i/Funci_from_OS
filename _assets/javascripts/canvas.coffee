@@ -3,9 +3,6 @@ window.logo = {}
 @blendingSupported = Modernizr.canvasblending  
 
 $(window).load ->
-  onMobile = ->
-    $('body').width() <= 640
-
   onHome = ->
     window.location.pathname is "/"
 
@@ -109,7 +106,6 @@ $(window).load ->
         logo: window.logo
         ev: ev
         onHome: onHome()
-        onMobile: onMobile() 
       LogoHelper.noTouch.mousedown args
 
   # logo touch
@@ -131,7 +127,6 @@ $(window).load ->
         logo: window.logo
         ev: ev
         onHome: onHome()
-        onMobile: onMobile()
       LogoHelper.touch.tap args
 
       # prevent default hammer release event from firing on tap release
@@ -141,38 +136,22 @@ $(window).load ->
     currentHold = undefined
 
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
-      unless onMobile()
-        args =
-          logo: window.logo
-          mouseX: ev.gesture.touches[0].pageX
-          mouseY: ev.gesture.touches[0].pageY
-        currentHold = new Hold(args)
-        window.logo.holding = true
+      args =
+        logo: window.logo
+        mouseX: ev.gesture.touches[0].pageX
+        mouseY: ev.gesture.touches[0].pageY
+      currentHold = new Hold(args)
+      window.logo.holding = true
 
     $touchLogo.hammer().on 'drag', (ev) ->
-      unless onMobile()
-        args =
-          logo: window.logo
-          ev: ev
-          hold: currentHold
-        LogoHelper.touch.drag args
+      args =
+        logo: window.logo
+        ev: ev
+        hold: currentHold
+      LogoHelper.touch.drag args
 
     pinchStarted = false
     currentPinch = undefined
-
-    # $touchLogo.hammer().on 'pinchin', (ev) ->
-    #   ev.gesture.preventDefault()
-
-    #   center     = ev.gesture.center
-    #   rawTouches = ev.gesture.touches
-    #   unless pinchStarted
-    #     args = 
-    #       center: center
-    #       rawTouches: rawTouches
-    #     currentPinch = new Pinch(args)
-    #   currentPinch.updatePosition center, rawTouches
-    #   window.logo.squeeze currentPinch
-    #   pinchStarted = true
       
     $touchLogo.hammer().on 'release', (ev) ->
       window.logo.holding = false
