@@ -1,23 +1,21 @@
 class @LogoLetter
   spriteSideLength: 120
   spritePadding: 4
-  sideLength:
+  defaultSideLength:
     large: 60
     small: 35
-    twoLetter: 60
   xOverlap:
     large: 5
     small: 3
-    twoLetter: 5
   yOverlap:
     large: 12
     small: 6
-    twoLetter: 12
   mousemoveEffectDistance:
     large: 100
     small: 50
-    twoLetter: 0
-  expansionSize: 4
+  expansionSize:
+    large: 4
+    small: 8
 
   constructor: (args) ->
     @id            = args.id
@@ -30,18 +28,22 @@ class @LogoLetter
     @logoImgObject = args.logoImgObject
     @pixelRatio    = args.context.pixelRatio
     @ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
+    @setSideLength()
     @setWord()
     @setColor()
     @setHomePosition()
 
+  setSideLength: (sideLength) ->
+    @sideLength = sideLength || @defaultSideLength[@logo.size]
+
   middle: ->
-    left = @left + (@sideLength[@logo.size] / 2)
-    top  = @top + (@sideLength[@logo.size] / 2)
+    left = @left + (@sideLength / 2)
+    top  = @top + (@sideLength / 2)
     return { left: left, top: top }
 
   setFromMiddle: (middleLeft, middleTop) ->
-    @left = middleLeft - (@sideLength[@logo.size] / 2)
-    @top  = middleTop - (@sideLength[@logo.size] / 2)
+    @left = middleLeft - (@sideLength / 2)
+    @top  = middleTop - (@sideLength / 2)
 
   setWord: ->
     @word = if @id < 10 then 1 else 2
@@ -52,11 +54,11 @@ class @LogoLetter
 
   setHomePosition: ->
     mult = if @word is 1 then @id else @id - 10
-    leftOffset = (mult * @sideLength[@logo.size]) - (mult * @xOverlap[@logo.size])
+    leftOffset = (mult * @sideLength) - (mult * @xOverlap[@logo.size])
     @homeLeft = @anchorLeft + leftOffset
     @initHomeLeft = @homeLeft
 
-    topOffset = if @word is 1 then 0 else @sideLength[@logo.size] - @yOverlap[@logo.size]
+    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap[@logo.size]
     @homeTop = @anchorTop + topOffset
     @initHomeTop = @homeTop
 
@@ -74,7 +76,7 @@ class @LogoLetter
     (@id is 0 or @id is 10) or @logo.expanded
 
   draw: ->
-    @ctx.drawImage(@logoImgObject, 0, @ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength[@logo.size], @sideLength[@logo.size]) if @isVisible()
+    @ctx.drawImage(@logoImgObject, 0, @ySpriteOffset, @spriteSideLength, @spriteSideLength, @left, @top, @sideLength, @sideLength) if @isVisible()
 
   getDistanceFromMouse: (mouseLeft, mouseTop) ->
     distanceFromMouse =
@@ -104,19 +106,19 @@ class @LogoLetter
     @setFromMiddle middleLeft, middleTop
 
   isUnderMouse: (mouseLeft, mouseTop) ->
-    underX = mouseLeft > @left and mouseLeft < (@left + @sideLength[@logo.size])
-    underY = mouseTop > @top and mouseTop < (@top + @sideLength[@logo.size])
+    underX = mouseLeft > @left and mouseLeft < (@left + @sideLength)
+    underY = mouseTop > @top and mouseTop < (@top + @sideLength)
     return (underX and underY)
 
   expand: ->
-    @sideLength = @sideLength + (@expansionSize * 2)
-    @left = @left - @expansionSize
-    @top = @top - @expansionSize
+    @sideLength = @sideLength + (@expansionSize[@logo.size] * 2)
+    @left = @left - @expansionSize[@logo.size]
+    @top = @top - @expansionSize[@logo.size]
 
   contract: ->
-    @left = @left + @expansionSize
-    @top = @top + @expansionSize
-    @sideLength = @sideLength - (@expansionSize * 2)
+    @left = @left + @expansionSize[@logo.size]
+    @top = @top + @expansionSize[@logo.size]
+    @sideLength = @sideLength - (@expansionSize[@logo.size] * 2)
 
   stickToTouch: (mouseLeft, mouseTop) ->
     @left = mouseLeft + @holdOffset.left

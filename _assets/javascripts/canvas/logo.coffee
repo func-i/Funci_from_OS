@@ -58,8 +58,8 @@ class @Logo
       logoLetter.homeLeft if logoLetter.isVisible()
 
     top = topLetter.top
-    right = rightLetter.left + rightLetter.sideLength[@size]
-    bottom = bottomLetter.top + bottomLetter.sideLength[@size]
+    right = rightLetter.left + rightLetter.sideLength
+    bottom = bottomLetter.top + bottomLetter.sideLength
     left = leftLetter.left
 
     return (mouseLeft < right and mouseLeft > left and mouseTop < bottom and mouseTop > top)
@@ -67,6 +67,7 @@ class @Logo
   resize: (screenWidth) ->
     @screenWidth = screenWidth
     @setSize()
+    @setSideLengths()
     @contract() if @tooDamnSmall()
     @setHomePosition()
 
@@ -98,6 +99,10 @@ class @Logo
   setHomePosition: ->
     for logoLetter in @logoLetters
       logoLetter.setHomePosition()
+
+  setSideLengths: ->
+    for logoLetter in @logoLetters
+      logoLetter.setSideLength()
 
   returnHome: ->
     for logoLetter in @logoLetters

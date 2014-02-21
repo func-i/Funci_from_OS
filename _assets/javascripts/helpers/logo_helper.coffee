@@ -63,6 +63,6 @@
       if logo.holding
         logo.dragLetters hold, mouseX, mouseY
       else
-        logo.animate mouseX, mouseY if logo.size isnt "twoLetters"
+        logo.animate mouseX, mouseY
 
       ev.gesture.preventDefault() if logo.isUnderMouse(mouseX, mouseY)
