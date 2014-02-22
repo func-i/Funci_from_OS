@@ -1,25 +1,25 @@
 $ ->
-  $hasMany       = $('.touch header nav a.has-menu')
-  $touchBody     = $('.touch #body')
-  $menuActivated = $('.touch header nav li.menu-activated')
-  $navigable     = $('.touch header nav a.navigable')
+  $nav = $('.touch header nav')
 
+  unless $nav.length is 0
 
-  $hasMany.click (ev) ->
-    ev.stopPropagation()
+    $nav.find('a.has-menu').click (ev) ->
+      ev.stopPropagation()
 
-    $clickedA = $(this)
-    $clickedLi = $clickedA.closest('li')
-    $otherLis = $clickedLi.siblings()
+      $clickedA = $(this)
+      $clickedLi = $clickedA.closest('li')
+      $otherLis = $clickedLi.siblings()
 
-    $otherLis.removeClass('menu-activated')
+      $nav.find('li.menu-activated').removeClass('menu-activated')
+      $nav.find('a.navigable').removeClass('navigable')
 
-    unless $clickedA.hasClass('navigable')
-      ev.preventDefault()
-      $clickedLi.addClass('menu-activated')
+      if $clickedA.hasClass('navigable')
+        # navigate like usual
+      else
+        ev.preventDefault()
+        $clickedLi.addClass('menu-activated')
+        $clickedA.addClass('navigable')
 
-    $clickedA.toggleClass('navigable')
-
-  $touchBody.click ->
-    $menuActivated.removeClass('menu-activated')
-    $navigable.removeClass('navigable')
+    $('.touch #body').click ->
+      $nav.find('li.menu-activated').removeClass('menu-activated')
+      $nav.find('a.navigable').removeClass('navigable')
