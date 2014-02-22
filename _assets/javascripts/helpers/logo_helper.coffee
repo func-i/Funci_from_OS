@@ -44,14 +44,17 @@
       onHome   = args.onHome
 
       if logo.isUnderMouse mouseX, mouseY
-        wasExpanded = logo.expanded
-        logo.expand()
-        logo.explode mouseX, mouseY
-        setTimeout ->
-          window.location.replace("/") unless onHome
-          if wasExpanded then logo.contract() else logo.expand()
-          logo.reset()
-        , 100
+        if !logo.tooDamnSmall
+          wasExpanded = logo.expanded
+          logo.expand()
+          logo.explode mouseX, mouseY
+          setTimeout ->
+            window.location.replace("/") unless onHome
+            if wasExpanded then logo.contract() else logo.expand()
+            logo.reset()
+          , 100
+        else
+          window.location.replace("/")
 
     drag: (args) ->
       logo   = args.logo

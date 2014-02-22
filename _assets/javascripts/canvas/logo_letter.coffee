@@ -12,7 +12,7 @@ class @LogoLetter
     small: 6
   mousemoveEffectDistance:
     large: 100
-    small: 50
+    small: 75
   expansionSize:
     large: 4
     small: 8

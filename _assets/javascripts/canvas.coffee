@@ -76,17 +76,20 @@ $(window).load ->
 
   ##### handle events
 
-  # icons squares
-  $('.no-touch .square.icon').mouseover ->
-    square = SquareHelper.findSquare $(this)
-    square.context.clear square.left, square.top, square.sideLength, square.sideLength
-    square.strokeRect "green"
+  # icon squares
+  $noTouchIcons = $('.no-touch .square.icon')
 
-  $('.no-touch .square.icon').mouseout ->
-    square = SquareHelper.findSquare $(this)
-    square.context.clear 0, 0, square.canvas.width, square.canvas.height
-    for square in square.canvas.squares
-      square.draw()
+  unless $noTouchIcons.length is 0
+    $noTouchIcons.mouseover ->
+      square = SquareHelper.findSquare $(this)
+      square.context.clear square.left, square.top, square.sideLength, square.sideLength
+      square.strokeRect "green"
+
+    $noTouchIcons.mouseout ->
+      square = SquareHelper.findSquare $(this)
+      square.context.clear 0, 0, square.canvas.width, square.canvas.height
+      for square in square.canvas.squares
+        square.draw()
 
   # logo no-touch
   $noTouchLogo = $('.no-touch.canvasblending #logo')
@@ -136,19 +139,21 @@ $(window).load ->
     currentHold = undefined
 
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
-      args =
-        logo: window.logo
-        mouseX: ev.gesture.touches[0].pageX
-        mouseY: ev.gesture.touches[0].pageY
-      currentHold = new Hold(args)
-      window.logo.holding = true
+      unless logo.tooDamnSmall
+        args =
+          logo: window.logo
+          mouseX: ev.gesture.touches[0].pageX
+          mouseY: ev.gesture.touches[0].pageY
+        currentHold = new Hold(args)
+        window.logo.holding = true
 
     $touchLogo.hammer().on 'drag', (ev) ->
-      args =
-        logo: window.logo
-        ev: ev
-        hold: currentHold
-      LogoHelper.touch.drag args
+      unless logo.tooDamnSmall
+        args =
+          logo: window.logo
+          ev: ev
+          hold: currentHold
+        LogoHelper.touch.drag args
 
     pinchStarted = false
     currentPinch = undefined
