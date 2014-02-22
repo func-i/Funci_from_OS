@@ -35,13 +35,19 @@ header {
           }
         }
 
+        &.menu-activated {
+          > .sub-menu {
+            display: block;
+          }
+        }
+
         @media screen and (max-width:640px) {
           display: block;
           margin: 0;
           font-size: .75em;
 
           &:not(:last-child) {
-            padding: 0 0 .5em 0;
+            padding: 0 0 .75em 0;
           }
         }
 

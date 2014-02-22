@@ -1,5 +1,11 @@
 $ ->
-  $('.touch header nav a.has-menu').click (ev) ->
+  $hasMany       = $('.touch header nav a.has-menu')
+  $touchBody     = $('.touch #body')
+  $menuActivated = $('.touch header nav li.menu-activated')
+  $navigable     = $('.touch header nav a.navigable')
+
+
+  $hasMany.click (ev) ->
     ev.stopPropagation()
 
     $clickedA = $(this)
@@ -14,6 +20,6 @@ $ ->
 
     $clickedA.toggleClass('navigable')
 
-  $('.touch #body').click ->
-    $('header nav li.menu-activated').removeClass('menu-activated')
-    $('header nav a.navigable').removeClass('navigable')
+  $touchBody.click ->
+    $menuActivated.removeClass('menu-activated')
+    $navigable.removeClass('navigable')
