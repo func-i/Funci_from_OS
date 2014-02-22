@@ -28,51 +28,41 @@ header {
       > li {
         position: relative;
         display: inline-block;
-        padding: 0 .75em;
+        margin: 0 .75em;
 
-        &.menu-activated {
-          z-index: 1;
+        &:hover {
+          > .sub-menu {
+            display: block;
+          }
+        }
 
-          .bg {
+        @media screen and (max-width:640px) {
+
+        }
+
+        > .sub-menu {
+          display: none;
+          position: absolute;
+          left: -1em;
+
+          &:hover {
             display: block;
           }
 
           > ul {
-            display: block;
-          }
-        }
-
-        .bg {
-          display: none;
-          position: absolute;
-          left: -.5em;
-          top: -1.25em;
-          height: 14em;
-          width: 14em;
-          background: $dark-gray;
-          border: solid 1px $green;
-          z-index: -5000;
-        }
-
-        @media screen and (max-width:640px) {
-          .bg {
-            height: 11em;
+            margin-top: 1em;
+            background: $dark-gray;
+            border: solid 1px $green;
+            padding: 1em;
+            text-align: left;
             width: 11em;
-          }
-        }
+            height: 11em;
 
-        > ul {
-          display: none;
-          position: absolute;
-          margin-top: 1em;
-          padding: 0;
-          text-align: left;
-          width: 10em;
-
-          > li {
-            position: relative;
-            display: list-item;
-            padding: 0 0 .5em 0;
+            > li {
+              position: relative;
+              display: list-item;
+              padding: 0 0 .5em 0;
+            }
           }
         }
       }
