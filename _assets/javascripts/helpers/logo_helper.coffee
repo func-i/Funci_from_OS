@@ -44,7 +44,7 @@
       onHome   = args.onHome
 
       if logo.isUnderMouse mouseX, mouseY
-        if !logo.tooDamnSmall
+        if !logo.tooDamnSmall()
           wasExpanded = logo.expanded
           logo.expand()
           logo.explode mouseX, mouseY

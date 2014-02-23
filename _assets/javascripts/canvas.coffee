@@ -139,7 +139,7 @@ $(window).load ->
     currentHold = undefined
 
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
-      unless logo.tooDamnSmall
+      unless logo.tooDamnSmall()
         args =
           logo: window.logo
           mouseX: ev.gesture.touches[0].pageX
@@ -148,7 +148,7 @@ $(window).load ->
         window.logo.holding = true
 
     $touchLogo.hammer().on 'drag', (ev) ->
-      unless logo.tooDamnSmall
+      unless logo.tooDamnSmall()
         args =
           logo: window.logo
           ev: ev
