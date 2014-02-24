@@ -40,7 +40,15 @@ header {
 
         &.menu-activated {
           > .sub-menu {
-            display: block;
+            // display: block;
+            pointer-events: all;
+
+            > ul {
+              -moz-transform: none;
+              -ms-transform: none;
+              -o-transform: none;
+              -webkit-transform: none;
+            }
           }
         }
 
@@ -60,22 +68,33 @@ header {
         }
 
         > .sub-menu {
-          display: none;
+          // display: none;
+          pointer-events: none;
           position: absolute;
           left: -1em;
           z-index: 5000;
+          margin-top: 1em;
+
+          -moz-perspective-origin: top;
+          -ms-perspective-origin: top;
+          -o-perspective-origin: top;
+          -webkit-perspective-origin: top;
+          -moz-perspective: 200px;
+          -ms-perspective: 200px;
+          -o-perspective: 200px;
+          -webkit-perspective: 200px;
 
           @media screen and (max-width:640px) {
             left: 6em;
             top: -1em;
+            margin-top: 0;
           }
 
           &:hover {
-            display: block;
+            display: block;            
           }
 
           > ul {
-            margin-top: 1em;
             background: $dark-gray;
             border: solid 1px $green;
             padding: 1em;
@@ -83,9 +102,22 @@ header {
             width: 11em;
             height: 11em;
 
-            @media screen and (max-width:640px) {
-              margin-top: 0;
-            }
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            -moz-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transform-origin: top;
+            -ms-transform-origin: top;
+            -o-transform-origin: top;
+            -webkit-transform-origin: top;
+            -moz-transform: rotateX(-90deg);
+            -ms-transform: rotateX(-90deg);
+            -o-transform: rotateX(-90deg);
+            -webkit-transform: rotateX(-90deg);
 
             > li {
               position: relative;
@@ -109,6 +141,17 @@ header {
 
 .no-touch {
   header nav > ul > li:hover {
-    @extend .menu-activated;
+    > .sub-menu {
+      // display: block;
+      pointer-events: all;
+
+      > ul {
+        -moz-transform: none;
+        -ms-transform: none;
+        -o-transform: none;
+        -webkit-transform: none;
+      }
+    }
   }
 }
+

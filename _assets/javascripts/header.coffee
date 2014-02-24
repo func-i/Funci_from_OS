@@ -1,25 +1,33 @@
 $ ->
-  $nav = $('.touch header nav')
+  $body = $('#body')
+  $nav  = $('.touch header nav')
 
   unless $nav.length is 0
 
-    $nav.find('a.has-menu').click (ev) ->
+    menuActivated = false
+
+    $nav.find('a.has-menu').hammer().on 'tap', (ev) ->
+      ev.gesture.stopPropagation()
       ev.stopPropagation()
 
       $clickedA = $(this)
       $clickedLi = $clickedA.closest('li')
       $otherLis = $clickedLi.siblings()
-
-      $nav.find('li.menu-activated').removeClass('menu-activated')
-      $nav.find('a.navigable').removeClass('navigable')
+      $otherAs = $otherLis.find('>a')
 
       if $clickedA.hasClass('navigable')
-        # navigate like usual
+        # navigate like a boss
       else
-        ev.preventDefault()
+        ev.gesture.preventDefault()
         $clickedLi.addClass('menu-activated')
         $clickedA.addClass('navigable')
+        $otherLis.removeClass('menu-activated')
+        $otherAs.removeClass('navigable')
 
-    $('.touch #body').click ->
-      $nav.find('li.menu-activated').removeClass('menu-activated')
-      $nav.find('a.navigable').removeClass('navigable')
+      menuActivated = true
+
+    $('.touch #body').hammer().on 'tap', (ev) ->
+      unless $(ev.target).closest('.sub-menu').length
+        if menuActivated
+          $nav.find('li.menu-activated').removeClass('menu-activated')
+          $nav.find('a.navigable').removeClass('navigable')
