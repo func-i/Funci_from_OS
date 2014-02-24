@@ -22,10 +22,14 @@ $.fn.funciSelect = ->
   select.after ul
   ul.hide()
 
+  $options = select.find('option')
+
   # create lis for each option
-  select.find('option').each ->
+  $options.each ->
     optionText = $(this).text()
     ul.append("<li><a>#{optionText}</a></li>")
+
+  selectedOption.find('a').text $options.first().text()
 
   toggleArrow = ->
     if ul.is(":visible")
