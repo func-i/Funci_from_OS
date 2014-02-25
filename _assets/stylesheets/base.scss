@@ -348,12 +348,32 @@ a {
   position: relative;
 }
 
-#social-icons {
+#social-icons, #business-logos {
   overflow: visible;
-  
+
   .phone {
     img {
       width: 20%;
+    }
+  }
+
+  .obsub {
+    img {
+      width: 90%;
+    }
+  }
+
+  .lighthouse {
+    img {
+      width: 80%;
+    }
+  }
+
+  .obsub, .lighthouse {
+    &:hover {
+      img {
+        opacity: 1;
+      }
     }
   }
 }
