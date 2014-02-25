@@ -6,11 +6,10 @@ $ ->
 
     menuActivated = false
 
-    $nav.find('a.has-menu').hammer().on 'tap', (ev) ->
-      ev.gesture.stopPropagation()
+    $nav.find('a.has-menu').click (ev) ->
       ev.stopPropagation()
 
-      $clickedA = $(ev.target)
+      $clickedA = $(this)
       $clickedLi = $clickedA.closest('li')
       $otherLis = $clickedLi.siblings()
       $otherAs = $otherLis.find('>a')
@@ -18,7 +17,7 @@ $ ->
       if $clickedA.hasClass('navigable')
         # navigate like a boss
       else
-        ev.gesture.preventDefault()
+        ev.preventDefault()
         $clickedLi.addClass('menu-activated')
         $clickedA.addClass('navigable')
         $otherLis.removeClass('menu-activated')
