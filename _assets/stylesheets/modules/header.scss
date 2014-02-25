@@ -1,12 +1,11 @@
 header {
   position: relative;
   z-index: 3;
-  border-bottom: 1px solid white;
   -webkit-user-select: none;
 
   nav {
     @extend .row, .collapse;
-    
+
     position: relative;
     z-index: 1;
 
