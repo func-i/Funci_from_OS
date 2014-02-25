@@ -6,7 +6,7 @@ header {
 
   nav {
     @extend .row, .collapse;
-
+    
     position: relative;
     z-index: 1;
 
@@ -15,8 +15,6 @@ header {
     }
 
     > ul {
-      @extend .small-12, .columns;
-
       position: relative;
       z-index: 0;
       padding: 0;

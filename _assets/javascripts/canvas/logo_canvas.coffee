@@ -13,5 +13,9 @@ class @LogoCanvas
   orient: ->
     @width  = @elem.width()
     @height = @elem.height()
+
+    @elem.css 'width', (@width)
+    @elem.css 'height', (@height)
+
     @elem.attr 'width', (@width * @pixelRatio) 
-    @elem.attr 'height', (@height * @pixelRatio) 
+    @elem.attr 'height', (@height * @pixelRatio)
