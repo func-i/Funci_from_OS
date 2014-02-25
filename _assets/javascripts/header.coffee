@@ -10,7 +10,7 @@ $ ->
       ev.gesture.stopPropagation()
       ev.stopPropagation()
 
-      $clickedA = $(this)
+      $clickedA = $(ev.target)
       $clickedLi = $clickedA.closest('li')
       $otherLis = $clickedLi.siblings()
       $otherAs = $otherLis.find('>a')
