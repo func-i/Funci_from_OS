@@ -1,5 +1,5 @@
 class @Canvas
-  buffer: 4
+  buffer: 2
 
   constructor: (args) ->
     @referenceElem = args.referenceElem
@@ -21,14 +21,14 @@ class @Canvas
     dpr / bspr
 
   setOffset: ->
-    @offsetLeft = Math.round @referenceElem.offset().left - (@buffer - @buffer/2)
-    @offsetTop  = Math.round @referenceElem.offset().top - (@buffer - @buffer/2)
+    @offsetLeft = Math.round @referenceElem.offset().left - @buffer
+    @offsetTop  = Math.round @referenceElem.offset().top - @buffer
 
   orient: ->
     @setOffset()
 
-    @width  = @referenceElem.width() + @buffer
-    @height = @referenceElem.height() + @buffer
+    @width  = @referenceElem.width() + (@buffer * 2)
+    @height = @referenceElem.height() + (@buffer * 2)
 
     @elem.css 'width', (@width)
     @elem.css 'height', (@height)
@@ -43,11 +43,14 @@ class @Canvas
         if otherSquare.left is (currentSquareRight + 1)
           otherSquare.left -= 1
           otherSquare.elem.css 'left', -1
+          otherSquare.alreadyAdjusted = true
         else if otherSquare.left is (currentSquareRight - 1)
           otherSquare.left += 1
           otherSquare.elem.css 'left', 1
+          otherSquare.alreadyAdjusted = true
         else if otherSquare.left is (currentSquareRight + 2)
           otherSquare.left -= 2
           otherSquare.elem.css 'left', -2
+          otherSquare.alreadyAdjusted = true
         else
-          otherSquare.elem.css 'left', 0
+          otherSquare.elem.css 'left', 0 unless otherSquare.alreadyAdjusted

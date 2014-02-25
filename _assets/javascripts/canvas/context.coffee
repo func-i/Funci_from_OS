@@ -18,4 +18,4 @@ class @Context
 
   clear: (offsetX, offsetY, width, height) ->
     @ctx.setTransform @pixelRatio, 0, 0, @pixelRatio, 0, 0
-    @ctx.clearRect (offsetX - @clearBuffer), (offsetY - @clearBuffer), (width + @clearBuffer*2), (height + @clearBuffer*2)
+    @ctx.clearRect (offsetX), (offsetY), (width + @clearBuffer), (height + @clearBuffer)

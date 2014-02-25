@@ -118,9 +118,8 @@ h3 {
 canvas {
   position: absolute;
   z-index: -1;
-  // need this for squares to not be cut off at the edges
-  top: -2px;
   left: -2px;
+  top: -2px;
 }
 
 .canvas {
@@ -350,6 +349,8 @@ a {
 }
 
 #social-icons {
+  overflow: visible;
+  
   .phone {
     img {
       width: 20%;

@@ -18,7 +18,7 @@ class @Square
     @canvas.squares.push this
 
   orient: ->
-    @sideLength = Math.round @elem.outerWidth()
+    @sideLength = Math.round(@elem.outerWidth())
     @top        = Math.round(@elem.offset().top) - @canvas.offsetTop
     @left       = Math.round(@elem.offset().left) - @canvas.offsetLeft
     @orientHalfImage() if @isHalfImage
