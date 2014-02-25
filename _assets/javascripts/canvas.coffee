@@ -1,6 +1,6 @@
 window.canvases = []
 window.logo = {}
-@blendingSupported = Modernizr.canvasblending  
+@blendingSupported = Modernizr.canvasblending
 
 $(window).load ->
   onHome = ->
@@ -16,9 +16,8 @@ $(window).load ->
 
   ##### create canvases and corresponding contexts
   $('.canvas').each (index) ->
-    args =
+    canvas = new Canvas
       referenceElem: $(this)
-    canvas = new Canvas(args)
     context = new Context(canvas)
 
     canvas.context = context
@@ -26,12 +25,11 @@ $(window).load ->
 
     ##### create squares
     $('.square', this).each (index) ->
-      args =
+      square = new Square
         elem: $(this)
         canvas: canvas
         context: context
         id: index
-      square = new Square(args)
 
     canvas.adjustSquarePositions()
 
@@ -41,17 +39,15 @@ $(window).load ->
   ##### create logo canvas and context
   if blendingSupported
     # canvas logo
-    args =
+    logoCanvas = new LogoCanvas
       elem: $('#logo-canvas')
-    logoCanvas = new LogoCanvas(args)
     logoContext = new Context(logoCanvas)
 
-    args =
+    window.logo = new Logo
       elem: $('#logo')
       canvas: logoCanvas
       context: logoContext
       screenWidth: $(window).width()
-    window.logo = new Logo(args)
   else
     # fallback logo imgs
 
@@ -70,9 +66,12 @@ $(window).load ->
 
   ##### fade in
 
-  $('#loading').css('opacity', '0')
-  $('#body').css('opacity', '1')
-  $('#loading').remove()
+  $loading = $('#loading')
+  $body    = $('#body')
+  
+  $loading.css('opacity', '0')
+  $body.css('opacity', '1')
+  $loading.remove()
 
   ##### handle events
 
@@ -105,11 +104,10 @@ $(window).load ->
       LogoHelper.noTouch.mousemove logo, ev
 
     $noTouchLogo.mousedown (ev) ->
-      args =
+      LogoHelper.noTouch.mousedown
         logo: window.logo
         ev: ev
         onHome: onHome()
-      LogoHelper.noTouch.mousedown args
 
   # logo touch
   $touchLogo = $('.touch.canvasblending #logo')
@@ -126,11 +124,10 @@ $(window).load ->
       LogoHelper.startAnimation(window.logo)
 
     $touchLogo.hammer().on 'tap', (ev) ->
-      args =
+      LogoHelper.touch.tap
         logo: window.logo
         ev: ev
         onHome: onHome()
-      LogoHelper.touch.tap args
 
       # prevent default hammer release event from firing on tap release
       ev.gesture.stopDetect()
@@ -140,20 +137,18 @@ $(window).load ->
 
     $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
       unless logo.tooDamnSmall()
-        args =
+        currentHold = new Hold
           logo: window.logo
           mouseX: ev.gesture.touches[0].pageX
           mouseY: ev.gesture.touches[0].pageY
-        currentHold = new Hold(args)
         window.logo.holding = true
 
     $touchLogo.hammer().on 'drag', (ev) ->
       unless logo.tooDamnSmall()
-        args =
+        LogoHelper.touch.drag
           logo: window.logo
           ev: ev
           hold: currentHold
-        LogoHelper.touch.drag args
 
     pinchStarted = false
     currentPinch = undefined

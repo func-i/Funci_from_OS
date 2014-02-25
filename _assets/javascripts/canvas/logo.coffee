@@ -37,14 +37,13 @@ class @Logo
 
   createSquares: ->
     for index in [0..(@logoString.length-1)]
-      args =
+      logoLetter = new LogoLetter
         text: @logoString.charAt(index)
         anchor: @position
         logoImgObject: @imgObject
         context: @context
         logo: this
         id: index
-      logoLetter = new LogoLetter(args)
       @logoLetters.push logoLetter
 
   isUnderMouse: (mouseLeft, mouseTop) ->
@@ -83,10 +82,9 @@ class @Logo
   explode: (mouseLeft, mouseTop) ->
     for logoLetter in @logoLetters
       distanceFromMouse = logoLetter.getDistanceFromMouse mouseLeft, mouseTop
-      args =
+      logoLetter.moveFromMouse
         distanceFromMouse: distanceFromMouse
         mousemoveEffectDistance: 300
-      logoLetter.moveFromMouse args
 
   expand: ->
     @expanded = true
