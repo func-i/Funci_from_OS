@@ -12,7 +12,7 @@ class @Logo
     @screenWidth     = args.screenWidth
     @position        = @elem.offset()
     @imgSrc          = @elem.data('imgSprite')
-    @expanded            = true
+    @expanded        = true
     @setSize()
     @setImg()
     # createLogo() after img is loaded
@@ -65,10 +65,15 @@ class @Logo
 
   resize: (screenWidth) ->
     @screenWidth = screenWidth
+    @changeAnchor @elem.offset()
     @setSize()
     @setSideLengths()
     @contract() if @tooDamnSmall()
     @setHomePosition()
+
+  changeAnchor: (offset) ->
+    for logoLetter in @logoLetters
+      logoLetter.anchor = offset
 
   changeCursor: (mouseLeft, mouseTop) ->
     cursor = if @isUnderMouse(mouseLeft, mouseTop) then 'pointer' else 'default'

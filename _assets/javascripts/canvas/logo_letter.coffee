@@ -21,8 +21,7 @@ class @LogoLetter
     @id            = args.id
     @ctx           = args.context.ctx
     @text          = args.text
-    @anchorLeft    = args.anchor.left
-    @anchorTop     = args.anchor.top
+    @anchor        = args.anchor
     @logo          = args.logo
     @display       = args.display
     @logoImgObject = args.logoImgObject
@@ -55,11 +54,11 @@ class @LogoLetter
   setHomePosition: ->
     mult = if @word is 1 then @id else @id - 10
     leftOffset = (mult * @sideLength) - (mult * @xOverlap[@logo.size])
-    @homeLeft = @anchorLeft + leftOffset
+    @homeLeft = @anchor.left + leftOffset
     @initHomeLeft = @homeLeft
 
     topOffset = if @word is 1 then 0 else @sideLength - @yOverlap[@logo.size]
-    @homeTop = @anchorTop + topOffset
+    @homeTop = @anchor.top + topOffset
     @initHomeTop = @homeTop
 
     @returnHome()
