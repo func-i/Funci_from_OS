@@ -48,6 +48,11 @@ $(window).load ->
       canvas: logoCanvas
       context: logoContext
       screenWidth: $(window).width()
+
+    if onHome()
+      LogoHelper.startAnimation logo
+      logo.popLetters()
+      logo.isPoppin = true
   else
     # fallback logo imgs
 
@@ -115,6 +120,10 @@ $(window).load ->
   # if on touch device that supports blending
   unless $touchLogo.length is 0
     $touchLogo.hammer().on 'touch', (ev) ->
+      if logo.isPoppin
+        LogoHelper.reset(logo)
+        logo.isPoppin = false
+
       mouseX = ev.gesture.touches[0].pageX
       mouseY = ev.gesture.touches[0].pageY
 
