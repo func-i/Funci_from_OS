@@ -70,6 +70,8 @@ $ ->
     $(this).hide()
     $('#form-success').show()
 
+    ResizeHelper.handleResize()
+
     name     = $('[name="name"]').val()
     email    = $('[name="email-address"]').val()
     interest = $('[name="interest"]').val()

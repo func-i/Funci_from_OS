@@ -18,7 +18,7 @@
     height: 540px;
   }
 
-  @media screen and (max-width: 800px) and (min-width: 641px) {
+  @media screen and (max-width: 960px) {
     #mapbox {
       height: 350px;
     }
@@ -26,7 +26,7 @@
 
   @media screen and (max-width: 400px) {
     #mapbox {
-      height: 350px;
+      height: 240px;
     }
   }
 
