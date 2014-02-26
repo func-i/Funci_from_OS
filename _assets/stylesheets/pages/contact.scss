@@ -7,13 +7,11 @@
 
   #map {
     padding: 1px;
-    margin-top: 5em;
 
     @media screen and (max-width:640px) {
       margin: 0;
     }
   }
-
   
   // hack alert!
   #mapbox {
@@ -33,11 +31,7 @@
   }
 
   #jobs {
-    margin-top: 18em;
-  }
-
-  #social-icons {
-    margin-top: 3em;
+    margin-top: 4em;
   }
 
   #form {
@@ -63,6 +57,8 @@
       border-bottom: 1px solid white;
 
       a {
+        color: white;
+
         &:hover, &:focus {
           color: $blue;
           text-decoration: underline;
@@ -90,19 +86,19 @@
         outline: none;
         display: block;
         font-size: 1em;
-        line-height: 46px;
-        padding-top: 10px;
+        line-height: 2em;
+        padding-top: 4px;
         resize: none;
         height: 300px;
         width: 100%;
 
         background-color: transparent;
-        background-image: -webkit-linear-gradient(top, transparent, transparent 45px, white 0);
-        background-image:    -moz-linear-gradient(top, transparent, transparent 45px, white 0);
-        background-image:         linear-gradient(top, transparent, transparent 45px, white 0);
+        background-image: -webkit-linear-gradient(top, transparent, transparent 1.92em, white 0);
+        background-image:    -moz-linear-gradient(top, transparent, transparent 1.92em, white 0);
+        background-image:         linear-gradient(top, transparent, transparent 1.92em, white 0);
 
-        -webkit-background-size: 100% 46px;
-        background-size: 100% 46px;
+        -webkit-background-size: 100% 2em;
+        background-size: 100% 2em;
       }
     }
 

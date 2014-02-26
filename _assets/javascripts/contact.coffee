@@ -62,6 +62,9 @@ $.fn.funciSelect = ->
 $ ->
   $('#contact select').funciSelect()
 
+  $('#contact textarea').keydown (ev) ->
+    ev.preventDefault() if ev.which is 13
+
   $('#contact form').submit (ev) ->
     ev.preventDefault()
     $(this).hide()
