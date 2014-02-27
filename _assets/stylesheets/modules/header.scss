@@ -1,13 +1,12 @@
 header {
   position: relative;
-  z-index: 3;
   -webkit-user-select: none;
 
   nav {
     @extend .row, .collapse;
 
     position: relative;
-    z-index: 1;
+    z-index: 3;
 
     .selected {
       color: $green;
