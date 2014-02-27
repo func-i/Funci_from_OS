@@ -213,11 +213,7 @@ a {
 
     @media screen and (max-width:800px) {
       &.half-image {
-        .text-content {
-          background-position: 0 -105% !important;
-        }
-
-        .image-container {
+        .supporting, br {
           display: none;
         }
       }
@@ -232,19 +228,11 @@ a {
         @include bg-fill-up($blue);
       }
 
-      @media screen and (max-width:800px) {
-        &.half-image {
+      &.half-image {
+        .text-content {
           @include bg-fill-up($blue);
         }
-      } 
-
-      @media screen and (min-width:801px) {
-        &.half-image {
-          .text-content {
-            @include bg-fill-up($blue);
-          }
-        }
-      }        
+      }
     }
     
     &[data-color="yellow"] {
@@ -252,19 +240,11 @@ a {
         @include bg-fill-up($yellow);
       }
 
-      @media screen and (max-width:800px) {
-        &.half-image {
+      &.half-image {
+        .text-content {
           @include bg-fill-up($yellow);
         }
       }
-
-      @media screen and (min-width:801px) {
-        &.half-image {
-          .text-content {
-            @include bg-fill-up($yellow);
-          }
-        }
-      } 
     }
 
     &.half-image:hover {
@@ -274,6 +254,8 @@ a {
     }
   }
 }
+
+////////// small screen positioning reset //////////
 
 @media screen and (max-width:640px) {
   .square.text, .square.image, #social-icons {
