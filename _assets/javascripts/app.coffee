@@ -1,8 +1,8 @@
+#= require ./lib/twitter.js
 #= require ./lib/mapbox.min.js
 #= require ./lib/jquery-2.1.0.min
 #= require ./lib/jquery.hammer.min
 #= require ./lib/request_animation_frame_polyfill
-#= require ./lib/twitter
 #= require ./lib/underscore-min.js
 #= require base
 #= require header
