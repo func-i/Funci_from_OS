@@ -351,7 +351,7 @@ a {
     right: 0;
   }
 
-  img {
+  object {
     position: absolute;
     margin: auto;
     top: 0;
@@ -360,35 +360,15 @@ a {
     right: 0;
     width: 33%;
     opacity: 1;
+  }
 
-    &.hover {
-      opacity: 0;
-    }
+  object {
+    pointer-events: none;
   }
 }
 
 .no-touch .square.icon {
   @include bg-fill-up($green);
-
-  &:hover {
-    img {
-      opacity: 0;
-      -webkit-transition: opacity 1s linear;
-      -moz-transition: opacity 1s linear;
-      -o-transition: opacity 1s linear;
-      transition: opacity 1s linear;
-
-      &.hover {
-        opacity: 1;
-      }
-    }
-  }
-
-  img {
-    &.hover {
-      opacity: 0;
-    }
-  }
 }
 
 .no-touch.no-csstransitions .square.icon {
@@ -403,28 +383,20 @@ a {
   overflow: visible;
 
   .phone {
-    img {
+    object {
       width: 20%;
     }
   }
 
   .obsub {
-    img {
+    object {
       width: 90%;
     }
   }
 
   .lighthouse {
-    img {
+    object {
       width: 80%;
-    }
-  }
-
-  .obsub, .lighthouse {
-    &:hover {
-      img {
-        opacity: 1;
-      }
     }
   }
 }
