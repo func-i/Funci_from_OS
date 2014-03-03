@@ -14,9 +14,7 @@ $ ->
       $otherLis = $clickedLi.siblings()
       $otherAs = $otherLis.find('>a')
 
-      if $clickedA.hasClass('navigable')
-        # navigate like a boss
-      else
+      unless $clickedA.hasClass('navigable')
         ev.preventDefault()
         $clickedLi.addClass('menu-activated')
         $clickedA.addClass('navigable')
@@ -25,8 +23,8 @@ $ ->
 
       menuActivated = true
 
-    $('.touch #body').hammer().on 'tap', (ev) ->
-      unless $(ev.target).closest('.sub-menu').length
+    $('.touch #body').click (ev) ->
+      unless $(this).closest('.sub-menu').length
         if menuActivated
           $nav.find('li.menu-activated').removeClass('menu-activated')
           $nav.find('a.navigable').removeClass('navigable')
