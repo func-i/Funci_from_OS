@@ -12,14 +12,15 @@ assignTransitionCss = ($paths) ->
     OTransition: 'fill .5s linear'
     transition: 'fill .5s linear'
 
-$(window).load ->
-  $icons = $('.icon').not('.no-hover')
-  
-  $icons.each ->
-    $paths = getIconPaths $(this)
-    assignTransitionCss($paths)
+unless Modernizr.touch
+  $(window).load ->
+    $icons = $('.icon').not('.no-hover')
+    
+    $icons.each ->
+      $paths = getIconPaths $(this)
+      assignTransitionCss($paths)
 
-    $(this).hover (ev) ->
-      $paths.css 'fill', BASE_COLORS.darkGray
-    , ->
-      $paths.css 'fill', ""
+      $(this).hover (ev) ->
+        $paths.css 'fill', BASE_COLORS.darkGray
+      , ->
+        $paths.css 'fill', ""
