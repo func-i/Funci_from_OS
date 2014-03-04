@@ -9,6 +9,7 @@ if $('#map').length > 0
 
   if Modernizr.touch
     map.dragging.disable()
+    map.tap.disable()
 
 $.fn.funciSelect = ->
   select = this
