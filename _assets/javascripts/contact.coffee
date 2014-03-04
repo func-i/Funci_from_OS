@@ -85,5 +85,10 @@ $ ->
 
     body = encodeURIComponent "#{message}\n\n- #{name}\n#{email}"
 
-    mailToLink = "mailto:info@functionalimperative.com?subject=#{interest}&body=" + body
-    window.open mailToLink, '_blank'
+    mailToLink = "mailto:info@functionalimperative.com?subject=#{interest}&body=" + body + "&target=_blank"
+
+    # if android/ios
+    if Modernizr.touch
+      window.location = mailToLink
+    else
+      window.open mailToLink, '_blank'
