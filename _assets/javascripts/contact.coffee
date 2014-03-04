@@ -4,6 +4,11 @@ if $('#map').length > 0
     zoom: 17
     zoomControl: false
     attributionControl: false
+    tileLayer:
+      detectRetina: true
+
+  if Modernizr.touch
+    map.dragging.disable()
 
 $.fn.funciSelect = ->
   select = this
