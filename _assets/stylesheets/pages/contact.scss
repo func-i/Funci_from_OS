@@ -112,6 +112,8 @@
         width: 4em;
         height: 4em;
         outline: none;
+        border-radius: 0;
+        padding: 0;
 
         &:hover, &:focus {
           color: $dark-gray;
