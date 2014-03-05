@@ -1,9 +1,13 @@
-getIconPaths = ($icon) ->
-  $object    = $icon.find('object')[0]
-  svgDoc     = $object.contentDocument
-  svgContext = svgDoc.documentElement
+getSvgContext = ($icon) ->
+  $object = $icon.find('object')[0]
+  svgDoc  = $object.contentDocument
+  return svgDoc.documentElement
 
-  return $('path, rect, circle, polygon', svgContext).not("[fill='#027D12']")
+getPaths = ($svgContext) ->
+  return $('path, rect, circle, polygon', $svgContext).not("[fill='#027D12']")
+
+getSvg = ($svgContext) ->
+  return $('svg', $svgContext)
 
 assignTransitionCss = ($paths) ->
   $paths.css
@@ -17,10 +21,18 @@ unless Modernizr.touch
     $icons = $('.icon').not('.no-hover')
     
     $icons.each ->
-      $paths = getIconPaths $(this)
+      $icon = $(this)
+      $object = $icon.find('object')
+      $svgContext = getSvgContext $icon
+      $paths = getPaths $svgContext
+      $svg = getSvg $svgContext
       assignTransitionCss($paths)
 
-      $(this).hover (ev) ->
+      $icon.hover (ev) ->
+        # mouseover
         $paths.css 'fill', BASE_COLORS.darkGray
+        $icon.css { backgroundColor: BASE_COLORS.green } if !Modernizr.csstransitions
       , ->
+        # mouseout
         $paths.css 'fill', ""
+        $icon.css { backgroundColor: "" } if !Modernizr.csstransitions

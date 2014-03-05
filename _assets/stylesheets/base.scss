@@ -44,7 +44,7 @@ $dark-gray: rgb(45,45,45);
 
 @mixin bg-fallback($color) {
   background-position: 0 0;
-  background-color: transparent;
+  background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
 
   &:hover {
     background-color: $color;
@@ -362,6 +362,7 @@ a {
     width: 33%;
     pointer-events: none;
     display: inline-block;
+    cursor: pointer;
   }
 }
 
