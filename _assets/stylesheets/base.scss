@@ -364,6 +364,12 @@ a {
     display: inline-block;
     cursor: pointer;
   }
+
+  &.target {
+    object {
+      width: 65%;
+    }
+  }
 }
 
 .no-touch .square.icon {

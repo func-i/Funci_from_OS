@@ -1,0 +1,33 @@
+#canlii {
+  .icon-container {
+    &.two-people {
+      margin-top: 2em;
+    }
+
+    &.quotes {
+      margin-top: 6em;
+    }
+
+    &.target {
+      margin-top: 5em;
+    }
+
+    &.shield {
+      margin-top: 4em;
+    }
+
+    &.js {
+      top: -2em;
+    }
+  }
+}
+
+@media screen and (max-width:640px) {
+  #canlii {
+    .icon-container {
+      &.target {
+        margin-top: 2em;
+      }
+    }
+  }
+}
