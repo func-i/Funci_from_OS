@@ -4,6 +4,7 @@ class @Logo
   breakPoint:
     large: 640
     small: 320
+  popInterval: 1200
 
   constructor: (args) ->
     @elem            = args.elem
@@ -64,8 +65,8 @@ class @Logo
       # logoLetter.expanded = true
       setTimeout ->
         logoLetter.contract()
-      , 300
-    , 300
+      , that.popInterval
+    , that.popInterval
 
   isUnderMouse: (mouseLeft, mouseTop) ->
     topLetter = _.min @logoLetters, (logoLetter) ->
