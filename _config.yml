@@ -3,12 +3,14 @@ markdown: redcarpet
 pygments: true
 exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
 assets: 
-  debug: true
-  cachebust: hard
-  gzip: false
+  debug: false
+  cachebust: none
+  gzip: true
   sources:
     - _assets
     - _assets/fonts
     - _assets/images
     - _assets/javascripts
     - _assets/stylesheets
+  js_compressor: yui
+  css_compressor: yui
