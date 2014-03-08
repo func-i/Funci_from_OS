@@ -36,7 +36,6 @@
 
   #form {
     padding: 1.4em;
-    overflow: scroll;
 
     h4, div.field {
       margin-bottom: 1em;
@@ -91,6 +90,7 @@
         resize: none;
         height: 300px;
         width: 100%;
+        overflow: auto;
 
         background-color: transparent;
         background-image: -webkit-linear-gradient(top, transparent, transparent 1.92em, white 0);
@@ -132,5 +132,15 @@
         margin-bottom: 1em;
       }
     }
+  }
+}
+
+.no-cssgradients #contact #form div.textarea {
+  textarea {
+    background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+    border-left: solid 1px white;
+    margin-top: 1em;
+    padding-top: 0;
+    padding-left: .5em;
   }
 }
