@@ -3,8 +3,15 @@
     animationId = requestAnimationFrame -> animateLogo(logo, logo.canvas, logo.context)
     animationIds.push animationId
 
+  reset: (logo) ->
+    stopAnimations()
+    clearInterval logo.popLettersId
+
   noTouch:
     mouseover: (logo) ->
+      if logo.isPoppin
+        LogoHelper.reset(logo)
+        logo.isPoppin = false
       LogoHelper.startAnimation(logo)
 
     mouseout: (logo) ->

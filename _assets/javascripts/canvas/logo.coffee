@@ -31,11 +31,11 @@ class @Logo
       logo.createLogo()
 
   createLogo: ->
-    @createSquares()
+    @createLetters()
     @resize @screenWidth
     @draw()
 
-  createSquares: ->
+  createLetters: ->
     for index in [0..(@logoString.length-1)]
       logoLetter = new LogoLetter
         text: @logoString.charAt(index)
@@ -45,6 +45,27 @@ class @Logo
         logo: this
         id: index
       @logoLetters.push logoLetter
+
+  getRandomLetter: ->
+    unexpandedLetters = _.where @logoLetters, { expanded: false }
+    if unexpandedLetters.length isnt 0
+      return unexpandedLetters[_.random(unexpandedLetters.length - 1)]
+    else
+      for logoLetter in @logoLetters
+        logoLetter.expanded = false
+      @getRandomLetter()
+
+  popLetters: ->
+    that = this
+    that.popLettersId = setInterval ->
+      logoLetter = that.getRandomLetter()
+      logoLetter.expanded = true
+      logoLetter.expand()
+      # logoLetter.expanded = true
+      setTimeout ->
+        logoLetter.contract()
+      , 300
+    , 300
 
   isUnderMouse: (mouseLeft, mouseTop) ->
     topLetter = _.min @logoLetters, (logoLetter) ->

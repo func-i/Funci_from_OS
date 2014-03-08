@@ -27,6 +27,7 @@ class @LogoLetter
     @logoImgObject = args.logoImgObject
     @pixelRatio    = args.context.pixelRatio
     @ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
+    @expanded      = false
     @setSideLength()
     @setWord()
     @setColor()
