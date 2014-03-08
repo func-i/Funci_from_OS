@@ -4,7 +4,7 @@ class @Logo
   breakPoint:
     large: 640
     small: 320
-  popInterval: 1200
+  popInterval: 1000
 
   constructor: (args) ->
     @elem            = args.elem
