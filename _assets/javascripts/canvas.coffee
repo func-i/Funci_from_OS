@@ -64,6 +64,8 @@ $(window).load ->
     imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
     $logoAnchor.append imgSmallHtml
 
+    $('#logo-canvas').remove()
+
   ##### fade in
 
   $loading = $('#loading')
