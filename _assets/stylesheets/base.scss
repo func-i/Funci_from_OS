@@ -42,6 +42,30 @@ $dark-gray: rgb(45,45,45);
   }
 }
 
+@mixin bg-half-image-fill-up($color) {
+  .text-content {
+    -webkit-transition: background-position .3s linear;
+    -moz-transition: background-position .3s linear;
+    -o-transition: background-position .3s linear;
+    transition: background-position .3s linear;
+
+    @include background-image-gradient($color);
+    @include background-size(100%, 210%);
+    background-position: 0 -105%;
+    background-repeat: repeat-x;
+  }
+
+  &:hover {
+    .text-content {
+      background-position: 0 0 !important;
+    }
+
+    a {
+      color: $dark-gray !important;
+    }
+  }
+}
+
 @mixin bg-fallback($color) {
   background-position: 0 0;
   background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
@@ -212,14 +236,6 @@ a {
     }
 
     &.half-image {
-      &:hover {
-        background-position: 0 0;
-
-        a {
-          color: $dark-gray;
-        }
-      }
-
       .text-content {
         height: 50%;
       }
@@ -255,9 +271,7 @@ a {
       }
 
       &.half-image {
-        .text-content {
-          @include bg-fill-up($blue);
-        }
+        @include bg-half-image-fill-up($blue);
       }
     }
     
@@ -267,9 +281,7 @@ a {
       }
 
       &.half-image {
-        .text-content {
-          @include bg-fill-up($yellow);
-        }
+        @include bg-half-image-fill-up($yellow);
       }
     }
 
