@@ -49,7 +49,7 @@ $(window).load ->
       context: logoContext
       screenWidth: $(window).width()
 
-    if onHome()
+    if onHome() and Modernizr.touch
       LogoHelper.startAnimation logo
       logo.popLetters()
       logo.isPoppin = true
