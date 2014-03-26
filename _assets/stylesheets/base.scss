@@ -364,7 +364,7 @@ a {
     width: 100%;
   }
 
-  object {
+  object, img {
     position: absolute;
     margin: auto;
     top: 0;
@@ -396,7 +396,7 @@ a {
   position: relative;
 }
 
-#social-icons, #business-logos {
+#social-icons, .business-logos {
   overflow: visible;
 
   .phone {
@@ -414,6 +414,18 @@ a {
   .lighthouse {
     object {
       width: 80%;
+    }
+  }
+
+  .ooda {
+    img {
+      width: 70%;
+    }
+  }
+
+  .uhn {
+    img {
+      width: 50%;
     }
   }
 }
