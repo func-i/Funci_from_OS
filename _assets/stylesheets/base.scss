@@ -330,7 +330,7 @@ a {
     top: 0 !important;
   }
 
-  .square.spacer {
+  .spacer {
     margin-bottom: 1.5em !important;
   }
 }
@@ -396,7 +396,7 @@ a {
   position: relative;
 }
 
-#social-icons, .business-logos {
+#social-icons, #business-logos {
   overflow: visible;
 
   .phone {
