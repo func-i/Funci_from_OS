@@ -18,7 +18,7 @@ assignTransitionCss = ($paths) ->
 
 unless Modernizr.touch
   $(window).load ->
-    $icons = $('.icon').not('.no-hover')
+    $icons = $('.icon').not('.no-hover').not('.logo')
     
     $icons.each ->
       $icon = $(this)
@@ -34,5 +34,15 @@ unless Modernizr.touch
         $icon.css { backgroundColor: BASE_COLORS.green } if !Modernizr.csstransitions
       , ->
         # mouseout
-        $paths.css 'fill', ""
+        $paths.css 'fill', ''
         $icon.css { backgroundColor: "" } if !Modernizr.csstransitions
+
+    $logos = $('#business-logos .logo')
+    
+    $logos.hover (ev) ->
+      # mouseover
+      $(this).css { backgroundColor: BASE_COLORS.green } if !Modernizr.csstransitions
+    , ->
+      # mouseout
+      $(this).css { backgroundColor: "" } if !Modernizr.csstransitions
+
