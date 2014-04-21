@@ -6,9 +6,9 @@
 #= require ./lib/underscore-min.js
 #= require base
 #= require header
+#= require contact
 #= require_tree ./canvas
 #= require icons
 #= require_tree ./helpers
 #= require_tree ./pages
 #= require canvas
-#= require contact

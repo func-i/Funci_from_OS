@@ -1,188 +1,190 @@
 window.canvases = []
 window.logo = {}
 @blendingSupported = Modernizr.canvasblending
+
 onHome = ->
   window.location.pathname is "/"
 
-$(document).ready ->
-  ##### create logo canvas and context
-  if blendingSupported
-    # canvas logo
-    logoCanvas = new LogoCanvas
-      elem: $('#logo-canvas')
-    logoContext = new Context(logoCanvas)
+$loading = $('#loading')
+$body    = $('#body')
 
-    window.logo = new Logo
-      elem: $('#logo')
-      canvas: logoCanvas
-      context: logoContext
-      screenWidth: $(window).width()
-
-    if onHome() and Modernizr.touch
-      LogoHelper.startAnimation logo
-      logo.popLetters()
-      logo.isPoppin = true
-  else
-    # fallback logo imgs
-
-    $logo = $('#logo')
-    anchorHtml = "<a href='http://functionalimperative.com' alt='Functional Imperative'></a>"
-    $logo.append anchorHtml
-    $logoAnchor = $logo.find('a')
-
-    imgFullSrc = $logo.data('imgFull')
-    imgFullHtml = "<img class='full' src='#{imgFullSrc}' alt='Functional Imperative' />"
-    $logoAnchor.append imgFullHtml
-
-    imgSmallSrc = $logo.data('imgSmall')
-    imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
-    $logoAnchor.append imgSmallHtml
-
-    $('#logo-canvas').remove()
-
-$(window).load ->
-
-  ##### make square divs square
-  $('.square').each ->
-    $square = $(this)
-    $square.css 'width', ''
-    roundedWidth = Math.round $square.outerWidth()
-    $square.css 'width', roundedWidth
-    $square.css 'height', roundedWidth
-
-  ##### create canvases and corresponding contexts
-  $('.canvas').each (index) ->
-    canvas = new Canvas
-      referenceElem: $(this)
-    context = new Context(canvas)
-
-    canvas.context = context
-    window.canvases.push canvas
-
-    ##### create squares
-    $('.square', this).each (index) ->
-      square = new Square
-        elem: $(this)
-        canvas: canvas
-        context: context
-        id: index
-
-    canvas.adjustSquarePositions()
-
-    for square in canvas.squares
-      square.draw()
-
-  ##### fade in
-
-  $loading = $('#loading')
-  $body    = $('#body')
-  
+fadeIn = ->
   $loading.css('opacity', '0')
   $body.css('opacity', '1')
   $loading.remove()
 
-  ##### handle events
+$(window).load ->
+  ResizeHelper.handleResize()
 
-  # icon squares
-  $noTouchIcons = $('.no-touch .square.icon')
+##### create logo canvas and context
+if blendingSupported
+  # canvas logo
+  logoCanvas = new LogoCanvas
+    elem: $('#logo-canvas')
+  logoContext = new Context(logoCanvas)
 
-  unless $noTouchIcons.length is 0
-    $noTouchIcons.mouseover ->
-      square = SquareHelper.findSquare $(this)
-      square.context.clear square.left, square.top, square.sideLength, square.sideLength
-      square.strokeRect "green"
+  window.logo = new Logo
+    elem: $('#logo')
+    canvas: logoCanvas
+    context: logoContext
+    screenWidth: $(window).width()
 
-    $noTouchIcons.mouseout ->
-      square = SquareHelper.findSquare $(this)
-      square.context.clear 0, 0, square.canvas.width, square.canvas.height
-      for square in square.canvas.squares
-        square.draw()
+  if onHome() and Modernizr.touch
+    LogoHelper.startAnimation logo
+    logo.popLetters()
+    logo.isPoppin = true
+else
+  # fallback logo imgs
 
-  # logo no-touch
-  $noTouchLogo = $('.no-touch.canvasblending #logo')
+  $logo = $('#logo')
+  anchorHtml = "<a href='http://functionalimperative.com' alt='Functional Imperative'></a>"
+  $logo.append anchorHtml
+  $logoAnchor = $logo.find('a')
 
-  unless $noTouchLogo.length is 0
-    $noTouchLogo.mouseover ->
-      LogoHelper.noTouch.mouseover logo
+  imgFullSrc = $logo.data('imgFull')
+  imgFullHtml = "<img class='full' src='#{imgFullSrc}' alt='Functional Imperative' />"
+  $logoAnchor.append imgFullHtml
 
-    $noTouchLogo.mouseout ->
-      LogoHelper.noTouch.mouseout logo
+  imgSmallSrc = $logo.data('imgSmall')
+  imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
+  $logoAnchor.append imgSmallHtml
 
-    $noTouchLogo.mousemove (ev) ->
-      LogoHelper.noTouch.mousemove logo, ev
+  $('#logo-canvas').remove()
 
-    $noTouchLogo.mousedown (ev) ->
-      LogoHelper.noTouch.mousedown
+fadeIn()
+
+##### make square divs square
+$('.square').each ->
+  $square = $(this)
+  $square.css 'width', ''
+  roundedWidth = Math.round $square.outerWidth()
+  $square.css 'width', roundedWidth
+  $square.css 'height', roundedWidth
+
+##### create canvases and corresponding contexts
+$('.canvas').each (index) ->
+  canvas = new Canvas
+    referenceElem: $(this)
+  context = new Context(canvas)
+
+  canvas.context = context
+  window.canvases.push canvas
+
+  ##### create squares
+  $('.square', this).each (index) ->
+    square = new Square
+      elem: $(this)
+      canvas: canvas
+      context: context
+      id: index
+
+  canvas.adjustSquarePositions()
+
+  for square in canvas.squares
+    square.draw()
+
+##### handle events
+
+# icon squares
+$noTouchIcons = $('.no-touch .square.icon')
+
+unless $noTouchIcons.length is 0
+  $noTouchIcons.mouseover ->
+    square = SquareHelper.findSquare $(this)
+    square.context.clear square.left, square.top, square.sideLength, square.sideLength
+    square.strokeRect "green"
+
+  $noTouchIcons.mouseout ->
+    square = SquareHelper.findSquare $(this)
+    square.context.clear 0, 0, square.canvas.width, square.canvas.height
+    for square in square.canvas.squares
+      square.draw()
+
+# logo no-touch
+$noTouchLogo = $('.no-touch.canvasblending #logo')
+
+unless $noTouchLogo.length is 0
+  $noTouchLogo.mouseover ->
+    LogoHelper.noTouch.mouseover logo
+
+  $noTouchLogo.mouseout ->
+    LogoHelper.noTouch.mouseout logo
+
+  $noTouchLogo.mousemove (ev) ->
+    LogoHelper.noTouch.mousemove logo, ev
+
+  $noTouchLogo.mousedown (ev) ->
+    LogoHelper.noTouch.mousedown
+      logo: window.logo
+      ev: ev
+      onHome: onHome()
+
+# logo touch
+$touchLogo = $('.touch.canvasblending #logo')
+
+# if on touch device that supports blending
+unless $touchLogo.length is 0
+  $touchLogo.hammer().on 'touch', (ev) ->
+    if logo.isPoppin
+      LogoHelper.reset(logo)
+      logo.isPoppin = false
+
+    mouseX = ev.gesture.touches[0].pageX
+    mouseY = ev.gesture.touches[0].pageY
+
+    # prevent scrolling if playing with logo
+    ev.gesture.preventDefault() if window.logo.isUnderMouse(mouseX, mouseY)
+
+    LogoHelper.startAnimation(window.logo)
+
+  $touchLogo.hammer().on 'tap', (ev) ->
+    LogoHelper.touch.tap
+      logo: window.logo
+      ev: ev
+      onHome: onHome()
+
+    # prevent default hammer release event from firing on tap release
+    ev.gesture.stopDetect()
+
+  holding = false
+  currentHold = undefined
+
+  $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
+    unless logo.tooDamnSmall()
+      currentHold = new Hold
+        logo: window.logo
+        mouseX: ev.gesture.touches[0].pageX
+        mouseY: ev.gesture.touches[0].pageY
+      window.logo.holding = true
+
+  $touchLogo.hammer().on 'drag', (ev) ->
+    unless logo.tooDamnSmall()
+      LogoHelper.touch.drag
         logo: window.logo
         ev: ev
-        onHome: onHome()
+        hold: currentHold
 
-  # logo touch
-  $touchLogo = $('.touch.canvasblending #logo')
-
-  # if on touch device that supports blending
-  unless $touchLogo.length is 0
-    $touchLogo.hammer().on 'touch', (ev) ->
-      if logo.isPoppin
-        LogoHelper.reset(logo)
-        logo.isPoppin = false
-
-      mouseX = ev.gesture.touches[0].pageX
-      mouseY = ev.gesture.touches[0].pageY
-
-      # prevent scrolling if playing with logo
-      ev.gesture.preventDefault() if window.logo.isUnderMouse(mouseX, mouseY)
-
-      LogoHelper.startAnimation(window.logo)
-
-    $touchLogo.hammer().on 'tap', (ev) ->
-      LogoHelper.touch.tap
-        logo: window.logo
-        ev: ev
-        onHome: onHome()
-
-      # prevent default hammer release event from firing on tap release
-      ev.gesture.stopDetect()
-
-    holding = false
+  pinchStarted = false
+  currentPinch = undefined
+    
+  $touchLogo.hammer().on 'release', (ev) ->
+    window.logo.holding = false
+    currentHold.end() if currentHold isnt undefined
     currentHold = undefined
-
-    $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
-      unless logo.tooDamnSmall()
-        currentHold = new Hold
-          logo: window.logo
-          mouseX: ev.gesture.touches[0].pageX
-          mouseY: ev.gesture.touches[0].pageY
-        window.logo.holding = true
-
-    $touchLogo.hammer().on 'drag', (ev) ->
-      unless logo.tooDamnSmall()
-        LogoHelper.touch.drag
-          logo: window.logo
-          ev: ev
-          hold: currentHold
-
+    window.logo.returnHome()
+    setTimeout ->
+      stopAnimations()
+    , 200
     pinchStarted = false
-    currentPinch = undefined
-      
-    $touchLogo.hammer().on 'release', (ev) ->
-      window.logo.holding = false
-      currentHold.end() if currentHold isnt undefined
-      currentHold = undefined
-      window.logo.returnHome()
-      setTimeout ->
-        stopAnimations()
-      , 200
-      pinchStarted = false
 
-  ##### resize adjustments
+##### resize adjustments
 
-  $(window).resize ->
+$(window).resize ->
+  ResizeHelper.handleResize()
+
+$(window).bind 'orientationchange', ->
+  orientation = window.orientation
+
+  if orientation isnt ResizeHelper.windowOrientation
     ResizeHelper.handleResize()
-
-  $(window).bind 'orientationchange', ->
-    orientation = window.orientation
-
-    if orientation isnt ResizeHelper.windowOrientation
-      ResizeHelper.handleResize()
-      ResizeHelper.windowOrientation = orientation
+    ResizeHelper.windowOrientation = orientation
