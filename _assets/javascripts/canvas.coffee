@@ -1,41 +1,10 @@
 window.canvases = []
 window.logo = {}
 @blendingSupported = Modernizr.canvasblending
+onHome = ->
+  window.location.pathname is "/"
 
-$(window).load ->
-  onHome = ->
-    window.location.pathname is "/"
-
-  ##### make square divs square
-  $('.square').each ->
-    $square = $(this)
-    $square.css 'width', ''
-    roundedWidth = Math.round $square.outerWidth()
-    $square.css 'width', roundedWidth
-    $square.css 'height', roundedWidth
-
-  ##### create canvases and corresponding contexts
-  $('.canvas').each (index) ->
-    canvas = new Canvas
-      referenceElem: $(this)
-    context = new Context(canvas)
-
-    canvas.context = context
-    window.canvases.push canvas
-
-    ##### create squares
-    $('.square', this).each (index) ->
-      square = new Square
-        elem: $(this)
-        canvas: canvas
-        context: context
-        id: index
-
-    canvas.adjustSquarePositions()
-
-    for square in canvas.squares
-      square.draw()
-
+$(document).ready ->
   ##### create logo canvas and context
   if blendingSupported
     # canvas logo
@@ -70,6 +39,38 @@ $(window).load ->
     $logoAnchor.append imgSmallHtml
 
     $('#logo-canvas').remove()
+
+$(window).load ->
+
+  ##### make square divs square
+  $('.square').each ->
+    $square = $(this)
+    $square.css 'width', ''
+    roundedWidth = Math.round $square.outerWidth()
+    $square.css 'width', roundedWidth
+    $square.css 'height', roundedWidth
+
+  ##### create canvases and corresponding contexts
+  $('.canvas').each (index) ->
+    canvas = new Canvas
+      referenceElem: $(this)
+    context = new Context(canvas)
+
+    canvas.context = context
+    window.canvases.push canvas
+
+    ##### create squares
+    $('.square', this).each (index) ->
+      square = new Square
+        elem: $(this)
+        canvas: canvas
+        context: context
+        id: index
+
+    canvas.adjustSquarePositions()
+
+    for square in canvas.squares
+      square.draw()
 
   ##### fade in
 
