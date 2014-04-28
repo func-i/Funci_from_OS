@@ -1,7 +1,9 @@
 ---
-layout: post
-title:  "Welcome to Jekyll!"
-date:   2013-11-11 16:21:22
+layout:     blog
+title:      Title Test
+subtitle:   Subtitle Test
+author:     alex
+date:       2013-11-11 16:21:22
 categories: jekyll update
 ---
 

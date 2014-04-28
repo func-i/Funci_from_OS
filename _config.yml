@@ -2,6 +2,8 @@ name: Functional Imperative
 markdown: redcarpet
 pygments: true
 exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
+paginate: 5
+paginate_path: "blog/page:num"
 assets: 
   debug: true
   sources:
@@ -13,14 +15,14 @@ assets:
 
   ##### development #####
 
-  # cachebust: hard
-  # gzip: false
-  # js_compressor: none
-  # css_compressor: none
+  cachebust: hard
+  gzip: false
+  js_compressor: none
+  css_compressor: none
 
   ##### production  #####
 
-  cachebust: none
-  gzip: true
-  js_compressor: uglifier
-  css_compressor: yui
+  # cachebust: none
+  # gzip: true
+  # js_compressor: uglifier
+  # css_compressor: yui
