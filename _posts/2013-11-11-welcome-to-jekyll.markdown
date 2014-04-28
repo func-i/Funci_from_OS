@@ -2,7 +2,7 @@
 layout:     blog
 title:      Title Test
 subtitle:   Subtitle Test
-author:     alex
+author:     jake
 date:       2013-11-11 16:21:22
 categories: jekyll update
 ---

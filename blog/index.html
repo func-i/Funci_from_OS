@@ -4,21 +4,43 @@ title: Functional Imperative | Blog
 description: We build new intricate experiences for the new web.
 ---
 
-{% for post in paginator.posts %}
-  {% assign author = site.data.authors[post.author] %}
-  <h1>
-    <a href="{{ post.url }}">{{ post.title }}</a>
-  </h1>
-  <h5>
-    Posted on {{ post.date | date_to_string }} by <a href="{{ author.link }}">{{ author.fullname }}</a>
-  </h5>
-  <p>{{ post.content }}</p>
-  {% if forloop.last %}
-    <!-- no divider -->
-  {% else %}
-    <!-- divider -->
-  {% endif %}
-{% endfor %}
+<div id="blog" class="row collapse main-content">
+  <div class="canvas">
+    {% for post in paginator.posts %}
+      {% assign author = site.data.authors[post.author] %}
+      <div class="row collapse">
+        <div class="large-3 medium-4 columns">
+          <div class="row collapse">
+            <div class="small-12 columns">
+              <div class="square text" data-type="outlined" data-rollover="true" data-color="yellow">
+                <div class="text-content">
+                  <h2>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                  </h2>
+                  <small>{{ post.subtitle }}</small>
+                </div>
+              </div>
+            </div>
+            <div class="large-8 medium-7 small-6 columns">
+              <div class="square text" data-type="outlined" data-rollover="true" data-color="blue">
+                <div class="text-content">
+                  <small>
+                    by <a href="{{ author.link }}">{{ author.fullname }}</a> on {{ post.date | date_to_string }}
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="large-9 medium-8 columns">
+          <div class="post-content">
+            {{ post.content }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
 
 <div class="text-center">
   <ul class="pagination">
