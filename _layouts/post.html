@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html  %}
+  </head>
+  <body>
+    <div id="loading">
+      <img src="{% asset_path loading.gif %}">
+    </div>
+    {% assign author = site.data.authors[page.author] %}
+    <div id="body">
+      {% include partials/header.html %}
+      <div id="post" class="row collapse main-content">
+        <div class="canvas">
+          <div class="row collapse">
+            <div class="large-3 medium-4 columns">
+              <div class="row collapse">
+                <div class="small-12 columns">
+                  <div class="square text" data-type="outlined" data-rollover="true" data-color="yellow">
+                    <div class="text-content">
+                      <h2>
+                        <a href="{{ page.url }}">{{ page.title }}</a>
+                      </h2>
+                      <small>{{ page.subtitle }}</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="large-8 medium-7 small-6 columns">
+                  <div class="square text" data-type="outlined" data-rollover="true" data-color="blue">
+                    <div class="text-content">
+                      <small>
+                        by <a href="{{ author.link }}">{{ author.fullname }}</a> on {{ page.date | date_to_string }}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <div class="post-content">
+                {{ content }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% include partials/footer.html %}
+    </div>
+  {% javascript app %}
+  </body>
+</html>

@@ -1,10 +1,24 @@
 #blog {
-  .post-content {
-    margin-top: .5em;
-    margin-left: 1.4em;
+  .post {
+    margin-bottom: 6em;
+  }
+}
+
+.post-content {
+  margin-top: .5em;
+  margin-left: 1.4em;
+
+  code {
+    background-color: $blue;
+    padding: 0.3em .5em;
   }
 
   pre {
     margin-left: 2em;
+
+    code {
+      background-color: inherit;
+      padding: 0;
+    }
   }
 }
