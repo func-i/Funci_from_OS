@@ -8,12 +8,16 @@
   margin-top: .5em;
   margin-left: 1.4em;
 
+  a {
+    color: $yellow;
+  }
+
   code {
     background-color: $blue;
     padding: 0.3em .5em;
   }
 
-  pre {
+  pre, blockquote {
     margin-left: 2em;
 
     code {
