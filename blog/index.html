@@ -9,22 +9,13 @@ description: We build new intricate experiences for the new web.
 
     <!-- liquid assignments -->
     {% assign author = site.data.authors[post.author] %}
-    {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
-    
-    {% if thecycle == 'odd' %}
-      {% assign primarycolor = 'yellow' %}
-      {% assign secondarycolor = 'blue' %}
-    {% else %}
-      {% assign primarycolor = 'blue' %}
-      {% assign secondarycolor = 'yellow' %}
-    {% endif %}
 
     <div class="row collapse post">
       <div class="large-3 medium-4 columns">
         <div class="canvas">
           <div class="row collapse">
             <div class="small-12 columns">
-              <div class="square text" data-type="outlined" data-rollover="true" data-color="{{primarycolor}}">
+              <div class="square text" data-type="outlined" data-rollover="true" data-color="yellow">
                 <div class="text-content">
                   <h2>
                     <a href="{{ post.url }}">{{ post.title }}</a>
@@ -34,7 +25,7 @@ description: We build new intricate experiences for the new web.
               </div>
             </div>
             <div class="large-8 medium-7 small-6 columns">
-              <div class="square text" data-type="outlined" data-rollover="true" data-color="{{secondarycolor}}">
+              <div class="square text" data-type="outlined" data-rollover="true" data-color="blue">
                 <div class="text-content">
                   <small>
                     by <a href="{{ author.link }}">{{ author.fullname }}</a> on {{ post.date | date_to_string }}
