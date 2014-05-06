@@ -6,8 +6,6 @@ author:     noam
 date:       2014-01-27
 ---
 
-<span class="mj">-- IF THIS MESSAGE IS SHOWING, EQUATIONS HAVE NOT RENDERED. 
-IF YOU ARE ON RSS, VISIT THE ORIGINAL POST. JAVASCRIPT REQUIRED. --</span>
 <script type="math/tex">
 </script>
 
@@ -49,20 +47,16 @@ graph*.
 
 A graph of `n` nodes can be represented in the form of an 
 `n x n` *adjacency matrix*,
-<span class="mj">`M = [m_ij]`</span>$$ M = [m_{ij}]$$ such that 
-<span class="mj">m_ij</span>$$m_{ij}$$ is equal to the weight of the edge going
-from node <span class="mj">j</span>$$j$$ to node
-<span class="mj">i</span>$$i$$:
-
+$$ M = [m_{ij}]$$ such that 
+$$m_{ij}$$ is equal to the weight of the edge going
+from node $$j$$ to node
+$$i$$:
             
     [0, 1, 0, 0]
     [1, 0, 2, 0]
     [2, 1, 0, 1]
     [0, 0, 4, 0]
             
-
-
-
 ### Stochastic Matrices
 
 The
@@ -86,8 +80,8 @@ This scenario can be represented as the following system:
 
 ![](http://clusterfoo.com/assets/images/2014/competing_stores_graph.png)
 
-This is a *Markov chain* with *transition matrix* <span class="mj">`P`</span>$$P$$
-and a *state vector* <span class="mj">`x_0`</span>$$\mathbf{ x^{(0)} }$$.
+This is a *Markov chain* with *transition matrix* $$P$$
+and a *state vector* $$\mathbf{ x^{(0)} }$$.
 
 The transition matrix is called a *stochastic matrix*; it represents the
 likelihood that some individual in a system will transition from one state
@@ -98,7 +92,6 @@ on the same website, or leaving, is always 100%. He must choose one of the two).
 
 The state after the first month is 
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \mathbf{ x^{ (1) } } = P \mathbf{ x^{ (0) } } = [(0.7 + 0.6)\times0.5, (0.3 + 0.4)\times0.5] = [0.65, 0.35]
 </script>
@@ -111,14 +104,12 @@ apply the transition matrix again, and so on. That is, the current state of
 a Markov chain depends only on its previous state.
 Thus, the state vector at month $$k$$ can be defined recursively:
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \mathbf{ x^{(k)} } = P\mathbf{ x^{ (k - 1) } }
 </script>
 
 From which, through substitution, we can derive the following equation:
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \mathbf{ x^{(k)} } = P^k \mathbf{ x^{(0)} }
 </script>
@@ -127,6 +118,8 @@ Using this information, we can figure out the state of the system
 after a year, and then again after two years 
 (using the [Sage](http://www.sagemath.org/) mathematical library for python):
 
+{% highlight python %}
+
     P = Matrix([[0.70, 0.60],
                 [0.30, 0.40]])
     x = vector([0.5,0.5])
@@ -134,13 +127,13 @@ after a year, and then again after two years
     # -> (0.666666666666500, 0.333333333333500)
     P^24*x
     # -> (0.666666666666666, 0.333333333333333)
-{: class="language-python" }
+{% endhighlight %}
 
 So it seems like the state vector is "settling" around those values. 
-It would appear that, as <span class="mj">EQ</span>$$n \to \infty$$,
-<span class="mj">EQ</span>$$P^n\mathbf{ x^{ (0) } }$$ is converging to some
+It would appear that, as $$n \to \infty$$,
+EQ $$P^n\mathbf{ x^{ (0) } }$$ is converging to some
 $$\mathbf{ x }$$
-such that <span class="mj">EQ</span>$$P\mathbf{ x } = \mathbf{ x }$$. 
+such that $$P\mathbf{ x } = \mathbf{ x }$$. 
 As we'll see below, this is indeed the case.
 
 We'll call this $$\mathbf{ x }$$ the *steady state vector*.
@@ -152,13 +145,12 @@ Recall from linear algebra that an eigenvector of a matrix $$A$$
 is a vector $$\mathbf{x}$$ such that:
 
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     A\mathbf{ x } = \lambda \mathbf{ x }    
 </script>
 
-for some scalar <span class="mj">EQ</span>$$\lambda$$ (the *eigenvalue*). A *leading eigenvalue* is an
-eigenvalue <span class="mj">EQ</span>$$\lambda_{ 1 }$$ such that its absolute value is greater than 
+for some scalar $$\lambda$$ (the *eigenvalue*). A *leading eigenvalue* is an
+eigenvalue $$\lambda_{ 1 }$$ such that its absolute value is greater than 
 any other eigenvalue for the given matrix. 
 
 One method of finding the leading eigenvector of a matrix is through 
@@ -166,24 +158,22 @@ a [power iteration](http://en.wikipedia.org/wiki/Power_iteration) sequence, defi
 recursively like so:
 
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \mathbf{ x_k } = \cfrac{ A\mathbf{ x_{ k-1 } } }{ \| A\mathbf{ x_{ k-1 } } \| }
 </script>
 
 Again, by noting that we can substitute 
-<span class="mj">EQ</span>$$ A\mathbf{ x_{ k-1 } } =  A(A\mathbf{ x_{ k-2 } }) = A^2\mathbf{ x_{ k-2 } } $$, 
+$$ A\mathbf{ x_{ k-1 } } =  A(A\mathbf{ x_{ k-2 } }) = A^2\mathbf{ x_{ k-2 } } $$, 
 and so on, it follows that:
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \mathbf{ x_k } =  \cfrac{ A^k \mathbf{ x_0 } }{ \| A^k \mathbf{ x_0 } \| }
 </script>
 
-This sequence converges to the leading eigenvector of <span class="mj">EQ</span>$$A$$.
+This sequence converges to the leading eigenvector of $$A$$.
 
 Thus we see that the steady state vector is just an eigenvector with the
-special case <span class="mj">EQ</span>$$\lambda = 1$$.
+special case $$\lambda = 1$$.
 
 ### Stochastic Matrices that Don't Play Nice
 
@@ -210,7 +200,7 @@ The state vectors of this matrix will oscillate in such a way forever. This
 matrix can be thought of
 as the transformation matrix for reflection about a line in the x,y axis... this
 system will never converge (indeed, it has no leading eigenvalue: 
-<span class="mj">EQ</span>$$ |\lambda_1| = |\lambda_2| = |\lambda_3| = 1 $$).
+$$ |\lambda_1| = |\lambda_2| = |\lambda_3| = 1 $$).
 
 Another way of looking at $$P$$ is by drawing its graph:
 
@@ -227,7 +217,7 @@ States 1 and 2 are examples of *recurrent states*. These are states that,
 once reached, there is a probability of 1 (absolute certainty) 
 that the Markov chain will return to them infinitely many times. 
 
-A *transient state* is such that the probability is <span class="mj">EQ</span>$$ > 0$$ that they will
+A *transient state* is such that the probability is $$ > 0$$ that they will
 never be reached again. (If the probability *is* 0, we call such a state 
 *ephemeral* -- in terms of Google PageRank, this would be a page that no
 other page links to):
@@ -244,8 +234,8 @@ within it can reach a state outside of it. 1, 2 and 3 above are closed from
 
 It must be *primitive*: 
 A primitive matrix $$P$$ is such that, for some positive
-integer <span class="mj">EQ</span>$$n$$, <span class="mj">EQ</span>$$P^n$$ is such 
-that <span class="mj">EQ</span>$$p_{ ij } > 0$$ for all <span class="mj">EQ</span>$$p_{ ij } \in P$$
+integer $$n$$, $$P^n$$ is such 
+that $$p_{ ij } > 0$$ for all $$p_{ ij } \in P$$
 (that is: all of its entries are positive numbers).
 
 > More generally, it must be *positive recurrent* and *aperiodic*. 
@@ -309,7 +299,6 @@ each page.
 The [Google Matrix](http://en.wikipedia.org/wiki/Google_matrix) 
 for an $$n \times n$$ matrix $$S$$ is derived from the equation
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     G = \alpha S + (1 - \alpha) \frac{1}{n} E
 </script>
@@ -337,7 +326,6 @@ So higher values of $$\alpha$$ imply better accuracy but worse performance.
 
 With some elementary algebra we can see that
 
-<span class="mj">`-- EQUATION NOT RENDERED IN RSS OR WITH JAVASCRIPT DISABLED --`</span>
 <script type="math/tex; mode=display">
     \left(\alpha s_{ 1j } + \frac{1-\alpha}{ n }\right) + \left(\alpha s_{ 2j } 
     + \frac{1-\alpha}{ n }\right) + ... + \left(\alpha s_{ nj } + \frac{1-\alpha}{ n }\right) = 1
