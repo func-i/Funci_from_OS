@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      web applications versus a balkanized internet
-subtitle:   a moral and practical dilemma for software developers with foresight
 author:     jake
 date:       2014-2-14 16:21:22
 ---

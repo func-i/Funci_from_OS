@@ -4,9 +4,17 @@
   }
 }
 
+.post-info {
+  margin-bottom: 2em !important;
+}
+
 .post-content {
   margin-top: .5em;
   margin-left: 1.4em;
+
+  @media screen and (max-width:640px) {
+    margin-left: 0;
+  }
 
   a {
     color: $yellow;
