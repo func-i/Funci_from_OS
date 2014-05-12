@@ -4,17 +4,35 @@
   }
 
   #jha {
-    margin-top: 6em;
+    position: relative;
+    top: 6em;
   }
 
   #kv {
+    margin-top: 3em;
+  }
+
+  #jb {
+    margin-top: 3em;
+  }
+
+  #an {
+    margin-top: 4em;
+  }
+
+  #js {
+    position: relative;
+    top: -6em;
+  }
+
+  #me {
     position: relative;
     top: -3em;
   }
 
-  #jb {
+  #ng {
     position: relative;
-    top: -3em;
+    top: -6em;
   }
 
   #business-logos {
@@ -23,21 +41,31 @@
 
   @media screen and (max-width:640px) {
     #jha {
-      margin: 0;
+      top: 0;
     }
 
     #kv {
-      position: relative;
-      top: 0;
+      margin-top: 0;
     }
 
     #jb {
-      position: relative;
+      margin-top: 0;
+    }
+
+    #an {
+      margin-top: 0;
+    }
+
+    #js {
       top: 0;
     }
 
-    #business-logos {
-      margin: 0;
+    #me {
+      top: 0;
+    }
+
+    #ng {
+      top: 0;
     }
   }
 }
