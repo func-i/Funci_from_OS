@@ -4,68 +4,55 @@
   }
 
   #jha {
-    position: relative;
-    top: 6em;
+    margin-top: 6em;
   }
 
-  #kv {
-    margin-top: 3em;
-  }
-
-  #jb {
-    margin-top: 3em;
-  }
-
-  #an {
-    margin-top: 4em;
-  }
-
-  #js {
-    position: relative;
-    top: -6em;
-  }
-
-  #me {
+  .no-2 {
     position: relative;
     top: -3em;
   }
 
-  #ng {
+  .no-3 {
     position: relative;
     top: -6em;
   }
 
-  #business-logos {
-    margin-top: 4em;
+  #an {
+    margin-top: 10em;
+  }
+
+  .no-4 {
+    position: relative;
+    top: -8em;
+  }
+
+  #me {
+    margin-top: 5em;
   }
 
   @media screen and (max-width:640px) {
     #jha {
+      margin-top: 0;
+    }
+
+    .no-2 {
       top: 0;
     }
 
-    #kv {
-      margin-top: 0;
-    }
-
-    #jb {
-      margin-top: 0;
+    .no-3 {
+      top: 0;
     }
 
     #an {
       margin-top: 0;
     }
 
-    #js {
+    .no-4 {
       top: 0;
     }
 
     #me {
-      top: 0;
-    }
-
-    #ng {
-      top: 0;
+      margin-top: 0;
     }
   }
 }
