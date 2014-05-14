@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      Sorting Posts by User Engagement Level
-subtitle:   (With Elasticsearch Implementation)
 author:     noam
 date:       2013-12-23
 ---

@@ -9,8 +9,14 @@
 }
 
 .post-content {
-  margin-top: .5em;
-  margin-left: 1.4em;
+  margin-top: .5rem;
+  margin-left: 1.4rem;
+  font-size: 1.1em;
+  
+  p {
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+  }
 
   @media screen and (max-width:640px) {
     margin-left: 0;
@@ -21,12 +27,12 @@
   }
 
   li {
-    line-height: 1.4em;
-    margin-left: 2em;
+    line-height: 1.4rem;
+    margin-left: 2rem;
   }
 
   ol {
-    margin-bottom: 1.4em;
+    margin-bottom: 1.4rem;
   }
 
   img {
@@ -35,11 +41,11 @@
 
   code {
     background-color: $blue;
-    padding: 0.3em .5em;
+    padding: 0.3rem .5rem;
   }
 
   pre, blockquote {
-    margin-left: 2em;
+    margin-left: 2rem;
 
     code {
       background-color: inherit;

@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      web applications versus a balkanized internet
+title:      Web Applications Versus a Balkanized Internet
 author:     jake
 date:       2014-2-14 16:21:22
 ---

@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Bundler gets better local gem support
-subtitle:   How we used it and why you will too
+title:      Better Bundler
+subtitle:   Bundler gets better local gem support
 author:     jon
 date:       2012-9-1 16:21:22
 ---
