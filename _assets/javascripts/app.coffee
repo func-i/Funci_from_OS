@@ -4,6 +4,8 @@
 #= require ./lib/jquery.hammer.min
 #= require ./lib/request_animation_frame_polyfill
 #= require ./lib/underscore-min.js
+#= require ./lib/parse-min.js
+#= require ./lib/quick-change.js
 #= require base
 #= require header
 #= require contact
