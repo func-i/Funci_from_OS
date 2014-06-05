@@ -10,7 +10,8 @@ function QuickChange(appId, jsKey, options) {
 
     urlTriggerRes: {
       signup: /#qcsignup/,
-      login: /#qclogin/
+      login: /#qclogin/,
+      logout: /#qclogout/
     },
 
     elems: {
@@ -33,10 +34,12 @@ function QuickChange(appId, jsKey, options) {
       Parse.initialize(appId, jsKey);
       this.insertStyleTag();
       this.activateElems();
-      if (Parse.User.current())
+      if (Parse.User.current()) {
         this.makeElemsEditable();
-      else
+        this.setupLogout();
+      } else {
         this.setupSignupOrLogin();
+      }
     },
 
     ////////// methods
@@ -68,7 +71,7 @@ function QuickChange(appId, jsKey, options) {
 
     clearUrlTrigger: function() {
       var url = document.URL;
-      var trigger = url.match(this.urlTriggerRes.login) || url.match(this.urlTriggerRes.signup);
+      var trigger = url.match(this.urlTriggerRes.login) || url.match(this.urlTriggerRes.signup) || url.match(this.urlTriggerRes.logout);
       var cleanUrl = url.replace(trigger[0], '');
       return window.location.replace(cleanUrl);
     },
@@ -136,8 +139,16 @@ function QuickChange(appId, jsKey, options) {
       return this.urlTriggerRes.login.test(document.URL);
     },
 
+    logoutTriggered: function() {
+      return this.urlTriggerRes.logout.test(document.URL);
+    },
+
     makeElemsEditable: function() {
       this.elems.$editable.attr('contentEditable', true);
+    },
+
+    makeElemsUneditable: function() {
+      this.elems.$editable.attr('contentEditable', false);
     },
 
     setupBodyClickHandler: function() {
@@ -150,6 +161,14 @@ function QuickChange(appId, jsKey, options) {
     setupLogin: function() {
       this.elems.$modal.$ownerCode.remove();
       this.elems.$modal.$submit.click(this.handleLoginSubmit.bind(this));
+    },
+
+    setupLogout: function() {
+      if (this.logoutTriggered()) {
+        Parse.User.logOut();
+        this.makeElemsUneditable();
+        setTimeout(this.clearUrlTrigger.bind(this), 2000);
+      }
     },
 
     setupSignup: function() {
