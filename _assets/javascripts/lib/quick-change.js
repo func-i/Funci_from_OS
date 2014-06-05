@@ -6,33 +6,46 @@ function QuickChange(appId, jsKey, options) {
 
   QuickChange.prototype = {
 
+    ////////// defaults
+
+    urlTriggerRes: {
+      signup: /#qcsignup/,
+      login: /#qclogin/
+    },
+
     elems: {
-      $signupA: $('a.cms-signup'),
-      $signupDiv: $("<div href='#' class='cms-signup' style='display: none;'>" +
+      $head: $('head'),
+      $body: $('body'),
+      $modal: $("<div href='#' class='cms-signup cms-modal' style='display: none;'>" +
         "<form>" +
           "<input name='username' type='text' placeholder='username' />" +
           "<input name='password' type='password' placeholder='password' />" +
           "<input name='owner-code' type='password' placeholder='owner-code' />" +
-          "<a href='#'>submit</a>" +
+          "<a class='submit' href='#'>submit</a>" +
         "</form>" +
-      "</div>")
+      "</div>"),
+      $editable: $('[data-cms]'),
     },
+
+    ////////// init
 
     init: function(appId, jsKey, options) {
       Parse.initialize(appId, jsKey);
-      this.initCss();
       this.insertStyleTag();
       this.activateElems();
-      if (Parse.User.current()) {
+      if (Parse.User.current())
         this.makeElemsEditable();
-      } else {
-        this.setupSignup();
-      }
+      else
+        this.setupSignupOrLogin();
     },
 
+    ////////// methods
+
     activateElems: function() {
-      $('[data-cms]').each(function() {
+      var qc = this;
+      this.elems.$editable.each(function() {
         var content = new Content({
+          qc: qc,
           elem: $(this)
         });
 
@@ -46,63 +59,124 @@ function QuickChange(appId, jsKey, options) {
       });
     },
 
-    handleSignupSubmit: function() {
-      var $username = $('div.cms-signup [name=username]'),
-          $password = $('div.cms-signup [name=password]'),
-          $ownerCode = $('div.cms-signup [name=owner-code]');
+    addModal: function() {
+      this.findModalElems();
+      this.elems.$body.append(this.elems.$modal);
+      this.elems.$modal.fadeIn();
+      this.setupBodyClickHandler();
+    },
 
-      var user = new Parse.User();
-      user.set("username", $username.val());
-      user.set("password", $password.val());
-      user.set("ownerCode", $ownerCode.val());
+    clearUrlTrigger: function() {
+      var url = document.URL;
+      var trigger = url.match(this.urlTriggerRes.login) || url.match(this.urlTriggerRes.signup);
+      var cleanUrl = url.replace(trigger[0], '');
+      return window.location.replace(cleanUrl);
+    },
 
-      user.signUp(null, {
-        success: function(user) {
-          that.elems.$signupDiv.fadeOut();
-          that.elems.$signupDiv.remove();
-          that.elems.$signupA.hide();
-          that.makeElemsEditable();
-        },
-        error: function(user, error) {
-          $username.val(''); $password.val(''); $ownerCode.val('');
-          alert(error.message);
-        }
+    handleBodyClick: function(ev) {
+      this.elems.$modal.fadeOut(this.clearUrlTrigger.bind(this));
+    },
+
+    findModalElems: function() {
+      this.elems.$modal.$username  = this.elems.$modal.find('[name=username]');
+      this.elems.$modal.$password  = this.elems.$modal.find('[name=password]');
+      this.elems.$modal.$ownerCode = this.elems.$modal.find('[name=owner-code]');
+      this.elems.$modal.$submit    = this.elems.$modal.find('.submit');
+    },
+
+    handleLoginError: function(user, error) {
+      this.elems.$modal.$username.val(''); this.elems.$modal.$password.val('');
+      alert(error.message);
+    },
+
+    handleLoginSubmit: function(ev) {
+      ev.preventDefault();
+
+      Parse.User.logIn(this.elems.$modal.$username.val(), this.elems.$modal.$password.val(), {
+        success: this.handleLoginOrSignupSuccess.bind(this),
+        error: this.handleLoginError.bind(this)
       });
     },
 
-    initCss: function() {
-      this.elems.$signupA.hide();
+    handleLoginOrSignupSuccess: function(user) {
+      this.currentUser = user;
+      this.elems.$modal.fadeOut(this.elems.$modal.remove);
+      this.makeElemsEditable();
+      this.clearUrlTrigger();
+    },
+
+    handleSignupError: function(user, error) {
+      this.elems.$modal.$username.val(''); this.elems.$modal.$password.val(''); this.elems.$modal.$ownerCode.val('');
+      alert(error.message);
+    },
+
+    handleSignupSubmit: function(ev) {
+      ev.preventDefault();
+
+      var user = new Parse.User();
+      user.set("username", this.elems.$modal.$username.val());
+      user.set("password", this.elems.$modal.$password.val());
+      user.set("ownerCode", this.elems.$modal.$ownerCode.val());
+
+      user.signUp(null, {
+        success: this.handleLoginOrSignupSuccess.bind(this),
+        error: this.handleSignupError.bind(this)
+      });
     },
 
     insertStyleTag: function() {
-      $('head').append(this.$style());
+      this.elems.$head.append(this.$style());
+    },
+
+    loginOrSignupTriggered: function() {
+      return (this.signupTriggered()) || (this.loginTriggered());
+    },
+
+    loginTriggered: function() {
+      return this.urlTriggerRes.login.test(document.URL);
     },
 
     makeElemsEditable: function() {
-      $('[data-cms]').attr('contentEditable', true);
+      this.elems.$editable.attr('contentEditable', true);
+    },
+
+    setupBodyClickHandler: function() {
+      this.elems.$body.click(this.handleBodyClick.bind(this));
+      this.elems.$modal.click(function(ev) {
+        ev.stopPropagation();
+      });
+    },
+
+    setupLogin: function() {
+      this.elems.$modal.$ownerCode.remove();
+      this.elems.$modal.$submit.click(this.handleLoginSubmit.bind(this));
     },
 
     setupSignup: function() {
-      that = this;
-      this.elems.$signupA.show();
-      $('body').append(this.elems.$signupDiv);
-      this.elems.$signupA.click(function(ev) {
-        ev.preventDefault();
-        that.elems.$signupDiv.fadeIn();
-      });
-      $('div.cms-signup a').click(function(ev) {
-        ev.preventDefault();
-        that.handleSignupSubmit();
-      });
+      this.elems.$modal.$submit.click(this.handleSignupSubmit.bind(this));
     },
 
-    // style tag here to avoid separate sheet
+    setupSignupOrLogin: function() {
+      if (this.loginOrSignupTriggered()) {
+        this.addModal();
+        if (this.signupTriggered())
+          this.setupSignup();
+        else if (this.loginTriggered())
+          this.setupLogin();
+      }
+    },
+
+    signupTriggered: function() {
+      return this.urlTriggerRes.signup.test(document.URL);
+    },
+
+    ////////// style tag
 
     $style: function() {
       var styleTag = "<style> " +
         "[data-cms] { outline: 0 solid transparent } " +
-        "[data-cms]:focus { outline: 6px solid #c4ffcc } " +
-        "div.cms-login, div.cms-signup {" +
+        "[data-cms]:focus { outline: 0 solid transparent; background-color: #c4ffcc; } " +
+        "div.cms-modal {" +
           "position: fixed;" +
           "left: 50%;" +
           "top: 50%;" +
@@ -115,8 +189,9 @@ function QuickChange(appId, jsKey, options) {
           "box-sizing: border-box;" +
           "color: rgb(45,45,45);" +
           "font-family: Helvetica, Arial;" +
+          "font-size: .75rem" +
         "}" +
-        "div.cms-login, div.cms-signup input {" +
+        "div.cms-modal input {" +
           "width: 100%;" +
           "display: block;" +
           "padding: .75em;" +
@@ -125,11 +200,11 @@ function QuickChange(appId, jsKey, options) {
           "outline: 0;" +
           "border: 0;" +
         "}" +
-        "div.cms-login, div.cms-signup input:focus {" +
+        "div.cms-modal input:focus {" +
           "outline: 0;" +
           "background-color: #c4ffcc;" +
         "}" +
-        "div.cms-login, div.cms-signup a {" +
+        "div.cms-modal a {" +
           "display: inline-block;" +
           "text-decoration: none;" +
           "color: #c4ffcc;" +
@@ -137,7 +212,7 @@ function QuickChange(appId, jsKey, options) {
           "border: solid 2px #c4ffcc;" +
           "border-radius: 6px;" +
         "}" +
-        "div.cms-login, div.cms-signup a:hover {" +
+        "div.cms-modal a:hover {" +
           "color: rgb(45,45,45);" +
           "background-color: #c4ffcc;" +
         "}" +
@@ -151,6 +226,7 @@ function QuickChange(appId, jsKey, options) {
   // represent single editable elems
 
   function Content(args) {
+    this.qc = args.qc;
     this.elem = args.elem;
     this.initCss();
     this.setId();
@@ -159,7 +235,11 @@ function QuickChange(appId, jsKey, options) {
 
   Content.prototype = {
 
+    ////////// defaults
+
     DBContent: Parse.Object.extend("Content"),
+
+    ////////// methods
 
     createDBobject: function() {
       this.dbObject = new this.DBContent();
