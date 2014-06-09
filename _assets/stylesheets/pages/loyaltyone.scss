@@ -6,16 +6,20 @@
       @media screen and (max-width:640px) {
         margin: 1.5rem 0;
       }
-    }
 
-    &.right {
-      text-align: right;
-    }
+      ul {
+        li {
+          margin-bottom: 1em;
+          font-size: 1.5em;
+        }
+      }
 
-    ul {
-      li {
-        margin-bottom: 1em;
-        font-size: 1.5em;
+      &.right {
+        ul {
+          li {
+            text-align: right;
+          }
+        }
       }
     }
   }
