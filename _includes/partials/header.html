@@ -10,7 +10,7 @@
       </li>
 
       <li>
-        <a href="/work.html" class="has-menu 
+        <a href="/work.html" class="has-menu
           {% if page.url == '/work.html' %}
             selected
           {% endif %}">Work
@@ -54,11 +54,67 @@
               </a>
             </li>
           </ul>
-        </div>  
+        </div>
       </li>
 
       <li>
-        <a href="/about.html" class="has-menu 
+        <a href="/lab.html" class="has-menu
+          {% if page.url == '/lab.html' %}
+            selected
+          {% endif %}">Lab
+        </a>
+        <div class="sub-menu">
+          <ul>
+            <li>
+              <a href="/lab/3d-tetris"
+                {% if page.url == '/lab/3d-tetris' %}
+                  class="selected"
+                {% endif %}>3D Tetris
+              </a>
+            </li>
+            <li>
+              <a href="/lab/headtrackr"
+                {% if page.url == '/lab/headtrackr' %}
+                  class="selected"
+                {% endif %}> HeadTrackr
+              </a>
+            </li>
+            <li>
+              <a href="/lab/playground_webrtc"
+                {% if page.url == '/lab/playground_webrtc' %}
+                  class="selected"
+                {% endif %}> Playground Webrtc
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="/lab/3d-tetris"
+                {% if page.url == '/lab/3d-tetris' %}
+                  class="selected"
+                {% endif %}>3D Tetris
+              </a>
+            </li>
+            <li>
+              <a href="/lab/headtrackr"
+                {% if page.url == '/lab/headtrackr' %}
+                  class="selected"
+                {% endif %}> HeadTrackr
+              </a>
+            </li>
+            <li>
+              <a href="/lab/playground_webrtc"
+                {% if page.url == '/lab/playground_webrtc' %}
+                  class="selected"
+                {% endif %}> Playground Webrtc
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li>
+        <a href="/about.html" class="has-menu
           {% if page.url == '/about.html' %}
             selected
           {% endif %}">About

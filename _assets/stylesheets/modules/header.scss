@@ -30,6 +30,9 @@ header {
         padding: 1em 0;
         margin: 0 .75em;
 
+        @include perspective-origin(top);
+        @include perspective(200px);
+
         @media screen and (max-width:640px) { padding: 0; }
 
         > a {
@@ -43,10 +46,7 @@ header {
             pointer-events: all;
 
             > ul {
-              -moz-transform: none;
-              -ms-transform: none;
-              -o-transform: none;
-              -webkit-transform: none;
+              @include transform(none);
             }
           }
         }
@@ -70,14 +70,6 @@ header {
           z-index: 5000;
           margin-top: 1em;
 
-          -moz-perspective-origin: top;
-          -ms-perspective-origin: top;
-          -o-perspective-origin: top;
-          -webkit-perspective-origin: top;
-          -moz-perspective: 200px;
-          -ms-perspective: 200px;
-          -o-perspective: 200px;
-          -webkit-perspective: 200px;
 
           @media screen and (max-width:640px) {
             left: 5em;
@@ -86,7 +78,7 @@ header {
           }
 
           &:hover {
-            display: block;            
+            display: block;
           }
 
           > ul {
@@ -96,23 +88,6 @@ header {
             text-align: left;
             width: 11em;
             height: 11em;
-
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: all 0.2s ease-in-out;
-            -ms-transition: all 0.2s ease-in-out;
-            -o-transition: all 0.2s ease-in-out;
-            -webkit-transition: all 0.2s ease-in-out;
-            -moz-transform-origin: top;
-            -ms-transform-origin: top;
-            -o-transform-origin: top;
-            -webkit-transform-origin: top;
-            -moz-transform: rotateX(-90deg);
-            -ms-transform: rotateX(-90deg);
-            -o-transform: rotateX(-90deg);
-            -webkit-transform: rotateX(-90deg);
 
             > li {
               position: relative;
@@ -131,14 +106,30 @@ header {
 }
 
 .no-touch {
+  header nav > ul > li > .sub-menu {
+    @include transform-style(preserve-3d);
+    @include transform-origin(top);
+    @include transform(rotateX(-75deg));
+    @include transition(all, 0.5s, ease-in-out);
+    > ul {
+      @include transform-style(preserve-3d);
+      @include transform-origin(top);
+    }
+    > ul:nth-child(2) {
+      opacity: 0;
+      @include transition(all, 0.5s, ease-in-out);
+      @include transform(rotateX(-90deg));
+    }
+  }
   header nav > ul > li:hover > .sub-menu {
     pointer-events: all;
-
-    > ul {
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      -webkit-transform: none;
+    @include transform(none);
+    @include transition(all, 0.5s, cubic-bezier(0,1.5,0.9,1.0));
+    > ul:nth-child(2) {
+      opacity: 1;
+      @include transform(none);
+      @include transition(all, 0.5s, cubic-bezier(0,1.5,0.9,1.0));
+      @include transition-delay(0.35s);
     }
   }
 }
