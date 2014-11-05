@@ -5,10 +5,11 @@
 #= require ./lib/request_animation_frame_polyfill
 #= require ./lib/underscore-min.js
 #= require ./lib/parse-min.js
-#= require ./lib/quick-change.js
+#= require ./lib/prefix-free.min.js
 #= require base
 #= require header
 #= require contact
+#= require lighthouse
 #= require_tree ./canvas
 #= require icons
 #= require_tree ./helpers

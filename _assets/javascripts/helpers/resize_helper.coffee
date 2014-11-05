@@ -28,4 +28,6 @@
       window.logo.resize $(window).innerWidth()
       window.logo.draw()
 
+    lighthouse.positionWithCss()
+
   windowOrientation: undefined

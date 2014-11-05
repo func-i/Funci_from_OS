@@ -1,0 +1,152 @@
+@keyframes rotate {
+  25% { transform: rotateX(-90deg) rotateY(0) rotateZ(0deg) translateY(-8em); }
+  37% { transform: rotateX(-90deg) rotateY(0) rotateZ(45deg) translateY(-8em); }
+  50% { transform: rotateX(-90deg) rotateY(0) rotateZ(90deg) translateY(-8em); }
+  62% { transform: rotateX(-90deg) rotateY(0) rotateZ(135deg) translateY(-8em); }
+  75% { transform: rotateX(-90deg) rotateY(0) rotateZ(180deg) translateY(-8em); }
+  87% { transform: rotateX(-90deg) rotateY(0) rotateZ(225deg) translateY(-8em); }
+  100% { transform: rotateX(-90deg) rotateY(0) rotateZ(270deg) translateY(-8em); }
+  0% { transform: rotateX(-90deg) rotateY(0) rotateZ(315deg) translateY(-8em); }
+  12% { transform: rotateX(-90deg) rotateY(0) rotateZ(360deg) translateY(-8em); }
+}
+
+#lighthouse {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  img {
+    width: 200px;
+    position: absolute;
+    left: calc(50% - 100px);
+    top: calc(35% - 42px);
+  }
+
+  #wrapper {
+    perspective: 16em;
+    perspective-origin: 50% 35%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    font-size: 100%;
+  }
+
+  .scene {
+    transform: rotateX(-90deg) rotateY(0) rotateZ(315deg) translateY(-8em);
+    animation-duration: 8s;
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  .scene, .cylinder, .face, .face-wrapper, .cr {
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+  .scene {
+    width: 20em;
+    height: 20em;
+    top: 35%;
+    left: 50%;
+    margin: -10em 0 0 -10em;
+  }
+  .cylinder {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    transform-origin: 50%;
+  }
+  .face, .face-wrapper {
+    transform-origin: 0 0;
+  }
+  .face {
+    background-size: 100% 100%!important;
+    background-position: center;
+  }
+  .face-wrapper .face {
+    left: 100%;
+    width: 100%;
+    height: 100%
+  }
+  .photon-shader {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+  }
+  .side {
+    left: 50%;
+  }
+  .cr, .cr .side {
+    height: 100%;
+  }
+  .cylinder .tp {
+    transform: rotateX(90deg) translateY(-50%);
+  }
+  .cylinder .bm {
+    transform: rotateX(-90deg) translateY(-50%);
+  }
+  .cylinder .tp, .cylinder .bm, .cylinder .tp .photon-shader, .cylinder .bm .photon-shader {
+    border-radius: 50%;
+  }
+  .cylinder .bm {
+    top: 100%;
+  }
+  /* .cylinder styles */
+  .cylinder {
+    transform:translate3D(0em, 0em, 0em) rotateX(0deg) rotateY(0deg) rotateZ(-180deg);
+    opacity:1;
+    width:1em;
+    height:16em;
+    margin:-8em 0 0 -0.5em;
+  }
+  .cylinder .tp, .cylinder .bm {
+    width:1em;
+    height:1em;
+  }
+  .cylinder .side {
+    width:0.4392135623730951em;
+    height:16em;
+  }
+  .cylinder .s0 {
+    transform: rotateY(22.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s1 {
+    transform: rotateY(67.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s2 {
+    transform: rotateY(112.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s3 {
+    transform: rotateY(157.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s4 {
+    transform: rotateY(202.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s5 {
+    transform: rotateY(247.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s6 {
+    transform: rotateY(292.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .cylinder .s7 {
+    transform: rotateY(337.5deg) translate3D(-50%, 0, 0.475em);
+  }
+  .face, .side {
+    background-color: white;
+
+    /*-webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px)*/
+
+    box-shadow: 0 0 100px rgba(255,255,255,.75);
+  }
+}
