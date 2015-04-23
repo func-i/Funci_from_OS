@@ -1,12 +1,17 @@
 name: Functional Imperative
 markdown: redcarpet
 highlighter: pygments
+
+# for use outside the project
+keep_files:
+  - ./assets/logo_mini.png
+  - ./assets/Lighthouse.png
+
 exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
 assets: 
-  debug: true
   sources:
     - _assets
     - _assets/fonts
@@ -16,6 +21,7 @@ assets:
 
   ##### development #####
 
+  # debug: true
   # cachebust: hard
   # gzip: false
   # js_compressor: none
@@ -23,6 +29,7 @@ assets:
 
   ##### production  #####
 
+  debug: true
   cachebust: none
   gzip: true
   js_compressor: uglifier
