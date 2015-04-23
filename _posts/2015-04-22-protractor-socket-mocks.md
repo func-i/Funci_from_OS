@@ -10,7 +10,8 @@ date:       2015-04-22
 
 While testing I wanted to mock two types of external calls, API calls a Socket connection.
 Mocking http calls is fairly straightforward and well documented using [$httpBackEnd](https://docs.angularjs.org/api/ngMock/service/$httpBackend).
-There is a [socket mock](https://github.com/nullivex/angular-socket.io-mock) for [angular-socket.io](https://github.com/btford/angular-socket-io) which we were not using.
+There is a [socket mock](https://github.com/nullivex/angular-socket.io-mock) for [angular-socket.io](https://github.com/btford/angular-socket-io),
+but as we're using sio-client, we can't leverage it.
 So we had to do it another way.
 
 ### Stack
@@ -142,7 +143,7 @@ Assume that after logging into my API I call:
   <figcaption>./mock/socket_service_mock.coffee</figcaption>
   <br />
   {% highlight coffeescript %}
-    module.exports.socketServiceEmpty = ->
+    module.exports.socketService = ->
       # Important, DO NOT include ", []" in the line below.
       # That will clear your entire services module!
       # We only want to overwrite our socketService
