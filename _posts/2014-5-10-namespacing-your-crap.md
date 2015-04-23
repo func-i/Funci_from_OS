@@ -27,6 +27,8 @@ Suppose we've two scripts, `foo.js` and `bar.js`.
 
 {% endhighlight %}
 
+<!--more-->
+
 This is what most javascripts look like. This is why puppies die, the
 bad guys always win, and we can never have anything nice.
 

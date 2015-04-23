@@ -25,6 +25,8 @@ gem 'nokogiri', :git => 'git@github.com:Sailias/nokogiri.git'
 This will use my fork of nokogiri, but how would I do development on it?  I can clone it, push changes back to my fork, then bundle update. If I commit some bad code, I will end up cluttering my commit log with garbage, so this approach is not even a real option.
 What we really need to do is include a local version of our gem in our project.
 
+<!--more-->
+
 ### Here comes :path
 
 {% highlight ruby %}

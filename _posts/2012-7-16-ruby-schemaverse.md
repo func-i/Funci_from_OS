@@ -10,6 +10,8 @@ date:       2012-9-16 16:21:22
 
 As a rubyist I wanted to play the game but writing scripts in PL/pgSQL wasn't exactly my first choice and it might not be yours either. So after contacting [Abstrct](https://github.com/Abstrct) the creator of Schemaverse, I set out to write a ruby wrapper to play the game. Together we created a public github project which players can fork and deploy for free to [Heroku](http://heroku.com).
 
+<!--more-->
+
 ### Getting Started
 
 In order to play you must register at [Schemaverse.com](https://schemaverse.com/). You do not need to give an email address, just a username and password.

@@ -21,6 +21,8 @@ Interestingly enough, Reddit's 'Hot' scoring function (explained in link above):
 
 is [quite flawed](http://technotes.iangreenleaf.com/posts/2013-12-09-reddits-empire-is-built-on-a-flawed-algorithm.html).
 
+<!--more-->
+
 > **Sidenote**: One observation not mentioned in that first article is that, while all other equations use some form of `time_now - time_posted` to calculate how old a post is, the clever guys at Reddit use `time_posted - some_old_date`.
 
 > The advantage of this is that the post's score need only be calculated once, whereas the value of scores calculated with `time_now` will change on every request.
