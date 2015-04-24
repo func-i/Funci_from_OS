@@ -87,6 +87,11 @@ class @Logo
 
   resize: (screenWidth) ->
     @screenWidth = screenWidth
+    
+    @canvas.orient()
+    @context.clear 0, 0, logo.canvas.width, logo.canvas.height
+    @context.setMultiply()
+
     @changeAnchor @elem.offset()
     @setSize()
     @setSideLengths()

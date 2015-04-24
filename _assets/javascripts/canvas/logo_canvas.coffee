@@ -11,7 +11,7 @@ class @LogoCanvas
     dpr / bspr
 
   orient: ->
-    @width  = @elem.width()
+    @width  = $(window).width()
     @height = @elem.height()
 
     @elem.css 'width', (@width)

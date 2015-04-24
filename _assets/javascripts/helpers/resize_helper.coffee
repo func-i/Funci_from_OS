@@ -21,10 +21,6 @@
         square.draw()
 
     if blendingSupported
-      window.logo.canvas.orient $('body').width(), $('body').height()
-      window.logo.context.clear 0, 0, logo.canvas.width, logo.canvas.height
-      window.logo.context.setMultiply()
-
       window.logo.resize $(window).innerWidth()
       window.logo.draw()
 
