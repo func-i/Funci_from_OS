@@ -3,7 +3,7 @@ layout:     post
 title:      Tips for More Painless Protractor Tests
 subtitle:   Lessons from my first AngularJS app
 author:     ting
-date:       2015-04-22 
+date:       2015-04-29 
 ---
 
 Protractor is for writing end-to-end tests. It starts your web app in a browser and runs your tests against the app. The tests are written to simulate user actions in the browser, such as clicking a button, and to test DOM conditions as a result of those actions. In general, that means your test code runs against/can access the *browser*, not the internals of the app itself.
