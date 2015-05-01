@@ -18,14 +18,15 @@ desc "compile and push the site to master of gh-pages repo"
 task :deploy, [:path_to_gh_pages_dir] do |t, args|
   path_to_gh_pages_dir = args[:path_to_gh_pages_dir]
   last_commit_message  = `git log -1 --pretty=%B`
+  puts "Last commit message: #{last_commit_message}"
 
   puts "********** Building files into _site/\n\n"
-  %x{jekyll build}
+  puts %x{jekyll build}
 
   puts "********** Copying _site/ files to gh-pages dir\n\n"
   %x{cp -r _site/* #{path_to_gh_pages_dir}}
 
   puts "********** CDing into #{path_to_gh_pages_dir}, committing change, and pushing to master\n\n"
   %x{cd #{path_to_gh_pages_dir}}
-  %x{git commit -am '#{last_commit_message}' && git push origin master}
+  puts %x{git commit -am '#{last_commit_message}' && git push origin master}
 end
