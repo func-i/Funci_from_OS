@@ -28,5 +28,9 @@ task :deploy, [:path_to_gh_pages_dir] do |t, args|
 
   puts "********** CDing into #{path_to_gh_pages_dir}, committing change, and pushing to master\n\n"
   %x{cd #{path_to_gh_pages_dir}}
-  puts %x{git commit -am '#{last_commit_message}' && git push origin master}
+
+  puts 'Adding files to commit'
+  puts %x{git add .}
+  puts %x{git commit -m '#{last_commit_message}'}
+  puts %x{git push origin master}
 end
