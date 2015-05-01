@@ -1,7 +1,26 @@
 functional imperative dot com
 =============
-### design by [objective subject](http://objectivesubject.com)
+##### design by [objective subject](http://objectivesubject.com)
+
+
+### development
 
 * `bundle install`
-* `rake`
+* `bundle exec rake`
 * Browse to `http://localhost:4000`
+
+
+### deployment
+
+* ensure you've enabled the production options in `_config.yml` like so:
+```
+  ##### production  #####
+
+  debug: true
+  cachebust: none
+  gzip: true
+  js_compressor: uglifier
+  css_compressor: yui
+```
+* commit your changes locally
+* `bundle exec rake deploy[<path_to_local_gh_pages_repo>]`
