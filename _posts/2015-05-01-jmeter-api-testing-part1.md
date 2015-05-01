@@ -9,7 +9,7 @@ date:       2015-05-01
 Imagine you have created a JSON API that allows users to take tests or quizzes and you want to stress
 test it to discover it's load capability.
 
-JMeter is the "go to" tool for stress testing, and it should be.  It is extremely powerful, dynamic and scalable.  (insert reference to ec2-jmeter here)
+JMeter is the "go to" tool for stress testing, and it should be.  It is extremely powerful, dynamic and scalable.
 
 <!--more-->
 
