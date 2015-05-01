@@ -17,7 +17,7 @@ JMeter is the "go to" tool for stress testing, and it should be.  It is extremel
 
 This guide will show you how to:
 
-* use Jmeter to send requests to your API
+* use JMeter to send requests to your API
 * use javascript to parse responses from the API
 * set variables to be used in other requests
 * make additional calls to your API based on previous calls
@@ -36,7 +36,13 @@ Consider the following API:
       "testee_id":  "ABC123",
       "question": {
         "id": 1,
-        "title":  "What is your name?"
+        "title":  "What is 1 + 1?"
+        "choices": [
+          { "id": 1, "value": 1 }
+          { "id": 2, "value": 2 }
+          { "id": 3, "value": 3 }
+          { "id": 4, "value": 4 }
+        ]
       }
     }
   }
@@ -55,8 +61,8 @@ The system will use this header to identify the Testee.  It will also return the
   {% highlight javascript %}
   {
     "answer": {
-      "question_id": "1",
-      "value": "Sailias"
+      "question_id": 1,
+      "choice_id": 1
     }
   }
   {% endhighlight %}
@@ -67,7 +73,13 @@ The system will use this header to identify the Testee.  It will also return the
   {
     "question": {
       "id": 2,
-      "title": "How old are you?"
+      "title": "What is 1 x 1?"
+      "choices": [
+        { "id": 5, "value": 1 }
+        { "id": 6, "value": 2 }
+        { "id": 7, "value": 3 }
+        { "id": 8, "value": 4 }
+      ]
     }
   }
   {% endhighlight %}
@@ -93,8 +105,9 @@ The response is the next question we are to answer.
   {% highlight javascript %}
   {
     "result": {
-      "points_scored": 10,
-      "points_available": 10
+      "questions_available": 10,
+      "questions_answered": 10,
+      "questions_correct": 5
     }
   }
   {% endhighlight %}
@@ -105,17 +118,31 @@ The endpoint that gives us our final test results.  When POSTing an answer doesn
 
 ### Getting started with JMeter
 
-![Fig1]({% asset_path blog_posts/jmeter/fig1.png %})
-
-* Add a "User Defined Variables" config element
+* Add a "User Defined Variables" config element:
+  * ![Fig1]({% asset_path blog_posts/jmeter/fig1.png %})
 * Add a new variable:
   * ![Fig1]({% asset_path blog_posts/jmeter/fig2.png %})
-  * (this makes it easier to switch it to a live server without changing all your samplers)
+      * *this makes it easier to switch it to a live server without changing all your samplers*
 
-* Add a Config Element/HTTP Header Manager
-  * Content-Type -> application/json
+* Add a Config Element/HTTP Header Manager:
+  * ![Fig1]({% asset_path blog_posts/jmeter/fig3.png %})
 
-* Add a sampler/HTTP Request
-  * Server Name or IP -> ${site_url}
-  * Method -> GET
-  * path -> /test
+* Add two values:
+  * ![Fig1]({% asset_path blog_posts/jmeter/fig4.png %})
+  * *TESTEE-ID will be set after the first call.  It is how the server will know who is answering questions.*
+
+* Add a sampler/HTTP Request:
+  * ![Fig1]({% asset_path blog_posts/jmeter/fig5.png %})
+
+
+We now have a sample API, and a basic setup for a JMeter project which will hit our */test* endpoint to start
+taking the test.
+
+The next steps will be to have the JMeter automatically answer the questions in the test 1 by 1
+and then call the results page when complete.
+
+We will do this by using a **BSF PostProcessor** with a script written in JavaScript.
+
+This will be covered in Part 2 of this tutorial which is coming soon.
+
+Happy Coding!
