@@ -19,13 +19,13 @@ task :deploy, [:path_to_gh_pages_dir] do |t, args|
   path_to_gh_pages_dir = args[:path_to_gh_pages_dir]
   last_commit_message  = `git log -1 --pretty=%B`
 
-  puts "Building files into _site/.\n\n"
+  puts "********** Building files into _site/\n\n"
   %x{jekyll build}
 
-  puts "Copying _site/ files to gh-pages dir.\n\n"
+  puts "********** Copying _site/ files to gh-pages dir\n\n"
   %x{cp -r _site/* #{path_to_gh_pages_dir}}
 
-  puts "\nCDing into #{path_to_gh_pages_dir}, committing change, and pushing to master./\n\n"
+  puts "********** CDing into #{path_to_gh_pages_dir}, committing change, and pushing to master\n\n"
   %x{cd #{path_to_gh_pages_dir}}
   %x{git commit -am '#{last_commit_message}' && git push origin master}
 end
