@@ -15,15 +15,15 @@ a coding school in Toronto called [Lighthouse Labs](http://lighthouselabs.ca).  
 
 They say a US Marine's head is like an empty jar, he only knows what you put in (Jarhead).  This does and doesn't apply to a new programmer.
 
-Their main task is solving problems!  They do this in code, but how they *think* and what steps they take to solving problems 
+Their main task is solving problems!  They do this in code, but how they *think* and what steps they take when solving problems 
 is affected by personality and previous life experiences.  We can give them structure and coach their thought process, but each Junior Developer is as unique as the next.
 
 ### Hurdles
 
 We do a lot of work in Rails and AngularJS, and anyone who has used these two frameworks knows that there is a *Rails* way or an *Angular* way to write code.
-A big problem throughout a programmer's career is that you "Don't know what you don't know."
+A big problem throughout a programmer's career is that you "don't know what you don't know."
 What I mean by that is that if there is an accepted solution or library that is always used for this problem and you aren't aware of it, you might start trying to write
-code to solve the problem themselves rather than leverage the existing solution.  This is quickly followed by a facepalm when you learn the solution existed the whole time.
+code to solve the problem yourself rather than leverage the existing solution.  This is quickly followed by a facepalm when you learn the solution existed the whole time.
 It's hard to know about tools and best practices that you haven't been exposed to.
 
 So a general rule I tell juniors is that they are not going to do anything that people haven't already done and solved before.
