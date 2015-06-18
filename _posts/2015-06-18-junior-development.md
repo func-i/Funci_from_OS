@@ -3,7 +3,7 @@ layout:     post
 title:      How I train Developers
 subtitle:   And how they can continue to improve.
 author:     jon
-date:       2015-05-15
+date:       2015-06-18
 ---
 
 I've trained a number of Junior Developers, mostly out of Bootcamps.  In fact, the owners of Functional Imperative have also founded
@@ -13,7 +13,7 @@ a coding school in Toronto called [Lighthouse Labs](http://lighthouselabs.ca).  
 
 ## Juniors
 
-They say a US Marine's head is like an empty jar, he only knows what you put in (Jarhead).  The does and doesn't apply to a new programmer.
+They say a US Marine's head is like an empty jar, he only knows what you put in (Jarhead).  This does and doesn't apply to a new programmer.
 
 Their main task is solving problems!  They do this in code, but how they *think* and what steps they take to solving problems 
 is affected by personality and previous life experiences.  We can give them structure and coach their thought process, but each Junior Developer is as unique as the next.
@@ -21,9 +21,9 @@ is affected by personality and previous life experiences.  We can give them stru
 ### Hurdles
 
 We do a lot of work in Rails and AngularJS, and anyone who has used these two frameworks knows that there is a *Rails* way or an *Angular* way to write code.
-A big problem throughout a programmer's career is that they "Don't know what they don't know."
-What I mean by that is that if there is an accepted solution or library that is always used for this problem, you might start trying to write
-code to solve the problem yourself rather than leveraging the existing solution.  Followed by a facepalm when you learn the solution existed the whole time.
+A big problem throughout a programmer's career is that you "Don't know what you don't know."
+What I mean by that is that if there is an accepted solution or library that is always used for this problem and you aren't aware of it, you might start trying to write
+code to solve the problem themselves rather than leverage the existing solution.  This is quickly followed by a facepalm when you learn the solution existed the whole time.
 It's hard to know about tools and best practices that you haven't been exposed to.
 
 So a general rule I tell juniors is that they are not going to do anything that people haven't already done and solved before.
@@ -33,17 +33,17 @@ is likely they are doing something wrong or there is a better way.  No hacks nee
 ### 20 min rule
 
 This brings us to the **20 min** rule.  In our dev shop we have a rule that if you're completely stuck for more than 20 mins, you ask for help.
-Even if it's just for a second opinion, or to talk your problem out.  After 20 mins, you get help and then get blocked or frustrated for an extended period of time.
+Even if it's just for a second opinion, or to talk your problem out.  After 20 mins, you get help rather than get blocked or frustrated for an extended period of time.
 
-This promotes discussion, it catches hacky solutions early, and it gives juniors and opportunity to learn from more experienced developers as often as possible.
+This promotes discussion, it catches hacky solutions early, and it gives juniors an opportunity to learn from more experienced developers as often as possible.
 
 ### Make mistakes
 
-If a Junior Dev wants to implement a solution that I know will not work (I have the benefit of experience which helps me see 3 steps ahead of them while coding), 
-I talk to them about it and hint at potential problems, but they still want to go ahead with their implementation.  I let them!
+If a Junior Dev wants to implement a solution that I know will not work (I have the benefit of experience), 
+I talk to them about it and hint at potential problems, if they still want to go ahead with their implementation.  I let them!
 
 The benefit of them learning from their mistakes is tremendous, that's how I learned.  Of course this is a controlled process so I can peel them back
-when the time is right, but they are better for it in the end.  They touched the stove!
+when the time is right, but they are better for it in the end.
 
 ## Intermediates
 
@@ -59,7 +59,7 @@ Should every web developer know SQL really well?  The quick answer is **of cours
 
 Does every web developer know SQL really well?  Unfortunately no.
 
-If you learned to interact with the database using an [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping), chances are your SQL skills aren't up to scratch.  You want to get to the next level, go and learn SQL.
+If you learned to interact with the database using an [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping), chances are your SQL skills aren't up to scratch.  You want to get to the next level, go and learn SQL really really well.  (Triggers, SPs (PG/PLSQL), Views, etc)
 
 There are a number of areas where this can apply:
 
