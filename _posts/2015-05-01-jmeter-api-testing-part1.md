@@ -143,6 +143,6 @@ and then call the results page when complete.
 
 We will do this by using a **BSF PostProcessor** with a script written in JavaScript.
 
-This will be covered in Part 2 of this tutorial which is coming soon.
+This is covered in [Part 2]({% post_url 2015-07-28-jmeter-api-testing-part2 %})
 
 Happy Coding!
