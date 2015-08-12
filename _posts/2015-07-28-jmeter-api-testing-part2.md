@@ -4,7 +4,7 @@ title:      Automated JSON API stress testing with JMeter Part 2
 subtitle:   Stress test your APIs with millions of requests
 author:     jon
 date:       2015-07-28
-published:  false
+published:  true
 ---
 
 If you are just finding this post, refer to [Part 1](post_url 2015-05-01-jmeter-api-testing-part1 %}) for the setup.
