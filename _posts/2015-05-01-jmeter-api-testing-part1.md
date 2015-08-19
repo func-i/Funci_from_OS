@@ -142,5 +142,6 @@ The next steps will be to have the JMeter automatically answer the questions in 
 and then call the results page when complete.
 
 We will do this by using a **BSF PostProcessor** with a script written in JavaScript.
+This is covered in [Part 2]({% post_url 2015-08-18-jmeter-api-testing-part2 %})
 
 Happy Coding!

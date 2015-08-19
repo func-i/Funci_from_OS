@@ -3,11 +3,11 @@ layout:     post
 title:      Automated JSON API stress testing with JMeter Part 2
 subtitle:   Stress test your APIs with millions of requests
 author:     jon
-date:       2015-07-28
-published:  false
+date:       2015-08-18
+published:  true
 ---
 
-If you are just finding this post, refer to [Part 1](post_url 2015-05-01-jmeter-api-testing-part1 %}) for the setup.
+If you are just finding this post, refer to [Part 1]({% post_url 2015-05-01-jmeter-api-testing-part1 %}) for the setup.
 It deals with some of the basic API functionality and a basic JMeter setup.
 
 Now we will get into the advanced JMeter setup that will allow you to traverse your API during your stress test.
@@ -89,14 +89,14 @@ To set up the POST data for a new request we use a *BSF Post Processor*
 Well that was uneventful.  What was that for?  
 It was only to set the answerData variable for future use.
 
-How do we use it?
+How do we use it? (In this example)
 
 ### Continue with a while loop
 
 * Add a *While Controller*
   * Set the condition to: ```${__javaScript('${answerData}' !== '')}```
 * Add a HTTP Request to the While Controller
-  * ![Fig1]({% asset_path blog_posts/jmeter/fig6.png %})
+  * ![Fig6]({% asset_path blog_posts/jmeter/fig6.png %})
 * Add a BSF Post Processor to this new HTTP Request
 
 <figure>
@@ -104,12 +104,19 @@ How do we use it?
   <br />
 
   {% highlight javascript %}
-  
+
+  // Load the JSON response from our last request  
   eval('var JSonResponse = ' + prev.getResponseDataAsString());
 
+  // If all the questions are done, the response will have a complete key
   if(JSonResponse.complete)
+
+    // clear the answerData, this will stop our while loop
     vars.put("answerData", "");    
   else {
+
+    // We still have more questions to answer
+    // set the params for another answer to be created
     var answerData = {
       answer: {
         question_id: JSonResponse.test.question.id,
@@ -117,15 +124,20 @@ How do we use it?
       }
     } 
 
+    // set the value for the global variable answerData
     vars.put("answerData", JSON.stringify(answerData));
   }
 
   {% endhighlight %}
 </figure>
 
-* Add a new HTTP Request to /result
 
-Remember our original workflow from [Part 1](post_url 2015-05-01-jmeter-api-testing-part1 %}).
+Add our last HTTP request
+
+* Add a new HTTP Request to and make it do a GET to /result
+  * This will get the results after our questions have been answered
+
+Remember our original workflow from [Part 1]({% post_url 2015-05-01-jmeter-api-testing-part1 %})
 
 * GET /test 
   * done by our first HTTP Request
@@ -139,7 +151,16 @@ Remember our original workflow from [Part 1](post_url 2015-05-01-jmeter-api-test
   * another BSF Post Processor
 * GET /result (last HTTP Request)
 
+Your plan now may look like:
+
+![Fig7]({% asset_path blog_posts/jmeter/fig7.png %})
+
 And you're done.
+
+You now have a JMeter plan to traverse your api.  Now you need to DOS your site and create tons of data.
+Modify the plan to have more requests and threads or use Amazon EC2 to make the requests to your app.
+
+Part 3 will cover distributed load testing with [ec2-jmeter](https://github.com/oliverlloyd/jmeter-ec2)
 
 
 
