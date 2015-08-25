@@ -1,6 +1,10 @@
 #index {
   #tweet {
     margin-top: 2em;
+
+    #tweet-content {
+      @include word-wrap();
+    }
   }
 
   #eventstream {

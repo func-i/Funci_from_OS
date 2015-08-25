@@ -111,6 +111,15 @@ $dark-gray:   rgb(45,45,45);
   background-size: $width $height;
 }
 
+/// misc. helpers ///
+
+@mixin word-wrap() {
+  word-break:      break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens:    auto;
+  hyphens:         auto;
+}
+
 ////////// defaults //////////
 
 html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p,
