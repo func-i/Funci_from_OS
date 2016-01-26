@@ -6,6 +6,11 @@
   top: 0;
 }
 
+#logo-container {
+  margin: auto;
+  max-width: 768px;
+}
+
 #logo-canvas {
   position: absolute;
   top: 0;
@@ -15,6 +20,10 @@
   height: 16em;
   -webkit-user-select: none;
   pointer-events: none;
+
+  &.on-home-page {
+
+  }
 }
 
 #logo {
@@ -39,6 +48,10 @@
         display: inline-block;
       }
     }
+  }
+
+  &.on-home-page {
+    height: 14em;
   }
 }
 

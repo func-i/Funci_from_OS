@@ -1,18 +1,11 @@
 class @LogoLetter
+  LETTERS_IN_WORD = 10
+  NUMBER_OF_WORDS = 2
   spriteSideLength: 120
   spritePadding: 4
-  defaultSideLength:
-    large: 60
-    small: 35
-  xOverlap:
-    large: 5
-    small: 3
-  yOverlap:
-    large: 12
-    small: 6
-  mousemoveEffectDistance:
-    large: 100
-    small: 75
+  xOverlapPercentage: 8.5
+  yOverlapPercentage: 16
+  mouseMoveEffectDistanceFactor: 1.7
   expansionSize:
     large: 4
     small: 8
@@ -28,13 +21,33 @@ class @LogoLetter
     @pixelRatio    = args.context.pixelRatio
     @ySpriteOffset = @id * (@spriteSideLength + @spritePadding)
     @expanded      = false
+
     @setSideLength()
     @setWord()
     @setColor()
     @setHomePosition()
+    @left = @homeLeft
+    @top = @homeTop
 
   setSideLength: (sideLength) ->
-    @sideLength = sideLength || @defaultSideLength[@logo.size]
+    sideLengthFromHorizontalAxis = @calculateSideLengths(
+      @logo.elem.width(),
+      @xOverlapPercentage,
+      LETTERS_IN_WORD
+    )
+    sideLengthFromVerticalAxis = @calculateSideLengths(
+      @logo.elem.height(),
+      1/2 * @yOverlapPercentage,
+      NUMBER_OF_WORDS
+    )
+    @sideLength = Math.min(sideLengthFromVerticalAxis, sideLengthFromHorizontalAxis)
+
+  calculateSideLengths: (canonicalLength, overlapPercentage, numberOfLetters) ->
+    totalOverlap = canonicalLength * (0.01 * overlapPercentage)
+    Math.floor((canonicalLength +  totalOverlap) / (numberOfLetters))
+
+  calculateOverlap: (overlapPercentage) ->
+    (0.01 * overlapPercentage * @sideLength)
 
   middle: ->
     left = @left + (@sideLength / 2)
@@ -53,18 +66,22 @@ class @LogoLetter
     @color = BASE_COLORS[colorString]
 
   setHomePosition: ->
-    mult = if @word is 1 then @id else @id - 10
-    leftOffset = (mult * @sideLength) - (mult * @xOverlap[@logo.size])
+    mult = if @word is 1 then @id else @id - LETTERS_IN_WORD
+    leftOffset = (mult * @sideLength) - (mult * @calculateOverlap(@xOverlapPercentage))
     @homeLeft = @anchor.left + leftOffset
     @initHomeLeft = @homeLeft
 
-    topOffset = if @word is 1 then 0 else @sideLength - @yOverlap[@logo.size]
+    topOffset = if @word is 1 then 0 else @sideLength - @calculateOverlap(@yOverlapPercentage)
     @homeTop = @anchor.top + topOffset
     @initHomeTop = @homeTop
 
     @returnHome()
 
   returnHome: ->
+    # horizontalDifference = @left - @homeLeft
+    # verticalDifference = @top - @homeTop
+    # horizontalDirection = Math.sign(horizontalDifference)
+    # verticalDirection = Math.sign(verticalDifference)
     @left = @homeLeft
     @top = @homeTop
 
@@ -86,11 +103,10 @@ class @LogoLetter
 
   moveFromMouse: (args) ->
     distanceFromMouse = args.distanceFromMouse
-    mousemoveEffectDistance = args.mousemoveEffectDistance || @mousemoveEffectDistance[@logo.size]
-
+    mouseMoveEffectDistance = @mouseMoveEffectDistanceFactor * @sideLength
     radialDistanceFromMouse = Math.round(Math.sqrt(Math.pow(distanceFromMouse.left, 2) + Math.pow(distanceFromMouse.top, 2)))
-    if (radialDistanceFromMouse <= mousemoveEffectDistance)
-      mult = (mousemoveEffectDistance - radialDistanceFromMouse) / mousemoveEffectDistance
+    if (radialDistanceFromMouse <= mouseMoveEffectDistance)
+      mult = (mouseMoveEffectDistance - radialDistanceFromMouse) / mouseMoveEffectDistance
       @left = Math.round(@homeLeft - (distanceFromMouse.left * mult))
       @top = Math.round(@homeTop - (distanceFromMouse.top * mult))
     else

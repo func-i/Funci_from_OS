@@ -87,7 +87,7 @@ class @Logo
 
   resize: (screenWidth) ->
     @screenWidth = screenWidth
-    
+
     @canvas.orient()
     @context.clear 0, 0, logo.canvas.width, logo.canvas.height
     @context.setMultiply()
@@ -95,7 +95,7 @@ class @Logo
     @changeAnchor @elem.offset()
     @setSize()
     @setSideLengths()
-    @contract() if @tooDamnSmall()
+    # @contract() if @tooDamnSmall()
     @setHomePosition()
 
   changeAnchor: (offset) ->

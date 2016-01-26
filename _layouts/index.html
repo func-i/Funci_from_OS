@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html  %}
+    {% include google_analytics.html %}
+  </head>
+  <body>
+    <div id="loading">
+      <img src="{% asset_path loading.gif %}">
+    </div>
+    <div id="body">
+      {{ content }}
+    </div>
+  {% javascript app %}
+  <script>
+    // new QuickChange("Qgj8iGq2C8eJh1PheCP6jbOJqOL6J8mKetmtrrw1", "YUv0AT10EawVQZEJpMiiua9vs8Q26FR86cEbRsyk");
+  </script>
+
+  </body>
+</html>

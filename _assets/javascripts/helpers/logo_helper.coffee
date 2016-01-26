@@ -39,7 +39,7 @@
         logo.explode mouseX, mouseY
         logo.elem.mouseup ->
           window.location.replace "/" if !onHome
-          if wasExpanded then logo.contract() else logo.expand()
+          # if wasExpanded then logo.contract() else logo.expand()
           logo.reset()
           logo.elem.unbind 'mouseup'
 
@@ -57,7 +57,7 @@
           logo.explode mouseX, mouseY
           setTimeout ->
             window.location.replace("/") unless onHome
-            if wasExpanded then logo.contract() else logo.expand()
+            # if wasExpanded then logo.contract() else logo.expand()
             logo.reset()
           , 100
         else
