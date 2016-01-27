@@ -24,12 +24,14 @@
   }
 
   .partner-logo-container {
+    text-align: center;
     display: inline-block;
     width: 24%;
     padding: 2%;
 
     img {
-      width: 100%;
+      max-height: 40px;
+      margin: auto;
     }
   }
 
@@ -57,6 +59,7 @@
         margin: 0 .75em;
 
         > a {
+          line-height: 20px;
           padding: 1em 0;
         }
       }
