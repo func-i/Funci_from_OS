@@ -1,7 +1,16 @@
-<div class="social-share">
+<div class="fi-social-share">
   <h4>Share this post on:</h4>
 
-  <div class="fb-share-button" data-layout="button"
-        data-href="{{ page.url }}"></div>
+  <!-- Facebook -->
+  <div class="fi-share-button fb-share-button"
+    data-layout="button"
+    data-href="{{ page.url }}"></div>
+
+  <!-- Twitter -->
+  <div class="fi-share-button">
+    <a class="twitter-share-button"
+      data-size="default"
+      href="{{ site.url }}{{ page.url }}"></a>
+  </div>
 
 </div>
