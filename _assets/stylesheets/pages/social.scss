@@ -14,6 +14,12 @@
   border-radius: 5px;
   background-color: #edeff0;
 
+  &.fixed-top {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  }
+
   @media screen and (max-width: 640px) {
     margin-left: 0;
   }
