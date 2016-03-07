@@ -5,15 +5,8 @@
     {% include mathjax.html %}
   </head>
   <body>
-    <!-- Facebook SDK to include share icon -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Social media share buttons -->
+    {% include social_sdk/facebook.html %}
 
     <div id="loading">
       <img src="{% asset_path loading.gif %}">
