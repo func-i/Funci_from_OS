@@ -1,4 +1,5 @@
 name: Functional Imperative
+url: http://www.functionalimperative.com/
 markdown: redcarpet
 highlighter: pygments
 
@@ -11,7 +12,7 @@ exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
-assets: 
+assets:
   sources:
     - _assets
     - _assets/fonts
