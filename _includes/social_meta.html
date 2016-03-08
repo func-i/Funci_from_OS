@@ -1,15 +1,21 @@
 <!-- Meta tags for social media share buttons -->
 
+<!-- Google Plus: Schema.org -->
+<meta itemscope itemtype="http://schema.org/BlogPosting" />
+<meta itemprop="headline" content="{{ page.title }}">
+<meta itemprop="description" content="{{ page.description }}">
+<meta itemprop="image" content="{{ site.url }}{% asset_path logo_social.jpg %}">
+
 <!-- Facebook: Open Graph -->
 <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ page.title }}" />
-<meta property="og:description" content="Read the blog post on Functional Imperative's website" />
+<meta property="og:description" content="{{ page.description }}" />
 <meta property="og:image" content="{{ site.url }}{% asset_path logo_social.jpg %}" />
 
 <!-- Twitter: Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@func_i">
 <meta name="twitter:title" content="{{ page.title }}">
-<meta name="twitter:description" content="Read the blog post on Functional Imperative's website">
+<meta name="twitter:description" content="{{ page.description }}">
 
