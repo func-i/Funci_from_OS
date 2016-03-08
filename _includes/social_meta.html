@@ -1,17 +1,15 @@
 <!-- Meta tags for social media share buttons -->
 
-<!-- Schema.org markup for Google+ -->
-<!-- <meta itemprop="headline" content="{{ page.title }}">
-<meta itemprop="description" content="{{ Read the blog post on Functional Imperative's website }}">
-<meta itemprop="image" content="{{ site.url }}{% asset_path an.png %}"> -->
+<!-- Facebook: Open Graph -->
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title }}" />
+<meta property="og:description" content="Read the blog post on Functional Imperative's website" />
+<meta property="og:image" content="{{ site.url }}{% asset_path logo_social.jpg %}" />
 
-<!-- Twitter Card data -->
+<!-- Twitter: Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@func_i">
 <meta name="twitter:title" content="{{ page.title }}">
 <meta name="twitter:description" content="Read the blog post on Functional Imperative's website">
 
-<meta property="og:type" content="article" />
-<meta property="og:title" content="{{ page.title }}" />
-<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-<meta property="og:image" content="{{ site.url }}{% asset_path an.png %}" />
