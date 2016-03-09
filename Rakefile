@@ -30,22 +30,22 @@ task :deploy, [:path_to_gh_pages_dir] do |t, args|
   puts %x{cd #{path_to_gh_pages_dir} && git pull origin master && git add . && git commit -m '#{last_commit_message}' && git push origin master}
 end
 
-desc "compile and push the site to gh-pages branch of staging repo"
-task :staging, [:gh_user, :gh_repo] do |t, args|
+desc "compile and push the site to gh-pages branch of development repo"
+task :staging do
   puts "********** Building files into _site/\n\n"
   puts %x{jekyll build}
 
   commit_message = "Site update at #{Time.now.utc}"
-  staging_repo = "https://github.com/#{args.gh_user}/#{args.gh_repo}.git"
+  dev_repo = "https://github.com/func-i/Funci_from_OS.git"
 
-  puts "********** CD into _site, commit change, and push to staging repo\n\n"
+  puts "********** CD into _site, commit change, and push to gh-pages branch\n\n"
   puts %x{
     cd _site &&
     rm CNAME &&
     git init &&
     git add . &&
     git commit -m '#{commit_message}' &&
-    git remote add staging #{staging_repo} &&
-    git push staging master:refs/heads/gh-pages --force
+    git remote add origin #{dev_repo} &&
+    git push origin master:refs/heads/gh-pages --force
   }
 end
