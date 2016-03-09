@@ -12,8 +12,8 @@ functional imperative dot com
 
 ### staging
 
-* need to use/create a repo outside the func-i GitHub account (FI website on GitHub Pages is an User/Organizatin page, and it has a CNAME file re-directing to www.functionalimperative.com, which also affects every project page on the func-i account)
-* `bundle exec rake 'staging[<github_user>, <github_repo_name>]'`
+* `bundle exec rake staging`
+* Browse to `http://www.functionalimperative.com/Funci_from_OS/`
 
 
 ### deployment
