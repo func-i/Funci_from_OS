@@ -41,6 +41,7 @@ task :staging, [:gh_user, :gh_repo] do |t, args|
   puts "********** CD into _site, commit change, and push to staging repo\n\n"
   puts %x{
     cd _site &&
+    rm CNAME &&
     git init &&
     git add . &&
     git commit -m '#{commit_message}' &&
