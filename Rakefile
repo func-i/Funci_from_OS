@@ -3,12 +3,12 @@ task :default do
   pids = [
     spawn("jekyll serve -w") # put `auto: true` in your _config.yml
   ]
- 
+
   trap "INT" do
     Process.kill "INT", *pids
     exit 1
   end
- 
+
   loop do
     sleep 1
   end
@@ -28,4 +28,23 @@ task :deploy, [:path_to_gh_pages_dir] do |t, args|
 
   puts "********** CDing into #{path_to_gh_pages_dir}, committing change, and pushing to master\n\n"
   puts %x{cd #{path_to_gh_pages_dir} && git pull origin master && git add . && git commit -m '#{last_commit_message}' && git push origin master}
+end
+
+desc "compile and push the site to gh-pages branch of staging repo"
+task :staging, [:gh_user, :gh_repo] do |t, args|
+  puts "********** Building files into _site/\n\n"
+  puts %x{jekyll build}
+
+  commit_message = "Site update at #{Time.now.utc}"
+  staging_repo = "https://github.com/#{args.gh_user}/#{args.gh_repo}.git"
+
+  puts "********** CD into _site, commit change, and push to staging repo\n\n"
+  puts %x{
+    cd _site &&
+    git init &&
+    git add . &&
+    git commit -m '#{commit_message}' &&
+    git remote add staging #{staging_repo} &&
+    git push staging master:refs/heads/gh-pages --force
+  }
 end
