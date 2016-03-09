@@ -10,6 +10,12 @@ functional imperative dot com
 * Browse to `http://localhost:4000`
 
 
+### staging
+
+* need to use/create a repo outside the func-i GitHub account (FI website on GitHub Pages is an User/Organizatin page, and it has a CNAME file re-directing to www.functionalimperative.com, which also affects every project page on the func-i account)
+* `bundle exec rake 'staging[<github_user>, <github_repo_name>]'`
+
+
 ### deployment
 
 * ensure you've enabled the production options in `_config.yml` like so:
