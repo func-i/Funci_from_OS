@@ -3,7 +3,11 @@ $rem-base: 16px !default;
 
 $modules: () !default;
 @mixin exports($name) {
-  @if (index($modules, $name) == false) {
+  // https://github.com/sass/libsass/issues/580
+  // Bug introduced when upgrading to Jekyll v3.1.2
+  // @if (index($modules, $name) == false) {
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
     $modules: append($modules, $name);
     @content;
   }

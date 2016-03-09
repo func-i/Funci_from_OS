@@ -3,6 +3,12 @@ url: http://www.functionalimperative.com
 markdown: redcarpet
 highlighter: pygments
 
+# Jekyll 3
+gems:
+  - jekyll-assets
+  - jekyll-paginate
+  - jekyll-sitemap
+
 # for use outside the project
 keep_files:
   - ./assets/logo_mini.png

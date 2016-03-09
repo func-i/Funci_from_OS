@@ -23,8 +23,13 @@ functional imperative dot com
   css_compressor: yui
 ```
 
-* checkout out the project git@github.com:func-i/func-i.github.com.git 
+* checkout out the project git@github.com:func-i/func-i.github.com.git
     * This is the actual Funci website project
     * The location to this project will be your: path_to_local_gh_pages_repo
 * commit your changes locally
 * `bundle exec rake deploy[<path_to_local_gh_pages_repo>]`
+
+
+### Notes
+
+* auto-generates sitemap: _site/sitemap.xml
