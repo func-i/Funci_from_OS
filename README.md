@@ -17,15 +17,6 @@ functional imperative dot com
       js_compressor: none
       css_compressor: none
     ```
-    - disable the **staging** options
-    ```
-      ##### staging #####
-      # staging_dir: "/Funci_from_OS"
-
-      assets:
-        ##### staging #####
-        # prefix: "/Funci_from_OS/assets"
-    ```
     - disable the  **production** options
     ```
       ##### production  #####
@@ -43,11 +34,10 @@ functional imperative dot com
 ### staging
 
 * Open `_config.yml`:
-    - enable the **staging** options
     - enable the **production** options
     - disable the **development** options
 * `bundle exec rake staging`
-* Browse to `http://www.functionalimperative.com/Funci_from_OS/`
+* Browse to `http://fi-website-staging.s3-website-us-east-1.amazonaws.com/`
 
 
 ### deployment
@@ -55,7 +45,6 @@ functional imperative dot com
 * Open `_config.yml`:
     - enable the **production** options
     - disable the **development** options
-    - disable the **staging** options
 * checkout out the project git@github.com:func-i/func-i.github.com.git
     * This is the actual Funci website project
     * The location to this project will be your: path_to_local_gh_pages_repo
