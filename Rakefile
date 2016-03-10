@@ -1,5 +1,12 @@
+desc "remove /_site"
+
+task :clear_site do
+  puts "********** Remove _site/\n\n"
+  puts %x{rm -rf _site}
+end
+
 desc "compile and run the site"
-task :default do
+task :default => [:clear_site] do
   pids = [
     spawn("jekyll serve -w") # put `auto: true` in your _config.yml
   ]
@@ -15,7 +22,7 @@ task :default do
 end
 
 desc "compile and push the site to gh-pages branch of development repo"
-task :staging do
+task :staging => [:clear_site] do
   puts "********** Building files into _site/\n\n"
   puts %x{jekyll build}
 
@@ -35,7 +42,7 @@ task :staging do
 end
 
 desc "compile and push the site to master branch of production repo"
-task :deploy, [:path_to_gh_pages_dir] do |t, args|
+task :deploy, [:path_to_gh_pages_dir] => [:clear_site] do |t, args|
   path_to_gh_pages_dir = args[:path_to_gh_pages_dir]
   last_commit_message  = `git log -1 --pretty=%B`
   puts "Last commit message: #{last_commit_message}"
