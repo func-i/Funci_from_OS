@@ -2,7 +2,7 @@ name: Functional Imperative
 markdown: redcarpet
 highlighter: pygments
 
-##### staging only #####
+##### staging #####
 staging_dir: "/Funci_from_OS"
 
 # Jekyll 3
@@ -22,7 +22,7 @@ paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
 
 assets:
-  ##### staging only #####
+  ##### staging #####
   prefix: "/Funci_from_OS/assets"
 
   sources:
