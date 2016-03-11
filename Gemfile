@@ -25,4 +25,3 @@ gem 'uglifier'
 # upload to Amazon S3
 gem 's3_website'
 
-
