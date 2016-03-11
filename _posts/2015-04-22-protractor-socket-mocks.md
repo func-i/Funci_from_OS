@@ -5,8 +5,7 @@ subtitle:   Mock your socket functionality in Protractor
 author:     jon
 date:       2015-04-22
 published:  true
-description: While testing I wanted to mock two types of external calls: API calls and Socket connection. Mocking http calls is fairly straightforward and well documented using $httpBackEnd. There is a socket mock for angular-socket.io,
-but as we're using sio-client, we can't leverage it.
+description: While testing I wanted to mock two types of external calls, API calls and Socket connection. Mocking http calls is fairly straightforward and well documented using $httpBackEnd. There is a socket mock for angular-socket.io, but as we're using sio-client, we can't leverage it.
 ---
 
 ### Problem
