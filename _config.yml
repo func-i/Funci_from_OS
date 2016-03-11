@@ -17,6 +17,7 @@ exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
+
 assets:
   sources:
     - _assets
