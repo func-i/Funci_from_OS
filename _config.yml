@@ -1,5 +1,10 @@
+##### staging #####
+url: http://fi-website-staging.s3-website-us-east-1.amazonaws.com
+
+##### production #####
+# url: http://www.functionalimperative.com
+
 name: Functional Imperative
-url: http://www.functionalimperative.com
 markdown: redcarpet
 highlighter: pygments
 
@@ -35,7 +40,7 @@ assets:
   # js_compressor: none
   # css_compressor: none
 
-  ##### production  #####
+  ##### production #####
 
   debug: true
   cachebust: none
