@@ -2,3 +2,4 @@
 _site
 **/.DS_Store
 CloudCode/cloud/config.js
+s3_website.yml
