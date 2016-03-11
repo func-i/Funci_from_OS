@@ -21,3 +21,7 @@ gem 'sass'
 gem 'coffee-script'
 gem 'yui-compressor'
 gem 'uglifier'
+
+# upload to Amazon S3
+gem 's3_website'
+
