@@ -14,23 +14,12 @@ task :default do
   end
 end
 
-desc "compile and push the site to gh-pages branch of development repo"
+desc "compile and push the site to fi-website-staging on S3"
 task :staging do
-  puts "********** Building files into _site/\n\n"
-  puts %x{jekyll build}
-
-  commit_message = "Site update at #{Time.now.utc}"
-  dev_repo = "https://github.com/func-i/Funci_from_OS.git"
-
-  puts "********** CD into _site, commit change, and push to gh-pages branch\n\n"
+  puts "********** Building files into _site, then pushing to S3/\n\n"
   puts %x{
-    cd _site &&
-    rm CNAME &&
-    git init &&
-    git add . &&
-    git commit -m '#{commit_message}' &&
-    git remote add origin #{dev_repo} &&
-    git push origin master:refs/heads/gh-pages --force
+    jekyll build &&
+    s3_website push
   }
 end
 
