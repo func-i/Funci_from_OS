@@ -3,6 +3,8 @@ layout:     post
 title:      Why I Hire From Lighthouse Labs
 author:     josh
 date:       2014-4-23 16:21:22
+published:  true
+description: As co-owner of Lighthouse Labs and Functional Imperative, I am in the unique position to understand the realities of hiring students from developer bootcamps like ours. Therefore, one of the questions I get asked most often is what we look for when hiring.
 ---
 
 Note: This is a cross-post from the [Lighthouse Labs blog](http://www.lighthouselabs.ca/blog/).

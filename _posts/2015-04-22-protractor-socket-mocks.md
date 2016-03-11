@@ -3,13 +3,15 @@ layout:     post
 title:      Protractor Socket Mocks
 subtitle:   Mock your socket functionality in Protractor
 author:     jon
-date:       2015-04-22 
+date:       2015-04-22
+published:  true
+description: While testing I wanted to mock two types of external calls: API calls and Socket connection. Mocking http calls is fairly straightforward and well documented using $httpBackEnd. There is a socket mock for angular-socket.io,
+but as we're using sio-client, we can't leverage it.
 ---
 
 ### Problem
 
-While testing I wanted to mock two types of external calls, API calls a Socket connection.
-Mocking http calls is fairly straightforward and well documented using [$httpBackEnd](https://docs.angularjs.org/api/ngMock/service/$httpBackend).
+While testing I wanted to mock two types of external calls: API calls and Socket connection. Mocking http calls is fairly straightforward and well documented using [$httpBackEnd](https://docs.angularjs.org/api/ngMock/service/$httpBackend).
 There is a [socket mock](https://github.com/nullivex/angular-socket.io-mock) for [angular-socket.io](https://github.com/btford/angular-socket-io),
 but as we're using sio-client, we can't leverage it.
 So we had to do it another way.
@@ -25,11 +27,11 @@ So we had to do it another way.
 
 Lets make a simple example where a user logs in and is brought to a chat channel for tech support.
 
-I write in Coffeescript, deal with it!  
+I write in Coffeescript, deal with it!
 To see how we boilerplate our angular coffee apps visit [angular-coffee-boilerplate](https://github.com/func-i/angular-coffee-boilerplate)
 
 
-Consider the following socket service:  
+Consider the following socket service:
 
 <figure>
   <figcaption>socket_service.coffee</figcaption>
@@ -39,7 +41,7 @@ Consider the following socket service:
 
       @serviceModule.service 'socketService', ($injector, userService) ->
 
-        init: ->        
+        init: ->
 
           # connect to the socket
           @socket = io 'https://some-socket.server.com:9999'
@@ -48,14 +50,14 @@ Consider the following socket service:
           @subscribe()
 
           # The server will send back a subscribed event
-          @socket.on 'subscribed', (data) -> 
+          @socket.on 'subscribed', (data) ->
 
             # All events will be handled by "Handlers"
             $injector.get('SubscribeHandler').process(data)
 
         subscribe: ->
 
-          # After logging in, 
+          # After logging in,
           # the user should have a channel they can subscribe to
           socketId = userService.socketChannelId
 
@@ -72,12 +74,12 @@ Consider the following socket service:
 
   {% highlight coffeescript %}
 
-    @serviceModule.service 'SubscribeHandler', ($state) -> 
+    @serviceModule.service 'SubscribeHandler', ($state) ->
 
-      process: (data) ->  
+      process: (data) ->
 
         # We are logged in and have subscribed
-        # to our chat channel.  
+        # to our chat channel.
 
         # View the chat
         $state.go 'chat'
@@ -90,18 +92,18 @@ Consider the following socket service:
 The functionality above will connect to a socket, subscribe to a channel and redirect to a route that will view that chat channel.  Let's write a test for that.
 
 {% highlight coffeescript %}
-  # Load our mocked socketService 
+  # Load our mocked socketService
   # described below
-  socketServiceModule = require("./mock/socket_service_mock.js")   
+  socketServiceModule = require("./mock/socket_service_mock.js")
 
   describe 'Subscribe Event', ->
 
     it 'should bring me to my chat channel when logged in', ->
-      
-      # Overwrite the socketService module with a mocked version
-      browser.addMockModule('myApp.services', socketServiceModule.socketService)        
 
-      # Login to the app 
+      # Overwrite the socketService module with a mocked version
+      browser.addMockModule('myApp.services', socketServiceModule.socketService)
+
+      # Login to the app
       login()
 
       # Expect the app to login and redirect us to our chat channel
@@ -126,7 +128,7 @@ Assume that after logging into my API I call:
 
       # Declare a global login function
       # that will log me in and I can call
-      # from my tests 
+      # from my tests
       global.login = ->
         # Go to the login URL
         browser.get(BASE_URL + '#/login')
@@ -181,10 +183,10 @@ Let's add the following line to our init function in:
   <br />
 
   {% highlight coffeescript %}
-      
+
     # The chat will receive messages
-    @socket.on 'messageReceived', (data) -> 
-      $injector.get('MessageHandler').process(data) 
+    @socket.on 'messageReceived', (data) ->
+      $injector.get('MessageHandler').process(data)
 
   {% endhighlight %}
 </figure>
@@ -195,9 +197,9 @@ Let's add the following line to our init function in:
 
   {% highlight coffeescript %}
 
-    @serviceModule.service 'MessageHandler', (messageService) -> 
+    @serviceModule.service 'MessageHandler', (messageService) ->
 
-      process: (data) ->  
+      process: (data) ->
 
         # add the message to the message service
         # We can assume that this service takes the message
@@ -209,27 +211,27 @@ Let's add the following line to our init function in:
 
 ### Test 2
 {% highlight coffeescript %}
-  # Load our mocked socketService 
-  socketServiceModule = require("./mock/socket_service_mock.js")   
+  # Load our mocked socketService
+  socketServiceModule = require("./mock/socket_service_mock.js")
 
   describe 'Message Received Event', ->
 
     it 'should add a new message to the chat', ->
-      
-      # Overwrite the socketService module with a mocked version
-      browser.addMockModule('myApp.services', socketServiceModule.socketService)        
 
-      # Login to the app 
+      # Overwrite the socketService module with a mocked version
+      browser.addMockModule('myApp.services', socketServiceModule.socketService)
+
+      # Login to the app
       login()
 
-      chatData = 
+      chatData =
         message: "This is a new message"
 
       # Trigger message received
       # Call a custom method that broadcasts in our socket
       # defined below
       broadcastToSocket("MessageHandler", chatData).then ->
-        
+
         # Add your expect here to check the message length
         expect(element(By.css('.message').length)).toBe(1)
 
@@ -242,7 +244,7 @@ Add to onPrepare in:
   <figcaption>protractor.conf.coffee</figcaption>
   <br />
   {% highlight coffeescript %}
-    
+
     global.broadcastToSocket = (handler, data) ->
       # Execute a script in the protractor browser
       # Pass in handler and data as arguments

@@ -5,6 +5,7 @@ subtitle:   Stress test your APIs with millions of requests
 author:     jon
 date:       2015-08-18
 published:  true
+description: This approach is great for stress testing every endpoint in your application like a real user would and it's also great for building up data in your database to test your API as your dataset grows.
 ---
 
 If you are just finding this post, refer to [Part 1]({% post_url 2015-05-01-jmeter-api-testing-part1 %}) for the setup.
@@ -14,7 +15,7 @@ Now we will get into the advanced JMeter setup that will allow you to traverse y
 
 <!--more-->
 
-This approach is great for stress testing every endpoint in your application like a real user would and it's also great for 
+This approach is great for stress testing every endpoint in your application like a real user would and it's also great for
 building up data in your database to test your API as your dataset grows.
 
 Ever had your database crash after 750K entries due to a missing index?  Yeah, me neither.
@@ -71,7 +72,7 @@ To set up the POST data for a new request we use a *BSF Post Processor*
   <br />
 
   {% highlight javascript %}
-  
+
   eval('var JSonResponse = ' + prev.getResponseDataAsString());
 
   var answerData = {
@@ -79,14 +80,14 @@ To set up the POST data for a new request we use a *BSF Post Processor*
       question_id: JSonResponse.test.question.id,
       choice_id: JSonResonse.test.question.choices[0]
     }
-  } 
+  }
 
   vars.put("answerData", JSON.stringify(answerData));
 
   {% endhighlight %}
 </figure>
 
-Well that was uneventful.  What was that for?  
+Well that was uneventful.  What was that for?
 It was only to set the answerData variable for future use.
 
 How do we use it? (In this example)
@@ -105,14 +106,14 @@ How do we use it? (In this example)
 
   {% highlight javascript %}
 
-  // Load the JSON response from our last request  
+  // Load the JSON response from our last request
   eval('var JSonResponse = ' + prev.getResponseDataAsString());
 
   // If all the questions are done, the response will have a complete key
   if(JSonResponse.complete)
 
     // clear the answerData, this will stop our while loop
-    vars.put("answerData", "");    
+    vars.put("answerData", "");
   else {
 
     // We still have more questions to answer
@@ -122,7 +123,7 @@ How do we use it? (In this example)
         question_id: JSonResponse.test.question.id,
         choice_id: JSonResonse.test.question.choices[0]
       }
-    } 
+    }
 
     // set the value for the global variable answerData
     vars.put("answerData", JSON.stringify(answerData));
@@ -139,13 +140,13 @@ Add our last HTTP request
 
 Remember our original workflow from [Part 1]({% post_url 2015-05-01-jmeter-api-testing-part1 %})
 
-* GET /test 
+* GET /test
   * done by our first HTTP Request
-* POST an answer 
+* POST an answer
   * a BSF Post Processor
   * a new HTTP Request
 * Returns the next question in the JSON Response
-* Keep answering the questions until complete 
+* Keep answering the questions until complete
   * a While Controller
   * HTTP Request posting answerData
   * another BSF Post Processor
