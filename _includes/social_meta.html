@@ -3,19 +3,28 @@
 <!-- Google Plus: Schema.org -->
 <meta itemscope itemtype="http://schema.org/BlogPosting" />
 <meta itemprop="headline" content="{{ page.title }}">
-<meta itemprop="description" content="{{ page.description }}">
-<meta itemprop="image" content="{{ site.url }}{% asset_path logo_social.jpg %}">
+<meta itemprop="description" content="{{ page.description | truncatewords: 35 }}">
+{% if page.social_image %}
+<meta itemprop="image" content="{{ site.url }}{{ page.social_image | asset_path }} %}">
+{% else %}
+<meta itemprop="image" content="{{ site.url }}{% asset_path blog_posts/social_default %}">
+{% endif %}
 
 <!-- Facebook, LinkedIn: Open Graph -->
+<meta property="og:site_name" content="{{ site.name }}" />
 <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{ page.title }}" />
-<meta property="og:description" content="{{ page.description }}" />
-<meta property="og:image" content="{{ site.url }}{% asset_path logo_social.jpg %}" />
+<meta property="og:description" content="{{ page.description | truncatewords: 35 }}" />
+{% if page.social_image %}
+<meta property="og:image" content="{{ site.url }}{{ page.social_image | asset_path }}" />
+{% else %}
+<meta property="og:image" content="{{ site.url }}{% asset_path blog_posts/social_default %}" />
+{% endif %}
 
 <!-- Twitter: Card -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="@func_i">
 <meta name="twitter:title" content="{{ page.title }}">
-<meta name="twitter:description" content="{{ page.description }}">
+<meta name="twitter:description" content="{{ page.description | truncatewords: 25 }}">
 

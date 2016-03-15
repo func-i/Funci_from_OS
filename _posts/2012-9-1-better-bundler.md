@@ -4,6 +4,8 @@ title:      Better Bundler
 subtitle:   Bundler gets better local gem support
 author:     jon
 date:       2012-9-1 16:21:22
+published:  true
+description: There are times when developing that we need to tweak a gem to better suit our needs.
 ---
 
 There are times when developing that we need to tweak a gem to better suit our needs.   Consider the following Gemfile:

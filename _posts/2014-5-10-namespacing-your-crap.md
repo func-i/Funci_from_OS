@@ -3,6 +3,8 @@ layout:     post
 title:      A Namespacing Function for Client-Side Javascripts
 author:     noam
 date:       2014-5-10 16:21:22
+published:  true
+description: Here's a simple method you can use to namespace your client-side scripts. There's many ways to do this, probably better ones. The point is to do it at all.
 ---
 
 Here's a simple method you can use to namespace your client-side scripts.
