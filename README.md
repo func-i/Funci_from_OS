@@ -17,7 +17,7 @@ Push to the `staging` or `master` branch will trigger an auto-build on [Heroku s
 ### Staging
 
 * push to the `staging` branch on GitHub
-* wait (~20 seconds)
+* wait (30-60 seconds)
 * Browse to `http://fi-website-staging.s3-website-us-east-1.amazonaws.com/`
 
 ### Production
@@ -25,7 +25,7 @@ Push to the `staging` or `master` branch will trigger an auto-build on [Heroku s
 * *Recommended Process:* Do not push to `master` directly. Work on GitHub.
     - Developers: Test any change on `staging` first. Make pull request from `staging` to `master`. Merging a pull request equals a push.
     - Page/post editors: Edit a page or a blog post on `master`. Commiting the changes equals a push.
-* wait (~20 seconds)
+* wait (30-60 seconds)
 * Browse to `http://www.functionalimperative.com/`
 
 
