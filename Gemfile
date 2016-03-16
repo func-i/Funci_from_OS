@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.6"
+ruby "2.1.8"
 
 # jekyll 3 and required gems
 gem 'jekyll', '~> 3.1.2'
