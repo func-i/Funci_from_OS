@@ -22,9 +22,9 @@ Push to the `staging` or `master` branch will trigger an auto-build on [Heroku s
 
 ### Production
 
-* *Recommended Process:* Do not push to master directly. Work on GitHub.
-* Developers: Test any change on staging first. Make pull request from staging to master. Merging a pull request equals a push.
-* Page/post editors: Edit a page or a blog post on GitHub. Commiting the changes equals a push.
+* *Recommended Process:* Do not push to `master` directly. Work on GitHub.
+    - Developers: Test any change on `staging` first. Make pull request from `staging` to `master`. Merging a pull request equals a push.
+    - Page/post editors: Edit a page or a blog post on `master`. Commiting the changes equals a push.
 * wait (~20 seconds)
 * Browse to `http://www.functionalimperative.com/`
 
