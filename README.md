@@ -12,11 +12,11 @@ functional imperative dot com
 
 ## Deploy
 
-Pushing to the `staging` or `master` branch will trigger an auto-build on the [Heroku server](https://github.com/tfchang/fi-website-autobuild), which will deploy the built site to the staging (`fi-website-staging`) or production (`fi-website`) bucket on Amazon S3.
+Pushing to the `staging` or `master` branch will trigger an auto-build on the [Heroku server](https://github.com/func-i/fi-site-autobuild), which will deploy the built site to the staging (`fi-website-staging`) or production (`fi-website`) bucket on Amazon S3.
 
 **Important**: Do not undo commits with `git reset` followed by a force push like `git push origin +staging` - it will mess up the auto-build server. Always make a new commit to undo changes, or use `git revert`.
 
-**Important**: the Gemfile of the [auto-build server on Heroku](https://github.com/tfchang/fi-website-autobuild) must contain all the gems in the Gemfile of this repo. If you update the Gemfile here, make sure to apply the same changes to the Gemfile of the auto-build server repo and push to Heroku there before you push to `staging` or merge into `master` here.
+**Important**: the Gemfile of the [auto-build server on Heroku](https://github.com/func-i/fi-site-autobuild) must contain all the gems in the Gemfile of this repo. If you update the Gemfile here, make sure to apply the same changes to the Gemfile of the auto-build server repo and push to Heroku there before you push to `staging` or merge into `master` here.
 
 
 ### Staging
