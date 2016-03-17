@@ -3,9 +3,7 @@ layout:     post
 title:      Name your Regexp match captures!
 subtitle:   More expressive and maintainable MatchData
 author:     alex
-date:       2015-05-15
-published:  true
-description: You know that weird Ruby MatchData object? Sure, it acts like an array, but it doesn't feel like one. And when you're capturing several matches, it can be cumbersome to decipher which index correlates to each capture. And what happens when you add a new match capture? You have to shift your others around!
+date:       2015-05-15 
 ---
 
 You know that weird Ruby [`MatchData`](http://ruby-doc.org/core-2.2.0/MatchData.html) object? Sure, it acts like an array, but it doesn't feel like one. And when you're capturing several matches, it can be cumbersome to decipher which index correlates to each capture. And what happens when you add a new match capture? You have to shift your others around!

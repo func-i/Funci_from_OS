@@ -2,12 +2,6 @@ name: Functional Imperative
 markdown: redcarpet
 highlighter: pygments
 
-# Jekyll 3
-gems:
-  - jekyll-assets
-  - jekyll-paginate
-  - jekyll-sitemap
-
 # for use outside the project
 keep_files:
   - ./assets/logo_mini.png
@@ -17,8 +11,7 @@ exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
-
-assets:
+assets: 
   sources:
     - _assets
     - _assets/fonts
@@ -26,8 +19,18 @@ assets:
     - _assets/javascripts
     - _assets/stylesheets
 
-  digest: false
-  compress:
-    css: false
-    js: false
+  ##### development #####
 
+  # debug: true
+  # cachebust: hard
+  # gzip: false
+  # js_compressor: none
+  # css_compressor: none
+
+  ##### production  #####
+
+  debug: true
+  cachebust: none
+  gzip: true
+  js_compressor: uglifier
+  css_compressor: yui

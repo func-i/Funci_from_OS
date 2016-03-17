@@ -3,8 +3,6 @@ layout:     post
 title:      Sorting Posts by User Engagement Level
 author:     noam
 date:       2013-12-23
-published:  true
-description: Figuring out how to sort user-generated content is a common problem that many social websites face.
 ---
 
 At Functional Imperative we're building the new *CanLII Connects* website (a social portal for Canada's largest database of legal cases), and this week I was given the task of figuring out a sensible way of sorting posts.
@@ -51,9 +49,9 @@ Right away, we're dealing with a different problem than Reddit or HN: while it m
 
 ### Initial Score
 
-Ok, so first we have to give each post an initial score. I like Reddit's approach of taking the base-10 log of its upvotes. This makes sense because, the more popular a post already is, the more likely people are to see it, and therefore upvote it, which gives it an unfair advantage.
+Ok, so first we have to give each post an initial score. I like Reddit's approach of taking the base-10 log of its upvotes. This makes sense because, the more popular a post already is, the more likely people are to see it, and therefore upvote it, which gives it an unfair advantage. 
 
-In our case, we're not only trying to measure how much people "like" a post, but rather how engaged they are with it. It makes sense that, while an upvote is a fine indicator of "engagedness", a user actually bothering to comment on a post is even more of an indicator. I'll count that as equivalent to two upvotes, and a user commenting on a comment will count as three upvotes (the 2 is so we don't take the log of 1 or 0):
+In our case, we're not only trying to measure how much people "like" a post, but rather how engaged they are with it. It makes sense that, while an upvote is a fine indicator of "engagedness", a user actually bothering to comment on a post is even more of an indicator. I'll count that as equivalent to two upvotes, and a user commenting on a comment will count as three upvotes (the 2 is so we don't take the log of 1 or 0): 
 
 <script type="math/tex; mode=display">
     log_{10}(2 + u + 2c + 3cc)
@@ -68,7 +66,7 @@ sense to divide the intial score by some factor of time:
     \cfrac{ log_{10} (2+u+2c+3cc) }{ \bar{t} }
 </script>
 
-Now we need a reasonable value for <span class="mj">`t_ave`</span>$$ \bar{ t } $$. A good start is the average time, in seconds, between the three most recent user interactions with a post.
+Now we need a reasonable value for <span class="mj">`t_ave`</span>$$ \bar{ t } $$. A good start is the average time, in seconds, between the three most recent user interactions with a post. 
 
 We define a user interaction to be: a user creates a post, a user comments on a post, or a user upvotes a post.
 
@@ -107,8 +105,8 @@ If we plot this equation for `x = number of points` and `y = time`, we can see t
 As expected, there is a steep 10-day "boost" period, followed by an increasingly  slower decline in the value as more and more time passes.
 
 > The function is also heavily biased toward very new posts, which will always come
-out on top, giving them a chance. This might be a bad idea if posting becomes
-frequent, but user interaction is low (many summaries a day, few votes or comments),
+out on top, giving them a chance. This might be a bad idea if posting becomes 
+frequent, but user interaction is low (many summaries a day, few votes or comments), 
 and might have to be changed.
 
 > There are many ways to tweak this equation (changing the boost period, for example)
@@ -173,7 +171,7 @@ function score() {
     var val = 0;
     for (var i = 1; i < ts.length; i++) {
       var exp = i - 1;
-      val += Math.pow(0.5, exp) *
+      val += Math.pow(0.5, exp) * 
              (parseFloat(ts[i]) -
              parseFloat(ts[i - 1]));
     }

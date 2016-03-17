@@ -1,7 +1,0 @@
-url: http://fi-website-staging.s3-website-us-east-1.amazonaws.com
-
-assets:
-  digest: true
-  compress:
-    css: true
-    js: true

@@ -1,5 +1,2 @@
-.asset-cache
 _site
-**/.DS_Store
-.bundle
-s3_website.yml
+CloudCode/cloud/config.js

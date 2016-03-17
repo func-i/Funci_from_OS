@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "FIdotcom": {
+            "applicationId": "Qgj8iGq2C8eJh1PheCP6jbOJqOL6J8mKetmtrrw1", 
+            "masterKey": "jmdnvUssx1FFFGzncqAPpfw4t8AecyWMlnfeOJLc"
+        }, 
+        "_default": {
+            "link": "FIdotcom"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}

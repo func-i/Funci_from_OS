@@ -4,8 +4,6 @@ title:      How I train Developers
 subtitle:   And how they can continue to improve.
 author:     jon
 date:       2015-06-18
-published:  true
-description: I've trained a number of Junior Developers, mostly out of Bootcamps.  In fact, the owners of Functional Imperative have also founded a coding school in Toronto called Lighthouse Labs. So I expect that I'll be training even more Junior Developers.
 ---
 
 I've trained a number of Junior Developers, mostly out of Bootcamps.  In fact, the owners of Functional Imperative have also founded
@@ -17,7 +15,7 @@ a coding school in Toronto called [Lighthouse Labs](http://lighthouselabs.ca).  
 
 They say a US Marine's head is like an empty jar, he only knows what you put in (Jarhead).  This does and doesn't apply to a new programmer.
 
-Their main task is solving problems!  They do this in code, but how they *think* and what steps they take when solving problems
+Their main task is solving problems!  They do this in code, but how they *think* and what steps they take when solving problems 
 is affected by personality and previous life experiences.  We can give them structure and coach their thought process, but each Junior Developer is as unique as the next.
 
 ### Hurdles
@@ -41,7 +39,7 @@ This promotes discussion, it catches hacky solutions early, and it gives juniors
 
 ### Make mistakes
 
-If a Junior Dev wants to implement a solution that I know will not work (I have the benefit of experience),
+If a Junior Dev wants to implement a solution that I know will not work (I have the benefit of experience), 
 I talk to them about it and hint at potential problems, if they still want to go ahead with their implementation.  I let them!
 
 The benefit of them learning from their mistakes is tremendous, that's how I learned.  Of course this is a controlled process so I can peel them back
@@ -80,7 +78,7 @@ Determine important parts of a project that different people can work on, (get a
 Improve your communication skills as you help explain different concepts and ideas.
 Contribute to all aspects of the projects and learn from all the challenges.
 
-Pay it forward.
+Pay it forward.  
 
 
 

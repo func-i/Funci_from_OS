@@ -4,8 +4,6 @@ title:      Automated JSON API stress testing with JMeter Part 1
 subtitle:   Stress test your APIs with millions of requests
 author:     jon
 date:       2015-05-01
-published:  true
-description: Imagine you have created a JSON API that allows users to take tests or quizzes and you want to stress test it to discover it's load capability. JMeter is the 'go to' tool for stress testing, and it should be. It is extremely powerful, dynamic and scalable.
 ---
 
 Imagine you have created a JSON API that allows users to take tests or quizzes and you want to stress
@@ -116,7 +114,7 @@ The response is the next question we are to answer.
 </figure>
 
 The endpoint that gives us our final test results.  When POSTing an answer doesn't give us another question, we have finished the test and can retreive our result.
-
+  
 
 ### Getting started with JMeter
 

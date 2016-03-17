@@ -10,7 +10,7 @@
       </li>
 
       <li>
-        <a href="/work.html" class="has-menu
+        <a href="/work.html" class="has-menu 
           {% if page.url == '/work.html' %}
             selected
           {% endif %}">Work
@@ -54,11 +54,11 @@
               </a>
             </li>
           </ul>
-        </div>
+        </div>  
       </li>
 
       <li>
-        <a href="/about.html" class="has-menu
+        <a href="/about.html" class="has-menu 
           {% if page.url == '/about.html' %}
             selected
           {% endif %}">About
@@ -111,9 +111,6 @@
 
   <canvas id="logo-canvas"></canvas>
   <div id="bg-line"></div>
-  <div id="logo"
-    data-img-sprite="{% asset_path logo_sprite.png %}"
-    data-img-full="{% asset_path logo.png %}"
-    data-img-small="{% asset_path logo_small.png %}"></div>
+  <div id="logo" data-img-sprite="{% asset_path logo_sprite.png %}" data-img-full="{% asset_path logo.png %}" data-img-small="{% asset_path logo_small.png %}"></div>
   <h1 style="position: absolute; left: -9999px;">Functional Imperative</h1>
 </header>

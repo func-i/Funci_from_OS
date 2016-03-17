@@ -3,8 +3,6 @@ layout:     post
 title:      Web Applications Versus a Balkanized Internet
 author:     jake
 date:       2014-2-14 16:21:22
-published:  true
-description: The debate between native and responsive mobile applications is amongst the most common and important practical questions that software developers currently face.
 ---
 
 //update: Chris Dixon similarly recently mourned "[The decline of the mobile web](//www.cdixon.org/2014/04/07/the-decline-of-the-mobile-web/)."

@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<html class="no-js" prefix="og: http://ogp.me/ns#">
+<html class="no-js">
   <head>
     {% include head.html %}
-    {% include social_meta.html %}
     {% include mathjax.html %}
   </head>
   <body>
-    <!-- Social media share buttons SDK -->
-    {% include social_sdk/facebook.html %}
-    {% include social_sdk/google_plus.html %}
-    {% include social_sdk/linked_in.html %}
-    {% include social_sdk/twitter.html %}
-
     <div id="loading">
       <img src="{% asset_path loading.gif %}">
     </div>
@@ -48,7 +41,6 @@
               <div class="post-content">
                 {{ content }}
               </div>
-              {% include partials/social.html %}
             </div>
           </div>
         </div>

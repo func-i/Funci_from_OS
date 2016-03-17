@@ -3,9 +3,7 @@ layout:     post
 title:      Tips for More Painless Protractor Tests
 subtitle:   Lessons from my first AngularJS app
 author:     ting
-date:       2015-04-29
-published:  true
-description: Protractor is for writing end-to-end tests. It starts your web app in a browser and runs your tests against the app. The tests are written to simulate user actions in the browser, such as clicking a button, and to test DOM conditions as a result of those actions.
+date:       2015-04-29 
 ---
 
 Protractor is for writing end-to-end tests. It starts your web app in a browser and runs your tests against the app. The tests are written to simulate user actions in the browser, such as clicking a button, and to test DOM conditions as a result of those actions. In general, that means your test code runs against/can access the *browser*, not the internals of the app itself.
@@ -23,8 +21,8 @@ What is the best way to organize the test scripts? The way I prefer is to use ne
 <figure>
   {% highlight coffeescript %}
 
-      describe 'Page Pa', ->
-        beforeEach ->
+      describe 'Page Pa', ->   
+        beforeEach ->       
           login()
           goToPagePa()
 
@@ -57,7 +55,7 @@ What is the best way to organize the test scripts? The way I prefer is to use ne
 
 Protractor uses the WebDriverJS API, which is asynchronous. All functions return promises, and WebDriverJS keeps a queue of pending promises (called the control flow) to execute them in sequence. On top of this, Protractor automatically applies browser.waitForAngular() before every action to wait for all Angular $http and $timeout calls to finish. This allows developers to write the test scripts without much dread "callback hell," for the most part.
 
-My app, however, is largely socket-based. This means we have socket events firing off handlers that change the display of a directive embedded on a page. Neither the WebDriverJS control flow nor waitForAngular() could make Protractor test for the expected DOM condition *after* the socket action sequence finishes.
+My app, however, is largely socket-based. This means we have socket events firing off handlers that change the display of a directive embedded on a page. Neither the WebDriverJS control flow nor waitForAngular() could make Protractor test for the expected DOM condition *after* the socket action sequence finishes. 
 
 One way to handle this problem is by using **browser.driver.wait()**
 
