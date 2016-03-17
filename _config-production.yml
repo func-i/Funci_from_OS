@@ -1,0 +1,7 @@
+url: http://www.functionalimperative.com
+
+assets:
+  digest: true
+  compress:
+    css: true
+    js: true
