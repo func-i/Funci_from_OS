@@ -4,6 +4,8 @@ title:      Pomodoro Technique
 subtitle:   How to work effectively without stress
 author:     yagudaev
 date:       2015-08-12
+published:  true
+description: The idea is simple, you write down a task you would like to accomplish and do 25 minutes of work. You then rest for 5 minutes, this is called a "pomodoro". Once you complete one pomodoro, you do it over again. After 4 pomodoros you take a longer 15 minute break.
 ---
 # Pomodoro Technique
 
@@ -60,7 +62,7 @@ Using this technique I found the following advantages:
 
 ## Beyond Pomodoro
 
-Beyond the normal pomodoro I usually have headers for `Today`, `Tomorrow`, `Later` to keep track of other tasks. 
+Beyond the normal pomodoro I usually have headers for `Today`, `Tomorrow`, `Later` to keep track of other tasks.
 Sometimes I would just use a tool like Trello, ZenHub, etc to communicate those things to co-workers instead.
 
 ## What do you think?

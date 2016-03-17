@@ -4,6 +4,8 @@ title:      Rubies on Elephants in Space
 subtitle:   A ruby wrapper to play Schemaverse
 author:     jon
 date:       2012-9-16 16:21:22
+published:  true
+description: Schemaverse is a MMO written entirely in Postgres and promotes my favourite play style when it comes to gaming; botting. As a programmer and a gamer (who hates to lose), I can't resist combining my two passions.
 ---
 
 [Schemaverse](http://schemaverse.com) is a MMO written entirely in Postgres and promotes my favourite play style when it comes to gaming; botting. It's cheating, I'm a horrible person and I should be banned from every game I play (I mean that). As a programmer and a gamer (who hates to lose), I can't resist combining my two passions. I was reading a [HackerNews article](http://news.ycombinator.com/item?id=3969108) about Schemaverse and it peaked my interest. A game meant to be played by programmers in SQL where scripting is the norm. My bot vs yours? Do we play for keeps?
