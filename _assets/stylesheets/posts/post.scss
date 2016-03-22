@@ -1,9 +1,30 @@
 #post {
   #form {
     padding-top: 2em;
-  }
 
-  .mail-list-ask {
-    font-size: 1.2em;
+    .mail-list-ask {
+      margin-bottom: 0.5em;
+      font-size: 1.2em;
+    }
+
+    .mail-list-req {
+      margin-bottom: 0.5em;
+      font-size: 0.9em;
+      font-style: italic;
+    }
+
+    .asterisk {
+      padding-right: 0.2em;
+    }
+
+    label {
+      display: inline-block;
+      width: 3.75em;
+      margin-top: 0.3em;
+    }
+
+    input {
+      margin-top: 0.3em;
+    }
   }
 }
