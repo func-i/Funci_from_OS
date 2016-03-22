@@ -42,6 +42,11 @@
                     </div>
                   </div>
                 </div>
+                {% if page.mail_list %}
+                  <div class="small-12 columns">
+                    {% include partials/mail_list.html %}
+                  </div>
+                {% endif %}
               </div>
             </div>
             <div class="large-9 medium-8 columns">
