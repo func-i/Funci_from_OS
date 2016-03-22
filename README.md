@@ -27,9 +27,11 @@ Pushing to the `staging` or `master` branch will trigger an auto-build on the [H
 
 ### Production
 
-* *Recommended Process:* Do not push to `master` directly. Work on GitHub.
+* *Recommended Process:* Do not push to `master` from command line. Work on GitHub.
     - Developers: Test any change on `staging` first. Make pull request from `staging` to `master`. Merging a pull request equals a push.
-    - Page/post editors: Upload/edit a page or blog post on `master`. Commiting the changes equals a push.
+    - Editors: On `master`, edit a page/post or upload a post/asset (eg. image). Commiting the change equals a push.
+    - Upload assets for use on the website to the /_assets folder
+    - Upload images that aren't used on the website to the /offsite-assets/images folder. The images can be referenced at `http://functionalimperative.com/offsite-assets/images/[filename]`
 * wait (30-60 seconds)
 * Browse to `http://functionalimperative.com/`
 
