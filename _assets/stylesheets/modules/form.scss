@@ -1,5 +1,4 @@
-#contact #form,
-#post #form {
+#form {
   padding: 1.4em;
 
   h4, div.field {
@@ -96,5 +95,15 @@
     h2 {
       margin-bottom: 1em;
     }
+  }
+}
+
+.no-cssgradients #form div.textarea {
+  textarea {
+    background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+    border-left: solid 1px white;
+    margin-top: 1em;
+    padding-top: 0;
+    padding-left: .5em;
   }
 }
