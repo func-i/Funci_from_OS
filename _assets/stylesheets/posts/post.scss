@@ -1,7 +1,7 @@
 #post {
   #form {
     width: 15em;
-    padding-top: 2em;
+    padding: 1em;
     border: 1px solid $green;
 
     .mail-list-ask {
@@ -17,6 +17,17 @@
 
     input {
       margin-top: 0.3em;
+    }
+
+    div.submit {
+      float: none;
+      height: 4.5em;
+      padding-top: 0.5em;
+
+      input {
+        float: right;
+        margin: 0;
+      }
     }
   }
 }
