@@ -7,6 +7,13 @@
     padding: 1em;
     border: 1px solid $green;
 
+    @media #{$small-only} {
+      position: relative;
+      left: 0;
+      bottom: 3em;
+      margin-top: 1em;
+    }
+
     .mail-list-ask {
       margin-bottom: 0.5em;
       font-size: 1.2em;
@@ -34,3 +41,4 @@
     }
   }
 }
+
