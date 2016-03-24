@@ -39,22 +39,10 @@
         margin: 0;
       }
     }
-  }
 
-  iframe#mail-list-resp {
-    display: none;
-    position: absolute;
-    left: 7em;
-    bottom: 1em;
-    width: 320px;   /* use px since we don't control font size  */
-    height: 450px;  /* inside the iframe                        */
-    border: none;
-    border-radius: 5px;
-  }
-
-  button#btn-close-iframe {
-    display: none;
-    @include form-button;
+    #mail-subscribe-success{
+      display: none;
+    }
   }
 }
 
