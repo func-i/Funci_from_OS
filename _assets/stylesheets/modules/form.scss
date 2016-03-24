@@ -1,5 +1,4 @@
 #form {
-
   h4, div.field {
     margin-bottom: 1em;
   }
@@ -77,6 +76,14 @@
     h2 {
       margin-bottom: 1em;
     }
+  }
+
+  #mail-subscribe-success {
+    display: none;
+  }
+
+  iframe[name="response-iframe"] {
+    display: none;
   }
 }
 

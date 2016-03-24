@@ -1,7 +1,7 @@
 <!-- Begin MailChimp Signup Form -->
 <div id="form">
   <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-    method="post" target="mail-list-response" novalidate
+    method="post" target="response-iframe" novalidate
     action="//func-i.us5.list-manage.com/subscribe/post?u=fe8885fb61a05d1905a2bcb7f&amp;id=ddf9656707">
     <h3 class="mail-list-ask">
       {{ page.mail_ask | default: "Subscribe to our mailing list" }}
@@ -10,7 +10,7 @@
     <div class="text field">
       <label for="mce-EMAIL">Email:</label>
       <input type="email" name="EMAIL" value=""
-        class="required" id="mce-EMAIL">
+        id="mce-EMAIL">
     </div>
 
     <div class="text field">
@@ -34,6 +34,9 @@
   <div id="mail-subscribe-success">
     {{ page.mail_success | default: "Thank you! Please check your email!" }}
   </div>
+
+  <!-- form target, always hidden -->
+  <iframe name="response-iframe"></iframe>
 </div>
 
 <!--End mc_embed_signup-->

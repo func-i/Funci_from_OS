@@ -1,5 +1,10 @@
 $ ->
   $('#post form').submit (e) ->
-    $(this).hide()
-    $('#mail-subscribe-success').show()
-    # $('#post #form').css('width', 'auto')
+    email   = $('input[name="EMAIL"]').val()
+    emailRE = /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+
+    if emailRE.test(email)
+      $(this).hide()
+      $('#mail-subscribe-success').show()
+    else
+      e.preventDefault()
