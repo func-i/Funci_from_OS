@@ -40,6 +40,13 @@
       }
     }
 
+    #mail-validate-error {
+      display: none;
+      margin-top: 0.8em;
+      font-size: 0.9em;
+      color: $pink;
+    }
+
     #mail-subscribe-success {
       display: none;
     }
