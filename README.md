@@ -40,5 +40,4 @@ Pushing to the `staging` or `master` branch will trigger an auto-build on the [H
 ## Notes
 
 * auto-generates sitemap: _site/sitemap.xml
-* For each blog post, specify the image and description (for sharing on social media) in the top of the Markdown document. See `_posts/2015-10-15-three-js.md` for an example.
-    - if no social_image is specified, `blog_posts/social_default.jpg` will be used
+
