@@ -1,0 +1,46 @@
+<!-- Begin MailChimp Signup Form -->
+<div id="form" class="form-email">
+  <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+    method="post" target="response-iframe" novalidate autocomplete="off"
+    action="//func-i.us5.list-manage.com/subscribe/post?u=fe8885fb61a05d1905a2bcb7f&amp;id={{ page.mail_list | default: '8c83af5a31' }}">
+    <h3 class="mail-list-ask">
+      {{ page.mail_ask | default: "Subscribe to our mailing list" }}
+    </h3>
+
+    <div class="text field">
+      <label for="mce-EMAIL">Email:</label>
+      <input type="email" name="EMAIL" value=""
+        id="mce-EMAIL">
+    </div>
+
+    <div class="text field">
+      <label for="mce-NAME">Name:</label>
+      <input type="text" name="NAME" value=""
+        id="mce-NAME">
+    </div>
+
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_fe8885fb61a05d1905a2bcb7f_ddf9656707" value=""
+        tabindex="-1">
+    </div>
+
+    <div class="submit">
+      <input type="submit" name="submit" value="Send"
+        id="mc-embedded-subscribe">
+    </div>
+  </form>
+
+  <div id="mail-validate-error">
+    Error: missing or invalid email
+  </div>
+
+  <div id="mail-subscribe-success">
+    {{ page.mail_success | default: "Thank you! Please check your email!" }}
+  </div>
+
+  <!-- form target, always hidden -->
+  <iframe name="response-iframe" sandbox=""></iframe>
+</div>
+
+<!--End mc_embed_signup-->

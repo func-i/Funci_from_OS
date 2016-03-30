@@ -13,3 +13,4 @@
 #= require_tree ./helpers
 #= require_tree ./pages
 #= require canvas
+#= require form-email
