@@ -1,0 +1,76 @@
+/*
+ * General Inquiries form on the Contact page
+ */
+
+#contact {
+  #form {
+    padding: 1.4em;
+
+    div.select {
+      border-bottom: 1px solid white;
+
+      a {
+        color: white;
+
+        &:hover, &:focus {
+          color: $blue;
+          text-decoration: underline;
+        }
+      }
+
+      #selected-option {
+        color: $blue;
+      }
+
+      #expand-arrow {
+        float: right;
+      }
+
+      ul {
+        border: solid 1px $blue;
+        padding: 1em .75em;
+      }
+    } // div.select
+
+    div.textarea {
+      textarea {
+        color: $blue;
+        border: none;
+        outline: none;
+        display: block;
+        font-size: 1em;
+        line-height: 2em;
+        padding-top: 4px;
+        resize: none;
+        height: 300px;
+        width: 100%;
+        overflow: auto;
+
+        background-color: transparent;
+        background-image: -webkit-linear-gradient(top, transparent, transparent 1.92em, white 0);
+        background-image:    -moz-linear-gradient(top, transparent, transparent 1.92em, white 0);
+        background-image:         linear-gradient(top, transparent, transparent 1.92em, white 0);
+
+        -webkit-background-size: 100% 2em;
+        background-size: 100% 2em;
+      }
+    } // div.textarea
+
+    #form-success {
+      h2 {
+        margin-bottom: 1em;
+      }
+    }
+  } // #form
+
+  .no-cssgradients #form div.textarea {
+    textarea {
+      background: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+      border-left: solid 1px white;
+      margin-top: 1em;
+      padding-top: 0;
+      padding-left: .5em;
+    }
+  }
+} // #contact
+
