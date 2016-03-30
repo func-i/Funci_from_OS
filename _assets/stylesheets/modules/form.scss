@@ -1,0 +1,45 @@
+/*
+ * Styles shared by the General Inquiries form on the Contact page
+ * and the email subscription form on blog posts and other pages
+ */
+
+#form {
+  h4, div.field {
+    margin-bottom: 1em;
+  }
+
+  div.text {
+    border-bottom: 1px solid white;
+
+    input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: $blue;
+    }
+  }
+
+  div.submit {
+    input {
+      color: $green;
+      background-color: transparent;
+      border: 1px solid $green;
+      width: 4em;
+      height: 4em;
+      outline: none;
+      border-radius: 0;
+      padding: 0;
+
+      &:hover,
+      &:focus {
+        color: $dark-gray;
+        background-color: $green;
+      }
+
+      &:active {
+        color: $green;
+        background-color: transparent;
+      }
+    } // input
+  } // div.submit
+} // #form

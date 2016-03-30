@@ -2,6 +2,10 @@ functional imperative dot com
 =============
 ##### design by [objective subject](http://objectivesubject.com)
 
+## Website Editing
+
+See [instructions for editors](README-Editors.md)
+
 
 ## Development
 
@@ -27,9 +31,8 @@ Pushing to the `staging` or `master` branch will trigger an auto-build on the [H
 
 ### Production
 
-* *Recommended Process:* Do not push to `master` directly. Work on GitHub.
-    - Developers: Test any change on `staging` first. Make pull request from `staging` to `master`. Merging a pull request equals a push.
-    - Page/post editors: Upload/edit a page or blog post on `master`. Commiting the changes equals a push.
+* *Recommended Process:* Do not push to `master` from command line. Work on GitHub.
+* Test any change on `staging` first. Make pull request from `staging` to `master`. Merging a pull request equals a push.
 * wait (30-60 seconds)
 * Browse to `http://functionalimperative.com/`
 
@@ -37,5 +40,4 @@ Pushing to the `staging` or `master` branch will trigger an auto-build on the [H
 ## Notes
 
 * auto-generates sitemap: _site/sitemap.xml
-* For each blog post, specify the image and description (for sharing on social media) in the top of the Markdown document. See `_posts/2015-10-15-three-js.md` for an example.
-    - if no social_image is specified, `blog_posts/social_default.jpg` will be used
+
