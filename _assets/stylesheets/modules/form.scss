@@ -20,8 +20,6 @@
   }
 
   div.submit {
-    float: right;
-
     input {
       @include form-button;
     }
