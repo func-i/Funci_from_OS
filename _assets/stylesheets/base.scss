@@ -111,30 +111,6 @@ $dark-gray:   rgb(45,45,45);
   background-size: $width $height;
 }
 
-/// form mixins ///
-
-@mixin form-button($width: 4em) {
-  color: $green;
-  background-color: transparent;
-  border: 1px solid $green;
-  width: $width;
-  height: 4em;
-  outline: none;
-  border-radius: 0;
-  padding: 0;
-
-  &:hover,
-  &:focus {
-    color: $dark-gray;
-    background-color: $green;
-  }
-
-  &:active {
-    color: $green;
-    background-color: transparent;
-  }
-}
-
 /// misc. helpers ///
 
 @mixin word-wrap() {

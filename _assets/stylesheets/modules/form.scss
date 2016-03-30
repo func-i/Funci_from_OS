@@ -21,8 +21,25 @@
 
   div.submit {
     input {
-      @include form-button;
-    }
-  }
-}
+      color: $green;
+      background-color: transparent;
+      border: 1px solid $green;
+      width: 4em;
+      height: 4em;
+      outline: none;
+      border-radius: 0;
+      padding: 0;
 
+      &:hover,
+      &:focus {
+        color: $dark-gray;
+        background-color: $green;
+      }
+
+      &:active {
+        color: $green;
+        background-color: transparent;
+      }
+    } // input
+  } // div.submit
+} // #form
