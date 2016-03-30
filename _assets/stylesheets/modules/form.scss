@@ -71,14 +71,6 @@
       @include form-button;
     }
   }
-
-  #mail-subscribe-success {
-    display: none;
-  }
-
-  iframe[name="response-iframe"] {
-    display: none;
-  }
 }
 
 .no-cssgradients #form div.textarea {

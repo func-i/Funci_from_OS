@@ -39,6 +39,14 @@
         margin: 0;
       }
     }
+
+    #mail-subscribe-success {
+      display: none;
+    }
+
+    iframe[name="response-iframe"] {
+      display: none;
+    }
   }
 }
 
