@@ -9,4 +9,5 @@ $ ->
       $('#mail-subscribe-success').show()
     else
       e.preventDefault()
+      $(this).find('label[for="mce-EMAIL"]').css('color', '#FD00FE')
       $('#mail-validate-error').show()
