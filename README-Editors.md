@@ -6,7 +6,7 @@ Instructions for Editors
     - Upload/edit blog posts in the `/_posts` folder
     - Upload assets for use on the website to the `/_assets` folder
     - Upload images that aren't used on the website to the `/offsite-assets/images` folder. The images can be referenced at `http://functionalimperative.com/offsite-assets/images/[filename]`
-3. wait (30-60 seconds)
+3. wait 60 seconds
 4. Browse to `http://functionalimperative.com/`
 
 
