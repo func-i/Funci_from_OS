@@ -9,7 +9,7 @@ Instructions for Editors
 3. wait 60 seconds
 4. Browse to `http://functionalimperative.com/`
 
-testing 2
+testing 3
 
 ### Blog Posts
 
