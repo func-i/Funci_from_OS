@@ -13,7 +13,14 @@ keep_files:
   - ./assets/logo_mini.png
   - ./assets/Lighthouse.png
 
-exclude: [Rakefile, README.md, Gemfile, Gemfile.lock]
+exclude: [
+  Rakefile,
+  README.md,
+  README-Editors.md,
+  Gemfile,
+  Gemfile.lock
+]
+
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
