@@ -5,12 +5,13 @@ author:     jon
 date:       2016-04-11
 published:  true
 social_image: blog_posts/social_default.jpg
-description: I recently read [this](http://www.onebigfluke.com/2016/04/whats-awful-building-software.html) article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.
+description: I recently read an article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.
 ---
 
 ## Building a Better Dev Team
 
-I recently read [this](http://www.onebigfluke.com/2016/04/whats-awful-building-software.html) article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.  I related to a lot of the complaints at some point in my career but I don't really feel that they impact me as much anymore.  It got me thinking if we do something different at Functional Imperative.
+I recently read [this](http://www.onebigfluke.com/2016/04/whats-awful-building-software.html) article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.  I related to a lot of the complaints at some point in my career but I don't really feel that they impact me as much anymore.  
+It got me thinking if we do something different at [Functional Imperative](http://www.functionalimperative.com).
 
 <!--more-->
 
@@ -35,7 +36,7 @@ Obviously a happy developer works with a team that has practices which promote t
 ### Feel Valued
 
 I find the best way for a developer to take pride in their work and have a sense of accomplishment is to give them
-more responsibility.  At Functional Imperative, our developers are often given large portions of a project or entire projects
+more responsibility.  At [Functional Imperative](http://www.functionalimperative.com), our developers are often given large portions of a project or entire projects
 to be a lead on.  The developer may be a junior and will be closely mentored, but they will immediately receive a large
 amount of responsibility.  
 
@@ -57,11 +58,11 @@ and give them as much as you they show you they feel comfortable handling.
 _"There's just too much to learn and not enough time"_
 
 We have an excellent recipe to tackle this one.  As a Dev shop we receive new projects all the time.
-We try to employ our own **80/20 rule**.
+We try to employ our own **80 / 20 rule**.
 
 This states that **80%** of a project is something we know and **20%** is something we want to learn.
 
-If you want to tackle something large like using React, or Anuglar2 for the first time, see if there is a spot where
+If you want to tackle something large like using [React](https://facebook.github.io/react), or [Angular 2.0](https://angular.io/) for the first time, see if there is a spot where
 you can use it as a widget instead of an entire Single Page Application.
 
 If you want to learn Elixir for the first time, perhaps there is a section of your app you can convert into a 
@@ -72,7 +73,7 @@ The 80% you know could be adding existing functionality to your app to support t
 
 ### Have Variety
 
-I'm learning new technologies with the **80/20 rule**, so I'm already getting variety.  
+I'm learning new technologies with the **80 / 20 rule**, so I'm already getting variety.  
 
 This may be a personal thing but I like hitting hardcore deadlines while delivering an excellent product.
 Is there any better measure of success for a developer?  While I love this feeling, it can't be my entire life.
@@ -100,7 +101,7 @@ I don't disagree with the "Gripe List", as I said, I've felt them too.  I think 
 organization that has too much management and unnecessary red tape.  
 
 Everything I've mentioned works for us because we are a medium sized dev company that takes time to have group code reviews,
-lunch and learns, trusts it's employees, cares about learning, funds learning at events, gets involved in the community,
+lunch and learns, trusts its employees, cares about learning, [funds learning at events](http://devhub.ca), [gets involved in the community](http://lighthouselabs.ca),
 and generally tries to put things in place that developers want and we feel need.
 
 I don't see why this smaller business mentality can't be applied to departments in a larger company.
