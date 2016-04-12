@@ -2,7 +2,7 @@
 layout:     post
 title:      Building a Better Developer Experience
 author:     jon
-date:       2016-04-11
+date:       2016-04-12
 published:  true
 social_image: blog_posts/social_default.jpg
 description: I recently read an article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.
