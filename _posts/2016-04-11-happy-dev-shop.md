@@ -11,7 +11,7 @@ description: I recently read an article which highlighted a number of complaints
 ## Building a Better Dev Team
 
 I recently read [this](http://www.onebigfluke.com/2016/04/whats-awful-building-software.html) article which highlighted a number of complaints that many developers will probably have during their career.  As the CTO of my development company, I have been in all three of the roles mentioned in the article.  I related to a lot of the complaints at some point in my career but I don't really feel that they impact me as much anymore.  
-It got me thinking if we do something different at [Functional Imperative](http://www.functionalimperative.com).
+It got me wondering why I'm not unhappy at [Functional Imperative](http://www.functionalimperative.com).
 
 <!--more-->
 
@@ -48,7 +48,7 @@ and submitting the pull request.
 _"You can't just give everyone that much responsibility, Juniors write horrible code and it will be terrible!"_
 
 This above model can be applied to any amount of work.  The idea is to stop pigeon holding people, start trusting them
-and give them as much as you they show you they feel comfortable handling.  
+and give them as much as they show you they feel comfortable handling.  
 
 <center>![I have created!]({% asset_path blog_posts/happy-devs/fire.jpg %})</center>
 
@@ -105,6 +105,8 @@ lunch and learns, trusts its employees, cares about learning, [funds learning at
 and generally tries to put things in place that developers want and we feel need.
 
 I don't see why this smaller business mentality can't be applied to departments in a larger company.
+
+These are the things that I value as a developer and a manager and feel are the reason I'm happy at [Functional Imperative](http://www.functionalimperative.com).
 
 
 
