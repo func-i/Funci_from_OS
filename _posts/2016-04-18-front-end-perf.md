@@ -1,11 +1,11 @@
 ---
-layout:       post
-title:        Follow Up: Owning Your Front-end Performance
-author:       alex
-date:         2016-04-18
-published:    true
+layout:     post
+title:      Follow Up: Owning Your Front-end Performance
+author:     alex
+date:       2016-04-18
+published:  true
 social_image: blog_posts/social_default.jpg
-description:  Improve front-end performance through tools, not rules.
+description: Improve front-end performance through tools, not rules.
 ---
 
 ## Follow Up: Owning Your Front-end Performance
@@ -13,6 +13,8 @@ description:  Improve front-end performance through tools, not rules.
 My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s [Devmonth](http://devhub.ca/devmonth) about front-end performance.
 
 In our day-to-day work as full-stack devs here at FI, we kept bumping up against front-end performance bottlenecks we couldn't tackle using easy, one-liner, talking point, black and white Rules™. We realized improving front-end performance requires a much deeper understanding of how browsers really work—how we go from an HTML response to pixels on a screen.
+
+<!--more-->
 
 Here are some resources we referenced or quoted in the talk:
 
