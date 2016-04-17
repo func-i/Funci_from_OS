@@ -1,0 +1,29 @@
+---
+layout:       post
+title:        Follow Up: Owning Your Front-end Performance
+author:       alex
+date:         2016-04-18
+published:    true
+social_image: blog_posts/social_default.jpg
+description:  Improve front-end performance through tools, not rules.
+---
+
+## Follow Up: Owning Your Front-end Performance
+
+My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s [Devmonth](http://devhub.ca/devmonth) about front-end performance.
+
+In our day-to-day work as full-stack devs here at FI, we kept bumping up against front-end performance bottlenecks we couldn't easily tackle using easy, one-liner, talking point, black and white Rules™. We realized improving front-end performance requires a much deeper understanding of how browsers really work—how we go from an HTML response to pixels on a screen. We argued that a more complete understanding of the critical rendering path unlocks your ability to debug front-end performance issues.
+
+Here are some resources we referenced or quoted in the talk:
+
+* [Introducing RAIL: A User-Centric Model for Performance](https://www.smashingmagazine.com/2015/10/rail-user-centric-model-performance/)
+* [Response Times: The 3 Important Limits](https://www.nngroup.com/articles/response-times-3-important-limits/)
+* [Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/)
+* [How Users Perceive the Speed of The Web / RAIL, FluentConf, Paul Irish](https://docs.google.com/presentation/d/1AwT2vVHzzlsIxEUS-z769awGa-hiHTwR0iWrkeX49Fk/edit#slide=id.g6f0232e78_056)
+* [The RAIL Performance Model](https://developers.google.com/web/tools/chrome-devtools/profile/evaluate-performance/rail?hl=en)
+* [Website Performance Optimization: Udacity](https://classroom.udacity.com/courses/ud884/)
+* [Browser Rendering Optimization: Udacity](https://classroom.udacity.com/courses/ud860/)
+* [critical](https://github.com/addyosmani/critical)
+* [Window.requestAnimationFrame(): MDN](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame)
+* [fastdom](https://github.com/wilsonpage/fastdom)
+* [Leaner, Meaner, Faster Animations with requestAnimationFrame](http://www.html5rocks.com/en/tutorials/speed/animations/)
