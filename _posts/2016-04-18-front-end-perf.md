@@ -12,7 +12,7 @@ description:  Improve front-end performance through tools, not rules.
 
 My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s [Devmonth](http://devhub.ca/devmonth) about front-end performance.
 
-In our day-to-day work as full-stack devs here at FI, we kept bumping up against front-end performance bottlenecks we couldn't easily tackle using easy, one-liner, talking point, black and white Rules™. We realized improving front-end performance requires a much deeper understanding of how browsers really work—how we go from an HTML response to pixels on a screen. We argued that a more complete understanding of the critical rendering path unlocks your ability to debug front-end performance issues.
+In our day-to-day work as full-stack devs here at FI, we kept bumping up against front-end performance bottlenecks we couldn't tackle using easy, one-liner, talking point, black and white Rules™. We realized improving front-end performance requires a much deeper understanding of how browsers really work—how we go from an HTML response to pixels on a screen.
 
 Here are some resources we referenced or quoted in the talk:
 
