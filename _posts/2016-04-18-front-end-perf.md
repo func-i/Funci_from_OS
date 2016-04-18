@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Follow Up: Owning Your Front-end Performance
+title:      Follow Up | Owning Your Front-end Performance
 author:     alex
 date:       2016-04-18
 published:  true
