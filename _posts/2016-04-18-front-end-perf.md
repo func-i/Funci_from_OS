@@ -8,7 +8,7 @@ social_image: blog_posts/social_default.jpg
 description: Improve front-end performance through tools, not rules.
 ---
 
-## Follow Up: Owning Your Front-end Performance
+## Follow Up | Owning Your Front-end Performance
 
 My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s [Devmonth](http://devhub.ca/devmonth) about front-end performance.
 
