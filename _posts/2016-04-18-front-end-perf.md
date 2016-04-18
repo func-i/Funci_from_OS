@@ -16,7 +16,11 @@ In our day-to-day work as full-stack devs here at FI, we kept bumping up against
 
 <!--more-->
 
-Here are some resources we referenced or quoted in the talk:
+Hopefully we provided some tools you can use to start owning your front-end performance.
+
+Here are the [slides](http://www.slideshare.net/AileenFI/own-your-frontend-performance-tools-not-rules).
+
+And here are some resources we referenced or quoted in the talk:
 
 * [Introducing RAIL: A User-Centric Model for Performance](https://www.smashingmagazine.com/2015/10/rail-user-centric-model-performance/)
 * [Response Times: The 3 Important Limits](https://www.nngroup.com/articles/response-times-3-important-limits/)
