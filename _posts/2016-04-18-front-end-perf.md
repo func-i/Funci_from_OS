@@ -18,7 +18,9 @@ In our day-to-day work as full-stack devs here at FI, we kept bumping up against
 
 Hopefully we provided some tools you can use to start owning your front-end performance.
 
-Here are the [slides](http://www.slideshare.net/AileenFI/own-your-frontend-performance-tools-not-rules).
+Here are the [slides](http://www.slideshare.net/func_i/own-your-frontend-performance-tools-not-rules-61049480).
+
+<iframe src="http://www.slideshare.net/func_i/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
 
 And here are some resources we referenced or quoted in the talk:
 
