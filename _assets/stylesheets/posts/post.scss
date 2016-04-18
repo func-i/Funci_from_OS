@@ -1,4 +1,15 @@
 #post {
+  // to make room for social share stuff
+  padding-bottom: 5em;
+  
+  .slideshare-embed {
+    display: none;
+    
+    @media #{$large-up} {
+      display: block;
+    }
+  }
+  
   #form {
     position: absolute;
     left: -14em;
