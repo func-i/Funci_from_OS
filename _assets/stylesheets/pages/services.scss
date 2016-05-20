@@ -4,6 +4,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     height: 2.1em;
     width: 2.1em;
     font-size: 50%;
@@ -25,7 +26,6 @@
       transition: max-height $transition-duration linear;
       z-index: -1;
     }
-    
   }
 
   a:hover {
@@ -39,13 +39,29 @@
     }
   }
   
+  &-header {
+    margin-top: 1em;
+  }
+  
+  #services-links {    
+    .text-content {
+      padding: 1em;
+      
+      @media #{$medium-only} {
+        padding: 0.7em;
+        h3 {
+          font-size: 1.1em;
+        }
+      }
+    }
+  }
   
   a.call-to-action {
     font-size: 1.77em;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 1em 0;
+    margin-bottom: 1em;
     
     &[data-color="blue"] {
       @include set-colors-for-cta($blue)
@@ -62,7 +78,51 @@
   
   ul {
     list-style: square inside;
-    line-height: 1.25;
-    margin-bottom: 1em;
+    line-height: 1.4;
+  }
+  
+  .services-description {
+    margin-bottom: 1.77em;
+  }
+  
+  .side-icons {
+    @media #{$medium-up} {
+      margin-top: 15%;
+    }
+    
+    @media #{$large-up} {
+      margin-top: 10%;
+    }
+    
+    &-group-two {
+      @media #{$small-up} {
+        margin-top: 3em;
+      }
+      
+      @media #{$medium-up} {
+        margin-top: 9em;
+      }
+      
+      @media #{$large-up} {
+        margin-top: 6em;
+      }
+    }
+    
+    .icon-container {
+      &.magnifying-glass {
+        margin-top: 5em;
+      }
+      
+      &.spaceship {
+        margin-top: 9em;
+      }
+      
+      &.faces {
+        margin-top: 9em;
+      }
+      
+      &.globe {
+      }
+    }
   }
 }

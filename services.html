@@ -6,14 +6,14 @@ description: We build new intricate experiences for the new web.
 
 <div id="services" class="row collapse main-content">
   <div class="row collapse">
-    <div class="medium-6 large-7 columns canvas">
+    <div class="medium-7 large-7 columns canvas">
       <div class="row collapse">
-        <div class="small-9 medium-12 columns">
-          <div class="square text spacer" data-type="outlined" data-rollover="true" data-color="yellow">
+        <div class="small-9 medium-12 large-11 columns">
+          <div class="square text spacer" id="services-header" data-type="outlined" data-rollover="true" data-color="yellow">
             <a href="#intro">
               <div class="text-content">
                 <h2 data-cms="services-head">
-                  Services
+                  Discover How FI Can Help Your Business Evolve
                 </h2>
               </div>
             </a>
@@ -21,9 +21,9 @@ description: We build new intricate experiences for the new web.
         </div>
       </div>
     </div>
-    <div class="medium-6 large-5 columns canvas">
+    <div class="medium-5 large-5 columns canvas" id="services-links">
       <div class="row collapse">
-        <div class=" small-6 small-offset-1 medium-7 large-6 columns">
+        <div class="small-6 small-offset-6 medium-6 medium-offset-1 large-6 columns">
           <div class="square text services-second" data-type="outlined" data-rollover="true" data-color="blue">
             <a href="#services-first">
               <div class="text-content">
@@ -36,7 +36,7 @@ description: We build new intricate experiences for the new web.
         </div>
       </div>
       <div class="row collapse">
-        <div class="small-6 medium-7 medium-offset-5 large-6 small-offset-5">
+        <div class="small-6 small-offset-1 medium-6 medium-offset-6 large-6">
           <div class="square text services-second" data-type="outlined" data-color="yellow">
             <a href="#services-second">
               <div class="text-content">
@@ -49,7 +49,7 @@ description: We build new intricate experiences for the new web.
         </div>
       </div>
       <div class="row collapse">
-        <div class="small-6 small-offset-1 medium-7 large-6 columns">
+        <div class="small-6 small-offset-3 medium-6 large-6 columns">
           <div class="square text services-third" data-type="outlined" data-color="blue">
             <a href="#services-third">
               <div class="text-content">
@@ -64,10 +64,10 @@ description: We build new intricate experiences for the new web.
     </div>
   </div>
   <div class="row collapse">
-    <div class="large-8 columns">
+    <div class="medium-7 columns">
       <div class="free text">
-        <div class="description introduction" id="intro">
-          <h2>Services</h2>
+        <div class="services-description" id="intro">
+          <h2>Discover How FI Can Help Your Business Evolve</h2>
           <p>
             Through our broad technical scope, immediate access to some of
             Canada’s top tech communities, and our defined methodology - we
@@ -75,7 +75,7 @@ description: We build new intricate experiences for the new web.
             best suited to help your business succeed.
           </p>
         </div>
-        <div class="description services-first" id="services-first">
+        <div class="services-description" id="services-first">
           <h2>Scaling Your Business</h2>
           <p>
             As a team of individuals who have both worked on and founded several 
@@ -89,7 +89,7 @@ description: We build new intricate experiences for the new web.
             <li>Rescue</li>
           </ul>
         </div>
-        <div class="description services-second" id="services-second">
+        <div class="services-description" id="services-second">
           <h2>Capability Building</h2>
           <p>
             Many teams are lacking the skill set or scalability required to grow and
@@ -98,7 +98,7 @@ description: We build new intricate experiences for the new web.
             and to establish a team from the ground up.
           </p>
         </div>
-        <div class="description services-third" id="services-third">
+        <div class="services-description" id="services-third">
           <h2>Leveraging Data</h2>
           <p>
             Functional Imperative can provide you with the technical infrastructure
@@ -114,11 +114,52 @@ description: We build new intricate experiences for the new web.
       </div>
       <div class="text-center">
         <a href="/contact" class="call-to-action" data-color="blue">
-          Pay Us Money 
+          <span>Let’s Chat</span>
           <span class="inline-icon">
             <i class="fa fa-chevron-right" aria-hidden="true"></i>
           </span>
         </a>
+      </div>
+    </div>
+    <div class="medium-5 columns canvas side-icons">
+      <div class="row collapse">
+        <div class="small-8 columns">
+          <div class="icon-container magnifying-glass">
+            <div class="square icon magnifying-glass" data-type="outlined" data-color="yellow">
+              <object data="{% asset_path icons/magnifying_glass.svg %}" type="image/svg+xml"></object>
+            </div>
+          </div>
+        </div>
+        <div class="small-4 columns">
+          <div class="icon-container tools">
+            <div class="square icon tools" data-type="outlined" data-color="blue">
+              <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
+            </div>
+          </div>
+          <div class="icon-container spaceship">
+            <div class="square icon spaceship" data-type="outlined" data-color="blue">
+              <object data="{% asset_path icons/spaceship.svg %}" type="image/svg+xml"></object>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-icons-group-two">
+        <div class="row collapse">
+          <div class="small-4 columns">
+            <div class="icon-container faces">
+              <div class="square icon faces" data-type="outlined" data-color="blue">
+                <object data="{% asset_path icons/faces.svg %}" type="image/svg+xml"></object>
+              </div>
+            </div>
+          </div>
+          <div class="small-8 columns">
+            <div class="icon-container globe">
+              <div class="square icon globe" data-type="outlined" data-color="yellow">
+                <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
