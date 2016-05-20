@@ -1,54 +1,62 @@
 #services {
-  
-  a > .square {
+  .inline-icon {
+    display: inline-flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 2.1em;
+    width: 2.1em;
+    font-size: 50%;
+    border: solid 2px;
+    margin-left: 10px;
+    
+    i {
+      transition: color $transition-duration linear;
+    }
+    
+    &:after {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0px;
+      left: 0px;
+      max-height: 0%;
+      transition: max-height $transition-duration linear;
+      z-index: -1;
+    }
     
   }
+
+  a:hover {
+    .inline-icon {
+      i {
+        color: $dark-gray;
+      }          
+      &:after {
+        max-height: 100%;
+      }
+    }
+  }
+  
   
   a.call-to-action {
-    color: $blue;
     font-size: 1.77em;
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin: 1em 0;
     
-    .cta-icon {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      height: 2.1em;
-      width: 2.1em;
-      font-size: 50%;
-      border: solid 2px;
-      transition: color 0.25s linear;
-      margin-left: 10px;
-      
-      .cta-background {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        bottom: 0px;
-        left: 0px;
-        max-height: 0%;
-        background-color: $blue;
-        transition: max-height 0.25s linear;
-        z-index: -1;
-      }
+    &[data-color="blue"] {
+      @include set-colors-for-cta($blue)
     }
-    
+
+    &[data-color="yellow"] {
+      @include set-colors-for-cta($yellow);
+    }    
     
     &:hover {
       text-decoration: none;
-      
-      .cta-icon {
-        i {
-          color: $dark-gray;
-        }
-        
-        .cta-background {
-          max-height: 100%;
-        }
-      }
     }
   }
   
