@@ -1,133 +1,108 @@
-header {
-  position: relative;
-  -webkit-user-select: none;
 
-  nav {
-    @extend .row, .collapse;
-
-    position: relative;
+nav {
+  $letter-delay: .15s;
+  $letter-width: 54px;
+  $offset: 80%; 
+  
+  position: fixed;
+  z-index: 3;
+  width: calc(100% - #{$letter-width});
+  
+  @media #{$large-up} {
+    width: auto;
+  }
+  
+  .nav-logo-container {
+    position: absolute;
+    height: $letter-width;
     z-index: 3;
-
-    .selected {
-      color: $green;
-    }
-
-    > ul {
-      position: relative;
-      z-index: 0;
-      padding: 0;
-      margin: 1.333em 0;
-      text-align: center;
-
-      @media screen and (max-width:640px) {
-        text-align: left;
-        margin: .5em 1em;
+    > * {
+      display: inline-block;
+      width: $letter-width;
+      height: $letter-width;
+      mix-blend-mode: multiply;
+      
+      &:hover {
+        text-decoration: none;
       }
-
-      > li {
-        position: relative;
-        display: inline-block;
-        padding: 1em 0;
-        margin: 0 .75em;
-
-        @media screen and (max-width:640px) { padding: 0; }
-
-        > a {
-          padding: 1em 0;
-
-          @media screen and (max-width:640px) { padding: 0; }
-        }
-
-        &.menu-activated {
-          > .sub-menu {
-            pointer-events: all;
-
-            > ul {
-              -moz-transform: none;
-              -ms-transform: none;
-              -o-transform: none;
-              -webkit-transform: none;
-            }
-          }
-        }
-
-        @media screen and (max-width:640px) {
-          display: block;
-          width: 7em;
-          margin: 0;
-
-          padding: .5em 0 .5em 0;
-
-          > a {
-            padding: .5em 0 .5em 0;
-          }
-        }
-
-        > .sub-menu {
-          pointer-events: none;
-          position: absolute;
-          left: -1em;
-          z-index: 5000;
-          margin-top: 1em;
-
-          -moz-perspective-origin: top;
-          -ms-perspective-origin: top;
-          -o-perspective-origin: top;
-          -webkit-perspective-origin: top;
-          -moz-perspective: 200px;
-          -ms-perspective: 200px;
-          -o-perspective: 200px;
-          -webkit-perspective: 200px;
-
-          @media screen and (max-width:640px) {
-            left: 5em;
-            top: -.6em;
-            margin-top: 0;
-          }
-
-          &:hover {
-            display: block;            
-          }
-
-          > ul {
-            background: $dark-gray;
-            border: solid 1px $green;
-            padding: .5em 1em;
-            text-align: left;
-            width: 11em;
-            height: 11em;
-
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: all 0.2s ease-in-out;
-            -ms-transition: all 0.2s ease-in-out;
-            -o-transition: all 0.2s ease-in-out;
-            -webkit-transition: all 0.2s ease-in-out;
-            -moz-transform-origin: top;
-            -ms-transform-origin: top;
-            -o-transform-origin: top;
-            -webkit-transform-origin: top;
-            -moz-transform: rotateX(-90deg);
-            -ms-transform: rotateX(-90deg);
-            -o-transform: rotateX(-90deg);
-            -webkit-transform: rotateX(-90deg);
-
-            > li {
-              position: relative;
-              display: list-item;
-              padding: .5em 0 .5em 0;
-
-              > a {
-                padding: .5em 0 .5em 0;
-              }
-            }
-          }
+    }
+    
+    .nav-logo-letter {
+      &-first {        
+        background: url(asset_path("images/f_letter.png"));
+        background-size: cover;
+      }      
+      
+      &-second {
+        position: absolute;
+        top: $offset;
+        left: 0%;
+        background: url(asset_path("images/i_letter.png"));
+        background-size: cover;
+        transition: left $letter-delay, top $letter-delay ease-in-out $letter-delay;
+      }
+    }    
+  }  
+  
+  .selected {
+    color: $green;
+  }
+  
+  > ul {
+    position: relative;
+    left: $letter-width;
+    z-index: 0;
+    width: 100%;
+    height: $letter-width;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: $dark-gray;
+    transition: left $letter-delay ease-in-out $letter-delay;
+    border-bottom: solid 1px white;
+    font-size: calc(0.3 * #{$letter-width});
+    
+    @media #{$large-up} {
+      border-right: solid 1px white;
+    }    
+    
+    > li {
+      text-align: center;
+      display: inline-block;
+      
+      @media #{$large-up} {
+        width: 100px;
+      }
+      
+      > .sub-menu {
+        display: none;
+      }
+    }
+  }
+  
+  &.hidden {
+    
+    @media #{$large-up} {
+      > ul {
+        left: -100%;
+        transition: left $letter-delay ease-in-out 0.0s;
+      }
+      
+      .nav-logo-letter {
+        &-second {
+          top: 0%;
+          left: $offset;
+          transition: top $letter-delay, left $letter-delay ease-in-out $letter-delay;
         }
       }
     }
   }
+  
+}
+
+header {
+  position: relative;
+  -webkit-user-select: none;
 }
 
 .no-touch {

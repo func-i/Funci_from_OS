@@ -1,9 +1,8 @@
 $ ->
   $body = $('#body')
   $nav  = $('.touch header nav')
-
+  bodyDOM = document.querySelector('body');
   unless $nav.length is 0
-
     menuActivated = false
 
     $nav.find('a.has-menu').click (ev) ->
@@ -28,3 +27,13 @@ $ ->
         if menuActivated
           $nav.find('li.menu-activated').removeClass('menu-activated')
           $nav.find('a.navigable').removeClass('navigable')
+  
+  $(document).scroll (ev) ->
+    distanceTop = bodyDOM.getBoundingClientRect().top
+    if (distanceTop < 0) &&
+      $('nav').addClass('hidden');
+    else
+      $('nav').removeClass('hidden');
+  
+  $('nav').on "mouseenter", (ev) ->
+    $('nav').removeClass('hidden');
