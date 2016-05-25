@@ -11,6 +11,10 @@ $purple:      #BC50EA;
 $dark-purple: #445588;
 $dark-gray:   rgb(45,45,45);
 
+////////// other variables //////////
+
+$transition-duration: 0.3s;
+
 ////////// fonts //////////
 
 @mixin embed-font($font-name, $font-filepath-and-name) {
@@ -118,6 +122,13 @@ $dark-gray:   rgb(45,45,45);
   -webkit-hyphens: auto;
   -moz-hyphens:    auto;
   hyphens:         auto;
+}
+
+@mixin set-colors-for-cta($color) {
+  color: $color;
+  .inline-icon:after {
+    background-color: $color;
+  }
 }
 
 ////////// defaults //////////
