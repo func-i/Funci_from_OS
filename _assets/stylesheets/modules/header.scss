@@ -60,68 +60,58 @@ nav {
     background: $dark-gray;
     transition: left $letter-delay ease-in-out $letter-delay;
     border-bottom: solid 1px white;
-    font-size: calc(0.3 * #{$letter-width});
+    overflow: hidden;
     
     @media #{$large-up} {
+      display: inline-block;
       border-right: solid 1px white;
     }    
     
     > li {
+      overflow: hidden;
       text-align: center;
       display: inline-block;
-      
+      transition: opacity $letter-delay, width $letter-delay ease-in-out $letter-delay;
+      font-size: calc(0.3 * #{$letter-width});
+      margin: calc(0.35 * #{$letter-width}) 0;
+
       @media #{$large-up} {
         width: 100px;
       }
     }
-      
-    &.hidden {
-      left: -100%;
-      transition: left $letter-delay ease-in-out 0.0s;
+    
+    &.sub-menu-active {
+      > li {
+        opacity: 0;
+        width: 0;
+        &.active {
+          width: 100px;
+          opacity: 100;
+          
+          > ul {
+            width: auto;
+          }
+        }
+      }
     }
   }
   
+  
   ul.sub-menu {
-    position: absolute;
-    left: $letter-width;
-    top: 0;
-    z-index: 0;
-    max-width: 100%;
-    height: $letter-width;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    display: none;
     background: $dark-gray;
-    transition: left $letter-delay ease-in-out $letter-delay;
-    border-bottom: solid 1px white;
     font-size: calc(0.3 * #{$letter-width});
+    transition: width $letter-delay ease-in-out $letter-delay;
     
-    @media #{$large-up} {
-      border-right: solid 1px white;
-    }
-
     li {
       text-align: center;
-      display: inline-block;
-      
-      @media #{$large-up} {
-        width: auto;
-      }
     }
     
     .nav-back-button {
       text-align: left;
     }
     
-    &.hidden {
-      transition: left $letter-delay;
-      left: -100%;
-    }
-    
-    &.sub-menu-active {
-      li {
-        display: none;
-      }
+    &.active {
     }
   }
   

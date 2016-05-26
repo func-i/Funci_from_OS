@@ -48,14 +48,19 @@ $ ->
   $navMenu = $('.nav-menu')
       
   $('.nav-menu > li > a').click (ev) ->
-    $menuItem = $(ev.target)
-    if $menuItem.hasClass('has-menu')
-      ev.preventDefault()
-      ev.stopPropagation()
-      $subMenu = $menuItem.siblings()
-      debugger
-      $navMenu.addClass('sub-menu-active')
-      $subMenu.removeClass('hidden')
+    $menuLink = $(ev.target)
+    if $menuLink.hasClass('has-menu')
+      if $menuLink.hasClass('active')
+        debugger
+      else
+        ev.preventDefault()
+        ev.stopPropagation()
+        $subMenu = $menuLink.siblings()
+        $navMenu.addClass('sub-menu-active')
+        width = $navMenu.outerWidth();
+        $navMenu.css('width', width)
+        $menuLink.parent().addClass('active')
+        $subMenu.addClass('active')
   #     
   # $('.nav-back-button').click (ev) ->
   #   $subMenu = $(ev.target).parent();
