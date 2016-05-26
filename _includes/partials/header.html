@@ -1,4 +1,5 @@
 <nav>
+  <div class="nav-hover-container"></div>
   <div class="nav-logo-container">
     <a class="nav-logo-letter-first menu-toggle-button"></a>
     <a class="nav-logo-letter-second"></a>
@@ -13,85 +14,68 @@
     </li>
     
     <li>
-      <a href="/work.html" class="has-menu
-      {% if page.url == '/work.html' %}
-      selected
-      {% endif %}">Work
+      <a href="/work.html" 
+        class="has-menu
+        {% if page.url == '/work.html' %}
+        selected
+        {% endif %}">
+        Work
+        <i class="fa fa-chevron-right"></i>
       </a>
-    
-      <div class="sub-menu">
-        <ul>
-          <li>
-            <a href="/work/eventstream.html"
-            {% if page.url == '/work/eventstream.html' %}
-            class="selected"
-            {% endif %}>Eventstream
-            </a>
-          </li>
-          <li>
-            <a href="/work/canlii.html"
-            {% if page.url == '/work/canlii.html' %}
-            class="selected"
-            {% endif %}>CanLII
-            </a>
-          </li>
-          <li>
-            <a href="/work/myoscar.html"
-            {% if page.url == '/work/myoscar.html' %}
-            class="selected"
-            {% endif %}>MyOSCAR
-            </a>
-          </li>
-          <li>
-            <a href="/work/votecompass.html"
-            {% if page.url == '/work/votecompass.html' %}
-            class="selected"
-            {% endif %}>Vote Compass
-            </a>
-          </li>
-          <li>
-            <a href="/work/client_list.html"
-            {% if page.url == '/work/client_list.html' %}
-            class="selected"
-            {% endif %}>Partial Client List
-            </a>
-          </li>
-        </ul>
-      </div>
+      
+      <ul class="sub-menu hidden">
+        <li>
+          <a class="nav-back-button">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+        </li>
+        <li>
+          <a href="/work/eventstream.html"
+          {% if page.url == '/work/eventstream.html' %}
+          class="selected"
+          {% endif %}>Eventstream
+          </a>
+        </li>
+        <li>
+          <a href="/work/canlii.html"
+          {% if page.url == '/work/canlii.html' %}
+          class="selected"
+          {% endif %}>CanLII
+          </a>
+        </li>
+        <li>
+          <a href="/work/myoscar.html"
+          {% if page.url == '/work/myoscar.html' %}
+          class="selected"
+          {% endif %}>MyOSCAR
+          </a>
+        </li>
+        <!-- <li>
+          <a href="/work/votecompass.html"
+          {% if page.url == '/work/votecompass.html' %}
+          class="selected"
+          {% endif %}>Vote Compass
+          </a>
+        </li>
+        <li>
+          <a href="/work/client_list.html"
+          {% if page.url == '/work/client_list.html' %}
+          class="selected"
+          {% endif %}>Partial Client List
+          </a>
+        </li> -->
+      </ul>
     </li>
 
     <li>
-      <a href="/about.html" class="has-menu
-      {% if page.url == '/about.html' %}
-      selected
-      {% endif %}">About
+      <a href="/about.html" 
+        data-sub-name="about"
+        class="has-menu
+        {% if page.url == '/about.html' %}
+        selected
+        {% endif %}">
+        About
       </a>
-
-      <div class="sub-menu">
-        <ul>
-          <li>
-            <a href="/about.html"
-            {% if page.url == '/about.html' %}
-            class="selected"
-            {% endif %}>Team
-            </a>
-          </li>
-          <li>
-            <a href="/about/partners.html"
-            {% if page.url == '/about/partners.html' %}
-            class="selected"
-            {% endif %}>Partners
-            </a>
-          </li>
-          <li>
-            <a href="/about/join.html"
-            {% if page.url == '/about/join.html' %}
-            class="selected"
-            {% endif %}>Join
-            </a>
-          </li>
-        </ul>
-      </div>
     </li>
 
     <li>
@@ -107,6 +91,35 @@
       {% if page.url == '/blog/index.html' %}
       class="selected"
       {% endif %}>Blog
+      </a>
+    </li>
+  </ul>
+  
+  <ul class="sub-menu hidden" data-name="about">
+    <li>
+      <a class="nav-back-button">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+    </li>
+    <li>
+      <a href="/about.html"
+      {% if page.url == '/about.html' %}
+      class="selected"
+      {% endif %}>Team
+      </a>
+    </li>
+    <li>
+      <a href="/about/partners.html"
+      {% if page.url == '/about/partners.html' %}
+      class="selected"
+      {% endif %}>Partners
+      </a>
+    </li>
+    <li>
+      <a href="/about/join.html"
+      {% if page.url == '/about/join.html' %}
+      class="selected"
+      {% endif %}>Join
       </a>
     </li>
   </ul>

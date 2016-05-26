@@ -1,7 +1,7 @@
 $ ->
   $body = $('#body')
   $nav  = $('.touch header nav')
-  bodyDOM = document.querySelector('body');
+  bodyDOM = document.querySelector('body')
   unless $nav.length is 0
     menuActivated = false
 
@@ -30,10 +30,35 @@ $ ->
   
   $(document).scroll (ev) ->
     distanceTop = bodyDOM.getBoundingClientRect().top
-    if (distanceTop < 0) &&
-      $('nav').addClass('hidden');
-    else
-      $('nav').removeClass('hidden');
+    if (distanceTop < 0)
+      $('nav').addClass('hidden')
+      $(this).unbind(ev)
   
-  $('nav').on "mouseenter", (ev) ->
-    $('nav').removeClass('hidden');
+  $('.nav-hover-container').on "mouseenter", (ev) ->
+    $('nav').removeClass('hidden')
+  
+  $navHoverContainer = $('.nav-hover-container')
+    
+  $navHoverContainer.on "mouseleave", (ev) ->
+    width = $navHoverContainer.outerWidth()
+    height = $navHoverContainer.outerHeight()
+    if ev.clientX > width || ev.clientY > height
+      $('nav').addClass('hidden')
+    
+  $navMenu = $('.nav-menu')
+      
+  $('.nav-menu > li > a').click (ev) ->
+    $menuItem = $(ev.target)
+    if $menuItem.hasClass('has-menu')
+      ev.preventDefault()
+      ev.stopPropagation()
+      $subMenu = $menuItem.siblings()
+      debugger
+      $navMenu.addClass('sub-menu-active')
+      $subMenu.removeClass('hidden')
+  #     
+  # $('.nav-back-button').click (ev) ->
+  #   $subMenu = $(ev.target).parent();
+  #   debugger
+  #   $subMenu.addClass('hidden')
+  #   $navMenu.removeClass('hidden')
