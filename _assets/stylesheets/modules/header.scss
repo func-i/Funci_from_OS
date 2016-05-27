@@ -1,6 +1,6 @@
 
 nav {
-  $letter-delay: .15s;
+  $letter-delay: .2s;
   $letter-width: 54px;
   $offset: 80%; 
   
@@ -71,8 +71,9 @@ nav {
       overflow: hidden;
       text-align: center;
       display: inline-block;
-      transition: opacity $letter-delay, width $letter-delay ease-in-out $letter-delay;
+      transition: opacity $letter-delay ease-in-out 0.4s, width $letter-delay ease-in-out $letter-delay;
       font-size: calc(0.3 * #{$letter-width});
+      height: calc(0.3 * #{$letter-width});
       margin: calc(0.35 * #{$letter-width}) 0;
 
       @media #{$large-up} {
@@ -84,13 +85,15 @@ nav {
       > li {
         opacity: 0;
         width: 0;
+        transition: opacity $letter-delay, width $letter-delay ease-in-out $letter-delay;
         &.active {
+          transition: width $letter-delay ease-in-out $letter-delay;
           width: 100px;
-          opacity: 100;
-          
-          > ul {
-            width: auto;
-          }
+          opacity: 1;
+          // 
+          // > ul {
+          //   width: auto;
+          // }
         }
       }
     }
@@ -98,20 +101,32 @@ nav {
   
   
   ul.sub-menu {
-    display: none;
-    background: $dark-gray;
-    font-size: calc(0.3 * #{$letter-width});
-    transition: width $letter-delay ease-in-out $letter-delay;
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    width: auto;
+    margin-left: 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility $letter-delay ease-in-out 0s,
+                opacity $letter-delay ease-in-out 0s;
     
     li {
+      width: 100px;
       text-align: center;
-    }
-    
-    .nav-back-button {
-      text-align: left;
+      display: inline-block;
     }
     
     &.active {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility $letter-delay ease-in-out 0.4s,
+                  opacity $letter-delay ease-in-out 0.4s;
+                  
+      .nav-menu-item-text {
+        width: 0;
+        opacity: 0;
+      }
     }
   }
   
@@ -120,7 +135,7 @@ nav {
     @media #{$large-up} {
       > ul {
         left: -100%;
-        transition: left $letter-delay ease-in-out 0.0s;
+        transition: left $letter-delay;
       }
       
       .nav-logo-letter {

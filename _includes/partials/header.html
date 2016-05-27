@@ -14,7 +14,7 @@
     </li>
     
     <li>
-      <a href="/work.html" 
+      <a href=""
         class="has-menu
         {% if page.url == '/work.html' %}
         selected
@@ -63,14 +63,39 @@
     </li>
 
     <li>
-      <a href="/about.html" 
+      <a href="" 
         data-sub-name="about"
-        class="has-menu
+        class="has-menu 
         {% if page.url == '/about.html' %}
         selected
         {% endif %}">
         About
+        <i class="fa fa-chevron-right"></i>
       </a>
+      
+      <ul class="sub-menu">
+        <li>
+          <a href="/about.html"
+          {% if page.url == '/about.html' %}
+          class="selected"
+          {% endif %}>Team
+          </a>
+        </li>
+        <li>
+          <a href="/about/partners.html"
+          {% if page.url == '/about/partners.html' %}
+          class="selected"
+          {% endif %}>Partners
+          </a>
+        </li>
+        <li>
+          <a href="/about/join.html"
+          {% if page.url == '/about/join.html' %}
+          class="selected"
+          {% endif %}>Join
+          </a>
+        </li>
+      </ul>
     </li>
 
     <li>
@@ -86,35 +111,6 @@
       {% if page.url == '/blog/index.html' %}
       class="selected"
       {% endif %}>Blog
-      </a>
-    </li>
-  </ul>
-  
-  <ul class="sub-menu hidden" data-name="about">
-    <li>
-      <a class="nav-back-button">
-        <i class="fa fa-chevron-left"></i>
-      </a>
-    </li>
-    <li>
-      <a href="/about.html"
-      {% if page.url == '/about.html' %}
-      class="selected"
-      {% endif %}>Team
-      </a>
-    </li>
-    <li>
-      <a href="/about/partners.html"
-      {% if page.url == '/about/partners.html' %}
-      class="selected"
-      {% endif %}>Partners
-      </a>
-    </li>
-    <li>
-      <a href="/about/join.html"
-      {% if page.url == '/about/join.html' %}
-      class="selected"
-      {% endif %}>Join
       </a>
     </li>
   </ul>

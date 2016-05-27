@@ -45,23 +45,33 @@ $ ->
     if ev.clientX > width || ev.clientY > height
       $('nav').addClass('hidden')
     
-  $navMenu = $('.nav-menu')
-      
+  
+  
+  toggleActive = ($menuLink, shouldBeActive) ->
+    $menuItem = $menuLink.parent()
+    $subMenu = $menuLink.siblings()
+    if shouldBeActive
+      width = $navMenu.outerWidth();
+      $navMenu.addClass('sub-menu-active')
+      $navMenu.css('width', width * 1.01)
+      $menuItem.addClass('active')
+      $subMenu.addClass('active')
+    else
+      $navMenu.removeClass('sub-menu-active')
+      setTimeout(() -> 
+        $navMenu.css('width', '')
+      , 400)
+      $menuItem.removeClass('active')
+      $subMenu.removeClass('active')
+
+  $navMenu = $('.nav-menu')    
   $('.nav-menu > li > a').click (ev) ->
     $menuLink = $(ev.target)
     if $menuLink.hasClass('has-menu')
-      if $menuLink.hasClass('active')
-        debugger
-      else
-        ev.preventDefault()
-        ev.stopPropagation()
-        $subMenu = $menuLink.siblings()
-        $navMenu.addClass('sub-menu-active')
-        width = $navMenu.outerWidth();
-        $navMenu.css('width', width)
-        $menuLink.parent().addClass('active')
-        $subMenu.addClass('active')
-  #     
+      ev.preventDefault()
+      ev.stopPropagation()
+      toggleActive($menuLink, !$menuLink.parent().hasClass('active'))
+
   # $('.nav-back-button').click (ev) ->
   #   $subMenu = $(ev.target).parent();
   #   debugger
