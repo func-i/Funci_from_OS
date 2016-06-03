@@ -1,10 +1,11 @@
 Instructions for Editors
 ========================
 
-1. Work on GitHub, the `master` branch
+1. Work on GitHub, the `staging` branch
 2. Edit a page/post or upload a post/asset (eg. image), then commit the change
     - Upload/edit blog posts in the `/_posts` folder
     - Upload assets for use on the website to the `/_assets` folder
+    - Upload images for use on a blog post to the `/_assets/images/blog_posts` folder
     - Upload images that aren't used on the website to the `/offsite-assets/images` folder. The images can be referenced at `http://functionalimperative.com/offsite-assets/images/[filename]`
 3. wait 60 seconds
 4. Browse to `http://functionalimperative.com/`
@@ -30,6 +31,11 @@ Specify social media sharing and SEO-related settings here:
     - if `social_image` is not specified, `blog_posts/social_default.jpg` will be used
 * `description` is the excerpt to be displayed on social shares and also used for SEO
 
+To reference an image in a blog post, add something like the following to a .md file:
+
+```
+<center>![<image name (alt prop)>]({% asset_path blog_posts/<name of file>.<extension> %})</center>
+```
 
 ### Pages (Home, About, Contact, etc.)
 
