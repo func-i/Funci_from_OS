@@ -4,7 +4,7 @@ title:      Onboarding Technical Advancement Law Firm
 author:     Aileen Schultz 
 date:       2016-6-6 
 published:  true
-social_image: fi-site-source/_assets/images/blog_posts/legaltech.jpg 
+social_image: blog_posts/legaltech.jpg 
 description: Taking a look at how law firms can benefit from technical growth, the barriers that prevent widespread adoption and how to avoid these barriers using a concrete methodology. 
 ---
 
