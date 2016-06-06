@@ -1,3 +1,12 @@
+---
+layout:     post
+title:      Onboarding Technical Advancement Law Firm
+author:     Aileen Schultz 
+date:       2016-6-6 
+published:  true
+description: Taking a look at how law firms can benefit from technical growth, the barriers that prevent widespread adoption and how to avoid these barriers using a concrete methodology. 
+---
+
 Legal technology has turned into #LegalTech… yes, it has its own hashtag.  Whenever a hashtag is involved in something industry specific, and you’re a professional in that industry, you can bet that it is something you should know about.  Of course, “LegalTech” is self explanatory - it simply identifies technical advancements in the legal sphere. 
 
 But, are that many firms really on the #LegalTech train? Or is it simply remaining something fun to talk about when you’re wanting to sound forward thinking and relevant? 
@@ -6,6 +15,7 @@ Studies indicate that actually comparatively to 2015 - this year shows a fair in
 
 [Am Law-LTN tech survey states]:<http://businessoflawblog.com/2016/02/am-law-tech-survey/>   
 
+<!--more-->
 # Why Technology Adoption is Worth it
 
 The closing paragraph of an article titled “Disruptive technologies: A Canadian lawyer’s perspective on the evolution of law-practice technology” highlights quite a few solid reasons why allowing technological advancement is worth it for a firm and legal professionals:
