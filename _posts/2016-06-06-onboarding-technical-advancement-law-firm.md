@@ -88,11 +88,17 @@ You can plan forever when it comes to how you’re going to implement a new tool
 
 When planning to onboard a new technology - or anything for that matter - your firm needs to be strategic in its approach. 
 
-#### **Determine your goals:** what specifically does your firm want to accomplish from these changes? For example, a reduction in case review time or making client communication more efficient, thereby reducing client costs.  
+#### **Determine your goals:** 
 
-#### **Set concrete milestones:** take a step back and map out what it will look like for your firm to be fully on board and making the best use of the advancements. Then, determine what each step is to get there. 
+What specifically does your firm want to accomplish from these changes? For example, a reduction in case review time or making client communication more efficient, thereby reducing client costs.  
 
-#### **Outline your available and needed resources:** there are numerous resources that could be involved in getting your firm on board with something new - time and money being the obvious ones. But, depending on what it is that you’re installing or integrating with current systems, there could be several other resources needed, like a modulated training program or internal capability growth. 
+#### **Set concrete milestones:** 
+
+Take a step back and map out what it will look like for your firm to be fully on board and making the best use of the advancements. Then, determine what each step is to get there. 
+
+#### **Outline your available and needed resources:** 
+
+There are numerous resources that could be involved in getting your firm on board with something new - time and money being the obvious ones. But, depending on what it is that you’re installing or integrating with current systems, there could be several other resources needed, like a modulated training program or internal capability growth. 
 
 ### **Open Execution** 
 
