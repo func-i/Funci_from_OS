@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Onboarding Technical Advancement Law Firm
+title:      Getting your Law Firm Onboard with Technical Growth
 author:     aileen
 date:       2016-06-06 
 published:  true
