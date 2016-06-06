@@ -84,21 +84,22 @@ When first deciding whether or not your firm can benefit from a particular softw
 
 ### **Strategic Planning** 
 
-You can plan forever when it comes to how you’re going to implement a new tool, software or otherwise, but often time a lot of that planning will end up going to waste without ever having gotten to the crux of the matter.  
+You can plan forever when it comes to how you’re going to implement a new tool, software, or otherwise, but often time a lot of that planning will end up going to waste without ever having gotten to the crux of the matter.  
 
 When planning to onboard a new technology - or anything for that matter - your firm needs to be strategic in its approach. 
 
-**Determine your goals:** what specifically does your firm want to accomplish from these changes? For example, a reduction in case review time or making client communication more efficient, thereby reducing client costs.  
+#### **Determine your goals:** what specifically does your firm want to accomplish from these changes? For example, a reduction in case review time or making client communication more efficient, thereby reducing client costs.  
 
-**Set concrete milestones:** take a step back and map out what it will look like for your firm to be fully on board and making the best use of the advancements. Then, determine what each step is to get there. 
+#### **Set concrete milestones:** take a step back and map out what it will look like for your firm to be fully on board and making the best use of the advancements. Then, determine what each step is to get there. 
 
-**Outline your available and needed resources:** there are numerous resources that could be involved in getting your firm on board with something new, time and money being the obvious ones. But, depending on what it is that you’re installing or integrating with current systems, there could be several other resources needed, like a modulated training program or internal capability growth. 
+#### **Outline your available and needed resources:** there are numerous resources that could be involved in getting your firm on board with something new - time and money being the obvious ones. But, depending on what it is that you’re installing or integrating with current systems, there could be several other resources needed, like a modulated training program or internal capability growth. 
 
 ### **Open Execution** 
 
-When you’re at the stage of actually moving your firm forward with the new installments, maintain an open dialogue with all parties involved. If that’s the entirety of the firm, right down to your paralegals, have regular firm wide meetings updating everyone on installment expectations, how each is expected to engage or be involved etc.  Don’t just surprise everyone one day and expect eager participation and enthusiasm, as you’ll likely meet with the exact opposite. 
+When you’re at the stage of actually moving your firm forward with the new installments, maintain an open dialogue with all parties involved. If that’s the entirety of the firm, right through to your paralegals, have regular firm wide meetings updating everyone on installment expectations, how each is expected to engage or be involved etc.  Don’t just surprise everyone one day and expect eager participation and enthusiasm, as you’ll likely meet with the exact opposite. 
 
 ### **Continuous Evolution**
-Finally, it’s important to recognize that the process won’t be flawless and often time pain points and even goals can change before a project is even completed.  Be flexible in your adoption and allow your firm to continually evolve by allowing for frequent iterations, upgrades, team training and recap, as well as full sweep new technology integrations. The ways in which a firm can improve its processes and maximize systems are always growing, don’t be afraid to embrace these changes and allow your firm to evolve along with them. 
+
+It’s important to recognize that the process won’t be flawless and often time pain points and even goals can change before a project is even completed.  Be flexible in your adoption and allow your firm to continually evolve by allowing for frequent iterations, upgrades, team training and recap, as well as full sweep new technology integrations. The ways in which a firm can improve its processes and maximize systems are always growing, don’t be afraid to embrace these changes and allow your firm to evolve along with them. 
 
 
