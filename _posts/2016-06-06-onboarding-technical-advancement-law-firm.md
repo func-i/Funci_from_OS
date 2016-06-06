@@ -66,7 +66,8 @@ Your firm is going to be stuck in the dino age before we reach 2017, things are 
 [an article in Law Technology Today]:<http://www.lawtechnologytoday.org/2016/06/law-firm-stuck-technology-status-quo-bqe/> 
 # How to Avoid the Status Quo
 
-At FI we have a particular methodology for onboarding and completing all projects, which can be summed up very simply as the following: 
+At FI we have a particular methodology for onboarding and completing all projects, which can be summed up very simply as the following:
+
 - Targeted Assessment
 - Strategic Planning
 - Open Execution
