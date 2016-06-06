@@ -1,8 +1,8 @@
 ---
 layout:     post
 title:      Onboarding Technical Advancement Law Firm
-author:     Aileen Schultz 
-date:       2016-6-6 
+author:     aileen
+date:       2016-06-06 
 published:  true
 social_image: blog_posts/legaltech.jpg 
 description: Taking a look at how law firms can benefit from technical growth, the barriers that prevent widespread adoption and how to avoid these barriers using a concrete methodology. 
@@ -59,7 +59,8 @@ In addition, there are [several other concerns] that are a bit more generalized 
 
 One of the most widely claimed reasons or “excuses” for the lack of technical advancement in law firms, is simply something that is common across nearly every sector - people (and firms) are generally just set in their ways, and if something isn’t overtly broken or very clearly identified as inhibiting growth or productivity, then why go through the hassle? 
 
-The largest problem with that way of thinking, as [an article in Law Technology Today] suggests, is that law practitioners and their firms end up falling into a status quo rut and settle with maintaining an outdated practice, which is of course bad...practice.  
+The largest problem with that way of thinking, as [an article in Law Technology Today] suggests, is that law practitioners and their firms end up falling into a status quo rut and settle with maintaining an outdated practice, which is of course bad...practice.
+
 Your firm is going to be stuck in the dino age before we reach 2017, things are moving quicker every day and your firm cannot afford to miss out on the benefits of being tech forward. 
 
 [an article in Law Technology Today]:<http://www.lawtechnologytoday.org/2016/06/law-firm-stuck-technology-status-quo-bqe/> 
