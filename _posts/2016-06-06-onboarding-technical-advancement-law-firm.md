@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Getting your Law Firm Onboard with Technical Growth
+title:      Getting your Law Firm On board with Technical Growth
 author:     aileen
 date:       2016-06-06
 published:  true
@@ -36,7 +36,7 @@ In addition, firms are benefiting in several other ways:
 - Reducing the cost of overhead and support staff and,
 - Facilitating efficient communication with partners and clients 
 
-# Why aren’t all firms jumping onboard the tech forward train? 
+# Why aren’t all firms jumping on board the tech forward train? 
 
 In spite of the ongoing advancement of forward thinking firms, many still have concerns and issues with the adoption of new technologies; for example, there are still several barriers to the adoption of the cloud, as the following three points from the Am Law-LTN tech survey indicate: 
 
