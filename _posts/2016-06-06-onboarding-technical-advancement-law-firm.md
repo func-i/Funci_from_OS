@@ -12,7 +12,7 @@ Legal technology has turned into #LegalTech… yes, it has its own hashtag.  Whe
 
 But, are that many firms really on the #LegalTech train? Or is it simply remaining something fun to talk about when you’re wanting to sound forward thinking and relevant? 
 
-Studies indicate that actually comparatively to 2015 - this year shows a fair increase in both adoption and widespread acceptance of technical advancements; for example, an [Am Law-LTN tech survey states] that “...62% of firms have invested in SaaS-based services for e-discovery and/or litigation support”. However, in-spite of the lessening fears of technical advancement, many legal professionals and firms alike are either struggling with or simply avoiding these opportunities to increase the proficiency of their practice. 
+Studies indicate that actually comparatively to 2015 - this year shows a fair increase in both adoption and widespread acceptance of technical advancements; for example, an [Am Law-LTN tech survey states] that “...62% of firms have invested in SaaS-based services for e-discovery and/or litigation support”. However, in spite of the lessening fears of technical advancement, many legal professionals and firms alike are either struggling with or simply avoiding these opportunities to increase the proficiency of their practice. 
 
 [Am Law-LTN tech survey states]:<http://businessoflawblog.com/2016/02/am-law-tech-survey/>   
 
