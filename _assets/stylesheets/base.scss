@@ -213,8 +213,18 @@ a {
   }
 }
 
+////////// classes //////////
+
+.main-content {
+  margin: 4em auto 0;
+  width: 1024px;
+  max-width: 88%;
+  padding-bottom: 2em;
+}
+
 @media screen and (max-width:1024px) {
   .main-content {
+    margin-top: 98px;
     font-size: 80%;
   }
 }
@@ -223,15 +233,6 @@ a {
   .main-content {
     font-size: 75%;
   }
-}
-
-////////// classes //////////
-
-.main-content {
-  margin: 4em auto 0;
-  width: 1024px;
-  max-width: 88%;
-  padding-bottom: 2em;
 }
 
 ////////// squares ///////////

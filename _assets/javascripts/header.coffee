@@ -7,7 +7,7 @@ $ ->
   
   # Need a set width for when we switch to sub-menus (since they are 
   # positioned absolutely)
-  $navMenu.css('width', $navMenu.outerWidth() + 1)
+  
   
   $(document).scroll (ev) ->
     distanceTop = bodyDOM.getBoundingClientRect().top
@@ -28,11 +28,15 @@ $ ->
     $menuItem = $menuLink.parent()
     $subMenu = $menuLink.siblings()
     if shouldBeActive
+      $navMenu.css('width', $navMenu.outerWidth() + 1)
       $navMenu.addClass('sub-menu-active')
       $menuItem.addClass('active')
       $subMenu.addClass('active')
     else
       $navMenu.removeClass('sub-menu-active')
+      setTimeout(() -> 
+        $navMenu.css('width', '')
+      , 400)
       $menuItem.removeClass('active')
       $subMenu.removeClass('active')
       
