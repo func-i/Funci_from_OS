@@ -20,8 +20,4 @@
       for square in canvas.squares
         square.draw()
 
-    if blendingSupported
-      window.logo.resize $(window).innerWidth()
-      window.logo.draw()
-
   windowOrientation: undefined
