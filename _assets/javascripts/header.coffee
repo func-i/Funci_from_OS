@@ -32,6 +32,8 @@ $ ->
       $navMenu.addClass('sub-menu-active')
       $menuItem.addClass('active')
       $subMenu.addClass('active')
+      # if (window.innerWidth < 1024)
+      #   animateMenuItemActivation($menuItem)
     else
       $navMenu.removeClass('sub-menu-active')
       setTimeout(() -> 
@@ -46,4 +48,16 @@ $ ->
       ev.preventDefault()
       ev.stopPropagation()
       toggleActive($menuLink, !$menuLink.parent().hasClass('active'))
+      
+  animateMenuItemActivation = ($menuItem) ->
+    console.log('animating')
+    position = $menuItem.position()
+    # $menuItem.css('left', position.left)
+    $menuItem.data('left', position.left)
+    # $menuItem.css('top', position.top)
+    # $menuItem.data('top', position.top)
+    setTimeout(() ->
+      $menuItem.css('position', 'relative')
+      $menuItem.animate({ left: -position.left }, 200)
+    , 200)
 

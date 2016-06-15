@@ -72,19 +72,17 @@ nav {
       overflow: hidden;
       text-align: center;
       display: inline-block;
-      transition: opacity $delay ease-in-out calc(2 * #{$delay}), width $delay ease-in-out $delay;
+      transition: visibility $delay, opacity $delay ease-in-out calc(2 * #{$delay}), width $delay ease-in-out $delay;
       font-size: calc(0.3 * #{$letter-width});
       height: calc(0.3 * #{$letter-width});
       margin: calc(0.35 * #{$letter-width}) 0;
-
-      @media #{$large-up} {
-        width: 100px;
-      }
+      width: 100px;
     }
     
     &.sub-menu-active {
       > li {
         opacity: 0;
+        visibility: none;
         width: 0;
         transition: opacity $delay, width $delay ease-in-out $delay;
         &.active {
