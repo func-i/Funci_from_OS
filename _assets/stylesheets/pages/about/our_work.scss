@@ -1,0 +1,23 @@
+#our-work {
+  
+  .client-logo-container {
+    display: inline-block;
+    margin: 0 -3px;
+    width: 40%;
+
+    @media #{$small-only} {
+      width: 50%;
+    }
+    
+    @media #{$large-only} {
+      width: 30%;
+    }
+  }
+  
+  .client-logos-container {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+  
+}
