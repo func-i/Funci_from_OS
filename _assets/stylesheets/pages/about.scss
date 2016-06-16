@@ -24,6 +24,10 @@
   #an {
     margin-top: 10em;
   }
+  
+  #as {
+    margin-top: 4em;
+  }
 
   .no-4 {
     position: relative;
@@ -31,7 +35,13 @@
   }
   
   .no-5 {
-    top: -10em;
+    position: relative;
+    top: -8em;
+  }
+  
+  .no-6 {
+    position: relative;
+    top: -8em;
   }
 
   @media screen and (max-width:640px) {
