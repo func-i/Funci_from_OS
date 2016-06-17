@@ -11,9 +11,10 @@
     <div id="body">
       {% include partials/header.html %}
       {{ content }}
-      {% include partials/footer.html %}
     </div>
-  {% javascript app %}
+  
+    {% include partials/footer.html %}
+    {% javascript app %}
 
   </body>
 </html>
