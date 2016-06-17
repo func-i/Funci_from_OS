@@ -9,7 +9,7 @@
       width: 50%;
     }
     
-    @media #{$large-only} {
+    @media #{$large-up} {
       width: 30%;
     }
   }
