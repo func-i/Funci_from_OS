@@ -161,6 +161,11 @@ body {
   @media #{$medium-up} {
     padding-bottom: $footer-height;
   }
+  
+  &.lighter {
+    background-color: white;
+    color: $dark-gray;
+  }
 }
 
 #loading {
@@ -224,7 +229,8 @@ a {
 ////////// classes //////////
 
 .main-content {
-  margin: 4em auto 0;
+  margin: 0 auto;
+  padding-top: 5em;
   width: 1024px;
   max-width: 88%;
   padding-bottom: 2em;
@@ -232,7 +238,7 @@ a {
 
 @media screen and (max-width:1024px) {
   .main-content {
-    margin-top: 98px;
+    padding-top: 9em;
     font-size: 80%;
   }
 }
@@ -244,6 +250,24 @@ a {
 }
 
 ////////// squares ///////////
+
+.square-no-canvas {
+  $padding: 1.4em;
+  display: inline-block;
+  width: 100%;
+  padding: $padding;
+  color: white;
+  overflow: hidden;
+  margin: -2px;
+  
+  &[data-color="yellow"] {      
+    background: $yellow;
+  }
+  
+  &[data-color="blue"] {      
+    background: $blue;
+  }
+}
 
 .square {
   overflow: hidden;

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    {% include head.html  %}
+    {% include google_analytics.html %}
+  </head>
+  <body>
+    <div id="loading">
+      <img src="{% asset_path loading.gif %}">
+    </div>
+    <div id="body">
+      {% include partials/header.html %}
+      {{ content }}
+    </div>
+  
+    {% include partials/footer.html %}
+    {% javascript app %}
+
+  </body>
+</html>
