@@ -7,62 +7,6 @@
     </div>
     <ul class="nav-menu">
       <li>
-        <a href="/services.html"
-        {% if page.url == '/services.html' %}
-        class="selected"
-        {% endif %}>Services
-        </a>
-      </li>
-      
-      <li>
-        <a href=""
-          class="has-menu
-          {% if page.url == '/work.html' %}
-          selected
-          {% endif %}">
-          <span class="nav-menu-item-text">Work</span><i class="fa fa-chevron-right"></i>
-        </a>
-        
-        <ul class="sub-menu">
-          <li>
-            <a href="/work/eventstream.html"
-            {% if page.url == '/work/eventstream.html' %}
-            class="selected"
-            {% endif %}>Eventstream
-            </a>
-          </li>
-          <li>
-            <a href="/work/canlii.html"
-            {% if page.url == '/work/canlii.html' %}
-            class="selected"
-            {% endif %}>CanLII
-            </a>
-          </li>
-          <li>
-            <a href="/work/myoscar.html"
-            {% if page.url == '/work/myoscar.html' %}
-            class="selected"
-            {% endif %}>MyOSCAR
-            </a>
-          </li>
-          <!-- <li>
-            <a href="/work/votecompass.html"
-            {% if page.url == '/work/votecompass.html' %}
-            class="selected"
-            {% endif %}>Vote Compass
-            </a>
-          </li>
-          <li>
-            <a href="/work/client_list.html"
-            {% if page.url == '/work/client_list.html' %}
-            class="selected"
-            {% endif %}>Partial Client List
-            </a>
-          </li> -->
-        </ul>
-      </li>
-
-      <li>
         <a href="" 
           data-sub-name="about"
           class="has-menu 
@@ -77,24 +21,40 @@
             <a href="/about.html"
             {% if page.url == '/about.html' %}
             class="selected"
-            {% endif %}>Team
-            </a>
-          </li>
-          <li>
-            <a href="/about/partners.html"
-            {% if page.url == '/about/partners.html' %}
-            class="selected"
-            {% endif %}>Partners
+            {% endif %}>Our Team
             </a>
           </li>
           <li>
             <a href="/about/join.html"
             {% if page.url == '/about/join.html' %}
             class="selected"
-            {% endif %}>Join
+            {% endif %}>FI Method
+          </a>
+        </li>
+          <li>
+            <a href="/about/partners.html"
+            {% if page.url == '/about/partners.html' %}
+            class="selected"
+            {% endif %}>Our Work
             </a>
           </li>
         </ul>
+      </li>
+
+      <li>
+        <a href="/services.html"
+        {% if page.url == '/services.html' %}
+        class="selected"
+        {% endif %}>Services
+        </a>
+      </li>
+      
+      <li>
+        <a href="/blog/"
+        {% if page.url == '/blog/index.html' %}
+        class="selected"
+        {% endif %}>Blog
+        </a>
       </li>
 
       <li>
@@ -102,14 +62,6 @@
         {% if page.url == '/contact.html' %}
         class="selected"
         {% endif %}>Contact
-        </a>
-      </li>
-
-      <li>
-        <a href="/blog/"
-        {% if page.url == '/blog/index.html' %}
-        class="selected"
-        {% endif %}>Blog
         </a>
       </li>
     </ul>
