@@ -27,41 +27,47 @@ html {
   }
   
   .footer-list-wrapper {
-    @extend .medium-4;
     @extend .columns;
+    @extend .medium-3;
+    @extend .large-2;
     margin-bottom: 30px;
+    font-size: 80%;
     
+    @media #{$medium-up} {
+      font-size: 80%;
+    }
   }
   
-  .footer-list {
-    padding-left: 20px;
-    
+  .footer-list {    
     li {
-      font-size: 90%;
       line-height: 1.6;
+      color: #b3b3b3;
     }
     
     &.contact {
+      color: #b3b3b3;
       a {
-        font-size: 90%;
         line-height: 1.7;
       }
       
       p {
-        font-size: 90%;
         margin-bottom: 0;
       }
     }
+  }
   
-    &:before {
-      $line-width: 1px;
-      
-      content: " ";
-      position: absolute;
-      left: $line-width;
-      height: calc(100% - 58px);
-      width: $line-width;
-      background-color: white;
+  .footer-logo-wrapper {
+    @extend .large-4;
+    @extend .medium-12;
+    @extend .columns;    
+    
+    margin-bottom: 20px;
+    
+    #footer-logo {
+      width: 400px;
+      @media #{$medium-up} {
+        padding-right: 10%;
+      }
     }
   }
 }
