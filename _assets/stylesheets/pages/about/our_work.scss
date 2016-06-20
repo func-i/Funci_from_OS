@@ -3,6 +3,7 @@
   .client-logo-container {
     display: inline-block;
     margin: 0 -3px;
+    padding: 15px;
     width: 40%;
 
     @media #{$small-only} {
