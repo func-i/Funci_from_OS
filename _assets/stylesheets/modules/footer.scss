@@ -13,7 +13,11 @@ html {
   border-top: solid 1px white;
   
   @media #{$medium-up} {
-    height: $footer-height;
+    height: $footer-height-medium;
+  }
+  
+  @media #{$large-up} {
+    height: $footer-height-large;
   }
   
   h3 {
@@ -23,45 +27,54 @@ html {
   .footer-content {
     width: 1024px;
     max-width: 88%;
+    height: 100%;
     margin: auto;
   }
   
   .footer-list-wrapper {
-    @extend .medium-4;
     @extend .columns;
+    @extend .large-2;
+    @extend .medium-4;
+    display: inline-block;
     margin-bottom: 30px;
+    font-size: 80%;
+    vertical-align: top;
     
+    &:last-child {
+      @extend .large-3;
+    }
   }
   
-  .footer-list {
-    padding-left: 20px;
-    
+  .footer-list {    
     li {
-      font-size: 90%;
       line-height: 1.6;
+      color: #b3b3b3;
     }
     
     &.contact {
+      color: #b3b3b3;
       a {
-        font-size: 90%;
         line-height: 1.7;
       }
       
       p {
-        font-size: 90%;
         margin-bottom: 0;
       }
     }
+  }
   
-    &:before {
-      $line-width: 1px;
+  .footer-logo-wrapper {
+    @extend .columns;
+    @extend .large-5;
+    display: inline-block;    
+    margin-bottom: 20px;
+    
+    #footer-logo {
+      width: 400px;
       
-      content: " ";
-      position: absolute;
-      left: $line-width;
-      height: calc(100% - 58px);
-      width: $line-width;
-      background-color: white;
+      @media #{$large-up} {
+        padding-right: 40px;
+      }
     }
   }
 }
