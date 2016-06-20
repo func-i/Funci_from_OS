@@ -13,7 +13,11 @@ html {
   border-top: solid 1px white;
   
   @media #{$medium-up} {
-    height: $footer-height;
+    height: $footer-height-medium;
+  }
+  
+  @media #{$large-up} {
+    height: $footer-height-large;
   }
   
   h3 {
@@ -23,18 +27,21 @@ html {
   .footer-content {
     width: 1024px;
     max-width: 88%;
+    height: 100%;
     margin: auto;
   }
   
   .footer-list-wrapper {
     @extend .columns;
-    @extend .medium-3;
     @extend .large-2;
+    @extend .medium-4;
+    display: inline-block;
     margin-bottom: 30px;
     font-size: 80%;
+    vertical-align: top;
     
-    @media #{$medium-up} {
-      font-size: 80%;
+    &:last-child {
+      @extend .large-3;
     }
   }
   
@@ -57,16 +64,16 @@ html {
   }
   
   .footer-logo-wrapper {
-    @extend .large-4;
-    @extend .medium-12;
-    @extend .columns;    
-    
+    @extend .columns;
+    @extend .large-5;
+    display: inline-block;    
     margin-bottom: 20px;
     
     #footer-logo {
       width: 400px;
-      @media #{$medium-up} {
-        padding-right: 10%;
+      
+      @media #{$large-up} {
+        padding-right: 40px;
       }
     }
   }

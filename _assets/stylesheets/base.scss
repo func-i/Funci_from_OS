@@ -14,7 +14,8 @@ $dark-gray:   rgb(45,45,45);
 ////////// other variables //////////
 
 $transition-duration: 0.3s;
-$footer-height: 260px;
+$footer-height-large: 260px;
+$footer-height-medium: 350px;
 $footer-height-small: 650px;
 
 ////////// fonts //////////
@@ -159,7 +160,10 @@ body {
   transition: opacity .5s ease;
   
   @media #{$medium-up} {
-    padding-bottom: $footer-height;
+    padding-bottom: $footer-height-medium;
+  }
+  @media #{$large-up} {
+    padding-bottom: $footer-height-large;
   }
 }
 
