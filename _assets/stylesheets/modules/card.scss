@@ -4,6 +4,14 @@
   transition: color 0.5s;
   position: relative;
   
+  @media #{$medium-up} {
+    font-size: 90%;
+  }
+  
+  @media #{$large-up} {
+    font-size: 80%;
+  }
+  
   &-icon {
     height: 23%;
     margin-bottom: 10%;
