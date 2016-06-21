@@ -1,15 +1,18 @@
 #method {
   .scene-squares {
-    float: left;
     left: 0;
     top: 0;
     height: 100%;
-    width: 50%;
+    width: calc(50% - 4px);
+    display: inline-block;
   }
   
   .scene-text {
     height: 100%;
-    width: 100%;
+    width: calc(50% - 4px);
+    vertical-align: top;
+    align-items: center;
+    display: inline-flex;
   }
   
   .scene-title-square {
@@ -26,42 +29,37 @@
   
   
   .scene {
+    @extend .main-content;
+    padding: 0;
     position: relative;
     height: 48em;
     
+    
     &-1 {
-      .scene-text {
-        padding: 13em 0 0 24em;
-      }
-      
       .scene-title-square {
         top: 6em;
+        left: 4em;
         width: 55%;
       }
       
       .scene-graphic-square {
-        left: 3em;
+        left: 8em;
         top: 3em;
         width: 65%;
       }
     }
     
-    &-2 {
-      .scene-text {
-        font-size: 110%;
-        padding: 13em 24em 0 0;
-      }
-      
+    &-2 {  
       .scene-squares {
         float: right;
       }
       
       .scene-title-square {        
         width: 55%;
-        left: 3em;
+        left: 2em;
         top: 4em;
         
-        h2 {
+        h1 {
           position: absolute;
           bottom: 0;
           display: inline-block;
@@ -69,10 +67,29 @@
       }
       
       .scene-graphic-square {
-        left: 10em;
+        left: 9em;
         top: 7em;
         width: 65%;
       }
+    }
+    
+    &-3 {    
+      .scene-title-square {        
+        width: 55%;
+        left: 10em;
+        top: 5em;
+      }
+      
+      .scene-graphic-square {
+        top: 2em;
+        left: 4em;
+        width: 60%;
+      }
+    }
+    
+    &-4 {
+      display: flex;
+      align-items: center;
     }
   }
   
