@@ -1,4 +1,5 @@
 @BASE_COLORS =
+  white: "rgb(255,255,255)"
   blue: "rgb(3,168,171)"
   yellow: "rgb(255,189,27)"
   orange:      '#FF8B02'

@@ -118,6 +118,42 @@ $footer-height-small: 650px;
   background-size: $width $height;
 }
 
+@mixin square-border-color() {
+  &[data-color="yellow"] {      
+    border-color: $yellow;
+  }
+  
+  &[data-color="blue"] {      
+    border-color: $blue;
+  }
+  
+  &[data-color="orange"] {      
+    border-color: $orange;
+  }
+  
+  &[data-color="teal"] {      
+    border-color: $teal;
+  }
+}
+
+@mixin square-fill-color() {
+  &[data-color="yellow"] {      
+    background: $yellow;
+  }
+  
+  &[data-color="blue"] {      
+    background: $blue;
+  }
+  
+  &[data-color="orange"] {      
+    background: $orange;
+  }
+  
+  &[data-color="teal"] {      
+    background: $teal;
+  }
+}
+
 /// misc. helpers ///
 
 @mixin word-wrap() {
@@ -266,25 +302,14 @@ a {
 
 .square-no-canvas {
   @include set-basic-square-properties();
+  color: white;
   
   &.icon {
     padding: 3.2em;
   }
   
-  &[data-color="yellow"] {      
-    background: $yellow;
-  }
-  
-  &[data-color="blue"] {      
-    background: $blue;
-  }
-  
-  &[data-color="orange"] {      
-    background: $orange;
-  }
-  
-  &[data-color="teal"] {      
-    background: $teal;
+  &.fill {
+    @include square-fill-color();
   }
 }
 
