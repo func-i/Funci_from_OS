@@ -4,12 +4,12 @@ title:      How to Hire a Good Dev | Software Programmer
 author:     aileen
 date:       2016-06-22
 published:  true
-social_image: blog_posts/programmer-beep-boop.png
+social_image: blog_posts/developer-brain.png
 description: Stop getting confused and disoriented when trying to figure out how to hire a developer/programmer. There are some sure fire ways to find and hire a good programmer. Learn more here.
 ---
 How on earth does a company or solo entrepreneur find a good developer? For some reason, there’s something about programming and hiring programmers that freak non-tech people out. Perhaps it’s the mystique of it all? 
 
-<center>![programming to non-devs gif]({% asset_path blog_posts/struggling-drink-water.gif%})</center>
+<center>![programming to non-devs gif]({% asset_path blog_posts/programmer-beep-boop.jpg%})</center>
 
 <!--more-->
 
