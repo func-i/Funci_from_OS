@@ -9,7 +9,7 @@ description: Stop getting confused and disoriented when trying to figure out how
 ---
 How on earth does a company or solo entrepreneur find a good developer? For some reason, there’s something about programming and hiring programmers that freak non-tech people out. Perhaps it’s the mystique of it all? 
 
-<center>![programming to non-devs gif]({% asset_path blog_posts/programmer-beep-boop.jpg%})</center>
+<center>![programming to non-devs gif]({% asset_path blog_posts/programmer-beep-boop.png %})</center>
 
 <!--more-->
 
