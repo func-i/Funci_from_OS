@@ -1,68 +1,75 @@
 #about {
-  #digital-platforms {
-    font-size: 80%;
-  }
-
-  #jb {
-    margin-top: 3em;
-  }
-
-  .no-2 {
-    position: relative;
-    top: -3em;
-  }
-
-  .no-3 {
-    position: relative;
-    top: -6em;
-  }
-
-  #jha {
-    margin-top: 6em;
-  }
-
-  #an {
-    margin-top: 10em;
+  .card {
+    margin: 15px;
+    width: calc(100% - 30px);
   }
   
-  #as {
-    margin-top: 4em;
-  }
+  .scene {
+    
+    &-squares {
+      width: calc(40% - 4px);
+    }
 
-  .no-4 {
-    position: relative;
-    top: -8em;
+    &-text {
+      width: calc(60% - 4px);
+    }
+      
+    &-1 {
+      .scene-title-square {
+        top: 25%;
+        left: 5%;
+        width: 55%;
+      }
+      
+      .scene-graphic-square {
+        left: 30%;
+        top: 20%;
+        width: 65%;
+      }
+    }
+    
+    &-2 {  
+      .scene-squares {
+        float: right;
+      }
+      
+      .scene-title-square {        
+        width: 55%;
+        left: 5%;
+        top: 19%;
+        
+        h1 {
+          position: absolute;
+          bottom: 0;
+          display: inline-block;
+        }
+      }
+      
+      .scene-graphic-square {
+        width: 65%;
+        left: 30%;
+        top: 20%;
+      }
+    }
+    
+    &-3 {    
+      .scene-title-square {        
+        width: 55%;
+        left: 36%;
+        top: 21%;
+      }
+      
+      .scene-graphic-square {
+        width: 60%;
+        left: 5%;
+        top: 19%;
+      }
+    }
+    
+    &-4 {
+      display: flex;
+      align-items: center;
+    }
   }
   
-  .no-5 {
-    position: relative;
-    top: -8em;
-  }
-  
-  .no-6 {
-    position: relative;
-    top: -8em;
-  }
-
-  @media screen and (max-width:640px) {
-    #jha {
-      margin-top: 0;
-    }
-
-    .no-2 {
-      top: 0;
-    }
-
-    .no-3 {
-      top: 0;
-    }
-
-    #an {
-      margin-top: 0;
-    }
-
-    .no-4 {
-      top: 0;
-    }
-  }
 }

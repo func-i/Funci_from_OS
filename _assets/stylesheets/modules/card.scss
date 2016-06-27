@@ -1,0 +1,100 @@
+.card {
+  @include square-border-color();
+  border: 1px solid; 
+  transition: color 0.5s;
+  position: relative;
+  
+  @media #{$medium-up} {
+    font-size: 90%;
+  }
+  
+  @media #{$large-up} {
+    font-size: 80%;
+  }
+  
+  &-icon {
+    height: 23%;
+    margin-bottom: 10%;
+    pointer-events: none;
+  }
+  
+  &-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+    // background-color: $yellow;
+    // background-blend-mode: multiply;
+  }
+  
+  &-arrow {
+    position: absolute;
+    width: 100%;
+    max-height: 0;
+    bottom: 0;
+    left: 0;
+    transition: max-height 0.5s;
+    text-align: right;
+    
+    i { 
+      padding: 15px;
+      font-size: 1.2em;
+    }
+  }
+  
+  &::after {
+    content: " ";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: -0px;
+    max-height: 0;
+    transition: max-height 0.5s;
+    z-index: -1;
+  }
+  
+  &:hover {
+    // color: $dark-gray;
+    
+    .card-image {
+      opacity: 0.4;
+    }
+    
+    .card-arrow {
+      max-height: 20%;
+    }
+    
+    &::after {
+      // max-height: 100%;
+    }
+  }
+
+  &[data-color="yellow"] {
+    .card-arrow {
+      background-color: $yellow;
+    }
+  }
+  
+  &[data-color="blue"] {
+    .card-arrow {
+      background-color: $blue;
+    }
+  }
+  
+  &[data-color="orange"] {
+    .card-arrow {
+      background-color: $orange;
+    }
+  }
+  
+  &[data-color="teal"] {
+    .card-arrow {
+      background-color: $teal;
+    }
+  }
+}
