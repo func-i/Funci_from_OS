@@ -48,4 +48,8 @@
   iframe[name="response-iframe"] {
     display: none;
   }
+  
+  .alternate-color-scheme-wrapper & {
+    border: none;
+  }
 } // #form.form-email

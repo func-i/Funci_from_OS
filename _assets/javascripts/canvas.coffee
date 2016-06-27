@@ -25,6 +25,16 @@ $('.square').each ->
   roundedWidth = Math.round $square.outerWidth()
   $square.css 'width', roundedWidth
   $square.css 'height', roundedWidth
+  
+$('.square-no-canvas').each ->
+  $square = $(this)
+  roundedWidth = Math.round $square.outerWidth()
+  $square.css 'height', roundedWidth
+
+$('.square-no-canvas-no-fill').each ->
+  $square = $(this)
+  roundedWidth = Math.round $square.outerWidth()
+  $square.css 'height', roundedWidth
 
 ##### create canvases and corresponding contexts
 $('.canvas').each (index) ->

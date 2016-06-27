@@ -42,4 +42,51 @@
       }
     } // input
   } // div.submit
+  
+  .alternate-color-scheme-wrapper & {
+    background: $orange;
+    border: none;
+    color: white;
+    
+    input {
+      color: white;
+    }
+    
+    div.submit {
+      input {
+        color: white;
+        background-color: transparent;
+        border: 1px solid white;
+        width: 4em;
+        height: 4em;
+        outline: none;
+        border-radius: 0;
+        padding: 0;
+
+        &:hover,
+        &:focus {
+          color: $orange;
+          background-color: white;
+        }
+
+        &:active {
+          color: $orange;
+          background-color: white;
+        }
+      }
+    }
+    
+    #mail-validate-error {
+      display: none;
+      margin-top: 0.8em;
+      font-size: 0.9em;
+      color: white;
+    }
+
+    #mail-subscribe-success {
+      display: none;
+      height: 12em;
+      line-height: 1.3;
+    }
+  }
 } // #form

@@ -6,6 +6,21 @@
       roundedWidth = Math.round($(this).outerWidth())
       $square.css 'width', roundedWidth
       $square.css 'height', roundedWidth
+    
+    $('.square-no-canvas').each ->
+      $square = $(this)
+      $square.css 'width', ''
+      roundedWidth = Math.round($(this).outerWidth())
+      $square.css 'width', roundedWidth
+      $square.css 'height', roundedWidth
+
+    $('.square-no-canvas-no-fill').each ->
+      $square = $(this)
+      $square.css 'width', ''
+      roundedWidth = Math.round($(this).outerWidth())
+      $square.css 'width', roundedWidth
+      $square.css 'height', roundedWidth
+
 
     for canvas in window.canvases
       canvas.orient()

@@ -46,4 +46,3 @@ $ ->
       ev.preventDefault()
       ev.stopPropagation()
       toggleActive($menuLink, !$menuLink.parent().hasClass('active'))
-

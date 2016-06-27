@@ -1,0 +1,96 @@
+#method {
+  .scene-squares {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: calc(50% - 4px);
+    display: inline-block;
+  }
+  
+  .scene-text {
+    height: 100%;
+    width: calc(50% - 4px);
+    vertical-align: top;
+    align-items: center;
+    display: inline-flex;
+  }
+  
+  .scene-title-square {
+    position: relative;
+    display: inline-block;
+    mix-blend-mode: multiply;
+  }
+  
+  .scene-graphic-square {
+    position: relative;
+    display: inline-block;
+    mix-blend-mode: multiply;
+  }
+  
+  
+  .scene {
+    @extend .main-content;
+    padding: 0;
+    position: relative;
+    height: 48em;
+    
+    
+    &-1 {
+      .scene-title-square {
+        top: 6em;
+        left: 4em;
+        width: 55%;
+      }
+      
+      .scene-graphic-square {
+        left: 8em;
+        top: 3em;
+        width: 65%;
+      }
+    }
+    
+    &-2 {  
+      .scene-squares {
+        float: right;
+      }
+      
+      .scene-title-square {        
+        width: 55%;
+        left: 2em;
+        top: 4em;
+        
+        h1 {
+          position: absolute;
+          bottom: 0;
+          display: inline-block;
+        }
+      }
+      
+      .scene-graphic-square {
+        left: 9em;
+        top: 7em;
+        width: 65%;
+      }
+    }
+    
+    &-3 {    
+      .scene-title-square {        
+        width: 55%;
+        left: 10em;
+        top: 5em;
+      }
+      
+      .scene-graphic-square {
+        top: 2em;
+        left: 4em;
+        width: 60%;
+      }
+    }
+    
+    &-4 {
+      display: flex;
+      align-items: center;
+    }
+  }
+  
+}

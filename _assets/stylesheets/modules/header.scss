@@ -1,4 +1,3 @@
-
 nav {
   $delay: .2s;
   $letter-width: 54px;
@@ -49,15 +48,13 @@ nav {
     color: $green;
   }
   
-  > ul {
+  > .nav-menu {
     position: relative;
     left: $letter-width;
     z-index: 0;
     width: 100%;
     height: $letter-width;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
     background: $dark-gray;
     transition: left $delay ease-in-out $delay, width $delay;
     border-bottom: solid 1px white;
@@ -72,13 +69,36 @@ nav {
       overflow: hidden;
       text-align: center;
       display: inline-block;
-      transition: opacity $delay ease-in-out calc(2 * #{$delay}), width $delay ease-in-out $delay;
+      transition: visibility $delay, 
+                  opacity $delay ease-in-out calc(2 * #{$delay}),
+                  width $delay ease-in-out $delay;
       font-size: calc(0.3 * #{$letter-width});
       height: calc(0.3 * #{$letter-width});
       margin: calc(0.35 * #{$letter-width}) 0;
-
-      @media #{$large-up} {
-        width: 100px;
+      width: 100px;
+      max-width: 25%;
+      
+      a {
+        &:active {
+          outline: none;
+        }
+        
+        .nav-menu-item-text {
+          display: inline-block;
+          transition: opacity $delay, max-width $delay $delay;
+          overflow: hidden;
+          pointer-events: none;
+          margin-right: 5px;
+          max-width: 100px;
+        }
+        
+        i {
+          pointer-events: none;
+          transition: transform $delay $delay, color $delay $delay;
+          &:hover {
+            text-decoration: none;
+          }
+        }
       }
     }
     
@@ -87,14 +107,25 @@ nav {
         opacity: 0;
         width: 0;
         transition: opacity $delay, width $delay ease-in-out $delay;
+        
         &.active {
           transition: width $delay ease-in-out $delay;
-          width: 100px;
+          width: 35px;
           opacity: 1;
-          // 
-          // > ul {
-          //   width: auto;
-          // }
+          
+          @media #{$medium-up} {
+            width: 100px;
+          }
+          
+          .nav-menu-item-text {
+            opacity: 0;
+            max-width: 0;
+          }
+        
+          i {
+            color: $green;
+            transform: rotateZ(180deg);
+          }
         }
       }
     }
@@ -116,6 +147,7 @@ nav {
       width: 100px;
       text-align: center;
       display: inline-block;
+      max-width: 32%;
     }
     
     &.active {
@@ -123,11 +155,6 @@ nav {
       opacity: 1;
       transition: visibility $delay ease-in-out calc(2 * #{$delay}),
                   opacity $delay ease-in-out calc(2 * #{$delay});
-                  
-      .nav-menu-item-text {
-        width: 0;
-        opacity: 0;
-      }
     }
   }
   
