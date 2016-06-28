@@ -1,28 +1,22 @@
 #index {
   height: 100%;
   overflow: hidden;
-  #tweet {
-    margin-top: 2em;
-
-    #tweet-content {
-      @include word-wrap();
+  
+  #page-header {
+    font-size: 3em;
+  }
+  
+  .columns {
+    padding: 10px;
+  }
+  .card {
+    width: 100%;
+    margin: 0;
+    
+    &-icon {
+      height: auto;
+      width: 40%;
     }
-  }
-
-  #eventstream {
-    top: -5em;
-  }
-
-  #address {
-    margin-top: 3em;
-  }
-
-  #votecompass {
-    top: -7em;
-  }
-
-  #social-icons {
-    margin-top: 2em;
   }
 }
 

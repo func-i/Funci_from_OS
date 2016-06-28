@@ -26,7 +26,7 @@ function InstancedBoxGridGeometry(width, height) {
   
   this.rowCount = 15;
   this.boxLengthInPixels = height / this.rowCount;
-  this.columnCount = Math.ceil(width / this.boxLengthInPixels);
+  this.columnCount = Math.ceil(this.rowCount * 16 / 9);
 
   this.instances = this.rowCount * this.columnCount;
   

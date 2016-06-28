@@ -28,7 +28,9 @@ $('.square').each ->
   
 $('.square-no-canvas').each ->
   $square = $(this)
+  $square.css 'width', ''
   roundedWidth = Math.round $square.outerWidth()
+  $square.css 'width', roundedWidth
   $square.css 'height', roundedWidth
 
 $('.square-no-canvas-no-fill').each ->

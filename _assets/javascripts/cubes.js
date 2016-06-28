@@ -110,11 +110,11 @@ var Cubes = function(scenes) {
   };
 
   this.onWindowResize = function( event ) {
-    // camera.left  = -.5 * window.innerWidth;
-    // camera.right = .5 * window.innerWidth;
-    // camera.top = .5 * window.innerHeight;
-    // camera.bottom = -.5 * window.innerHeight;
-    // camera.updateProjectionMatrix();
+    this.camera.left  = -.5 * window.innerWidth;
+    this.camera.right = .5 * window.innerWidth;
+    this.camera.top = .5 * window.innerHeight;
+    this.camera.bottom = -.5 * window.innerHeight;
+    this.camera.updateProjectionMatrix();
 
     this.renderer.setSize( window.innerWidth, window.innerHeight );
   }
@@ -172,8 +172,8 @@ var Cubes = function(scenes) {
     });
   };
   
-  this.getScrollDurationInMilliseconds = function() {
-    return this.scroller.scrollDuration  * 1e3;
+  this.getScrollDurationInSeconds = function() {
+    return this.scroller.scrollDuration;
   }
   
   this.animate = function() {

@@ -1,4 +1,5 @@
-SCENE_HIDING_CLASS = 'hidden'
+SCENE_TRANSITION_CLASS = 'fade-out'
+SCENE_HIDDEN_CLASS = 'hidden'
 
 $ ->
   if ($('#index').length < 1)
@@ -15,12 +16,12 @@ $ ->
     $scene = $(scene)
     # Set size of each scene to window height
     $scene.css('height', window.innerHeight)
-    
-    # Hide all but the first scene
-    if (index > 0)
-      $scene.addClass(SCENE_HIDING_CLASS)
+    # # Hide all but the first scene
+    # if (index > 0)
+    #   $scene.addClass(SCENE_HIDDEN_CLASS)
+    #   $scene.addClass(SCENE_TRANSITION_CLASS)
   )
-    
+
   # Initialize cubies
   sceneIndex = 0
   cubeSceneInfo = [
@@ -35,25 +36,26 @@ $ ->
     
   switchScene = (sceneDelta) ->
     if (canScroll(sceneDelta))
-      hideScene($scenes[sceneIndex], () ->
-        sceneIndex += sceneDelta
-        showScene($scenes[sceneIndex])
-      )
-      
+      $scene = $scenes.eq(sceneIndex)
+      $scene.css('transition-duration', cubes.getScrollDurationInSeconds() + 's')
+      hideScene($scene)
+      sceneIndex += sceneDelta
   
-  showScene = (scene, callback) ->
-    $(scene).fadeIn(.5 * cubes.getScrollDurationInMilliseconds(), () ->
-      $(scene).removeClass(SCENE_HIDING_CLASS)
-      if (!!callback)
-        callback()
-    )
+  showScene = ($scene) ->
+    $scene.removeClass(SCENE_HIDDEN_CLASS)
+    $scene.removeClass(SCENE_TRANSITION_CLASS)
     
-  hideScene = (scene, callback) ->
-    $(scene).fadeOut(.5 * cubes.getScrollDurationInMilliseconds(), () ->
-      $(scene).addClass(SCENE_HIDING_CLASS)
-      if (!!callback)
-        callback()
-    )
+  hideScene = ($scene) ->
+    $scene.addClass(SCENE_TRANSITION_CLASS)
+  
+  onSceneTransitionEnd = (event) ->
+    event.stopPropagation()
+    $scene = $(event.target)
+    if ($scene.hasClass(SCENE_TRANSITION_CLASS))
+      $scene.addClass(SCENE_HIDDEN_CLASS)
+      showScene($scenes.eq(sceneIndex))
+
+  $scenes.on("transitionend", onSceneTransitionEnd)
   
   if ($('#webgl-cubes-container').length > 0)    
     cubes = new Cubes(cubeSceneInfo)
