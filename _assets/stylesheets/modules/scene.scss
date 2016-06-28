@@ -1,9 +1,11 @@
-.scene {
+.scene, .cubes-scene {
   @extend .main-content;
   padding: 0;
   position: relative;
+}
+
+.scene {
   height: 48em;
-  
   &-squares {
     left: 0;
     top: 0;
@@ -30,5 +32,21 @@
     position: relative;
     display: inline-block;
     mix-blend-mode: multiply;
+  }
+}
+
+.cubes-scene {
+  display: flex;
+  align-items: center;
+  // transition: opacity 0.5s;
+  // opacity: 1;
+  
+  &.hidden {
+    // opacity: 0;
+    display: none;
+  }
+  
+  &.alternate-colors {
+    color: $dark-gray;
   }
 }

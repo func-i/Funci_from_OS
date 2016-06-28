@@ -1,89 +1,51 @@
-function Scroller(renderer, width, height, shaderHash) {
-  this.renderer = renderer;
-  this.width = width;
-  this.height = height;
-  this.shaderHash = shaderHash;
+"use strict";
+
+function Scroller(renderer, otherSim, width, height, shaderHash) {
+  this.SCROLL_THRESHOLD = 1.6
+  this.otherSim = otherSim;
+  this.isScrolling = false;
+  this.scrollDuration = 0.5;
   
-  this.setUniform = function(uniformName, newValue) {
-    return this.mesh.material.uniforms[uniformName].value = newValue;
-  },
+  GenericSimulation.call(this, renderer, width, height, shaderHash);  
   
-  this.getUniform = function(uniformName) {
-    return this.mesh.material.uniforms[uniformName].value;
-  },
-
-  this.getBiUnitPlane = function() {
-    return new THREE.PlaneBufferGeometry( 2, 2, 1, 1 );
-  };
-
-  this.getRenderTarget = function(options) {
-    var userOptions = options || {};
-    var defaultOptions = this.defaultRenderTargetOptions();
-    for (var attrName in userOptions) {
-      defaultOptioons[attrName] = userOptions[attrName];
-    }
-    var renderTarget = new THREE.WebGLRenderTarget(this.width, this.height, defaultOptions);
-    return renderTarget;
-  };
-
-  this.defaultRenderTargetOptions = function() {
-    return {
-      wrapS: THREE.ClampToEdge,
-      wrapT: THREE.ClampToEdge,
-      minFilter: THREE.NearestFilter,
-      magFilter: THREE.NearestFilter,
-      format: THREE.RGBAFormat,
-      type: THREE.FloatType,
-      stencilBuffer: false,
-      depthBuffer: false
-      
-    };
-  };
-
-  this.getMaterial = function() {
-    var texture = new THREE.TextureLoader().load( 'assets/images/textures/scrollingValues3.png' );
-    // texture.magFilter = THREE.NearestFilter;
-  	// texture.minFilter = THREE.NearestFilter;
-    // texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.RepeatWrapping;
-    // texture.flipY = true;
-    
+  this.getSimulationMaterial = function() {
     return new THREE.RawShaderMaterial({
-      uniforms: {
-        texture: { type: 't', value: texture },
-        num_of_scenes: { type: 'f', value: 3 },
-        time: { type: 'f', value: 0.0 },
-        current_top: { type: 'f', value: 0.0 },
-        dimensions: { type: 'v2', value: new THREE.Vector2(width, height) }
-      },
-      vertexShader: this.shaderHash.vertex,
-      fragmentShader: this.shaderHash.fragment
+      uniforms: this.simUniforms,
+      vertexShader: this.shaderHash.scrolling.vertex,
+      fragmentShader: this.shaderHash.scrolling.fragment
     });
   };
-
-  this.setScrollPosition = function(scrollPosition) {
-    this.setUniform('current_top', scrollPosition);
+    
+  this.setupUniforms = function() {
+    this.simUniforms = {
+      position_texture: { type: 't', value: this.getCurrentPositionTexture() },
+      rotation_rate: {type: 'f', value: 0.04 },
+      scroll_position: { type: 'f', value: 0.0 },
+      scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) },
+      final_scroll_value: { type: 'f', value: 0.5 }
+    };
   };
   
-  this.getCurrentPositionTexture = function() {
-    // this.renderTarget.texture.flipY = false;
-    return this.renderTarget.texture;
+  this.setFinalScrollValue = function(scrollValue) {
+    this.setSimUniform('final_scroll_value', scrollValue)
   };
-
-  this.update = function() {
-    this.setUniform('time', this.getUniform('time') + 0.001)
-    this.renderer.render(this.scene, this.orthoCamera, this.renderTarget);
+  
+  this.increaseScrollPosition = function() {
+    var scrollDelta = 1 / this.scrollDuration / 60;
+    var scrollPosition = this.getSimUniform('scroll_position') + scrollDelta;
+    this.setSimUniform('scroll_position', scrollPosition);
   };
-
-  this.initSceneAndMesh = function() {
-    
-    this.scene = new THREE.Scene();
-    this.orthoCamera = new THREE.OrthographicCamera(-1,1,1,-1,1/Math.pow( 2, 53 ),1 );
-    this.renderTarget = this.getRenderTarget();
-
-    var geom = this.getBiUnitPlane();
-    var material = this.getMaterial();
-    this.mesh = new THREE.Mesh(geom, material);
-    this.scene.add(this.mesh)
-  }
+  
+  this.addGuiFolder = function(gui) {
+    var folder = gui.addFolder("Scrolling Effect")
+    folder.add(this.simUniforms.rotation_rate, 'value', 0.001, 0.1).name("Rotation Rate");
+    folder.add(this, 'scrollDuration', 0.01, 3).name("Transition Duration");
+  };
+  
+  this.isScrollComplete = function() {
+    return this.getSimUniform('scroll_position') > this.SCROLL_THRESHOLD
+  };
 };
+
+Scroller.prototype = Object.create(GenericSimulation.prototype);
+Scroller.prototype.constructor = Simulation;

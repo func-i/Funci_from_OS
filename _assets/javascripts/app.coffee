@@ -9,6 +9,7 @@
 #= require ./lib/three.min.js
 #= require ./lib/stats.min.js
 #= require ./lib/shader_loader.js
+#= require ./lib/dat.gui.min.js
 
 #------------ Cubes ------------
 #= require ./cubes/box_grid.js
@@ -18,6 +19,7 @@
 
 #------------ Other ------------
 #= require base
+#= require cubes.js
 #= require header
 #= require contact
 #= require_tree ./canvas
@@ -26,4 +28,4 @@
 #= require_tree ./pages
 #= require canvas
 #= require form-email
-#= require cubes.js
+#= require scenes
