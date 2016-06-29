@@ -1,8 +1,7 @@
 "use strict";
 
-function Scroller(renderer, otherSim, width, height, shaderHash) {
+function Scroller(renderer, width, height, shaderHash) {
   this.SCROLL_THRESHOLD = 1.6
-  this.otherSim = otherSim;
   this.isScrolling = false;
   this.scrollDuration = 0.5;
   

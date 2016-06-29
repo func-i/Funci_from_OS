@@ -1,33 +1,29 @@
 @ResizeHelper =
-  handleResize: (args) ->
-    $('.square').each ->
-      $square = $(this)
-      $square.css 'width', ''
-      roundedWidth = Math.round($(this).outerWidth())
-      $square.css 'width', roundedWidth
-      $square.css 'height', roundedWidth
-    
-    $squares = $('.square-no-canvas')
+  resizeSquares: ($squares) ->
     $squares.css 'width', '100%'
     widths = $squares.map ->
       $square = $(this)
-      Math.round($square.outerWidth())
-    
+      Math.round($square.outerWidth())    
     $squares.each (i) ->
       $square = $(this)
       $square.css 'width', widths[i]
       $square.css 'height', widths[i]
+      
+  resizeScenes: ($scenes) ->
+    $scenes.each((index, scene) ->
+      $scene = $(scene)
+      # Set size of each scene to window height
+      $scene.css('height', window.innerHeight)
+    )
 
-    console.log(widths)
-
-    $('.square-no-canvas-no-fill').each ->
-      $square = $(this)
-      $square.css 'width', ''
-      roundedWidth = Math.round($(this).outerWidth())
-      $square.css 'width', roundedWidth
-      $square.css 'height', roundedWidth
-
-
+  handleResize: (args) ->
+    
+    @resizeSquares($('.square'))
+    @resizeSquares($('.square-no-canvas'))
+    @resizeSquares($('.square-no-canvas-no-fill'))
+    
+    @resizeScenes($('.cubes-scene'))
+    
     for canvas in window.canvases
       canvas.orient()
       canvas.context.clear 0, 0, canvas.width, canvas.height

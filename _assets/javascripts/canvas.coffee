@@ -7,10 +7,12 @@ onHome = ->
 
 $loading = $('#loading')
 $body    = $('#body')
+$footer    = $('footer')
 
 fadeIn = ->
   $loading.css('opacity', '0')
   $body.css('opacity', '1')
+  $footer.css('opacity', '1')
   $loading.remove()
 
 $(window).load ->
@@ -19,24 +21,9 @@ $(window).load ->
 fadeIn()
 
 ##### make square divs square
-$('.square').each ->
-  $square = $(this)
-  $square.css 'width', ''
-  roundedWidth = Math.round $square.outerWidth()
-  $square.css 'width', roundedWidth
-  $square.css 'height', roundedWidth
-  
-$('.square-no-canvas').each ->
-  $square = $(this)
-  $square.css 'width', ''
-  roundedWidth = Math.round $square.outerWidth()
-  $square.css 'width', roundedWidth
-  $square.css 'height', roundedWidth
-
-$('.square-no-canvas-no-fill').each ->
-  $square = $(this)
-  roundedWidth = Math.round $square.outerWidth()
-  $square.css 'height', roundedWidth
+ResizeHelper.resizeSquares($('.square'))
+ResizeHelper.resizeSquares($('.square-no-canvas'))
+ResizeHelper.resizeSquares($('.square-no-canvas-no-fill'))
 
 ##### create canvases and corresponding contexts
 $('.canvas').each (index) ->

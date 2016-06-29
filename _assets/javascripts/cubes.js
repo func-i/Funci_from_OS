@@ -1,9 +1,9 @@
 "use strict";
-"use strict";
 
-var Cubes = function(scenes) {
-  this.scenes = scenes;
+var Cubes = function(htmlScenes) {
+  this.htmlScenes = htmlScenes;
   this.sceneIndex = 0;
+  // this.loadingEvent = new Event('webgl-loaded');
   
   this.onLoad = function() {
     var shaderLoader = new ShaderLoader();
@@ -27,15 +27,20 @@ var Cubes = function(scenes) {
     var gui = new dat.GUI();
     this.scroller.addGuiFolder(gui);
     this.waveSim.addGuiFolder(gui);
+    
+    var folder = gui.addFolder("Cube Wave");
+    folder.add(this.waveUniforms.min_angle, 'value', 0.01, 0.5).name("Minimum Angle");
+    folder.add(this.waveUniforms.min_speed, 'value', 0.01, 0.5).name("Minimum Speed");
   }
 
   this.canScroll = function(sceneDelta) {
-    return (sceneDelta > 0 && this.sceneIndex < this.scenes.length - 1) || (sceneDelta < 0 && this.sceneIndex > 0);
+    return (sceneDelta > 0 && this.sceneIndex < this.htmlScenes.length - 1) || (sceneDelta < 0 && this.sceneIndex > 0);
   }
 
   this.setScene = function(sceneDelta) {
     this.sceneIndex += sceneDelta;
-    this.scroller.setFinalScrollValue(this.scenes[this.sceneIndex].final_scroll_value);
+    this.scroller.setFinalScrollValue(this.htmlScenes[this.sceneIndex].final_scroll_value);
+    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].start_clear_color);
     this.setScrollOrigin(sceneDelta);
     this.enableScrolling();
   }
@@ -64,6 +69,7 @@ var Cubes = function(scenes) {
   this.disableScrolling = function() {
     this.scroller.setSimUniform('scroll_position', 0)
     this.isScrolling = false;
+    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].end_clear_color);
     if (this.sceneIndex == 0) {
       this.switchToWaveMaterial();
     }
@@ -93,7 +99,7 @@ var Cubes = function(scenes) {
 
   this.onMouseMove = function(event) {
     if (!this.isScrolling && this.sceneIndex === 0) {
-      var mouse = new THREE.Vector2(event.screenX / this.width, 1 - ((event.screenY - 96) / this.height));
+      var mouse = new THREE.Vector2(event.clientX / this.width, 1 - ((event.clientY) / this.height));
       this.waveSim.changeMousePosition(mouse);
     }
   };
@@ -110,15 +116,23 @@ var Cubes = function(scenes) {
   };
 
   this.onWindowResize = function( event ) {
-    this.camera.left  = -.5 * window.innerWidth;
-    this.camera.right = .5 * window.innerWidth;
-    this.camera.top = .5 * window.innerHeight;
-    this.camera.bottom = -.5 * window.innerHeight;
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    
+    this.waveUniforms.width.value = this.width;
+    this.waveUniforms.height.value = this.height;
+    this.scrollingUniforms.width.value = this.width;
+    this.scrollingUniforms.height.value = this.height;
+    
+    this.camera.left  = -.5 * this.width;
+    this.camera.right = .5 * this.width;
+    this.camera.top = .5 * this.height;
+    this.camera.bottom = -.5 * this.height;
     this.camera.updateProjectionMatrix();
-
-    this.renderer.setSize( window.innerWidth, window.innerHeight );
+    
+    this.renderer.setSize( this.width, this.height );
   }
-
+  
   this.getTexture = function(textureName) {
     var texture = new THREE.TextureLoader().load( 'assets/images/textures/' + textureName );
     texture.magFilter = THREE.NearestFilter;
@@ -159,7 +173,8 @@ var Cubes = function(scenes) {
     this.waveUniforms = {
       rotationField: { type: "t", value: this.waveSim.getCurrentPositionTexture() },
       map: { type: "t", value: texture },
-      time: { type: "f", value: 0.0 },
+      min_angle: { type: 'f', value: 0.08 },
+      min_speed: { type: 'f', value: 0.1 },
       width: { type: "f", value: this.width },
       height: { type: "f", value: this.height },
       scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }
@@ -223,14 +238,14 @@ var Cubes = function(scenes) {
     this.boxGrid = new InstancedBoxGridGeometry(this.width, this.height);
     
     this.renderer = new THREE.WebGLRenderer({ antialias: false });
-    this.renderer.setClearColor( 0xffffff );
+    this.renderer.setClearColor( this.htmlScenes[0].end_clear_color );
     // renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.width, this.height );
 
     this.waveSim = new Simulation(this.renderer, 2 * this.boxGrid.columnCount, 2 * this.boxGrid.rowCount, waveSimShaderHash);
     this.waveSim.initSceneAndMeshes();
     
-    this.scroller = new Scroller(this.renderer, this.waveSim, this.boxGrid.columnCount, this.boxGrid.rowCount, scrollingShaderHash);
+    this.scroller = new Scroller(this.renderer, this.boxGrid.columnCount, this.boxGrid.rowCount, scrollingShaderHash);
     this.scroller.initSceneAndMeshes();
     
     this.camera = new THREE.OrthographicCamera( 
@@ -266,6 +281,7 @@ var Cubes = function(scenes) {
     }
     this.addEventListeners();
     this.setUpGui();
-    this.animate();
+    // this.renderer.domElement.dispatchEvent(this.load)
+    this.animate();    
   };
 };

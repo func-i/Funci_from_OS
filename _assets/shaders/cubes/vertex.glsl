@@ -1,17 +1,15 @@
 #define M_PI 3.1415926535897932384626433832795
 #define MAX_HYPOTENUESE 0.70710678118
-#define MIN_ANGLE 0.05
-#define MIN_SPEED 0.001
 
 precision highp float;
 
 uniform float width;
 uniform float height;
+uniform float min_angle;
+uniform float min_speed;
 uniform mat4 modelViewMatrix;
 uniform mat4 projectionMatrix;
-
 uniform sampler2D rotationField;
-uniform float time;
 
 attribute vec3 position;
 attribute vec3 normal;
@@ -39,7 +37,7 @@ vec2 getScreenUV(vec3 offset) {
 vec2 is_angle_and_speed_great_enough(vec2 angles, vec2 screenUV) {
   vec2 speed = texture2D(rotationField, screenUV).rg - texture2D(rotationField, screenUV).ba;
   return clamp(
-    when_gt(abs(angles), vec2(MIN_ANGLE, MIN_ANGLE)) + when_gt(length(speed), MIN_SPEED), 
+    when_gt(abs(angles), vec2(min_angle, min_angle)), 
     0.,
     1.
   );

@@ -24,9 +24,9 @@ function calculateOffsets(width, height, boxGrid) {
 
 function InstancedBoxGridGeometry(width, height) {
   
-  this.rowCount = 15;
+  this.rowCount = 24;
   this.boxLengthInPixels = height / this.rowCount;
-  this.columnCount = Math.ceil(this.rowCount * 16 / 9);
+  this.columnCount = Math.ceil(this.rowCount * 2);
 
   this.instances = this.rowCount * this.columnCount;
   

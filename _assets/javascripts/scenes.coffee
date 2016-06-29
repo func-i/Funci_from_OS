@@ -11,23 +11,27 @@ $ ->
   $footer = $('footer')
   $footer.css('display', 'none')
   $(body).css('padding', 0)
-  
-  $scenes.each((index, scene) ->
-    $scene = $(scene)
-    # Set size of each scene to window height
-    $scene.css('height', window.innerHeight)
-    # # Hide all but the first scene
-    # if (index > 0)
-    #   $scene.addClass(SCENE_HIDDEN_CLASS)
-    #   $scene.addClass(SCENE_TRANSITION_CLASS)
-  )
+
+  ResizeHelper.resizeScenes($scenes)
 
   # Initialize cubies
   sceneIndex = 0
-  cubeSceneInfo = [
-    { final_scroll_value: 0.5 },
-    { final_scroll_value: 1.0 },
-    { final_scroll_value: 0.5 }
+  sceneInfo = [
+    { 
+      final_scroll_value: 0.5,
+      start_clear_color: BASE_COLORS.white,
+      end_clear_color: BASE_COLORS.darkGray
+    },
+    {
+      final_scroll_value: 1.0,
+      start_clear_color: BASE_COLORS.white,
+      end_clear_color: BASE_COLORS.white
+      },
+    {
+      final_scroll_value: 0.5,
+      start_clear_color: BASE_COLORS.white,
+      end_clear_color: BASE_COLORS.darkGray
+    }
   ]
   
   # Add listeners for scroll, etc. (that also kick off cubie functions)
@@ -55,14 +59,15 @@ $ ->
       $scene.addClass(SCENE_HIDDEN_CLASS)
       showScene($scenes.eq(sceneIndex))
 
+  onScroll = (event) ->
+    if (!cubes.isScrolling)
+      sceneDelta = Math.sign(event.deltaY)
+      cubes.onScroll(sceneDelta)
+      switchScene(sceneDelta)
+
   $scenes.on("transitionend", onSceneTransitionEnd)
   
   if ($('#webgl-cubes-container').length > 0)    
-    cubes = new Cubes(cubeSceneInfo)
+    cubes = new Cubes(sceneInfo)
     cubes.onLoad()
-    window.addEventListener('mousewheel', (event) ->
-      if (!cubes.isScrolling)
-        sceneDelta = Math.sign(event.deltaY)
-        cubes.onScroll(sceneDelta)
-        switchScene(sceneDelta)
-    )
+    window.addEventListener('mousewheel', onScroll)
