@@ -5,20 +5,8 @@ window.logo = {}
 onHome = ->
   window.location.pathname is "/"
 
-$loading = $('#loading')
-$body    = $('#body')
-$footer    = $('footer')
-
-fadeIn = ->
-  $loading.css('opacity', '0')
-  $body.css('opacity', '1')
-  $footer.css('opacity', '1')
-  $loading.remove()
-
 $(window).load ->
   ResizeHelper.handleResize()
-
-fadeIn()
 
 ##### make square divs square
 ResizeHelper.resizeSquares($('.square'))

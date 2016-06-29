@@ -165,7 +165,7 @@ $footer-height-small: 650px;
 
 @mixin set-colors-for-cta($color) {
   color: $color;
-  .inline-icon:after {
+  .inline-icon:before {
     background-color: $color;
   }
 }

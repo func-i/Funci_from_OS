@@ -3,6 +3,7 @@ SCENE_HIDDEN_CLASS = 'hidden'
 
 $ ->
   if ($('#index').length < 1)
+    LoadingHelper.fadeIn();
     return
   # Find all the scenes
   $scenes = $('.cubes-scene')
@@ -41,7 +42,7 @@ $ ->
   switchScene = (sceneDelta) ->
     if (canScroll(sceneDelta))
       $scene = $scenes.eq(sceneIndex)
-      $scene.css('transition-duration', cubes.getScrollDurationInSeconds() + 's')
+      $scene.css('transition-duration', .9 * cubes.getScrollDurationInSeconds() + 's')
       hideScene($scene)
       sceneIndex += sceneDelta
   
@@ -67,7 +68,7 @@ $ ->
 
   $scenes.on("transitionend", onSceneTransitionEnd)
   
-  if ($('#webgl-cubes-container').length > 0)    
-    cubes = new Cubes(sceneInfo)
-    cubes.onLoad()
-    window.addEventListener('mousewheel', onScroll)
+  cubes = new Cubes(sceneInfo)
+  cubes.setOnLoad(LoadingHelper.fadeIn)
+  cubes.loadAndInitialize()
+  window.addEventListener('mousewheel', onScroll)

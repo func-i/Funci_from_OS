@@ -38,7 +38,7 @@ function Scroller(renderer, width, height, shaderHash) {
   this.addGuiFolder = function(gui) {
     var folder = gui.addFolder("Scrolling Effect")
     folder.add(this.simUniforms.rotation_rate, 'value', 0.001, 0.1).name("Rotation Rate");
-    folder.add(this, 'scrollDuration', 0.01, 3).name("Transition Duration");
+    folder.add(this, 'scrollDuration', 0.01, 3).name("Transition Duration (s)");
   };
   
   this.isScrollComplete = function() {

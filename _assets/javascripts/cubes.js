@@ -3,9 +3,12 @@
 var Cubes = function(htmlScenes) {
   this.htmlScenes = htmlScenes;
   this.sceneIndex = 0;
-  // this.loadingEvent = new Event('webgl-loaded');
-  
-  this.onLoad = function() {
+  this.loadingManager = new THREE.LoadingManager();
+
+  // UTILITY FUNCTIONS
+
+  this.loadAndInitialize = function() {
+    //This is the entry point, you should call this to kick everything off.
     var shaderLoader = new ShaderLoader();
     shaderLoader.loadShaders({
       passthrough_vertex: "passthrough/vertex",
@@ -33,53 +36,6 @@ var Cubes = function(htmlScenes) {
     folder.add(this.waveUniforms.min_speed, 'value', 0.01, 0.5).name("Minimum Speed");
   }
 
-  this.canScroll = function(sceneDelta) {
-    return (sceneDelta > 0 && this.sceneIndex < this.htmlScenes.length - 1) || (sceneDelta < 0 && this.sceneIndex > 0);
-  }
-
-  this.setScene = function(sceneDelta) {
-    this.sceneIndex += sceneDelta;
-    this.scroller.setFinalScrollValue(this.htmlScenes[this.sceneIndex].final_scroll_value);
-    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].start_clear_color);
-    this.setScrollOrigin(sceneDelta);
-    this.enableScrolling();
-  }
-
-  this.setScrollOrigin = function(sceneDelta) {
-    var scrollOriginY = 1 / this.boxGrid.rowCount;
-    if (sceneDelta < 0)
-      scrollOriginY = 1 - 1 / this.boxGrid.rowCount;
-    var scrollOrigin = new THREE.Vector2(0.5, scrollOriginY);
-    this.mesh.material.uniforms.scroll_origin.value = scrollOrigin;
-    this.scroller.setSimUniform('scroll_origin', scrollOrigin);
-  }
-  
-  this.switchToWaveMaterial = function() {
-    this.mesh.material = this.waveMaterial;
-  };
-  
-  this.switchToScrollingMaterial = function() {
-    this.mesh.material = this.scrollingMaterial;
-  };
-
-  this.enableScrolling = function() {
-    this.isScrolling = true;
-  }
-
-  this.disableScrolling = function() {
-    this.scroller.setSimUniform('scroll_position', 0)
-    this.isScrolling = false;
-    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].end_clear_color);
-    if (this.sceneIndex == 0) {
-      this.switchToWaveMaterial();
-    }
-  };
-
-  this.addEventListeners = function() {
-    window.addEventListener( 'resize', this.onWindowResize.bind(this));  
-    window.addEventListener('mousemove', this.onMouseMove.bind(this));  
-  };
-
   this.addDebugPlane = function(scene) {
     var plane = new THREE.PlaneGeometry( this.width/4, this.height/4, 1, 1);
     var planeMaterial = new THREE.RawShaderMaterial({
@@ -97,6 +53,12 @@ var Cubes = function(htmlScenes) {
     scene.add( planeMesh );
   }
 
+  // EVENT HANDLERS
+  this.addEventListeners = function() {
+    window.addEventListener( 'resize', this.onWindowResize.bind(this));  
+    window.addEventListener('mousemove', this.onMouseMove.bind(this));  
+  };
+  
   this.onMouseMove = function(event) {
     if (!this.isScrolling && this.sceneIndex === 0) {
       var mouse = new THREE.Vector2(event.clientX / this.width, 1 - ((event.clientY) / this.height));
@@ -133,8 +95,62 @@ var Cubes = function(htmlScenes) {
     this.renderer.setSize( this.width, this.height );
   }
   
+  this.setOnLoad = function(loadCallback) {
+    this.loadingManager.onLoad = loadCallback
+  }
+  
+  // SCROLLING RELATED
+  
+  this.canScroll = function(sceneDelta) {
+    return (sceneDelta > 0 && this.sceneIndex < this.htmlScenes.length - 1) || (sceneDelta < 0 && this.sceneIndex > 0);
+  }
+
+  this.setScene = function(sceneDelta) {
+    this.sceneIndex += sceneDelta;
+    this.scroller.setFinalScrollValue(this.htmlScenes[this.sceneIndex].final_scroll_value);
+    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].start_clear_color);
+    this.setScrollOrigin(sceneDelta);
+    this.enableScrolling();
+  }
+
+  this.setScrollOrigin = function(sceneDelta) {
+    var scrollOriginY = 1 / this.boxGrid.rowCount;
+    if (sceneDelta < 0)
+      scrollOriginY = 1 - 1 / this.boxGrid.rowCount;
+    var scrollOrigin = new THREE.Vector2(0.5, scrollOriginY);
+    this.scrollingUniforms.scroll_origin.value = scrollOrigin;
+    this.scroller.setSimUniform('scroll_origin', scrollOrigin);
+  }
+  
+  this.switchToWaveMaterial = function() {
+    this.mesh.material = this.waveMaterial;
+  };
+  
+  this.switchToScrollingMaterial = function() {
+    this.mesh.material = this.scrollingMaterial;
+  };
+
+  this.enableScrolling = function() {
+    this.isScrolling = true;
+  }
+
+  this.disableScrolling = function() {
+    this.scroller.setSimUniform('scroll_position', 0)
+    this.isScrolling = false;
+    this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].end_clear_color);
+    if (this.sceneIndex == 0) {
+      this.switchToWaveMaterial();
+    }
+  };
+  
+  this.getScrollDurationInSeconds = function() {
+    return this.scroller.scrollDuration;
+  }
+  
+  // MATERIALS AND UNIFORMS
+  
   this.getTexture = function(textureName) {
-    var texture = new THREE.TextureLoader().load( 'assets/images/textures/' + textureName );
+    var texture = new THREE.TextureLoader(this.loadingManager).load( 'assets/images/textures/' + textureName );
     texture.magFilter = THREE.NearestFilter;
   	texture.minFilter = THREE.NearestFilter;
     
@@ -187,30 +203,11 @@ var Cubes = function(htmlScenes) {
     });
   };
   
-  this.getScrollDurationInSeconds = function() {
-    return this.scroller.scrollDuration;
-  }
-  
-  this.animate = function() {
-    requestAnimationFrame( this.animate.bind(this) );
-
-    if (this.isScrolling) {
-      this.scroller.update();
-      this.scroller.increaseScrollPosition();
-    }
-    this.waveSim.ticktock();
-    this.waveSim.setSimUniform('using_mouse', 0);
-    
-    if (this.scroller.isScrollComplete()) this.disableScrolling();
-    
-    this.renderer.render( this.scene, this.camera );
-    
-    this.stats.update();
-  };
-  
+  // INITIALIZATION AND MAIN RENDER LOOP
   this.init = function() {
     this.width  = window.innerWidth;
     this.height = window.innerHeight;
+    
     var waveSimShaderHash = {
       simulation: {
         vertex: ShaderLoader.get('simulation_vertex'),
@@ -279,9 +276,26 @@ var Cubes = function(htmlScenes) {
       alert( "You are missing support for 'ANGLE_instanced_arrays'" );
       return;
     }
+    
     this.addEventListeners();
     this.setUpGui();
-    // this.renderer.domElement.dispatchEvent(this.load)
     this.animate();    
+  };
+
+  this.animate = function() {
+    requestAnimationFrame( this.animate.bind(this) );
+
+    if (this.isScrolling) {
+      this.scroller.update();
+      this.scroller.increaseScrollPosition();
+    }
+    this.waveSim.ticktock();
+    this.waveSim.setSimUniform('using_mouse', 0);
+    
+    if (this.scroller.isScrollComplete()) this.disableScrolling();
+    
+    this.renderer.render( this.scene, this.camera );
+    
+    this.stats.update();
   };
 };
