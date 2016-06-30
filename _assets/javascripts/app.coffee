@@ -28,4 +28,4 @@
 #= require_tree ./pages
 #= require canvas
 #= require form-email
-#= require scenes
+#= require scene_set

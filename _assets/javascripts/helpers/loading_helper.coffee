@@ -1,6 +1,5 @@
 @LoadingHelper =
   fadeIn: () ->
-    console.log('fading in')
     $loading = $('#loading')
     $body    = $('#body')
     $footer  = $('footer')
