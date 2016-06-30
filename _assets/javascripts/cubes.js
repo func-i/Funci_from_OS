@@ -161,21 +161,15 @@ var Cubes = function(htmlScenes) {
     var texture = this.getTexture('scrollingMap.png');
     
     this.scrollingUniforms = {
-      rotationField: this.scroller.getCurrentPositionTexture(),
-      map: texture,
-      width: this.width,
-      height: this.height,
-      scroll_origin: new THREE.Vector2(0.5, 0.)
+      rotationField: { type: "t", value: this.scroller.getCurrentPositionTexture() },
+      map: { type: "t", value: texture },
+      width: { type: "f", value: this.width },
+      height: { type: "f", value: this.height },
+      scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }
     };
     
     return new THREE.RawShaderMaterial({
-      uniforms: {
-        rotationField: { type: "t", value: this.scroller.getCurrentPositionTexture() },
-        map: { type: "t", value: texture },
-        width: { type: "f", value: this.width },
-        height: { type: "f", value: this.height },
-        scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }
-      },
+      uniforms: this.scrollingUniforms,
       vertexShader: ShaderLoader.get('scrolling_cube_vertex'),
       fragmentShader: ShaderLoader.get('scrolling_cube_fragment')
     });

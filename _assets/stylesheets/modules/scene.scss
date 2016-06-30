@@ -55,4 +55,50 @@
   &.alternate-colors {
     color: $dark-gray;
   }
+  
+  &-arrow-wrapper {
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    font-size: 26pt;
+    text-align: center;
+    
+    &[data-direction="up"] {
+      top: 20px;
+    }
+    
+    &[data-direction="down"] {
+      bottom: 20px;
+    }
+  }
+  
+  &-arrow {
+    opacity: 0.5;
+    transition: opacity 0.5s, color 0.5s, visibility 0.5s;
+    
+    &[data-color="white"] {
+      color: white;
+    }
+    
+    &[data-color="dark-gray"] {
+      color: $dark-gray;
+    }
+    
+    &[data-color="yellow"] {
+      color: $yellow
+    }
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    i {
+      pointer-events: none;
+    }
+  }
 }
