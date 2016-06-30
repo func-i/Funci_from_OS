@@ -42,7 +42,7 @@ $ ->
   switchScene = (sceneDelta) ->
     if (canScroll(sceneDelta))
       $scene = $scenes.eq(sceneIndex)
-      $scene.css('transition-duration', .9 * cubes.getScrollDurationInSeconds() + 's')
+      $scene.css('transition-duration', .75 * cubes.getScrollDurationInSeconds() + 's')
       hideScene($scene)
       sceneIndex += sceneDelta
   

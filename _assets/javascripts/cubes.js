@@ -163,7 +163,6 @@ var Cubes = function(htmlScenes) {
     this.scrollingUniforms = {
       rotationField: this.scroller.getCurrentPositionTexture(),
       map: texture,
-      time: 0.0,
       width: this.width,
       height: this.height,
       scroll_origin: new THREE.Vector2(0.5, 0.)
@@ -173,7 +172,6 @@ var Cubes = function(htmlScenes) {
       uniforms: {
         rotationField: { type: "t", value: this.scroller.getCurrentPositionTexture() },
         map: { type: "t", value: texture },
-        time: { type: "f", value: 0.0 },
         width: { type: "f", value: this.width },
         height: { type: "f", value: this.height },
         scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }

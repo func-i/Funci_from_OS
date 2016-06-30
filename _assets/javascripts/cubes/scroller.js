@@ -3,7 +3,7 @@
 function Scroller(renderer, width, height, shaderHash) {
   this.SCROLL_THRESHOLD = 1.6
   this.isScrolling = false;
-  this.scrollDuration = 0.5;
+  this.scrollDuration = 1.0;
   
   GenericSimulation.call(this, renderer, width, height, shaderHash);  
   
