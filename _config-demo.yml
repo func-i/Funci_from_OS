@@ -1,4 +1,4 @@
-url: fi-website-experimental.s3-website-us-east-1.amazonaws.com
+url: fi-website-demo.s3-website-us-east-1.amazonaws.com
 
 assets:
   digest: true
