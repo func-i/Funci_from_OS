@@ -121,11 +121,10 @@ class SceneSet
     @sceneInfo[@sceneIndex]
 
 $ ->
-  sceneSet = new SceneSet()
-  sceneSet.init()
   if ($('#index').length < 1)
     LoadingHelper.fadeIn();
     return
   else
+    sceneSet = new SceneSet()
+    sceneSet.init()
     sceneSet.setupWebGLCubes()
-  
