@@ -23,7 +23,7 @@ var Cubes = function(htmlScenes) {
       scrolling_cube_fragment: "scrolling_cubes/fragment",
       debug_vertex: "debug/vertex",
       debug_fragment: "debug/fragment"
-    }, "/assets/shaders/", this.init.bind(this) );
+    }, "/offsite-assets/shaders/", this.init.bind(this) );
   };
   
   this.setUpGui = function() {
@@ -150,7 +150,7 @@ var Cubes = function(htmlScenes) {
   // MATERIALS AND UNIFORMS
   
   this.getTexture = function(textureName) {
-    var texture = new THREE.TextureLoader(this.loadingManager).load( 'assets/images/textures/' + textureName );
+    var texture = new THREE.TextureLoader(this.loadingManager).load( 'offsite-assets/images/textures/' + textureName );
     texture.magFilter = THREE.NearestFilter;
   	texture.minFilter = THREE.NearestFilter;
     
