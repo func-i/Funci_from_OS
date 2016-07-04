@@ -77,8 +77,12 @@ nav {
       margin: calc(0.35 * #{$letter-width}) 0;
       width: 100px;
       max-width: 25%;
+      width: 100px;
       
       a {
+        display: inline-block;
+        padding: calc(0.34 * #{$letter-width}) 0;
+        width: 100%;
         &:active {
           outline: none;
         }
@@ -114,7 +118,6 @@ nav {
           opacity: 1;
           
           @media #{$medium-up} {
-            width: 100px;
           }
           
           .nav-menu-item-text {

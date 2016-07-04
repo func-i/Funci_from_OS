@@ -40,7 +40,7 @@ var Cubes = function(htmlScenes) {
     var plane = new THREE.PlaneGeometry( this.width/4, this.height/4, 1, 1);
     var planeMaterial = new THREE.RawShaderMaterial({
       uniforms: {
-        texture: { type: "t", value: this.scroller.getCurrentPositionTexture() }
+        texture: { type: "t", value: this.waveSim.getCurrentPositionTexture() }
       },
       vertexShader: ShaderLoader.get('debug_vertex'),
       fragmentShader: ShaderLoader.get('debug_fragment'),
@@ -49,7 +49,7 @@ var Cubes = function(htmlScenes) {
     var planeMesh = new THREE.Mesh( plane, planeMaterial );
     planeMesh.position.z = 2 * this.boxGrid.boxLengthInPixels;
     planeMesh.position.x = this.width/3;
-    planeMesh.position.y = this.height/3;
+    planeMesh.position.y = this.height/5;
     scene.add( planeMesh );
   }
 
@@ -228,7 +228,7 @@ var Cubes = function(htmlScenes) {
     
     this.renderer = new THREE.WebGLRenderer({ antialias: false });
     this.renderer.setClearColor( this.htmlScenes[0].end_clear_color );
-    // renderer.setPixelRatio( window.devicePixelRatio );
+    // this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.width, this.height );
 
     this.waveSim = new Simulation(this.renderer, 2 * this.boxGrid.columnCount, 2 * this.boxGrid.rowCount, waveSimShaderHash);
@@ -257,7 +257,7 @@ var Cubes = function(htmlScenes) {
     this.mesh = new THREE.Mesh( geometry, this.waveMaterial );
     this.scene.add( this.mesh );
 
-    // this.addDebugPlane(this.scene)
+    this.addDebugPlane(this.scene)
     
     this.container.appendChild( this.renderer.domElement );
     

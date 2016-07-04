@@ -61,6 +61,8 @@
   .alternate-colors & {
     &:hover {
       .inline-icon {
+        text-decoration: none;
+        
         i {
           color: white;
         }
