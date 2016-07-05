@@ -49,7 +49,7 @@ var Cubes = function(htmlScenes) {
     var planeMesh = new THREE.Mesh( plane, planeMaterial );
     planeMesh.position.z = 2 * this.boxGrid.boxLengthInPixels;
     planeMesh.position.x = this.width/3;
-    planeMesh.position.y = this.height/5;
+    planeMesh.position.y = this.height/4;
     scene.add( planeMesh );
   }
 
@@ -86,13 +86,19 @@ var Cubes = function(htmlScenes) {
     this.scrollingUniforms.width.value = this.width;
     this.scrollingUniforms.height.value = this.height;
     
-    this.camera.left  = -.5 * this.width;
-    this.camera.right = .5 * this.width;
-    this.camera.top = .5 * this.height;
-    this.camera.bottom = -.5 * this.height;
+    this.camera.left    = .99 * -.5 * this.width;
+    this.camera.right   = .99 *  .5 * this.width;
+    this.camera.top     = .99 *  .5 * this.height;
+    this.camera.bottom  = .99 * -.5 * this.height;
     this.camera.updateProjectionMatrix();
     
     this.renderer.setSize( this.width, this.height );
+    
+    if (this.width < SCREEN_WIDTH_UPPER_LIMITS.medium) {
+      this.stopAnimating();
+    } else if (this.animationID === undefined) {
+      this.animate();
+    }
   }
   
   this.setOnLoad = function(loadCallback) {
@@ -237,7 +243,7 @@ var Cubes = function(htmlScenes) {
     this.scroller = new Scroller(this.renderer, this.boxGrid.columnCount, this.boxGrid.rowCount, scrollingShaderHash);
     this.scroller.initSceneAndMeshes();
     
-    this.camera = new THREE.OrthographicCamera( 
+    this.camera = new THREE.OrthographicCamera(
       0.99 * -.5 * this.width,
       0.99 *  .5 * this.width,
       0.99 *  .5 * this.height,
@@ -257,7 +263,7 @@ var Cubes = function(htmlScenes) {
     this.mesh = new THREE.Mesh( geometry, this.waveMaterial );
     this.scene.add( this.mesh );
 
-    this.addDebugPlane(this.scene)
+    // this.addDebugPlane(this.scene)
     
     this.container.appendChild( this.renderer.domElement );
     
@@ -271,11 +277,18 @@ var Cubes = function(htmlScenes) {
     
     this.addEventListeners();
     this.setUpGui();
-    this.animate();    
+    this.animate();
   };
-
+  
+  this.stopAnimating = function() {
+    if (this.animationID != undefined) {
+      cancelAnimationFrame( this.animationID );
+      this.animationID = undefined;
+    }
+  }
+  
   this.animate = function() {
-    requestAnimationFrame( this.animate.bind(this) );
+    this.animationID = requestAnimationFrame( this.animate.bind(this) );
 
     if (this.isScrolling) {
       this.scroller.update();

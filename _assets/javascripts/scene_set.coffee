@@ -31,11 +31,9 @@ class SceneSet
     @scenes = $('.cubes-scene')
     @arrows = $('.cubes-scene-arrow')
     # Not sure how to handle other layout problems, perhaps just use a different layout?
-    $footer = $('footer')
-    $footer.css('display', 'none')
-    $(body).css('padding', 0)
-
     ResizeHelper.resizeScenes(@scenes)
+    ResizeHelper.toggleFooter()
+    ResizeHelper.addFooterToggleListener()
   
   canScroll: (sceneDelta) ->
     (sceneDelta > 0 && @sceneIndex < @scenes.length - 1) || (sceneDelta < 0 && @sceneIndex > 0)

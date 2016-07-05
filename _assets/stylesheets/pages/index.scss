@@ -15,20 +15,76 @@
   }
   
   .client-logo-container {
-    padding: 2em;
+    padding: 2em 1em;
+    
+    @media #{$medium-up} {
+      padding: 2em;
+    }
   }
   
   .columns {
     padding: 10px;
   }
+  
+  .card-wrapper {    
+    @media #{$medium-only} {
+      &:last-child {
+        display: inline-block;
+        float: none;
+      }
+    }
+  }
+  
   .card {
     width: 100%;
     margin: 0;
-    
+
     &-icon {
-      height: auto;
-      width: 40%;
+      height: 25%;
+      margin-bottom: 11%;
     }
+    
+    &-content {
+      position: relative;
+    }
+    
+    &-title {
+      margin-bottom: 0.4em;
+      opacity: 1;
+      transition: opacity $transition-duration $transition-duration;
+    }
+    
+    &-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      font-size: 1.2em;
+      transition: opacity $transition-duration;
+    }
+    
+    &:hover {
+      text-decoration: none;
+      
+      .card-list {
+        opacity: 1;
+        transition: opacity $transition-duration $transition-duration;
+      }
+      
+      .card-title {        
+        opacity: 0;
+        transition: opacity $transition-duration;
+      }
+    }
+  }
+  
+  #mcmaster {
+    width: 80%;
+  }
+  
+  #canlii {
+    width: 75%;  
   }
 }
 

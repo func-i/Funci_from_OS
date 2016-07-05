@@ -73,9 +73,7 @@ nav {
                   opacity $delay ease-in-out calc(2 * #{$delay}),
                   width $delay ease-in-out $delay;
       font-size: calc(0.3 * #{$letter-width});
-      height: calc(0.3 * #{$letter-width});
-      margin: calc(0.35 * #{$letter-width}) 0;
-      width: 100px;
+      height: $letter-width;
       max-width: 25%;
       width: 100px;
       
@@ -118,6 +116,7 @@ nav {
           opacity: 1;
           
           @media #{$medium-up} {
+            width: 50px;
           }
           
           .nav-menu-item-text {
@@ -145,6 +144,7 @@ nav {
     opacity: 0;
     transition: visibility $delay ease-in-out 0s,
                 opacity $delay ease-in-out 0s;
+    top: 0;
     
     li {
       width: 100px;

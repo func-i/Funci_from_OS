@@ -215,6 +215,10 @@ body {
     background-color: white;
     color: $dark-gray;
   }
+  
+  &.footer-hidden {
+    padding-bottom: initial;
+  }
 }
 
 #loading {
