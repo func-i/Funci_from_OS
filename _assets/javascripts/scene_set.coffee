@@ -40,11 +40,11 @@ class SceneSet
     
   switchScene: (sceneDelta) ->
     if (@canScroll(sceneDelta) && !@cubes.isScrolling)
-      @cubes.onScroll(sceneDelta)
       $scene = @currentScene()
       $scene.css('transition-duration', .5 * @cubes.getScrollDurationInSeconds() + 's')
       @hideScene($scene)
       @sceneIndex += sceneDelta
+      @cubes.onScroll(@sceneIndex, sceneDelta)
       @hideOrShowArrows(@sceneIndex)
   
   showScene: ($scene) ->

@@ -66,15 +66,12 @@ var Cubes = function(htmlScenes) {
     }
   };
 
-  this.onScroll = function(sceneDelta) {
-    if (!this.isScrolling) {
-      if (this.canScroll(sceneDelta)) {
-        if (this.sceneIndex == 0) {
-          this.switchToScrollingMaterial();
-        }
-        this.setScene(sceneDelta);
-      }
+  this.onScroll = function(sceneIndex, sceneDelta) {
+    if (this.isScrolling) return;
+    if (sceneIndex == 0) {
+      this.switchToScrollingMaterial();
     }
+    this.setScene(sceneIndex, sceneDelta);
   };
 
   this.onWindowResize = function( event ) {
@@ -106,13 +103,8 @@ var Cubes = function(htmlScenes) {
   }
   
   // SCROLLING RELATED
-  
-  this.canScroll = function(sceneDelta) {
-    return (sceneDelta > 0 && this.sceneIndex < this.htmlScenes.length - 1) || (sceneDelta < 0 && this.sceneIndex > 0);
-  }
-
-  this.setScene = function(sceneDelta) {
-    this.sceneIndex += sceneDelta;
+  this.setScene = function(sceneIndex, sceneDelta) {
+    this.sceneIndex = sceneIndex;
     this.scroller.setFinalScrollValue(this.htmlScenes[this.sceneIndex].final_scroll_value);
     this.renderer.setClearColor(this.htmlScenes[this.sceneIndex].start_clear_color);
     this.setScrollOrigin(sceneDelta);
