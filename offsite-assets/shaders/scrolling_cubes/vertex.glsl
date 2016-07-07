@@ -3,8 +3,9 @@
 
 precision highp float;
 
-uniform float width;
-uniform float height;
+uniform float rowCount;
+uniform float columnCount;
+uniform float boxLength;
 uniform float time;
 uniform vec2 scroll_origin;
 uniform sampler2D rotationField;
@@ -30,8 +31,8 @@ vec2 when_gt(vec2 x, vec2 y) {
 
 vec2 get_screen_uv(vec3 offset) {
   return vec2(
-    (offset.x + .5 * width) / width,
-    (offset.y + .5 * height) / height
+    offset.x + 0.5, 
+    offset.y + 0.5
   );
 }
 
@@ -82,7 +83,7 @@ mat4 construct_transformation_matrix(float arbitrary_rotation, vec3 offset, vec2
     cos(g),
     0
   );
-  rotationMatrix[3] = vec4(offset, 1);
+  rotationMatrix[3] = vec4(vec3(columnCount * boxLength, rowCount * boxLength, 1.) * offset, 1.);
 
   return rotationMatrix;
 }

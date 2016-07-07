@@ -7,8 +7,8 @@ var Cubes = function(htmlScenes) {
 
   // UTILITY FUNCTIONS
 
+  //This is the entry point, you should call this to kick everything off.
   this.loadAndInitialize = function() {
-    //This is the entry point, you should call this to kick everything off.
     var shaderLoader = new ShaderLoader();
     shaderLoader.loadShaders({
       passthrough_vertex: "passthrough/vertex",
@@ -62,13 +62,19 @@ var Cubes = function(htmlScenes) {
   this.onMouseMove = function(event) {
     if (!this.isScrolling && this.sceneIndex === 0) {
       var mouse = new THREE.Vector2(event.clientX / this.width, 1 - ((event.clientY) / this.height));
+      // Need to make it scale properly for arbitrary aspect ratio
+      horizontalScaling = Math.min(this.width / this.height / this.boxGrid.columnRowRatio(), 1.0);
+      verticalScaling = Math.min(this.height / this.width * this.boxGrid.columnRowRatio(), 1.0);
+      mouse.x = mouse.x * horizontalScaling + 0.5 * (1 - horizontalScaling);
+      mouse.y = mouse.y * verticalScaling + 0.5 * (1 - verticalScaling);
+      console.log(1 / horizontalScaling)
       this.waveSim.changeMousePosition(mouse);
     }
   };
 
   this.onScroll = function(sceneIndex, sceneDelta) {
     if (this.isScrolling) return;
-    if (sceneIndex == 0) {
+    if (sceneIndex - sceneDelta == 0) {
       this.switchToScrollingMaterial();
     }
     this.setScene(sceneIndex, sceneDelta);
@@ -78,10 +84,10 @@ var Cubes = function(htmlScenes) {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     
-    this.waveUniforms.width.value = this.width;
-    this.waveUniforms.height.value = this.height;
-    this.scrollingUniforms.width.value = this.width;
-    this.scrollingUniforms.height.value = this.height;
+    this.boxGrid.adjustBoxLengths(this.width, this.height);
+
+    this.scrollingUniforms.boxLength.value = this.boxGrid.boxLengthInPixels;
+    this.waveUniforms.boxLength.value = this.boxGrid.boxLengthInPixels;
     
     this.camera.left    = .99 * -.5 * this.width;
     this.camera.right   = .99 *  .5 * this.width;
@@ -161,8 +167,9 @@ var Cubes = function(htmlScenes) {
     this.scrollingUniforms = {
       rotationField: { type: "t", value: this.scroller.getCurrentPositionTexture() },
       map: { type: "t", value: texture },
-      width: { type: "f", value: this.width },
-      height: { type: "f", value: this.height },
+      rowCount: { type: "f", value: this.boxGrid.rowCount },
+      columnCount: { type: "f", value: this.boxGrid.columnCount },
+      boxLength: { type: "f", value: this.boxGrid.boxLengthInPixels },
       scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }
     };
     
@@ -181,8 +188,9 @@ var Cubes = function(htmlScenes) {
       map: { type: "t", value: texture },
       min_angle: { type: 'f', value: 0.08 },
       min_speed: { type: 'f', value: 0.1 },
-      width: { type: "f", value: this.width },
-      height: { type: "f", value: this.height },
+      rowCount: { type: "f", value: this.boxGrid.rowCount },
+      columnCount: { type: "f", value: this.boxGrid.columnCount },
+      boxLength: { type: "f", value: this.boxGrid.boxLengthInPixels },
       scroll_origin: { type: 'v2', value: new THREE.Vector2(0.5, 0.) }
     };
     

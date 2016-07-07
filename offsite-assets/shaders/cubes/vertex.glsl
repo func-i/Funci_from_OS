@@ -3,8 +3,9 @@
 
 precision highp float;
 
-uniform float width;
-uniform float height;
+uniform float rowCount;
+uniform float columnCount;
+uniform float boxLength;
 uniform float min_angle;
 uniform float min_speed;
 uniform mat4 modelViewMatrix;
@@ -29,8 +30,8 @@ vec2 when_gt(vec2 x, vec2 y) {
 
 vec2 getScreenUV(vec3 offset) {
   return vec2(
-    (offset.x + .5 * width) / width,
-    (offset.y + .5 * height) / height
+    offset.x + .5,
+    offset.y + .5
   );
 }
 
@@ -73,7 +74,7 @@ mat4 constructTransformationMatrix(vec2 angles, vec3 offset, vec2 screenUV) {
     cos(theta) * cos(phi),
     0
   );
-  rotationMatrix[3] = vec4(offset, 1);
+  rotationMatrix[3] = vec4(vec3(columnCount * boxLength, rowCount * boxLength, 1.) * offset, 1.);
 
   return rotationMatrix;
 }
