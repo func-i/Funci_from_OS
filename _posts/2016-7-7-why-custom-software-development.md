@@ -1,4 +1,12 @@
-So, you’re looking toward software development as the solution for your business to address a particular issue, perhaps with client processing, data management or otherwise.  If you’ve already narrowed it down to looking for a software firm in Canada, then you’re well situated.  Canada is actually ranked [first out of 9 developed countries](http://international.gc.ca/investors-investisseurs/sector-secteurs/software-logiciel.aspx?lang=eng) for the location of software development services, with a whopping 12.9% cost advantage over the United States, this includes both the development of packaged software and custom development for unique business solutions. 
+layout:     post
+title:      Why Custom Software Development can be Better than Product Solutions
+author:     aileen
+date:       2016-07-07
+published:  true
+social_image: blog_posts/software dev.png
+description: Depending on your business problems it might be difficult to know whether you should go with a custom build or an out of the box solution. Learn when one might be better than the other.
+
+So, you’re looking toward software development as the solution for your business to address a particular issue, perhaps with client processing, data management or otherwise.  If you’ve already narrowed it down to looking for a software firm in Canada, then you’re well situated.  Canada is actually ranked [first out of 9 developed countries](http://international.gc.ca/investors-investisseurs/sector-secteurs/software-logiciel.aspx?lang=eng) for the source of software development services, with a whopping <!--more-->12.9% cost advantage over the United States, this includes both the development of packaged software and custom development for unique business solutions. 
 
 >*“Canada is one of the world’s leaders in mobile-software development. Venture capitalists have started taking note. Google is certainly taking note.”* - 
 *Chris O’Neill, Managing Director, Google Canada*
@@ -35,11 +43,11 @@ If there’s something unique to the way your company manages a process, or you 
 
 **Won’t meet your unique needs:** 
 
-On a similar vein of thought, because packaged software is designed to address a generalized problem it doesn’t always have all the features you need and it doesn't always have all of the features you need, and invariably has many that you don't.  So, while there’s cost save on one end, you can also end up paying for something excess that doesn’t address your needs, which in the long-run could end up costing you even more or require you to change your business processes to match the software.   
+Packaged software is designed to address a generalized problem it doesn’t always have all the features you need and it doesn't always have all of the features you need, and invariably has many that you don't.  So, while there’s cost saved on one end, you can also end up paying for something excess that doesn’t address your needs, which in the long-run could end up costing you even more or require you to change your business processes to match the software.   
 
 **Program and language compatibility:** 
 
-If your company has been around for some time it probably has an already established technical infrastructure, with particular programs and languages set up along with the in-house “know how”. Integrating a custom software might be at odds with your internal capabilities making it very difficult or even near impossible to work with a particular software, or being cause for resource intensive compatibility solutions.  
+For more established companies it probably has an already established technical infrastructure, with particular programs and languages set up along with the in-house “know how”. Integrating a custom software might be at odds with your internal capabilities making it very difficult or even near impossible to work with a particular software, or being cause for resource intensive compatibility solutions.  
 
 # **Why custom software development can be the better choice**
 
@@ -57,7 +65,7 @@ Rather than hacking around the limitations of an out of the box product, putting
 
 One way to visualize this benefit is by imagining what a software would function like if you were able to provide your input regarding your unique business needs the entire way through the software development life cycle (SDLC).
 
-<center>![software work space]({% asset_path blog_posts/software dev.png %})</center>
+<center>![software build lifecycle]({% asset_path blog_posts/software-dev-lifecycle.jpg %})</center>
 
 **Long-term Flexibility:**
 
