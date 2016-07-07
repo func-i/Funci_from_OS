@@ -1,12 +1,16 @@
+---
 layout:     post
 title:      Why Custom Software Development can be Better than Product Solutions
 author:     aileen
 date:       2016-07-07
 published:  true
-social_image: blog_posts/software dev.png
+social_image: blog_posts/software_dev.png
 description: Depending on your business problems it might be difficult to know whether you should go with a custom build or an out of the box solution. Learn when one might be better than the other.
+---
 
-So, you’re looking toward software development as the solution for your business to address a particular issue, perhaps with client processing, data management or otherwise.  If you’ve already narrowed it down to looking for a software firm in Canada, then you’re well situated.  Canada is actually ranked [first out of 9 developed countries](http://international.gc.ca/investors-investisseurs/sector-secteurs/software-logiciel.aspx?lang=eng) for the source of software development services, with a whopping <!--more-->12.9% cost advantage over the United States, this includes both the development of packaged software and custom development for unique business solutions. 
+So, you’re looking toward software development as the solution for your business to address a particular issue, perhaps with client processing, data management or otherwise.  If you’ve already narrowed it down to looking for a software firm in Canada, then you’re well situated.  Canada is actually ranked [first out of 9 developed countries](http://international.gc.ca/investors-investisseurs/sector-secteurs/software-logiciel.aspx?lang=eng) for the source of software development services, with a whopping 12.9% cost advantage over the United States, this includes both the development of packaged software and custom development for unique business solutions. 
+
+<!--more-->
 
 >*“Canada is one of the world’s leaders in mobile-software development. Venture capitalists have started taking note. Google is certainly taking note.”* - 
 *Chris O’Neill, Managing Director, Google Canada*
