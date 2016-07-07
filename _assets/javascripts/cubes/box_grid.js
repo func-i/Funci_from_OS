@@ -6,7 +6,7 @@ function InstancedBoxGridGeometry(width, height) {
 
     this.instances = this.rowCount * this.columnCount;
     
-    var offsets = calculateOffsets(width, height)
+    var offsets = this.calculateOffsets(width, height)
     
     var boxGeometry = new THREE.BoxGeometry(
       this.boxLengthInPixels, this.boxLengthInPixels, this.boxLengthInPixels, //Side lengths
