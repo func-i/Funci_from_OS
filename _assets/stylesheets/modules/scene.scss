@@ -4,37 +4,6 @@
   position: relative;
 }
 
-.scene {
-  height: 48em;
-  &-squares {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: calc(50% - 4px);
-    display: inline-block;
-  }
-
-  &-text {
-    height: 100%;
-    width: calc(50% - 4px);
-    vertical-align: top;
-    align-items: center;
-    display: inline-flex;
-  }
-
-  &-title-square {
-    position: relative;
-    display: inline-block;
-    mix-blend-mode: multiply;
-  }
-
-  &-graphic-square {
-    position: relative;
-    display: inline-block;
-    mix-blend-mode: multiply;
-  }
-}
-
 .cubes-scene {
   top: 0;
   left: 0;

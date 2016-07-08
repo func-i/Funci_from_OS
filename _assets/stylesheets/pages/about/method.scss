@@ -1,27 +1,45 @@
 #method {
+  $bottom-clearance: -3em;
+  
   .scene-squares {
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: calc(50% - 4px);
-    display: inline-block;
+    width: 100%;
+    margin-bottom: calc(#{$bottom-clearance} + 1em);
+    
+    @media #{$large-up} {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: calc(40% - 4px);
+      display: inline-block;
+    }
   }
   
   .scene-text {
-    height: 100%;
-    width: calc(50% - 4px);
-    vertical-align: top;
-    align-items: center;
-    display: inline-flex;
+    
+    @media #{$large-up} {
+      height: 100%;
+      width: calc(60% - 4px);
+      vertical-align: top;
+      align-items: center;
+      display: inline-flex;
+    }
   }
   
   .scene-title-square {
+    width: 55%;
     position: relative;
     display: inline-block;
     mix-blend-mode: multiply;
+    
+    @media #{$small-only} {
+      h1 {
+        font-size: 1.5em;
+      }
+    }
   }
   
   .scene-graphic-square {
+    width: 55%;
     position: relative;
     display: inline-block;
     mix-blend-mode: multiply;
@@ -30,34 +48,52 @@
   
   .scene {
     @extend .main-content;
-    padding: 0;
+    padding: 4em 0;
     position: relative;
-    height: 48em;
     
     
     &-1 {
+      .scene-squares {
+        margin-bottom: $bottom-clearance;
+      }
+      
       .scene-title-square {
-        top: 6em;
-        left: 4em;
-        width: 55%;
+        
+        @media #{$large-up} {
+          top: 6em;
+          left: 4em;
+          width: 55%;
+        }
       }
       
       .scene-graphic-square {
-        left: 8em;
-        top: 3em;
-        width: 65%;
+        top: calc(#{$bottom-clearance} - 2em);
+        left: 9em;
+        
+        @media #{$large-up} {
+          left: 8em;
+          top: 3em;
+          width: 65%;
+        }
       }
     }
     
-    &-2 {  
+    &-2 {
+      $bottom-clearance: -4em;
+      
       .scene-squares {
         float: right;
+        
       }
       
       .scene-title-square {        
         width: 55%;
-        left: 2em;
-        top: 4em;
+        top: $bottom-clearance;
+        
+        @media #{$large-up} {
+          left: 2em;
+          top: 4em;
+        }
         
         h1 {
           position: absolute;
@@ -68,22 +104,31 @@
       
       .scene-graphic-square {
         left: 9em;
-        top: 7em;
-        width: 65%;
+        width: 55%;
+        
+        @media #{$large-up} {
+          top: 7em;
+        }
       }
     }
     
-    &-3 {    
-      .scene-title-square {        
-        width: 55%;
-        left: 10em;
-        top: 7em;
+    &-3 {
+      .scene-title-square {
+        left: 8em;
+        @media #{$large-up} {
+          left: 10em;
+          top: 7em;
+        }
       }
       
       .scene-graphic-square {
-        top: 4em;
-        left: 4em;
-        width: 60%;
+        left: 2em;
+        top: $bottom-clearance;
+        
+        @media #{$large-up} {
+          top: 4em;
+          width: 60%;
+        }
       }
     }
     
