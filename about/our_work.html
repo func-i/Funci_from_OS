@@ -7,27 +7,48 @@ description: We build new intricate experiences for the new web.
 <div id="our-work" class="row collapse main-content">
   <h1>Helping businesses identify and adapt to technical challenges is simply our mojo.</h1>
   
-  <div class="row collapse">
-    <div class="client-logos-container">
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
-      <div class="client-logo-container">
-        <img src="{% asset_path jb.png %}" alt="Josh Borts">
-      </div>
+  <div class="row collapse case-study-cards">
+    <div class="medium-6 large-4 columns case-study-card-wrapper">
+      <a href="#" class="square-no-canvas card case-study-card" data-color="yellow">
+        <div class="case-study-card-background">
+          <i class="fa fa-chevron-right"></i>
+        </div>
+        <div class="case-study-card-logo-wrapper">
+          <img class="case-study-card-logo" alt="CanLii" src="{% asset_path logos/canlii.png %}" />
+        </div>
+      </a>
     </div>
+    <div class="medium-6 large-4 columns case-study-card-wrapper">
+      <a href="#" class="square-no-canvas card case-study-card" data-color="blue">
+        <div class="case-study-card-background">
+          <i class="fa fa-chevron-right"></i>
+        </div>
+        <div class="case-study-card-logo-wrapper">
+          <img class="case-study-card-logo" alt="CanLii" src="{% asset_path logos/mcmaster.png %}" />
+        </div>
+      </a>
+    </div>
+    <div class="medium-6 large-4 columns case-study-card-wrapper">
+      <a href="#" class="square-no-canvas card case-study-card" data-color="yellow">
+        <div class="case-study-card-background">
+          <i class="fa fa-chevron-right"></i>
+        </div>
+        <div class="case-study-card-logo-wrapper">
+          <img class="case-study-card-logo" alt="CanLii" src="{% asset_path logos/lighthouse.png %}" />
+        </div>
+      </a>
+    </div>
+  </div>
+  
+  
+  <h1>Partial Client List</h1>
+  <div class="client-logos-container">
+    {% assign shuffled_clients = site.data.clients | shuffle %}
+    {% for client in shuffled_clients %}
+      <div class="client-logo-container">
+        <img id="{{ client.file }}" src="{% asset_path logos/{{client.file}}.png %}" alt="{{ client.name }}" />
+      </div>
+    {% endfor %}
   </div>
   
 </div>
