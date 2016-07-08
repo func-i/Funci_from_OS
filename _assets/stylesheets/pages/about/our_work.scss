@@ -57,6 +57,13 @@
   
   .case-study-card-wrapper {
     padding: 1.0em;
+    
+    @media #{$medium-only} {
+      &:last-child {
+        display: inline-block;
+        float: none;
+      }
+    }
   }
   
   .case-study-card-logo {
