@@ -5,6 +5,14 @@
     width: 100%;
     margin-bottom: calc(#{$bottom-clearance} + 1em);
     
+    @media #{$medium-up} {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: calc(40% - 4px);
+      display: inline-block;
+    }
+    
     @media #{$large-up} {
       left: 0;
       top: 0;
@@ -16,12 +24,14 @@
   
   .scene-text {
     
-    @media #{$large-up} {
+    @media #{$medium-up} {
       height: 100%;
       width: calc(60% - 4px);
-      vertical-align: top;
-      align-items: center;
-      display: inline-flex;
+      display: inline-block;
+    }
+    
+    @media #{$large-up} {
+      width: calc(60% - 4px);
     }
   }
   
@@ -31,9 +41,19 @@
     display: inline-block;
     mix-blend-mode: multiply;
     
-    @media #{$small-only} {
+    @media #{$small-up} {
       h1 {
         font-size: 1.5em;
+      }
+    }
+    
+    @media #{$medium-up} {
+      width: 80%;
+    }
+    
+    @media #{$large-up} {
+      h1 {
+        font-size: initial;
       }
     }
   }
@@ -43,6 +63,15 @@
     position: relative;
     display: inline-block;
     mix-blend-mode: multiply;
+  }
+  
+  .scene-content {
+    
+    @media #{$medium-up} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
   
   
@@ -135,6 +164,10 @@
     &-4 {
       display: flex;
       align-items: center;
+      
+      .scene-content {
+        display: block
+      }
     }
   }
   
