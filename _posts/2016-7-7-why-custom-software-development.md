@@ -81,7 +81,7 @@ For example, we’re currently building a client processing tool for a law firm 
 
 Rather than hacking around the limitations of an out of the box product, wasting resources, or changing internal processes - a custom solution can offer a tailored platform that aligns directly with your company's needs. Working directly with developers during the build process for your solution can ensure that your specific needs are addressed and will thereby increase productivity wholistically due to solution efficiency. 
 
-One way to visualize this benefit is by imagining what a software would function like if you were able to provide your uniqye input the entire way through the software development life cycle (SDLC).
+One way to visualize this benefit is by imagining what a software would function like if you were able to provide your uniqe input the entire way through the software development life cycle (SDLC).
 
 <center>![software build lifecycle]({% asset_path blog_posts/software-dev-lifecycle.jpg %})</center>
 

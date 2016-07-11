@@ -21,6 +21,9 @@ exclude: [
   Gemfile.lock
 ]
 
+redcarpet:
+  extensions: ["tables"]
+
 paginate: 5
 paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
