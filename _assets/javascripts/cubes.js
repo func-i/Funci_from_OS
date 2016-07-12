@@ -67,7 +67,6 @@ var Cubes = function(htmlScenes) {
       verticalScaling = Math.min(this.height / this.width * this.boxGrid.columnRowRatio(), 1.0);
       mouse.x = mouse.x * horizontalScaling + 0.5 * (1 - horizontalScaling);
       mouse.y = mouse.y * verticalScaling + 0.5 * (1 - verticalScaling);
-      console.log(1 / horizontalScaling)
       this.waveSim.changeMousePosition(mouse);
     }
   };
@@ -267,9 +266,6 @@ var Cubes = function(htmlScenes) {
     
     this.container.appendChild( this.renderer.domElement );
     
-    this.stats = new Stats();
-    this.container.appendChild( this.stats.dom );
-
     if (this.renderer.extensions.get( 'ANGLE_instanced_arrays' ) === false ) {
       alert( "You are missing support for 'ANGLE_instanced_arrays'" );
       return;
@@ -300,7 +296,5 @@ var Cubes = function(htmlScenes) {
     if (this.scroller.isScrollComplete()) this.disableScrolling();
     
     this.renderer.render( this.scene, this.camera );
-    
-    this.stats.update();
   };
 };

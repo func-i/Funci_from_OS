@@ -7,7 +7,6 @@
 #= require ./lib/underscore-min.js
 #= require ./lib/parse-min.js
 #= require ./lib/three.min.js
-#= require ./lib/stats.min.js
 #= require ./lib/shader_loader.js
 #= require ./lib/dat.gui.min.js
 
