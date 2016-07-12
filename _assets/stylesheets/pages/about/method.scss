@@ -2,70 +2,47 @@
   $bottom-clearance: -3em;
   
   .scene-squares {
-    width: 100%;
-    margin-bottom: calc(#{$bottom-clearance} + 1em);
+    @extend .columns;
+    @extend .large-5;
+    @extend .medium-5;
     
-    @media #{$medium-up} {
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: calc(40% - 4px);
-      display: inline-block;
-    }
-    
-    @media #{$large-up} {
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: calc(40% - 4px);
-      display: inline-block;
+    @media #{$small-only} {
+      margin-bottom: 2em;
     }
   }
   
   .scene-text {
-    
-    @media #{$medium-up} {
-      height: 100%;
-      width: calc(60% - 4px);
-      display: inline-block;
-    }
-    
-    @media #{$large-up} {
-      width: calc(60% - 4px);
-    }
+    @extend .columns;
+    @extend .large-7;
+    @extend .medium-7;
+    @extend .small-12;
+  }
+  
+  .scene-title-square, .scene-graphic-square {
+    @extend .columns;
+    @extend .small-8;
+    @extend .medium-7;
+    mix-blend-mode: multiply;
   }
   
   .scene-title-square {
-    width: 55%;
-    position: relative;
-    display: inline-block;
-    mix-blend-mode: multiply;
     
     @media #{$small-up} {
+      h1 {
+        font-size: 1.6em;
+      }
+    }
+    
+    @media #{$medium-only} {
       h1 {
         font-size: 1.5em;
       }
     }
-    
-    @media #{$medium-up} {
-      width: 80%;
-    }
-    
-    @media #{$large-up} {
-      h1 {
-        font-size: initial;
-      }
-    }
-  }
-  
-  .scene-graphic-square {
-    width: 55%;
-    position: relative;
-    display: inline-block;
-    mix-blend-mode: multiply;
   }
   
   .scene-content {
+    @extend .row;
+    @extend .collapse;
     
     @media #{$medium-up} {
       display: flex;
@@ -80,95 +57,65 @@
     padding: 4em 0;
     position: relative;
     
-    
-    &-1 {
-      .scene-squares {
-        margin-bottom: $bottom-clearance;
-      }
-      
-      .scene-title-square {
-        
-        @media #{$large-up} {
-          top: 6em;
-          left: 4em;
-          width: 55%;
-        }
-      }
-      
-      .scene-graphic-square {
-        top: calc(#{$bottom-clearance} - 2em);
-        left: 9em;
-        
-        @media #{$large-up} {
-          left: 8em;
-          top: 3em;
-          width: 65%;
-        }
-      }
+    @media #{$medium-up} {
+      padding: 6em 0;
     }
     
-    &-2 {
-      $bottom-clearance: -4em;
-      
-      .scene-squares {
-        float: right;
-        
-      }
-      
-      .scene-title-square {        
-        width: 55%;
-        top: $bottom-clearance;
-        
-        @media #{$large-up} {
-          left: 2em;
-          top: 4em;
-        }
-        
-        h1 {
-          position: absolute;
-          bottom: 0;
-          display: inline-block;
-        }
-      }
-      
-      .scene-graphic-square {
-        left: 9em;
-        width: 55%;
-        
-        @media #{$large-up} {
-          top: 7em;
-        }
-      }
+    @media #{$medium-up} {
+      padding: 9em 0;
+    }
+  }
+  
+  #targeted {
+    padding-top: 1em;
+    
+    .scene-title-square {
+      @extend .medium-offset-1;
     }
     
-    &-3 {
-      .scene-title-square {
-        left: 8em;
-        @media #{$large-up} {
-          left: 10em;
-          top: 7em;
-        }
-      }
-      
-      .scene-graphic-square {
-        left: 2em;
-        top: $bottom-clearance;
-        
-        @media #{$large-up} {
-          top: 4em;
-          width: 60%;
-        }
-      }
+    .scene-graphic-square {
+      @extend .small-offset-4;
+      margin-top: -2em;
     }
-    
-    &-4 {
-      display: flex;
-      align-items: center;
-      
+  }
+  
+  #strategic {
+    @media #{$medium-up} {
       .scene-content {
-        display: block
+        flex-direction: row-reverse;
+      }
+    }
+    
+    .scene-graphic-square {
+      @extend .small-offset-4;
+      @extend .medium-offset-5;
+    }
+    
+    .scene-title-square {
+      @extend .medium-offset-1;
+      
+      margin-top: -3em;
+      h1 {
+        position: absolute;
+        bottom: 0;
       }
     }
   }
   
+  #open {
+    .scene-title-square {
+      @extend.small-offset-4;
+    }
+    
+    .scene-graphic-square {
+      @extend .medium-offset-1;
+      margin-top: -3em;
+    }    
+  }
+  
+  #evolution {
+    .scene-content {
+      display: initial;
+    }
+  }
 }
