@@ -11,7 +11,7 @@ description: A Ruby developer's journey into Bitcoin
 Bitcoin can seem like a complicated technology that is always at the center of one debate or another.
 I was interested in learning to work with Bitcoin and as an experienced developer I was curious as to what kind of barrier I would face as a beginner in the Bitcoin space.
 
-<!-- more -->
+<!--more-->
 
 I am pleased to say that working with Bitcoin was much easier than expected and recommend that others give it a try as well.
 The public nature of Bitcoin makes accessing payment data trivial, and you might find that you are able to build really interesting things without in depth Bitcoin knowledge.
