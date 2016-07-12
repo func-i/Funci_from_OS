@@ -1,10 +1,16 @@
 #about {
+  padding-bottom: 1em;
+  
   .card-wrapper {
     padding: 15px;
   }
   
+  .page-header {
+    margin-bottom: 3em;
+  }
+  
   #cards {
-    padding: 2em 0;
+    margin-bottom: 3em;
     
     .card-wrapper {    
       @media #{$medium-only} {
@@ -17,11 +23,8 @@
   }
   
   #chat {
-    // padding-top: 2em;
-    
-    .scene-graphic-square {
-      @extend .small-offset-4;
-      margin-top: -2em;
+    .call-to-action {
+      font-size: 1.5em;
     }
   }
   
