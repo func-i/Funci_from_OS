@@ -4,6 +4,69 @@
   position: relative;
 }
 
+.scene {
+  @extend .main-content;
+  padding: 4em 0;
+  position: relative;
+  
+  @media #{$medium-up} {
+    padding: 6em 0;
+  }
+  
+  @media #{$medium-up} {
+    padding: 9em 0;
+  }
+}
+
+.scene-squares {
+  @extend .columns;
+  @extend .large-5;
+  @extend .medium-5;
+  
+  @media #{$small-only} {
+    margin-bottom: 2em;
+  }
+}
+
+.scene-text {
+  @extend .columns;
+  @extend .large-7;
+  @extend .medium-7;
+  @extend .small-12;
+}
+
+.scene-title-square, .scene-graphic-square {
+  @extend .columns;
+  @extend .small-8;
+  @extend .medium-7;
+  mix-blend-mode: multiply;
+}
+
+.scene-title-square {  
+  @media #{$small-up} {
+    h1 {
+      font-size: 1.6em;
+    }
+  }
+  
+  @media #{$medium-only} {
+    h1 {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.scene-content {
+  @extend .row;
+  @extend .collapse;
+  
+  @media #{$medium-up} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .cubes-scene {
   top: 0;
   left: 0;

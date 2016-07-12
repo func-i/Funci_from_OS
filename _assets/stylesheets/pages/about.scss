@@ -1,74 +1,27 @@
 #about {
-  .card {
-    margin: 15px;
-    width: calc(100% - 30px);
+  .card-wrapper {
+    padding: 15px;
   }
   
-  .scene {
+  #cards {
+    padding: 2em 0;
     
-    &-squares {
-      width: calc(40% - 4px);
-    }
-
-    &-text {
-      width: calc(60% - 4px);
-    }
-      
-    &-1 {
-      .scene-title-square {
-        top: 25%;
-        left: 5%;
-        width: 55%;
-      }
-      
-      .scene-graphic-square {
-        left: 30%;
-        top: 20%;
-        width: 65%;
-      }
-    }
-    
-    &-2 {  
-      .scene-squares {
-        float: right;
-      }
-      
-      .scene-title-square {        
-        width: 55%;
-        left: 5%;
-        top: 19%;
-        
-        h1 {
-          position: absolute;
-          bottom: 0;
+    .card-wrapper {    
+      @media #{$medium-only} {
+        &:last-child {
           display: inline-block;
+          float: none;
         }
       }
-      
-      .scene-graphic-square {
-        width: 65%;
-        left: 30%;
-        top: 20%;
-      }
     }
+  }
+  
+  #chat {
+    // padding-top: 2em;
     
-    &-3 {    
-      .scene-title-square {        
-        width: 55%;
-        left: 36%;
-        top: 21%;
-      }
-      
-      .scene-graphic-square {
-        width: 60%;
-        left: 5%;
-        top: 19%;
-      }
-    }
-    
-    &-4 {
-      display: flex;
-      align-items: center;
+    .scene-graphic-square {
+      @extend .small-offset-4;
+      margin-top: -2em;
     }
   }
   

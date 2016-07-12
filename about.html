@@ -7,79 +7,85 @@ description: We build new intricate experiences for the new web.
 <div id="about">
   <div class="row collapse main-content">
     <div class="page-header">
-      <p>
+      <h3>
         The founders of Functional Imperative came together over a unified passion for code and common business values; primarily, the understanding that passion driven success comes from adaptive learning and growth. 
-      </p>
+      </h3>
       <p>
         The founders brought these values to life with Lighthouse Labs - now Canada’s leading coding bootcamp - and the growth of the Functional Imperative team. The FI team consists of skilled and driven personalities from exceptionally diverse backgrounds; ranging from entrepreneurial pursuits, teaching music, stock trading, industrial engineering and everything in between.  As a collective unit each team member comes together to connect people and businesses to the power of evolution through technology.
       </p>
     </div>
-    <div class="medium-6 large-4 columns">
-      <a href="/about/team.html" class="square-no-canvas card" data-color="yellow">
-        <div class="card-icon icon">
-          <object data="{% asset_path icons/two_people.svg %}" type="image/svg+xml"></object>
-        </div>
-        <h2>The FI Team</h2>
-        <h3>
-          Discover the minds behind the FI Method
-        </h3>
-        <div class="card-arrow">
-          <i class="fa fa-chevron-right"></i>
-        </div>
-        <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
-      </a>
-    </div>
-    <div class="medium-6 large-4 columns">
-      <a href="/about/team.html" class="square-no-canvas card" data-color="blue">
-        <div class="card-icon icon">
-          <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
-        </div>
-        <h2>The FI Method</h2>
-        <h3>
-          Learn what it's like to experience FI
-        </h3>
-        <div class="card-arrow">
-          <i class="fa fa-chevron-right"></i>
-        </div>
-        <img src="" style="background-image: url({% asset_path an.png %});" alt="" class="card-image" />
-      </a>
-    </div>
-    <div class="medium-6 large-4 columns">
-      <a href="/about/team.html" class="square-no-canvas card" data-color="yellow">
-        <div class="card-icon icon">
-          <object data="{% asset_path icons/desktop.svg %}" type="image/svg+xml"></object>
-        </div>
-        <h2>Our Work</h2>
-        <h3>
-          See how our partners have been helped by our method.
-        </h3>
-        <div class="card-arrow">
-          <i class="fa fa-chevron-right"></i>
-        </div>
-        <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
-      </a>
+    <div id="cards" class="row collapse">
+      <div class="medium-6 large-4 columns card-wrapper">
+        <a href="/about/team.html" class="square-no-canvas card" data-color="yellow">
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/two_people.svg %}" type="image/svg+xml"></object>
+          </div>
+          <h2>The FI Team</h2>
+          <h3>
+            Discover the minds behind the FI Method
+          </h3>
+          <div class="card-arrow">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+          <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
+        </a>
+      </div>
+      <div class="medium-6 large-4 columns card-wrapper">
+        <a href="/about/team.html" class="square-no-canvas card" data-color="blue">
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
+          </div>
+          <h2>The FI Method</h2>
+          <h3>
+            Learn what it's like to experience FI
+          </h3>
+          <div class="card-arrow">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+          <img src="" style="background-image: url({% asset_path an.png %});" alt="" class="card-image" />
+        </a>
+      </div>
+      <div class="medium-6 large-4 columns card-wrapper">
+        <a href="/about/team.html" class="square-no-canvas card" data-color="yellow">
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/desktop.svg %}" type="image/svg+xml"></object>
+          </div>
+          <h2>Our Work</h2>
+          <h3>
+            See how our partners have been helped by our method.
+          </h3>
+          <div class="card-arrow">
+            <i class="fa fa-chevron-right"></i>
+          </div>
+          <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
+        </a>
+      </div>
     </div>
   </div>
   
-  <div class="scene scene-4">
-    <div class="scene-text">
-      <div class="scene-text-content">
-        <h3>
-          Let’s chat about how the FI method can help your business
-        </h3>
-      </div>
-    </div>
-    <div class="scene-squares">
-      <div class="scene-title-square">
-        <div class="square-no-canvas" data-color="yellow">
-          <h1>Chat With FI</h1>
+  <div class="alternate-color-scheme-wrapper">
+    <div class="scene" id="chat">
+      <div class="scene-content">
+        <div class="scene-squares">
+          <div class="scene-title-square">
+            <a href="/contact.html" class="square-no-canvas fill" data-color="yellow">
+              <h1>Chat With FI</h1>
+            </a>
+          </div>
+          <a href="/contact.html" class="scene-graphic-square">
+            <div class="square-no-canvas fill icon" data-type="outlined" data-color="teal">
+              <object data="{% asset_path icons/quotes.svg %}" type="image/svg+xml"></object>
+            </div>
+          </a>
         </div>
-      </div>
-      <div class="scene-graphic-square">
-        <div class="square-no-canvas icon" data-type="outlined" data-color="teal">
-          <object data="{% asset_path icons/quotes.svg %}" type="image/svg+xml"></object>
+        <div class="scene-text">
+          <div class="scene-text-content">
+            <h3>
+              <a href="/contact.html">Let’s chat about how the FI method can help your business</a>
+            </h3>
+          </div>
         </div>
-      </div>
+      </div>    
     </div>
   </div>
 </div>
