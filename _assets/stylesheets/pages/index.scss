@@ -25,16 +25,7 @@
   .columns {
     padding: 10px;
   }
-  
-  .card-wrapper {    
-    @media #{$medium-only} {
-      &:last-child {
-        display: inline-block;
-        float: none;
-      }
-    }
-  }
-  
+
   .card {
     width: 100%;
     margin: 0;

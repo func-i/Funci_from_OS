@@ -11,15 +11,6 @@
   
   #cards {
     margin-bottom: 3em;
-    
-    .card-wrapper {    
-      @media #{$medium-only} {
-        &:last-child {
-          display: inline-block;
-          float: none;
-        }
-      }
-    }
   }
   
   #chat {

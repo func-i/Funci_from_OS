@@ -1,8 +1,45 @@
 #method {
-  
-  #targeted {
-    padding-top: 1em;
+  p {
+    line-height: 1.7;
+  }
+  #method-cards {
+    @extend .row;
+    @extend .collapse;
     
+    .card-wrapper {
+      padding: 15px;
+    }
+    
+    .card {
+      padding: 15%;
+      text-align: center;
+      
+      &[data-color="yellow"] {
+        color: $yellow;
+      }
+      
+      &[data-color="blue"] {
+        color: $blue;
+      }
+    }
+    
+    .card-title {
+      margin-bottom: 0.5em;
+      font-size: 2.5em;
+    }
+    
+    .card-icon {
+      height: 65%;
+      margin: auto;
+      max-width: 80%;
+    }
+    
+    .card-arrow.down {
+      text-align: center;
+    }
+  }
+  
+  #assessment {
     .scene-title-square {
       @extend .medium-offset-1;
     }
@@ -13,7 +50,7 @@
     }
   }
   
-  #strategic {
+  #planning {
     @media #{$medium-up} {
       .scene-content {
         flex-direction: row-reverse;
@@ -36,7 +73,7 @@
     }
   }
   
-  #open {
+  #execution {
     .scene-title-square {
       @extend.small-offset-4;
     }
