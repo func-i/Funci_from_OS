@@ -15,6 +15,11 @@ $ ->
       $('nav').addClass('hidden')
       $(this).unbind(ev)
   
+  # This is to preven the cubies from rotating behind the header text
+  $navMenu.on "mousemove", (ev) ->
+    console.log(ev)
+    ev.stopPropagation()
+  
   $navHoverContainer.on "mouseenter", (ev) ->
     $('nav').removeClass('hidden')
   
