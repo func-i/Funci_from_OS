@@ -1,6 +1,6 @@
 $(function() {
   var DURATION = 750;
-  var OFFSET = 27;
+  var OFFSET = 0;
   var ANIMATE = false;
   
   function isLocalLink(context) {

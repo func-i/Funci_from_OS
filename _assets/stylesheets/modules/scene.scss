@@ -9,8 +9,10 @@
   padding: 4em 0;
   position: relative;
   
-  @media #{$medium-up} {
-    padding: 6em 0;
+  @media #{$small-only} {
+    &:first-child {
+      padding-top: 9em;
+    }
   }
   
   @media #{$medium-up} {

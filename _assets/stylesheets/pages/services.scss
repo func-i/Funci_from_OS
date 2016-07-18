@@ -1,80 +1,73 @@
 #services {
-  
-  a:hover {
-    .inline-icon {
-      i {
-        color: $dark-gray;
-      }          
-      &:after {
-        max-height: 100%;
-      }
-    }
-  }
-  
-  &-header {
-    margin-top: 1em;
-  }
-  
-  #services-links {    
-    .text-content {
-      padding: 1em;
-      
-      @media #{$medium-only} {
-        padding: 0.7em;
-        h3 {
-          font-size: 1.1em;
-        }
-      }
-    }
-  }
-  
   ul {
     list-style: square inside;
     line-height: 1.4;
   }
   
-  .services-description {
-    margin-bottom: 1.77em;
-  }
-  
-  .side-icons {
-    @media #{$medium-up} {
-      margin-top: 15%;
+  #service-cards {
+    .card-icon {
+      height: 35%;
     }
     
-    @media #{$large-up} {
-      margin-top: 10%;
-    }
-    
-    &-group-two {
-      @media #{$small-up} {
-        margin-top: 3em;
-      }
-      
-      @media #{$medium-up} {
-        margin-top: 9em;
-      }
+    .card-wrapper {
+      padding: 25px;
       
       @media #{$large-up} {
-        margin-top: 6em;
+        padding: 10px;
+      }
+    }
+  }
+
+  #scaling {
+    .scene-title-square {
+      @extend .medium-offset-1;
+    }
+    
+    .scene-graphic-square {
+      @extend .small-offset-4;
+      margin-top: -2em;
+    }
+  }
+
+  #building {
+    @media #{$medium-up} {
+      .scene-content {
+        flex-direction: row-reverse;
       }
     }
     
-    .icon-container {
-      &.magnifying-glass {
-        margin-top: 5em;
-      }
+    .scene-graphic-square {
+      @extend .small-offset-4;
+      @extend .medium-offset-5;
+    }
+    
+    .scene-title-square {
+      @extend .medium-offset-1;
       
-      &.spaceship {
-        margin-top: 9em;
+      margin-top: -3em;
+      h1 {
+        position: absolute;
+        bottom: 0;
       }
-      
-      &.faces {
-        margin-top: 9em;
-      }
-      
-      &.globe {
-      }
+    }
+  }
+
+  #data {
+    .scene-title-square {
+      @extend.small-offset-4;
+    }
+    
+    .scene-graphic-square {
+      @extend .medium-offset-1;
+      margin-top: -3em;
+    }    
+  }
+  
+  #cta-scene {
+    // padding: 5em 0;
+    // 
+    .call-to-action {
+      margin-bottom: 0;
     }
   }
 }

@@ -8,7 +8,9 @@
   }
   
   .page-header {
-    margin-bottom: 3em;
+    h1 {
+      margin-bottom: 0;
+    }
   }
   
   #cards {
