@@ -2,13 +2,10 @@
   p {
     line-height: 1.7;
   }
+  
   #method-cards {
     @extend .row;
     @extend .collapse;
-    
-    .card-wrapper {
-      padding: 15px;
-    }
     
     .card {
       padding: 15%;
@@ -32,10 +29,6 @@
       height: 65%;
       margin: auto;
       max-width: 80%;
-    }
-    
-    .card-arrow.down {
-      text-align: center;
     }
   }
   

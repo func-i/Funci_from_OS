@@ -13,25 +13,11 @@
     $scenes.each((index, scene) ->
       $scene = $(scene)
       $scene.css('height', "")
-      # Set size of each scene to window height
-      $scene.css('height', Math.max(window.innerHeight, $scene.innerHeight()))
+      if $scene.attr('id') != "footer-scene" || window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium
+        # Set size of each scene to window height
+        $scene.css('height', Math.max(window.innerHeight, $scene.innerHeight()))
     )
 
-  addFooterToggleListener: () ->
-    $(window).resize(@toggleFooter)
-        
-  toggleFooter: () ->
-    $body = $('#body')
-    $footer = $('footer')
-    if (window.innerWidth < window.SCREEN_WIDTH_UPPER_LIMITS.medium)
-      # Show the footer
-      $body.removeClass('footer-hidden')
-      $footer.removeClass('hidden')
-    else
-      # Hide the footer
-      $body.addClass('footer-hidden')
-      $footer.addClass('hidden')
-  
   resizeNav: ($menuLink) ->
     $navMenu = $('.nav-menu')
     if $menuLink.length > 0 && window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium

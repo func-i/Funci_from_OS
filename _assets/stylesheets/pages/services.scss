@@ -5,16 +5,31 @@
   }
   
   #service-cards {
-    .card-icon {
-      height: 35%;
+    @extend .row;
+    @extend .collapse;
+    
+    .card {
+      padding: 15%;
+      text-align: center;
+      
+      &[data-color="yellow"] {
+        color: $yellow;
+      }
+      
+      &[data-color="blue"] {
+        color: $blue;
+      }
     }
     
-    .card-wrapper {
-      padding: 25px;
-      
-      @media #{$large-up} {
-        padding: 10px;
-      }
+    .card-title {
+      margin-bottom: 0.5em;
+      // font-size: 2.5em;
+    }
+    
+    .card-icon {
+      height: 45%;
+      margin: 0 auto 1em;
+      max-width: 80%;
     }
   }
 

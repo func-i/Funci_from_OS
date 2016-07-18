@@ -100,12 +100,18 @@
       }
     }
   }
+  
+  .card-arrow.down {
+    text-align: center;
+  }
 }
 
 .card-wrapper {
   @extend .columns;
   @extend .medium-6;
   @extend .large-4;
+  
+  padding: 15px;
   
   @media #{$medium-only} {
     &:last-child {

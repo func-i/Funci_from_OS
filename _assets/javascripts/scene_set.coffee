@@ -18,22 +18,27 @@ class SceneSet
       start_clear_color: BASE_COLORS.white,
       end_clear_color: BASE_COLORS.white,
       arrow_data_color: "yellow"
-      },
+    },
     {
       final_scroll_value: 0.5,
       start_clear_color: BASE_COLORS.white,
       end_clear_color: BASE_COLORS.darkGray,
       arrow_data_color: "white"
+    },
+    {
+      final_scroll_value: 1.0,
+      start_clear_color: BASE_COLORS.white,
+      end_clear_color: BASE_COLORS.white,
+      arrow_data_color: "yellow"
     }
   ]
   
   init: () ->
     @scenes = $('.cubes-scene')
     @arrows = $('.cubes-scene-arrow')
-    # Not sure how to handle other layout problems, perhaps just use a different layout?
+    # Have to remove the padding we normally leave for the footer, since here our footer is inline
+    $('#body').css('padding-bottom', 0)
     ResizeHelper.resizeScenes(@scenes)
-    ResizeHelper.toggleFooter()
-    ResizeHelper.addFooterToggleListener()
   
   canScroll: (sceneDelta) ->
     (sceneDelta > 0 && @sceneIndex < @scenes.length - 1) || (sceneDelta < 0 && @sceneIndex > 0)
