@@ -31,12 +31,23 @@
       # Hide the footer
       $body.addClass('footer-hidden')
       $footer.addClass('hidden')
+  
+  resizeNav: ($menuLink) ->
+    $navMenu = $('.nav-menu')
+    if $menuLink.length > 0 && window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium
+      $subMenuLinks = $menuLink.siblings().children()
+      newNavWidth = $subMenuLinks.length * $subMenuLinks.outerWidth() + 75 # The extra 75 is from the size of the selected nav-menu-item when the sub-menu is open
+      console.log(newNavWidth)
+      $navMenu.css('width', Math.min(newNavWidth, window.innerWidth))
+    else if window.innerWidth <= window.SCREEN_WIDTH_UPPER_LIMITS.medium
+      $navMenu.css('width', '')
 
   handleResize: (args) ->
     
     @resizeSquares($('.square'))
     @resizeSquares($('.square-no-canvas'))
     @resizeSquares($('.square-no-canvas-no-fill'))
+    @resizeNav($('.nav-menu-item.active > .nav-menu-item-link'))
     
     @resizeScenes($('.cubes-scene'))
     

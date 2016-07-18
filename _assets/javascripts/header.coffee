@@ -5,7 +5,7 @@ $ ->
   bodyDOM = document.querySelector('body')
   $navHoverContainer = $('.nav-hover-container')
   
-  # Need a set width for when we switch to sub-menus (since they are 
+  # Need a set width for when we switch to nav-sub-menus (since they are 
   # positioned absolutely)
   
   
@@ -35,21 +35,21 @@ $ ->
     $menuItem = $menuLink.parent()
     $subMenu = $menuLink.siblings()
     if shouldBeActive
-      $navMenu.css('width', $navMenu.outerWidth() + 1)
-      $navMenu.addClass('sub-menu-active')
+      $navMenu.addClass('nav-sub-menu-active')
       $menuItem.addClass('active')
       $subMenu.addClass('active')
+      ResizeHelper.resizeNav($menuLink)
     else
-      $navMenu.removeClass('sub-menu-active')
+      $navMenu.removeClass('nav-sub-menu-active')
       setTimeout(() -> 
         $navMenu.css('width', '')
       , 400)
       $menuItem.removeClass('active')
       $subMenu.removeClass('active')
-      
-  $('.nav-menu > li > a').click (ev) ->
+  
+  $('.nav-menu-item-link').click (ev) ->
     $menuLink = $(ev.target)
-    if $menuLink.hasClass('has-menu')
+    if $menuLink.hasClass('has-nav-sub-menu')
       ev.preventDefault()
       ev.stopPropagation()
       toggleActive($menuLink, !$menuLink.parent().hasClass('active'))

@@ -272,7 +272,7 @@ var Cubes = function(htmlScenes) {
     }
     
     this.addEventListeners();
-    this.setUpGui();
+    // this.setUpGui();
     this.animate();
   };
   

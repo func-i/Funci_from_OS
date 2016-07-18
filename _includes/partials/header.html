@@ -1,67 +1,84 @@
+<div id="page-url">{{ page.url[0..5] }}</div>
 <header>
   <nav>
     <div class="nav-hover-container"></div>
     <div class="nav-logo-container">
-      <a class="nav-logo-letter-first menu-toggle-button" href="/"></a>
+      <a class="nav-logo-letter-first" href="/"></a>
       <a class="nav-logo-letter-second" href="/"></a>
     </div>
     <ul class="nav-menu">
-      <li>
-        <a href="" 
+      <li class="nav-menu-item">
+        <a href="#" 
           data-sub-name="about"
-          class="has-menu 
-          {% if page.url == '/about.html' %}
+          class="nav-menu-item-link has-nav-sub-menu
+          {% if page.url contains 'about' %}
           selected
           {% endif %}">
           <span class="nav-menu-item-text">About</span><i class="fa fa-chevron-right"></i>
         </a>
         
-        <ul class="sub-menu">
-          <li>
-            <a href="/about/team.html"
-            {% if page.url == '/about/team.html' %}
-            class="selected"
-            {% endif %}>Our Team
+        <ul class="nav-sub-menu">
+          <li class="nav-sub-menu-item">
+            <a href="/about.html"
+              class="nav-sub-menu-item-link
+              {% if page.url == '/about.html' %}
+              selected
+              {% endif %}">About</a>
+          </li>
+          <li class="nav-sub-menu-item">
+            <a href="/about/method.html"
+              class="nav-sub-menu-item-link
+              {% if page.url == '/about/method.html' %}
+              selected
+              {% endif %}">Method
             </a>
           </li>
-          <li>
-            <a href="/about/method.html"
-            {% if page.url == '/about/method.html' %}
-            class="selected"
-            {% endif %}>FI Method
-          </a>
-        </li>
-          <li>
+          <li class="nav-sub-menu-item">
             <a href="/about/our_work.html"
-            {% if page.url == '/about/our_work.html' %}
-            class="selected"
-            {% endif %}>Our Work
+              class="nav-sub-menu-item-link
+              {% if page.url == '/about/our_work.html' %}
+              selected
+              {% endif %}">Work
+            </a>
+          </li>
+          <li class="nav-sub-menu-item">
+            <a href="/about/team.html"
+              class="nav-sub-menu-item-link
+              {% if page.url == '/about/team.html' %}
+              selected
+              {% endif %}">Team
             </a>
           </li>
         </ul>
       </li>
 
-      <li>
+      <li class="nav-menu-item">
         <a href="/services.html"
-        {% if page.url == '/services.html' %}
-        class="selected"
-        {% endif %}>Services
+          class="nav-menu-item-link 
+          {% if page.url == '/services.html' %}
+          class='selected'
+          {% endif %}">
+            Services          
         </a>
       </li>
       
-      <li>
+      <li class="nav-menu-item">
         <a href="/blog/"
-        {% if page.url == '/blog/index.html' %}
-        class="selected"
-        {% endif %}>Blog
+          class="nav-menu-item-link 
+          {% if page.url contains 'blog' %}
+          class="selected"
+          {% endif %}">
+            Blog
         </a>
       </li>
 
-      <li>
+      <li class="nav-menu-item">
         <a href="/contact.html"
-        {% if page.url == '/contact.html' %}
-        class="selected"
-        {% endif %}>Contact
+          class="nav-menu-item-link 
+          {% if page.url == ''/contact.html' %}
+          class="selected"
+          {% endif %}">
+            Contact
         </a>
       </li>
     </ul>

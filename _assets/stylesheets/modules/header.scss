@@ -1,8 +1,7 @@
-nav {
-  $delay: .2s;
-  $letter-width: 54px;
-  $offset: 80%; 
-  
+$letter-width: 54px;
+$delay: .2s;
+
+nav {  
   position: fixed;
   z-index: 3;
   top: 0;
@@ -12,180 +11,46 @@ nav {
     width: auto;
   }
   
-  .nav-logo-container {
-    position: absolute;
-    height: $letter-width;
-    z-index: 3;
-    > * {
-      display: inline-block;
-      width: $letter-width;
-      height: $letter-width;
-      mix-blend-mode: multiply;
-      
-      &:hover {
-        text-decoration: none;
-      }
-    }
-    
-    .nav-logo-letter {
-      &-first {        
-        background: url(asset_path("images/f_letter.png"));
-        background-size: cover;
-      }      
-      
-      &-second {
-        position: absolute;
-        top: $offset;
-        left: 0%;
-        background: url(asset_path("images/i_letter.png"));
-        background-size: cover;
-        transition: left $delay, top $delay ease-in-out $delay;
-      }
-    }    
-  } 
-  
   .selected {
     color: $green;
-  }
-  
-  > .nav-menu {
-    position: relative;
-    left: $letter-width;
-    z-index: 0;
-    width: 100%;
-    height: $letter-width;
-    display: flex;
-    background: $dark-gray;
-    transition: left $delay ease-in-out $delay, width $delay;
-    border-bottom: solid 1px white;
-    overflow: hidden;
-    
-    @media #{$large-up} {
-      display: inline-block;
-      border-right: solid 1px white;
-    }    
-    
-    > li {
-      overflow: hidden;
-      text-align: center;
-      display: inline-block;
-      transition: visibility $delay, 
-                  opacity $delay ease-in-out calc(2 * #{$delay}),
-                  width $delay ease-in-out $delay;
-      font-size: calc(0.3 * #{$letter-width});
-      height: $letter-width;
-      max-width: 25%;
-      width: 100px;
-      
-      a {
-        display: inline-block;
-        padding: calc(0.34 * #{$letter-width}) 0;
-        width: 100%;
-        &:active {
-          outline: none;
-        }
-        
-        .nav-menu-item-text {
-          display: inline-block;
-          transition: opacity $delay, max-width $delay $delay;
-          overflow: hidden;
-          pointer-events: none;
-          margin-right: 5px;
-          max-width: 100px;
-        }
-        
-        i {
-          pointer-events: none;
-          transition: transform $delay $delay, color $delay $delay;
-          &:hover {
-            text-decoration: none;
-          }
-        }
-      }
-    }
-    
-    &.sub-menu-active {
-      > li {
-        opacity: 0;
-        width: 0;
-        transition: opacity $delay, width $delay ease-in-out $delay;
-        
-        &.active {
-          transition: width $delay ease-in-out $delay;
-          width: 35px;
-          opacity: 1;
-          
-          @media #{$medium-up} {
-            width: 50px;
-          }
-          
-          .nav-menu-item-text {
-            opacity: 0;
-            max-width: 0;
-          }
-        
-          i {
-            color: $green;
-            transform: rotateZ(180deg);
-          }
-        }
-      }
-    }
-  }
-  
-  
-  ul.sub-menu {
-    position: absolute;
-    display: inline-block;
-    overflow: hidden;
-    width: auto;
-    margin-left: 20px;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility $delay ease-in-out 0s,
-                opacity $delay ease-in-out 0s;
-    top: 0;
-    
-    li {
-      width: 100px;
-      text-align: center;
-      display: inline-block;
-      max-width: 32%;
-    }
-    
-    &.active {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility $delay ease-in-out calc(2 * #{$delay}),
-                  opacity $delay ease-in-out calc(2 * #{$delay});
-    }
-  }
+  }  
   
   &.hidden {
     
     @media #{$large-up} {
-      > ul {
+      .nav-menu {
         left: -100%;
         transition: left $delay;
-      }
-      
-      .nav-logo-letter {
-        &-second {
-          top: 0%;
-          left: $offset;
-          transition: top $delay, left $delay ease-in-out $delay;
-        }
       }
     }
   }
   
+  .nav-menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: $letter-width;
+    left: $letter-width;
+    background: $dark-gray;
+    border-bottom: solid 1px white;
+    overflow: hidden;
+    z-index: 0;
+    
+    transition: left $delay $delay,
+    width $delay;
+    
+    @media #{$large-up} {
+      display: inline-block;
+      border-right: solid 1px white;
+    }
+  }
   
   .nav-hover-container {
     position: absolute;
     display: inline-block;
     top: 0%;
     width: calc(110% + #{$letter-width});
-    height: 300%;
+    height: 200%;
   }
 }
 
