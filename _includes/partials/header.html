@@ -55,8 +55,8 @@
       <li class="nav-menu-item">
         <a href="/services.html"
           class="nav-menu-item-link 
-          {% if page.url == '/services.html' %}
-          class='selected'
+          {% if page.url contains 'services' %}
+          selected
           {% endif %}">
             Services          
         </a>
@@ -66,7 +66,7 @@
         <a href="/blog/"
           class="nav-menu-item-link 
           {% if page.url contains 'blog' %}
-          class="selected"
+          selected
           {% endif %}">
             Blog
         </a>
@@ -75,8 +75,8 @@
       <li class="nav-menu-item">
         <a href="/contact.html"
           class="nav-menu-item-link 
-          {% if page.url == ''/contact.html' %}
-          class="selected"
+          {% if page.url == '/contact.html' %}
+          selected
           {% endif %}">
             Contact
         </a>

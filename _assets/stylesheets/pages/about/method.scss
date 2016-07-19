@@ -4,8 +4,7 @@
   }
   
   #method-cards {
-    @extend .row;
-    @extend .collapse;
+    @extend .cards;
     
     .card {
       padding: 15%;
