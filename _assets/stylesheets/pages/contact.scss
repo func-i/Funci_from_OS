@@ -33,4 +33,144 @@
   #jobs {
     margin-top: 4em;
   }
+  
+  #form-wrapper {
+    @extend .main-content;
+    
+    padding-top: 5em;
+  }
+  
+  #form {
+    background: none;
+    color: $dark-gray;
+    padding: 0;
+    
+    p {
+      margin-bottom: 2em;
+    }
+    
+    label {
+      font-size: 90%;
+      display: inline-block;
+      line-height: 1.4;
+      font-weight: bold;
+    }
+    
+    div.field {
+      border-color: $dark-gray;
+    }
+    
+    input {
+      color: $dark-gray;
+    }
+    
+    input[type="text"], input[type="email"] {
+      display: block;
+      width: 100%;
+      line-height: 1.5;
+    }
+    
+    .textarea {
+      margin-bottom: 2em;
+      
+      label {
+        margin-bottom: 1em;
+      }
+      
+      textarea {
+        border: solid 2px;
+        padding: 0.5em 1em;
+        resize: vertical;
+      }
+    }
+    
+    div.select.field {
+      position: relative;
+      line-height: 1.6;
+      
+      a {
+        display: block;
+        line-height: 1.5;
+        width: 100%;
+        color: $blue;
+      }
+      
+      ul {
+        background-color: white;
+        position: absolute;
+        width: 100%;
+      }
+    }
+        
+    #selected-option {
+      width: 100%;
+      display: block;
+    }
+    
+    #expand-arrow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      a {
+        padding: 0 10px;
+      }
+    }
+    
+    .radiobutton {
+      @extend .row;
+      @extend .collapse;
+      
+      line-height: 1.7;
+      padding-left: 1em;
+      margin-bottom: 1.5em;
+      
+      input {
+        cursor: pointer;
+      }
+      
+      label {
+        display: inline;
+        font-weight: normal;
+        cursor: pointer;
+        margin-left: 1em;
+        font-size: 85%;
+      }
+    }
+    
+    .submit {  
+      float: none;
+      text-align: right;
+    }
+    
+    .submit-button-wrapper {
+      @include bg-fill-no-canvas;
+      
+      position: relative;
+      display: inline-block;
+      width: 4em;
+      height: 4em;
+      border: solid 1px $blue;
+      z-index: 1;
+    
+      > input {
+        color: $blue;
+        border: none;
+        position: relative;
+        background: none;
+        height: 100%;
+        width: 100%;
+        z-index: 10;
+        transition: color 0.5s;
+        
+        &:hover {
+          color: white;
+        }
+      }
+      
+      &:before {
+        z-index: 0;
+        background-color: $blue;
+      }
+    }
+  }
 }

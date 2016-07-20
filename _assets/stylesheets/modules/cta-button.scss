@@ -1,9 +1,11 @@
 .call-to-action {
+  @include bg-fill-no-canvas;
   font-size: 1.77em;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1em;
+  margin-bottom: 1em;  
+  
   
   &[data-color="blue"] {
     @include set-colors-for-cta($blue)
