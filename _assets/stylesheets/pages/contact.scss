@@ -57,7 +57,11 @@
     }
     
     div.field {
-      border-color: $dark-gray;
+      border-color: $secondary-gray;
+    }
+    
+    .text {
+      margin-bottom: 2em;
     }
     
     input {
@@ -105,6 +109,7 @@
     #selected-option {
       width: 100%;
       display: block;
+      margin-top: 2px;
     }
     
     #expand-arrow {

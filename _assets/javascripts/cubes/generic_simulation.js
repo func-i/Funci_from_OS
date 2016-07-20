@@ -146,8 +146,9 @@ GenericSimulation.prototype = {
     this.passThroughMesh = this.createPassThroughMesh();
     this.passThroughScene.add(this.passThroughMesh);
 
-    [this.rtPositionCur, this.rtPositionNew] = this.getRenderTargets(this, this.width, this.height);
-
+    var rtPositions = this.getRenderTargets(this, this.width, this.height);
+    this.rtPositionCur = rtPositions[0];
+    this.rtPositionNew = rtPositions[1];
     this.simulationMesh = this.createSimulationMesh()
     this.simulationScene.add(this.simulationMesh);
   }
