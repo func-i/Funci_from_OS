@@ -1,4 +1,6 @@
 @ResizeHelper =
+  currentSceneTranslation: 0
+
   resizeSquares: ($squares) ->
     $squares.css 'width', '100%'
     widths = $squares.map ->
@@ -8,15 +10,38 @@
       $square = $(this)
       $square.css 'width', widths[i]
       $square.css 'height', widths[i]
-      
+  
+  isDesktopSized: () ->
+    window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium
+  
+  resizeIndex: () ->
+    if ResizeHelper.isDesktopSized()
+      $('#index').css('height', window.innerHeight)
+    else
+      $('#index').css('height', '')
+
   resizeScenes: ($scenes) ->
     $scenes.each((index, scene) ->
       $scene = $(scene)
       $scene.css('height', "")
-      if $scene.attr('id') != "footer-scene" || window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium
+      if $scene.attr('id') != "footer-scene" || ResizeHelper.isDesktopSized()
         # Set size of each scene to window height
         $scene.css('height', Math.max(window.innerHeight, $scene.innerHeight()))
     )
+    
+  toggleSceneTransform: () ->
+    if @isDesktopSized()
+      @applySceneTransform(0)
+    else
+      @removeSceneTransform()
+  
+  removeSceneTransform: () ->
+    $('#cube-scenes').css('transform', "")
+    
+  applySceneTransform: (transformDelta) ->
+    if @isDesktopSized()
+      @currentSceneTranslation += transformDelta
+      $('#cube-scenes').css('transform', "translate3d(0, #{@currentSceneTranslation}px, 0)")
 
   resizeNav: ($menuLink) ->
     $navMenu = $('.nav-menu')
@@ -34,7 +59,9 @@
     @resizeSquares($('.square-no-canvas-no-fill'))
     @resizeNav($('.nav-menu-item.active > .nav-menu-item-link'))
     
-    @resizeScenes($('.cubes-scene'))
+    @resizeIndex()
+    @resizeScenes($('.cube-scene'))
+    @toggleSceneTransform()
     
     for canvas in window.canvases
       canvas.orient()

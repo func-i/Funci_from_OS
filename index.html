@@ -6,173 +6,138 @@ description: We build new intricate experiences for the new web.
 <div  id="webgl-cubes-container"></div>
 
 <div id="index"> 
-  <div class="cubes-scene cubes-scene-1">
-    <div class="cubes-scene-content">
-      <h1 id="#page-header">Evolving your business through custom software solutions</h1>
+  <div id="cube-scenes">
+    <div class="cube-scene cube-scene-1">
+      <div class="cube-scene-content">
+        <h1 class="page-header">Evolving your business through custom software solutions</h1>
+      </div>
     </div>
-  </div>
-  <div class="cubes-scene-wrapper-alternate-colors">
-    <div class="cubes-scene cubes-scene-2 fade-out hidden alternate-colors">
-      <div class="cubes-scene-content">
-        <h1>What We Offer</h1>
-        <div id="offering-cards">
-          <div class="card-wrapper">
-            <a href="/services#scaling" class="square-no-canvas card" data-color="yellow">
-              <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
-              <div class="card-icon icon">
-                <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
-              </div>
-              <div class="card-content">
-                <h2 class="card-title">Scaling your business</h2>
-                <ul class="card-list">
-                  <li>Web &amp; Mobile Apps</li>
-                  <li>Backend Software Solutions</li>
-                  <li>Rescue Services</li>
-                </ul>
-              </div>
-              <div class="card-arrow">
-                <i class="fa fa-chevron-right"></i>
-              </div>
+    <div class="cube-scene-wrapper-alternate-colors">
+      <div class="cube-scene cube-scene-2 fade-out hidden alternate-colors">
+        <div class="cube-scene-content">
+          <h1>What We Offer</h1>
+          <div id="offering-cards">
+            <div class="card-wrapper">
+              <a href="/services#scaling" class="square-no-canvas card" data-color="yellow">
+                <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
+                <div class="card-icon icon">
+                  <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
+                </div>
+                <div class="card-content">
+                  <h2 class="card-title">Scaling your business</h2>
+                  <ul class="card-list">
+                    <li>Web &amp; Mobile Apps</li>
+                    <li>Backend Software Solutions</li>
+                    <li>Rescue Services</li>
+                  </ul>
+                </div>
+                <div class="card-arrow">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </a>
+            </div>
+            <div class="card-wrapper">
+              <a href="/services#building" class="square-no-canvas card" data-color="blue">
+                <img src="" style="background-image: url({% asset_path an.png %});" alt="" class="card-image" />
+                <div class="card-icon icon">
+                  <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
+                </div>
+                <div class="card-content">
+                  <h2 class="card-title">Building your capabilities</h2>
+                  <ul class="card-list">
+                    <li>Training</li>
+                    <li>Internal Support</li>
+                    <li>Contract Developers</li>
+                  </ul>
+                </div>
+                <div class="card-arrow">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </a>
+            </div>
+            <div class="card-wrapper">
+              <a href="/services#data" class="square-no-canvas card" data-color="yellow">
+                <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
+                <div class="card-icon icon">
+                  <object data="{% asset_path icons/arrows_out.svg %}" type="image/svg+xml"></object>
+                </div>
+                <div class="card-content">
+                  <h2 class="card-title">Leveraging your data</h2>
+                  <ul class="card-list">
+                    <li>Building Data Infrastructure</li>
+                    <li>Integrations for Data Management </li>
+                    <li>Data Visibility</li>
+                  </ul>
+                </div>
+                <div class="card-arrow">
+                  <i class="fa fa-chevron-right"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="text-center">
+            <a href="/contact.html" class="call-to-action" data-color="blue">
+              <span>Let’s Chat</span>
+              <span class="inline-icon">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </span>
             </a>
           </div>
-          <div class="card-wrapper">
-            <a href="/services#building" class="square-no-canvas card" data-color="blue">
-              <img src="" style="background-image: url({% asset_path an.png %});" alt="" class="card-image" />
-              <div class="card-icon icon">
-                <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
-              </div>
-              <div class="card-content">
-                <h2 class="card-title">Building your capabilities</h2>
-                <ul class="card-list">
-                  <li>Training</li>
-                  <li>Internal Support</li>
-                  <li>Contract Developers</li>
-                </ul>
-              </div>
-              <div class="card-arrow">
-                <i class="fa fa-chevron-right"></i>
-              </div>
-            </a>
-          </div>
-          <div class="card-wrapper">
-            <a href="/services#data" class="square-no-canvas card" data-color="yellow">
-              <img src="" style="background-image: url({% asset_path jb.png %});" alt="" class="card-image" />
-              <div class="card-icon icon">
-                <object data="{% asset_path icons/arrows_out.svg %}" type="image/svg+xml"></object>
-              </div>
-              <div class="card-content">
-                <h2 class="card-title">Leveraging your data</h2>
-                <ul class="card-list">
-                  <li>Building Data Infrastructure</li>
-                  <li>Integrations for Data Management </li>
-                  <li>Data Visibility</li>
-                </ul>
-              </div>
-              <div class="card-arrow">
-                <i class="fa fa-chevron-right"></i>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div class="text-center">
-          <a href="/contact.html" class="call-to-action" data-color="blue">
-            <span>Let’s Chat</span>
-            <span class="inline-icon">
-              <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </span>
-          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="cubes-scene cubes-scene-3 fade-out hidden">
-    <div class="cubes-scene-content">
-      <h1>Our Clients</h1>
-      <div class="client-logos-container">
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/mcmaster.png %}" alt="" id="mcmaster" />
+    
+    <div class="cube-scene-wrapper">
+      <div class="cube-scene cube-scene-3">
+        <div class="cube-scene-content">
+          <h1>Our Clients</h1>
+          <div class="client-logos-container">
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/mcmaster.png %}" alt="" id="mcmaster" />
+            </div>
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/canlii.png %}" alt="" id="canlii" />
+            </div>
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/rogers.png %}" alt="" />
+            </div>
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/fasken.png %}" alt="" />
+            </div>
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/blackberry.png %}" alt="" />
+            </div>
+            <div class="client-logo-container">
+              <img src="{% asset_path logos/dodge.png %}" alt="" />
+            </div>        
+          </div>
+          <div class="text-center">
+            <a href="/about/our_work.html" class="call-to-action" data-color="yellow">
+              <span>Learn More</span>
+              <span class="inline-icon">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
         </div>
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/canlii.png %}" alt="" id="canlii" />
-        </div>
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/rogers.png %}" alt="" />
-        </div>
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/fasken.png %}" alt="" />
-        </div>
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/blackberry.png %}" alt="" />
-        </div>
-        <div class="client-logo-container">
-          <img src="{% asset_path logos/dodge.png %}" alt="" />
-        </div>        
-      </div>
-      <div class="text-center">
-        <a href="/about/our_work.html" class="call-to-action" data-color="yellow">
-          <span>Learn More</span>
-          <span class="inline-icon">
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-          </span>
-        </a>
       </div>
     </div>
+    
+    <div id="footer-scene" class="cube-scene">
+      {% include partials/footer.html %}
+    </div>  
   </div>
   
-  <!-- <div class="cubes-scene cubes-scene-4 fade-out hidden">
-    <div class="cubes-scene-content">
-      <div class="footer-content">
-        <div class="footer-logo-wrapper">
-          <img src="{% asset_path logo.png %}" alt="Functional Imperative" id="footer-logo"/>
-        </div>
-        <div class="footer-list-wrapper">
-          <h3>Social</h3>
-          <ul class="footer-list">
-            <li><a href="/about">Twitter</a></li>
-            <li><a href="/services">LinkedIn</a></li>
-            <li><a href="/blog">Github</a></li>
-            <li><a href="/blog">Facebook</a></li>
-          </ul>
-        </div>
-        <div class="footer-list-wrapper">
-          <h3>Sitemap</h3>
-          <ul class="footer-list">
-            <li><a href="/about">About</a></li>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/blog">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-list-wrapper">
-          <h3>Contact</h3>
-          <div class="footer-list contact">
-            <a href="tel:647-405-8994">647-405-8994</a><br>
-            <a href="mailto:info@functionalimperative.com">info@functionalimperative.com</a>
-            <p>
-              <br/>
-              46 Spadina Ave.<br/>
-              Fl. 4<br/>
-              Toronto, ON M5V 2H8<br/>
-              Canada
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  
-  <div id="footer-scene" class="cubes-scene fade-out hidden">
-    {% include partials/footer.html %}
-  </div>  
-
-  <div class="cubes-scene-arrow-wrapper" data-direction="up">
-    <a href="" class="cubes-scene-arrow hidden" data-color="white">
+  <div class="cube-scene-arrow-wrapper" data-direction="up">
+    <a href="" class="cube-scene-arrow hidden" data-color="white">
       <i class="fa fa-chevron-up" aria-hidden="true"></i>
     </a>
   </div>
   
-  <div class="cubes-scene-arrow-wrapper" data-direction="down">
-    <a href="" class="cubes-scene-arrow" data-color="white">
+  <div class="cube-scene-arrow-wrapper" data-direction="down">
+    <a href="" class="cube-scene-arrow" data-color="white">
       <i class="fa fa-chevron-down" aria-hidden="true"></i>
     </a>
   </div>
+  
 </div>

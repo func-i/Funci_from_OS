@@ -1,13 +1,21 @@
 #index {
-  height: 100%;
   overflow: hidden;
   
-  #page-header {
+  .page-header {
     font-size: 3em;
   }
   
   #offering-cards {
+    @extend .row;
     margin-bottom: 2em;
+  }
+  
+  #cube-scenes {
+    
+    @media #{$large-up} {
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.5s;
+    }
   }
   
   .client-logos-container {
@@ -78,7 +86,7 @@
     width: 75%;  
   }
   
-  .cubes-scene-3 {
+  .cube-scene-3 {
     h1 {
       text-align: center;
       color: $yellow;
