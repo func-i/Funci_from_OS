@@ -22,4 +22,12 @@
       margin-top: 1em;
     }
   }
+  
+  table {
+    table-layout: fixed;
+  }
+  
+  th, td {
+    width: 50%;
+  }
 }
