@@ -7,7 +7,11 @@
   transition: visibility $delay ease-in-out 0s,
               opacity $delay ease-in-out 0s;
   top: 0;
-  left: 50px;
+  left: 35px;
+  
+  @media #{$large-up}{
+    left: 50px;
+  }
   
   .nav-sub-menu-item {
     @include base-menu-item-styling;
