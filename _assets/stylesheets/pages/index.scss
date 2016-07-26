@@ -14,7 +14,7 @@
     
     @media #{$large-up} {
       transform: translate3d(0, 0, 0);
-      transition: transform 0.5s;
+      transition: transform $scene-transition-duration;
     }
   }
   

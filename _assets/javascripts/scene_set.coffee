@@ -6,6 +6,7 @@ class SceneSet
   ARROW_TRANSITION_CLASS: 'fade-out'
   ARROW_HIDDEN_CLASS: 'hidden'
   
+  previousScrollDelta: 0
   isScrolling: false
   sceneIndex: 0
   sceneInfo: [
@@ -55,25 +56,24 @@ class SceneSet
     (sceneDelta > 0 && @sceneIndex < @scenes.length - 1) || (sceneDelta < 0 && @sceneIndex > 0)
   
   #----------------- SCENE CHANGE FUNCTIONS -----------------
+  # The function decides how to change the scenes
   switchScene: (sceneDelta) ->
     if (@canScroll(sceneDelta) && !@cubes.isScrolling)
       @isScrolling = true
       $scene = @currentScene()
-      $scene.css('transition-duration', .5 * @cubes.getScrollDurationInSeconds() + 's')
       @sceneIndex += sceneDelta
       @hideOrShowArrows(@sceneIndex)
       
       if @shouldCubesRotate(sceneDelta)
-        # In this case, we're going to
+        # In this case, we're going to 
         # 1. Fade out current scene
-        # 2. The opacity transition end will trigger the scrollToScene
-        # 3. The transform transition end will trigger the fade-in of next scene
+        # 2. The opacity transition end will trigger the scrollToScene and fade in (through event callbacks)
         @hideScene($scene)
         @cubes.onScroll(@sceneIndex, sceneDelta)
       else
         # In this case, we're going to
         # 1. Scroll to the next scene (everything is already opaque at this point)
-        @scrollToScene(@currentScene())
+        @scrollToScene()
       
   showScene: ($scene) ->
     $scene.removeClass(@SCENE_TRANSITION_CLASS)
@@ -81,26 +81,36 @@ class SceneSet
   hideScene: ($scene) ->
     $scene.addClass(@SCENE_TRANSITION_CLASS)
   
-  scrollToScene: ($scene) ->
-    # Apply transform takes the DELTA, ie the difference 
-    # between current translation and new translation
-    ResizeHelper.applySceneTransform(-1 * $scene.offset().top)
+  scrollToScene: () ->
+    # Our resize helper assumes that the scenes are the same height as the window.innerHeight!
+    ResizeHelper.applySceneTransform(@sceneIndex)
   
   
   # ----------------- EVENT LISTENERS -----------------
   onSceneTranslationEnd: (event) ->
-    # After translation, fade in current scene
-    @showScene(@currentScene())
+    # After translation, allow scrolling again
     @isScrolling = false
     
   onSceneTransitionEnd: (event) ->
+    event.stopPropagation()
     $scene = $(event.target)
     # If our scene is the one fading out (ie not the current scene) then scroll to next
     if ($scene.hasClass(@SCENE_TRANSITION_CLASS))
-      @scrollToScene(@currentScene())
+      scene = @currentScene()
+      @showScene(scene)
+      @scrollToScene(scene)
 
-  onScroll: (event) ->      
-    @switchScene(Math.sign(event.deltaY))
+  onScroll: (event) ->
+    scrollDelta = event.deltaY
+    scrollAcceleration = Math.abs(scrollDelta) - Math.abs(@previousScrollDelta)
+    
+    sceneDelta = Math.sign(scrollDelta)
+    # Only trigger scroll if scroll acceleration is positive!
+    # This helps us deal with the OSX touchpad inertia
+    if sceneDelta != 0 && scrollAcceleration > 0
+      @switchScene(sceneDelta)
+      
+    @previousScrollDelta = scrollDelta
     
   onKeyPress: (event) ->
     keynum = event.keyCode

@@ -80,7 +80,7 @@
   left: 0;
   display: flex;
   align-items: center;
-  transition: opacity 0.5s 0.5s;
+  transition: opacity 0.5s $scene-transition-duration;
   opacity: 1;
   padding: 4em 0;
   
@@ -110,7 +110,9 @@
   
   &-arrow {
     opacity: 0.5;
-    transition: opacity 0.5s, color 0.5s, visibility 0.5s;
+    transition: opacity $scene-transition-duration,
+                color $scene-transition-duration,
+                visibility $scene-transition-duration;
     
     &[data-color="white"] {
       color: white;
@@ -144,7 +146,7 @@
     
     &.fade-out {
       opacity: 0;
-      transition: opacity 0.5s;
+      transition: opacity $scene-transition-duration;
     }
         
     &-arrow-wrapper {

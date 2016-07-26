@@ -56,10 +56,10 @@ function InstancedBoxGridGeometry(width, height) {
     this.geometry.attributes.position.needsUpdate = true;
     var newBoxLength = this.calculateBoxLengthInPixels(width, height);
     var scalingRatio = newBoxLength / this.boxLengthInPixels;
-    
-    this.geometry.attributes.position.array.forEach(function(vert, i, verts) {
-      verts[i] *= scalingRatio;
-    });    
+    var vertices = this.geometry.attributes.position.array;
+    for (var i = 0; i < vertices.length; i++) {
+      vertices[i] *= scalingRatio;
+    }
     this.boxLengthInPixels = newBoxLength;
   }
   

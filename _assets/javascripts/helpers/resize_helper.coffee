@@ -1,5 +1,5 @@
 @ResizeHelper =
-  currentSceneTranslation: 0
+  currentSceneIndex: 0
 
   resizeSquares: ($squares) ->
     $squares.css 'width', '100%'
@@ -31,17 +31,17 @@
     
   toggleSceneTransform: () ->
     if @isDesktopSized()
-      @applySceneTransform(0)
+      @applySceneTransform(@currentSceneIndex)
     else
       @removeSceneTransform()
   
   removeSceneTransform: () ->
     $('#cube-scenes').css('transform', "")
     
-  applySceneTransform: (transformDelta) ->
+  applySceneTransform: (sceneIndex) ->
     if @isDesktopSized()
-      @currentSceneTranslation += transformDelta
-      $('#cube-scenes').css('transform', "translate3d(0, #{@currentSceneTranslation}px, 0)")
+      @currentSceneIndex = sceneIndex
+      $('#cube-scenes').css('transform', "translate3d(0, #{-sceneIndex * window.innerHeight}px, 0)")
 
   resizeNav: ($menuLink) ->
     $navMenu = $('.nav-menu')
