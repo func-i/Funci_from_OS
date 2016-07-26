@@ -26,22 +26,30 @@
   }
   
   #as {
-    margin-top: 4em;
+    margin-top: 0em;
+  }
+  
+  #kj {
+    margin-top: 2em;
+  }
+  
+  #ec {
+    margin-top: 3em;
   }
 
   .no-4 {
     position: relative;
-    top: -8em;
+    top: -2em;
   }
   
   .no-5 {
     position: relative;
-    top: -8em;
+    top: -5em;
   }
   
   .no-6 {
     position: relative;
-    top: -8em;
+    top: -6em;
   }
 
   @media screen and (max-width:640px) {
