@@ -31,8 +31,11 @@
     
   toggleSceneTransform: () ->
     if @isDesktopSized()
+      window.scrollTo(0, 0)
+      $('body').css('overflow', 'hidden')
       @applySceneTransform(@currentSceneIndex)
     else
+      $('body').css('overflow', '')
       @removeSceneTransform()
   
   removeSceneTransform: () ->
@@ -59,9 +62,10 @@
     @resizeSquares($('.square-no-canvas-no-fill'))
     @resizeNav($('.nav-menu-item.active > .nav-menu-item-link'))
     
-    @resizeIndex()
-    @resizeScenes($('.cube-scene'))
-    @toggleSceneTransform()
+    if ($('#index').length > 0)
+      @resizeIndex()
+      @resizeScenes($('.cube-scene'))
+      @toggleSceneTransform()
     
     for canvas in window.canvases
       canvas.orient()
