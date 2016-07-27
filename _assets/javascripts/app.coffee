@@ -9,6 +9,7 @@
 #= require ./lib/three.min.js
 #= require ./lib/shader_loader.js
 #= require ./lib/dat.gui.min.js
+#= require ./lib/lethargy.coffee
 
 #------------ Cubes ------------
 #= require ./cubes/box_grid.js

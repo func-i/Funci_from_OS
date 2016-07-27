@@ -9,6 +9,7 @@ class SceneSet
   previousScrollDelta: 0
   isScrolling: false
   sceneIndex: 0
+  lethargy: new window.Lethargy
   sceneInfo: [
     { 
       final_scroll_value: 0.5,
@@ -42,6 +43,7 @@ class SceneSet
     @scenesWrapper = $('#cube-scenes')
     # Have to remove the padding we normally leave for the footer, since here our footer is inline
     $('#body').css('padding-bottom', 0)
+    $('body').css('overflow', 'hidden')
     ResizeHelper.resizeIndex()
     ResizeHelper.resizeScenes(@scenes)
   
@@ -101,16 +103,13 @@ class SceneSet
       @scrollToScene(scene)
 
   onScroll: (event) ->
-    scrollDelta = event.deltaY
-    scrollAcceleration = Math.abs(scrollDelta) - Math.abs(@previousScrollDelta)
-    
-    sceneDelta = Math.sign(scrollDelta)
+    sceneDelta = Math.sign(event.deltaY)
+    scrollCheck = @lethargy.check(event)
+    console.log(scrollAcceleration)
     # Only trigger scroll if scroll acceleration is positive!
     # This helps us deal with the OSX touchpad inertia
-    if sceneDelta != 0 && scrollAcceleration > 0
+    if sceneDelta != 0 && scrollCheck
       @switchScene(sceneDelta)
-      
-    @previousScrollDelta = scrollDelta
     
   onKeyPress: (event) ->
     keynum = event.keyCode
@@ -134,7 +133,7 @@ class SceneSet
   bindEvents: () ->
     @scenes.on("transitionend", @onSceneTransitionEnd.bind(@))
     @scenesWrapper.on("transitionend", @onSceneTranslationEnd.bind(@))
-    window.addEventListener('mousewheel', @onScroll.bind(@))
+    window.addEventListener('wheel', @onScroll.bind(@))
     window.addEventListener('keyup', @onKeyPress.bind(@))
     @arrows.on('click', @onArrowClick.bind(@))
 
