@@ -105,7 +105,6 @@ class SceneSet
   onScroll: (event) ->
     sceneDelta = Math.sign(event.deltaY)
     scrollCheck = @lethargy.check(event)
-    console.log(scrollAcceleration)
     # Only trigger scroll if scroll acceleration is positive!
     # This helps us deal with the OSX touchpad inertia
     if sceneDelta != 0 && scrollCheck
