@@ -7,12 +7,24 @@
   "base",
   "syntax",
 
+  "modules/header",
+  "modules/header/nav-mixins",
+  "modules/header/nav-logos",
+  "modules/header/nav-menu-item",
+  "modules/header/nav-sub-menu",
+  
+  "modules/footer",
   "modules/form",
   "modules/form-email",
   "modules/form-general",
-  "modules/header",
   "modules/logo",
   "modules/social",
+  "modules/cubes",
+  "modules/alternate-color-scheme-wrapper",
+  "modules/scene",
+  "modules/card",
+  "modules/cta-button",
+  "modules/client-logos",
   "modules/table",
 
   "pages/index",
@@ -30,11 +42,14 @@
   "pages/work/client_list",
 
   "pages/about",
+  "pages/about/team",
   "pages/about/join",
   "pages/about/kv",
   "pages/about/jha",
   "pages/about/jb",
   "pages/about/partners",
+  "pages/about/method",
+  "pages/about/our_work",
 
   "pages/404",
 

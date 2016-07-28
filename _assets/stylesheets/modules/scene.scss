@@ -1,0 +1,182 @@
+.scene, .cube-scene {
+  @extend .main-content;
+  padding: 0;
+  position: relative;
+}
+
+.scene-page-header {
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+.scene {
+  @extend .main-content;
+  padding: 4em 0;
+  position: relative;
+  
+  @media #{$small-only} {
+    &:first-child {
+      padding-top: 9em;
+    }
+  }
+  
+  @media #{$medium-up} {
+    padding: 9em 0;
+  }
+}
+
+.scene-squares {
+  @extend .columns;
+  @extend .large-5;
+  @extend .medium-5;
+  
+  @media #{$small-only} {
+    margin-bottom: 3em;
+  }
+}
+
+.scene-text {
+  @extend .columns;
+  @extend .large-7;
+  @extend .medium-7;
+  @extend .small-12;
+}
+
+.scene-text-content {
+  font-size: 115%;
+}
+
+.scene-title-square, .scene-graphic-square {
+  @extend .columns;
+  @extend .small-8;
+  @extend .medium-7;
+  mix-blend-mode: multiply;
+}
+
+.scene-title-square {  
+  @media #{$small-up} {
+    h1 {
+      font-size: 1.6em;
+    }
+  }
+  
+  @media #{$medium-only} {
+    h1 {
+      font-size: 1.5em;
+    }
+  }
+}
+
+.scene-content {
+  @extend .row;
+  @extend .collapse;
+  
+  @media #{$medium-up} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.cube-scene {
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.5s $scene-transition-duration;
+  opacity: 1;
+  padding: 4em 0;
+  
+  &.alternate-colors {
+    color: $dark-gray;
+  }
+  
+  &-content {
+    width: 100%;
+  }
+  
+  &-arrow-wrapper {
+    position: absolute;
+    display: none;
+    width: 100%;
+    font-size: 26pt;
+    text-align: center;
+    
+    &[data-direction="up"] {
+      top: 20px;
+    }
+    
+    &[data-direction="down"] {
+      bottom: 20px;
+    }
+  }
+  
+  &-arrow {
+    opacity: 0.5;
+    transition: opacity $scene-transition-duration,
+                color $scene-transition-duration,
+                visibility $scene-transition-duration;
+    
+    &[data-color="white"] {
+      color: white;
+    }
+    
+    &[data-color="dark-gray"] {
+      color: $dark-gray;
+    }
+    
+    &[data-color="yellow"] {
+      color: $yellow
+    }
+    
+    &:hover {
+      opacity: 1;
+    }
+    
+    &.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    i {
+      pointer-events: none;
+    }
+  }
+  
+  @media #{$large-up-width-or-height} {
+    background: none;
+    padding: 0;
+    
+    &.fade-out {
+      opacity: 0;
+      transition: opacity $scene-transition-duration;
+    }
+        
+    &-arrow-wrapper {
+      display: inline-block;
+    }
+  }
+}
+
+.cube-scene-wrapper {
+  background-color: $dark-gray;
+  
+  &-alternate-colors {       
+  background-color: white;
+
+    @media #{$large-up-width-or-height} {
+      background: none;
+    }
+  }   
+}
+
+
+// This is the override if they don't have the necessary webgl extensions
+.cube-scene-wrapper-alternate-colors.lack-of-webgl-override {
+  background-color: white;// !important;
+  
+  .fade-out {
+    opacity: 1;//            !important;
+  }
+}

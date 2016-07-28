@@ -202,9 +202,21 @@
 .fa-caret-up:before {
   content: "\f0d8";
 }
+
+.fa-chevron-up:before {
+  content: "\f077";
+}
+.fa-chevron-down:before {
+  content: "\f078";
+}
+
+
 .fa-chevron-left:before {
   content: "\f053";
 }
 .fa-chevron-right:before {
   content: "\f054";
+}
+.fa-bars:before { 
+  content: "\f0c9"; 
 }

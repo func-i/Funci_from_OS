@@ -4,143 +4,143 @@ title: Functional Imperative | Contact
 description: We build new intricate experiences for the new web.
 ---
 
-<div id="contact" class="row collapse main-content">
-  <div class="canvas">
-    <div class="row collapse">
-      <div class="large-7 large-push-5 medium-6 medium-push-6 columns">
-        <div class="row collapse">
-          <div class="large-8 medium-10 columns">
-            <div id="address" class="square text" data-type="outlined" data-color="blue">
-              <div class="text-content">
-                <h3 data-cms="address">
-                  46 Spadina Ave.<br/>
-                  Fl. 4<br/>
-                  Toronto, ON M5V 2H8<br/>
-                  Canada
-                </h3>
-                <h3 data-cms="phone-num">
-                  <a href="tel:647-405-8994" target="_blank">647 405 8994</a>
-                </h3>
-                <p data-cms="site-email">
-                  <a href="mailto:info@functionalimperative.com" target="_blank">info@functionalimperative.com</a>
-                </p>
+<div id="contact">
+  <div class="scene">
+    <div class="scene-page-header">
+      <h1>Thank you for reaching out to us.  We’re excited to get the conversation started.</h1>
+    </div>
+  </div>
+  <div class="alternate-color-scheme-wrapper">
+    <div id="form-wrapper">
+      <div id="form" class="form-general">
+        <p>
+          Please fill out the form below or get in touch with us at <a href="mailto:info@functionalimperative.com">info@functionalimperative.com</a>.  We will respond to you within 1-2 business days.
+        </p>
+        <form>
+          <div class="row">
+            <div class="form-column medium-6 columns">
+              <div class="text field">
+                <label>Name: *</label>
+                <input name="name" type="text" required/>
+              </div>
+              
+              <div class="text field">
+                <label>Organization: *</label>
+                <input name="organization" type="text" required/>
+              </div>
+              
+              <div class="text field">
+                <label>Title: </label>
+                <input name="title" type="text" />
+              </div>
+            </div>
+            <div class="form-column medium-6 columns">
+              <div class="text field">
+                <label>Email: * </label>
+                <input name="email" type="email" required/>
+              </div>
+              
+              <div class="text field">
+                <label>Phone Number: </label>
+                <input name="phone" type="text" />
+              </div>
+              
+              <label>What can we help you with: </label>
+              <div class="select field">
+                <select name="interest">
+                  <option value="Web &amp; Mobile Apps">Web &amp; Mobile Apps</option>
+                  <option value="Backend Software Solutions">Backend Software Solutions</option>
+                  <option value="Rescue">Rescue</option>
+                  <option value="Capability Building">Capability Building</option>
+                  <option value="Data Management">Data Management</option>
+                </select>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="row collapse">
-          <div class="large-8 large-offset-4 medium-10 medium-offset-2 small-9 columns">
-            <div id="map" class="square spacer" data-type="outlined" data-color="yellow">
-              <div id="mapbox"></div>
+          
+          <div class="textarea field">
+            <label>Please tell us a bit about your project:</label>
+            <textarea name="message" maxlength=750 required></textarea>
+          </div>
+          
+          <div>
+            <label class="radiobutton-question">What is your time frame for project completion?</label>
+          </div>
+          <div class="radiobutton field">
+            <div class="row">
+              <div class="radiobutton">
+                <input type="radio" name="timeframe" value="Right Away" id="right-away">
+                <label for="right-away">Right Away</label>                  
+              </div>
+              <div class="radiobutton">
+                <input type="radio" name="timeframe" value="Within 3-6 Months" id="3-months">
+                <label for="3-months">Within 3-6 Months</label>
+              </div>
+              <div class="radiobutton">
+                <input type="radio" name="timeframe" value="It's a long-term project" id="long-term">
+                <label for="long-term">It's a long-term project</label>
+              </div>
+              <div class="radiobutton">
+                <input type="radio" name="timeframe" value="No rush, I’m just getting a quote" id="quote">
+                <label for="quote">No rush, I’m just getting a quote</label>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="large-5 large-pull-7 medium-6 medium-pull-6 columns">
-        <div id="form" class="form-general" data-type="outlined" data-color="blue">
-          <form>
-            <h3>General Inquiries</h3>
-
-            <div class="text field">
-              <label>Name: </label>
-              <input name="name" type="text" />
+          
+          <div>
+            <label class="radiobutton-question">What stage of the solution process are you at?</label>
+          </div>
+          <div class="radiobutton field">
+            <div class="row">
+              <div class="radiobutton">
+                <input type="radio" name="stage" value="Just considering our options" id="initial">
+                <label for="initial">Just considering our options</label>
+              </div>
+              <div class="radiobutton">
+                  <input type="radio" name="stage" value="Actively seeking a strategic partner" id="seeking-partner">
+                  <label for="seeking-partner">Actively seeking a strategic partner</label>
+                </div>
+              <div class="radiobutton">
+                <input type="radio" name="stage" value="Budget approved and ready to solve the problem" id="ready">
+                <label for="ready">Budget approved and ready to solve the problem</label>
+              </div>
             </div>
-
-            <div class="text field">
-              <label>Email: </label>
-              <input name="email-address" type="text" />
+          </div>
+          
+          <div>
+            <label class="radiobutton-question">Why Functional Imperative?</label>
+          </div>
+          <div class="radiobutton field">
+            <div class="row">
+              <div class="radiobutton">
+                <input type="radio" name="why-fi" value="Heard good things from someone I know" id="friend">
+                <label for="friend">Heard good things from someone I know</label>
+              </div>
+              <div class="radiobutton">
+                <input type="radio" name="why-fi" value="Found FI online" id="online">
+                <label for="online">Found FI online</label>
+              </div>
+              <div class="radiobutton">
+                <input type="radio" name="why-fi" value="Worked with you in the past" id="past-experience">
+                <label for="past-experience">Worked with you in the past</label>
+              </div>
             </div>
-
-            <div class="select field">
-              <label>Interest: </label>
-              <select name="interest">
-                <option value="Potential client">Potential client</option>
-                <option value="Case studies">Case studies</option>
-                <option value="Site inquiry">Site inquiry</option>
-                <option value="Development questions">Development questions</option>
-                <option value="Jobs">Jobs</option>
-              </select>
-            </div>
-
-            <div class="textarea field">
-              <label>Message: </label>
-              <textarea name="message" maxlength=250></textarea>
-            </div>
-
-            <div class="submit">
+          </div>
+          <div class="submit">
+            <div class="submit-button-wrapper" data-color="blue">
               <input type="submit" name="submit" value="Send" />
             </div>
-          </form>
-
-          <div id="form-success" style="display: none;">
-            <h2>Thanks!</h2>
-            <p>We'll respond as soon as we can.</p>
           </div>
-        </div>
+        </form>
       </div>
     </div>
-
-    <div class="row collapse">
-      <div class="medium-3 medium-offset-2 small-6 columns">
-        <div id="social-icons">
-          <div class="row collapse">
-            <div class="small-6 columns">
-              <div class="icon-container linkedin">
-                <div class="square icon linkedin" data-type="outlined" data-color="yellow">
-                  <a href="http://www.linkedin.com/company/functional-imperative" target="_blank">
-                    <object data="{% asset_path icons/linkedin.svg %}" type="image/svg+xml"></object>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="small-6 columns">
-              <div class="icon-container twitter">
-                <div class="square icon twitter" data-type="outlined" data-color="blue">
-                  <a href="http://twitter.com/func_i" target="_blank">
-                    <object data="{% asset_path icons/twitter.svg %}" type="image/svg+xml"></object>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row collapse">
-            <div class="small-6 columns">
-              <div class="icon-container phone">
-                <div class="square icon phone" data-type="outlined" data-color="blue">
-                  <a href="tel:647-405-8994" target="_blank">
-                    <object data="{% asset_path icons/phone.svg %}" type="image/svg+xml"></object>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="small-6 columns">
-              <div class="icon-container email">
-                <div class="square icon email" data-type="outlined" data-color="yellow">
-                  <a href="mailto:info@functionalimperative.com" target="_blank">
-                    <object data="{% asset_path icons/email.svg %}" type="image/svg+xml"></object>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  </div>
+  <div id="form-success" style="display: none;">
+    <div class="alternate-color-scheme-wrapper">
+      <div class="scene">
+        <h2>Thanks!</h2>
+        <p>We'll respond as soon as we can.</p>
       </div>
-      <div class="medium-3 medium-offset-2 small-9 small-offset-3 columns">
-        <div id="jobs" class="square text" data-type="outlined" data-color="yellow">
-          <div data-cms="contact-jobs" class="text-content">
-            <h4>Working at FI</h4>
-            <p>
-              We’re hiring. Get in touch.<br/>
-              <small>
-                <a href="mailto:info@functionalimperative.com" target="_blank">email us</a>
-              </small>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="medium-2 columns"></div>
     </div>
   </div>
 </div>

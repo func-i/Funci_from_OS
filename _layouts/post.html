@@ -18,29 +18,29 @@
     {% assign author = site.data.authors[page.author] %}
     <div id="body">
       {% include partials/header.html %}
-      <div id="post" class="row collapse main-content">
-        <div class="canvas">
+      <div class="alternate-color-scheme-wrapper">
+        <div id="post" class="row collapse main-content">
           <div class="row collapse">
             <div class="large-3 medium-4 columns">
               <div class="row collapse post-info">
                 <div class="small-12 columns">
-                  <div class="square text" data-type="outlined" data-rollover="true" data-color="yellow">
+                  <a href="{{ page.url }}" class="square-no-canvas fill text" data-type="outlined" data-rollover="true" data-color="yellow">
                     <div class="text-content">
                       <h2>
-                        <a href="{{ page.url }}">{{ page.title }}</a>
+                        {{ page.title }}
                       </h2>
                       <small>{{ page.subtitle }}</small>
                     </div>
-                  </div>
+                  </a>
                 </div>
                 <div class="large-8 medium-7 small-6 columns">
-                  <div class="square text" data-type="outlined" data-rollover="true" data-color="blue">
+                  <a href="{{ author.link }}" class="square-no-canvas fill text" data-type="outlined" data-rollover="true" data-color="blue">
                     <div class="text-content">
                       <small>
-                        by <a href="{{ author.link }}">{{ author.fullname }}</a> on {{ page.date | date_to_string }}
+                        by {{ author.fullname }} on {{ page.date | date_to_string }}
                       </small>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -54,9 +54,10 @@
               {% include partials/social.html %}
             </div>
           </div>
-        </div>
-      {% include partials/footer.html %}
+      </div>
     </div>
+    {% include partials/footer.html %}
+  </div>
   {% javascript app %}
   </body>
 </html>

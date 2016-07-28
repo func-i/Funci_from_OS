@@ -1,0 +1,35 @@
+.nav-sub-menu {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility $delay ease-in-out 0s,
+              opacity $delay ease-in-out 0s;
+  top: 0;
+  left: 35px;
+  
+  @media #{$large-up}{
+    left: 50px;
+  }
+  
+  .nav-sub-menu-item {
+    @include base-menu-item-styling;
+    max-width: 23%;
+    
+    @media #{$medium-up}{
+      max-width: 32%;
+    }
+  }
+  
+  .nav-sub-menu-item-link {
+    @include base-menu-link-styling;
+  }
+  
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility $delay ease-in-out calc(2 * #{$delay}),
+                opacity $delay ease-in-out calc(2 * #{$delay});
+  }
+}

@@ -1,0 +1,60 @@
+.nav-menu-item {
+  @include base-menu-item-styling;
+  overflow: hidden;
+  max-width: 25%;
+  
+  transition: visibility $delay, 
+              opacity $delay calc(2 * #{$delay}),
+              width $delay $delay;
+  
+  .nav-menu-item-link {
+    @include base-menu-link-styling;
+  }
+    
+  .nav-menu-item-text {
+    display: inline-block;
+    transition: opacity $delay, max-width $delay $delay;
+    overflow: hidden;
+    pointer-events: none;
+    margin-right: 5px;
+    max-width: 100px;
+  }
+    
+  i {
+    pointer-events: none;
+    vertical-align: top;
+    transition: transform $delay $delay,
+                color $delay $delay;
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  .nav-sub-menu-active & {
+    opacity: 0;
+    width: 0;
+    transition: opacity $delay, width $delay $delay;
+    
+    &.active {
+      transition: width $delay $delay;
+      width: 35px;
+      opacity: 1;
+      
+      @media #{$medium-up} {
+        width: 50px;
+      }
+      
+      .nav-menu-item-text {
+        opacity: 0;
+        max-width: 0;
+        transition: opacity $delay, max-width $delay $delay;
+      }
+      
+      i {
+        color: $green;
+        transform: rotateZ(180deg);
+      }
+    }
+  }  
+}

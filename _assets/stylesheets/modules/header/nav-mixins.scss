@@ -1,0 +1,21 @@
+@mixin base-menu-item-styling {
+  width: 100px;
+  text-align: center;
+  display: inline-block;
+  height: $letter-width;
+  font-size: calc(0.25 * #{$letter-width});  
+  
+  @media #{$medium-up} {
+    font-size: calc(0.3 * #{$letter-width});
+  }
+}
+
+@mixin base-menu-link-styling {
+  display: inline-block;
+  width: 100%;
+  padding: calc(0.39 * #{$letter-width}) 0;
+  
+  @media #{$medium-up} {
+    padding: calc(0.34 * #{$letter-width}) 0;
+  }
+}

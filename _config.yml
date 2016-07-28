@@ -12,6 +12,7 @@ gems:
 keep_files:
   - ./assets/logo_mini.png
   - ./assets/Lighthouse.png
+  - ./assets/shaders/*.glsl
 
 exclude: [
   Rakefile,
@@ -29,15 +30,22 @@ paginate_path: "blog/page:num"
 excerpt_separator: <!--more-->
 
 assets:
+  cache: false
+  
+  assets:
+    - "*.glsl"
+  
   sources:
     - _assets
     - _assets/fonts
     - _assets/images
     - _assets/javascripts
     - _assets/stylesheets
+    - _assets/shaders/
 
   digest: false
   compress:
     css: false
     js: false
+    glsl: false
 

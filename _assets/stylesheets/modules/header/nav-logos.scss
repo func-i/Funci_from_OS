@@ -1,0 +1,42 @@
+.nav-logo-container {
+  $offset: 80%; 
+
+  position: absolute;
+  height: $letter-width;
+  z-index: 3;
+  
+  .nav-logo-letter {
+    &-first, &-second {
+      display: inline-block;
+      width: $letter-width;
+      height: $letter-width;
+      mix-blend-mode: multiply;
+    }
+    
+    &-first {        
+      background: url(asset_path("images/f_letter.png"));
+      background-size: cover;
+    }      
+    
+    &-second {
+      position: absolute;
+      top: $offset;
+      left: 0%;
+      background: url(asset_path("images/i_letter.png"));
+      background-size: cover;
+      // Move to the left, and then down;
+      transition: left $delay,
+                  top $delay $delay;
+      
+      nav.hidden & {
+        @media #{$large-up} {
+          top: 0%;
+          left: $offset;
+          // Move to the top, and then to the right;
+          transition: top $delay, 
+                      left $delay $delay;
+        }
+      }
+    }
+  }    
+} 

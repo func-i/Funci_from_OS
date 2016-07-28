@@ -1,26 +1,148 @@
 #index {
-  #tweet {
-    margin-top: 2em;
-
-    #tweet-content {
-      @include word-wrap();
+  .scene-page-header {
+    h1 {
+      font-size: 3em;
     }
   }
-
-  #eventstream {
-    top: -5em;
+  
+  #offering-cards {
+    @extend .row;
+    margin-bottom: 2em;
+  }
+  
+  #cube-scenes {
+    
+    @media #{$large-up-width-or-height} {
+      transform: translate3d(0, 0, 0);
+      transition: transform $scene-transition-duration;
+    }
+  }
+  
+  .client-logos-container {
+    margin-bottom: 2em;
+  }
+  
+  .client-logo-container {
+    padding: 2em 1em;
+    
+    @media #{$medium-up} {
+      padding: 2em;
+    }
+  }
+  
+  .columns {
+    padding: 10px;
   }
 
-  #address {
-    margin-top: 3em;
-  }
+  .card {
+    width: 100%;
+    margin: 0;
 
-  #votecompass {
-    top: -7em;
+    &-icon {
+      height: 25%;
+      margin-bottom: 11%;
+    }
+    
+    &-content {
+      position: relative;
+    }
+    
+    &-title {
+      margin-bottom: 0.4em;
+      opacity: 1;
+      transition: opacity $transition-duration $transition-duration;
+    }
+    
+    &-list {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      font-size: 1.2em;
+      transition: opacity $transition-duration;
+    }
+    
+    &:hover {
+      text-decoration: none;
+      
+      .card-list {
+        opacity: 1;
+        transition: opacity $transition-duration $transition-duration;
+      }
+      
+      .card-title {        
+        opacity: 0;
+        transition: opacity $transition-duration;
+      }
+    }
   }
+  
+  #mcmaster {
+    width: 80%;
+  }
+  
+  #canlii {
+    width: 75%;  
+  }
+  
+  .cube-scene-3 {
+    h1 {
+      text-align: center;
+      color: $yellow;
+    }
+  }
+  
+  #footer-scene {
+    .footer {
+      position: relative;
+      height: auto;
+    }
+    
+    .footer-logo-wrapper {
+      @extend .large-12;
+    }
+    
+    .footer-list-wrapper {
+      @extend .large-3;
+    }
+    
+    @media #{$screen} and (max-width:#{upper-bound($medium-range)}) {
+      margin: 0;
+      max-width: 100%;
+      padding: 0;
+    }
+    
+    @media #{$screen} and (max-height:#{$max-height}) {
+      padding: 0;
+    }
+    
+    @media #{$large-up-width-or-height} {
+      color: $dark-gray;
+      
+      .footer {
+        background: none;
+        padding-top: 0;
+        border-top: 0;
+        height: auto;
+      }
+      
+      #footer-logo {
+        width: 600px;
+      }
+      
+      .footer-list {
+        color: #6a6a6a;
+      }
+    }
+  }
+}
 
-  #social-icons {
-    margin-top: 2em;
+#footer-scene-wrapper {
+  background: $dark-gray;
+  
+  @media #{$large-up-width-or-height} {
+    background: white;
   }
 }
 

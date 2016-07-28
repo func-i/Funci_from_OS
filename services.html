@@ -3,93 +3,113 @@ layout: default
 title: Functional Imperative | Services
 description: We build new intricate experiences for the new web.
 ---
-
-<div id="services" class="row collapse main-content">
-  <div class="row collapse">
-    <div class="medium-7 large-7 columns canvas">
-      <div class="row collapse">
-        <div class="small-9 medium-12 large-11 columns">
-          <div class="square text spacer" id="services-header" data-type="outlined" data-rollover="true" data-color="yellow">
-            <a href="#intro">
-              <div class="text-content">
-                <h2 data-cms="services-head">
-                  Discover how FI can help your business evolve
-                </h2>
-              </div>
-            </a>
+<div id="services">
+  
+  <div class="scene">
+    <div class="scene-text-content">
+      <h1>Discover how FI can help your business evolve</h1>
+      <p>
+        Through our broad technical scope, access to Canada’s top tech 
+        communities, and our defined methodology, we’re uniquely equipped 
+        to identify and deliver tailored solutions to help your business 
+        succeed.
+      </p>
+    </div>
+    <div id="service-cards">
+      <div class="card-wrapper">
+        <a href="#scaling" class="square-no-canvas card" data-color="yellow">
+          <img src="" style="background-image: url({% asset_path cards/scaling_bg.png %});" alt="" class="card-image" />
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
           </div>
-        </div>
+          <div class="card-content">
+            <h2 class="card-title">Scaling your business</h2>            
+          </div>
+          <div class="card-arrow down">
+              <i class="fa fa-chevron-down"></i>
+          </div>
+        </a>
+      </div>
+      <div class="card-wrapper">
+        <a href="#building" class="square-no-canvas card" data-color="blue">
+          <img src="" style="background-image: url({% asset_path cards/building_bg.png %});" alt="" class="card-image" />
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Building your capabilities</h2>
+          </div>
+          <div class="card-arrow down">
+              <i class="fa fa-chevron-down"></i>
+          </div>
+        </a>
+      </div>
+      <div class="card-wrapper">
+        <a href="#data" class="square-no-canvas card" data-color="yellow">
+          <img src="" style="background-image: url({% asset_path cards/data_bg.png %});" alt="" class="card-image" />
+          <div class="card-icon icon">
+            <object data="{% asset_path icons/arrows_out.svg %}" type="image/svg+xml"></object>
+          </div>
+          <div class="card-content">
+            <h2 class="card-title">Leveraging your data</h2>
+          </div>
+          <div class="card-arrow down">
+              <i class="fa fa-chevron-down"></i>
+          </div>
+        </a>
       </div>
     </div>
-    <div class="medium-5 large-5 columns canvas" id="services-links">
-      <div class="row collapse">
-        <div class="small-6 small-offset-6 medium-6 medium-offset-1 large-6 columns">
-          <div class="square text services-second" data-type="outlined" data-rollover="true" data-color="blue">
-            <a href="#services-first">
-              <div class="text-content">
-                <h3>
-                  Scaling your business
-                </h3>
-              </div>
-            </a>
+  </div>
+  
+  <div class="alternate-color-scheme-wrapper">
+    <div class="scene" id="scaling">
+      <div class="scene-content">      
+        <div class="scene-squares">
+          <div class="scene-title-square">
+            <div class="square-no-canvas fill" data-color="yellow">
+              <h1>Scaling Your Business</h1>
+            </div>
+          </div>
+          <div class="scene-graphic-square">
+            <div class="square-no-canvas fill icon" data-type="outlined" data-color="teal">
+              <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row collapse">
-        <div class="small-6 small-offset-1 medium-6 medium-offset-6 large-6">
-          <div class="square text services-second" data-type="outlined" data-color="yellow">
-            <a href="#services-second">
-              <div class="text-content">
-                <h3>
-                  Building your capabilities
-                </h3>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="row collapse">
-        <div class="small-6 small-offset-3 medium-6 large-6 columns">
-          <div class="square text services-third" data-type="outlined" data-color="blue">
-            <a href="#services-third">
-              <div class="text-content">
-                <h3>
-                  Leveraging your data
-                </h3>
-              </div>
-            </a>
+        <div class="scene-text">
+          <div class="scene-text-content">
+            <p>
+              As a team of individuals who have both worked on and founded several 
+              successful businesses, we have the experience required to know what an
+              organization needs to fill its technical gaps in a way that best meets
+              its business goals.
+            </p>
+            <ul>
+              <li>Web &amp; Mobile Apps</li>
+              <li>Rescue</li>
+              <li>Backend Software Solutions</li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row collapse">
-    <div class="medium-7 columns">
-      <div class="free text">
-        <div class="services-description" id="intro">
-          <p>
-            Through our broad technical scope, access to Canada’s top tech 
-            communities, and our defined methodology, we’re uniquely equipped 
-            to identify and deliver tailored solutions to help your business 
-            succeed.
-          </p>
+  <div class="scene" id="building">
+    <div class="scene-content">
+      <div class="scene-squares">
+        <div class="scene-title-square">
+          <div class="square-no-canvas fill" data-color="yellow">
+            <h1>Capability Building</h1>
+          </div>
         </div>
-        <div class="services-description" id="services-first">
-          <h2>Scaling Your Business</h2>
-          <p>
-            As a team of individuals who have both worked on and founded several 
-            successful businesses, we have the experience required to know what an
-            organization needs to fill its technical gaps in a way that best meets
-            its business goals.
-          </p>
-          <ul>
-            <li>Web &amp; Mobile Apps</li>
-            <li>Rescue</li>
-            <li>Backend Software Solutions</li>
-          </ul>
+        <div class="scene-graphic-square">
+          <div class="square-no-canvas fill icon" data-type="outlined" data-color="teal">
+            <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
+          </div>
         </div>
-        <div class="services-description" id="services-second">
-          <h2>Capability Building</h2>
+      </div>
+      <div class="scene-text">
+        <div class="scene-text-content">
           <p>
             Many teams lack the skill set or scalability required to grow and
             deal with business problems and growing demands.  We don’t.  We offer
@@ -97,69 +117,49 @@ description: We build new intricate experiences for the new web.
             or establish a team from the ground up.
           </p>
         </div>
-        <div class="services-description" id="services-third">
-          <h2>Leveraging Data</h2>
-          <p>
-            Functional Imperative can provide you with the technical infrastructure
-            and management solutions to access the abundance of available information
-            that your organization has flowing through it at any given time.
-          </p>
-          <ul>
-            <li>Building a Data Infrastructure</li>
-            <li>Integrations for Data Management</li>
-            <li>Making Data Visible</li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center">
-        <a href="/contact.html" class="call-to-action" data-color="blue">
-          <span>Let’s Chat</span>
-          <span class="inline-icon">
-            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-          </span>
-        </a>
       </div>
     </div>
-    <div class="medium-5 columns canvas side-icons">
-      <div class="row collapse">
-        <div class="small-8 columns">
-          <div class="icon-container magnifying-glass">
-            <div class="square icon magnifying-glass" data-type="outlined" data-color="yellow">
-              <object data="{% asset_path icons/magnifying_glass.svg %}" type="image/svg+xml"></object>
+  </div>
+  <div class="alternate-color-scheme-wrapper">
+    <div class="scene" id="data">
+      <div class="scene-content">
+        <div class="scene-squares">
+          <div class="scene-title-square">
+            <div class="square-no-canvas fill" data-color="yellow">
+              <h1>Leveraging Data</h1>
+            </div>
+          </div>
+          <div class="scene-graphic-square">
+            <div class="square-no-canvas fill icon" data-type="outlined" data-color="teal">
+              <object data="{% asset_path icons/arrows_out.svg %}" type="image/svg+xml"></object>
             </div>
           </div>
         </div>
-        <div class="small-4 columns">
-          <div class="icon-container tools">
-            <div class="square icon tools" data-type="outlined" data-color="blue">
-              <object data="{% asset_path icons/tools.svg %}" type="image/svg+xml"></object>
-            </div>
-          </div>
-          <div class="icon-container spaceship">
-            <div class="square icon spaceship" data-type="outlined" data-color="blue">
-              <object data="{% asset_path icons/spaceship.svg %}" type="image/svg+xml"></object>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="side-icons-group-two">
-        <div class="row collapse">
-          <div class="small-4 columns">
-            <div class="icon-container faces">
-              <div class="square icon faces" data-type="outlined" data-color="blue">
-                <object data="{% asset_path icons/faces.svg %}" type="image/svg+xml"></object>
-              </div>
-            </div>
-          </div>
-          <div class="small-8 columns">
-            <div class="icon-container globe">
-              <div class="square icon globe" data-type="outlined" data-color="yellow">
-                <object data="{% asset_path icons/globe.svg %}" type="image/svg+xml"></object>
-              </div>
-            </div>
+        <div class="scene-text">
+          <div class="scene-text-content">
+            <p>
+              Functional Imperative can provide you with the technical infrastructure
+              and management solutions to access the abundance of available information
+              that your organization has flowing through it at any given time.
+            </p>
+            <ul>
+              <li>Building a Data Infrastructure</li>
+              <li>Integrations for Data Management</li>
+              <li>Making Data Visible</li>
+            </ul>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div id="cta-scene" class="scene">
+    <div class="text-center">
+      <a href="/contact.html" class="call-to-action" data-color="blue">
+        <span>Let’s Chat</span>
+        <span class="inline-icon">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </span>
+      </a>
     </div>
   </div>
 </div>

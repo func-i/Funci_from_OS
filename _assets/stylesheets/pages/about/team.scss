@@ -1,0 +1,76 @@
+#team {
+  #digital-platforms {
+    font-size: 80%;
+  }
+
+  #jb {
+    margin-top: 3em;
+  }
+
+  .no-2 {
+    position: relative;
+    top: -3em;
+  }
+
+  .no-3 {
+    position: relative;
+    top: -6em;
+  }
+
+  #jha {
+    margin-top: 6em;
+  }
+
+  #an {
+    margin-top: 10em;
+  }
+  
+  #as {
+    margin-top: 0em;
+  }
+  
+  #kj {
+    margin-top: 2em;
+  }
+  
+  #ec {
+    margin-top: 3em;
+  }
+
+  .no-4 {
+    position: relative;
+    top: -2em;
+  }
+  
+  .no-5 {
+    position: relative;
+    top: -5em;
+  }
+  
+  .no-6 {
+    position: relative;
+    top: -6em;
+  }
+
+  @media screen and (max-width:640px) {
+    #jha {
+      margin-top: 0;
+    }
+
+    .no-2 {
+      top: 0;
+    }
+
+    .no-3 {
+      top: 0;
+    }
+
+    #an {
+      margin-top: 0;
+    }
+
+    .no-4 {
+      top: 0;
+    }
+  }
+}

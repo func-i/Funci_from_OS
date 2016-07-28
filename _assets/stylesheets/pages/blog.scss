@@ -24,7 +24,7 @@
   }
 
   a {
-    color: $yellow;
+    color: $blue;
   }
 
   li {
@@ -35,6 +35,10 @@
 
   ol {
     margin-bottom: 1.4rem;
+  }
+  
+  ul {
+    list-style: square;
   }
 
   img {

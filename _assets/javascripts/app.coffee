@@ -1,3 +1,4 @@
+#------------ Lib ------------
 #= require ./lib/twitter.js
 #= require ./lib/mapbox.min.js
 #= require ./lib/jquery-2.1.0.min
@@ -5,7 +6,20 @@
 #= require ./lib/request_animation_frame_polyfill
 #= require ./lib/underscore-min.js
 #= require ./lib/parse-min.js
+#= require ./lib/three.min.js
+#= require ./lib/shader_loader.js
+#= require ./lib/dat.gui.min.js
+#= require ./lib/lethargy.coffee
+
+#------------ Cubes ------------
+#= require ./cubes/box_grid.js
+#= require ./cubes/generic_simulation.js
+#= require ./cubes/wave_sim.js
+#= require ./cubes/scroller.js
+
+#------------ Other ------------
 #= require base
+#= require cubes.js
 #= require header
 #= require contact
 #= require_tree ./canvas
@@ -14,3 +28,4 @@
 #= require_tree ./pages
 #= require canvas
 #= require form-email
+#= require scene_set

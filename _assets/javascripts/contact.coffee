@@ -56,14 +56,23 @@ $.fn.funciSelect = ->
     selectedOption.find('a').text(text)
     toggleArrow()
     ul.slideToggle()
+    false
 
   selectedOption.click ->
     toggleArrow()
     ul.slideToggle()
+    false
 
   arrow.click ->
     toggleArrow()
     ul.slideToggle()
+    false
+    
+  $(window).click ->
+    if ul.css('display') != "none"
+      toggleArrow()
+      ul.slideToggle()
+      false
 
 $ ->
   $('#contact select').funciSelect()
@@ -73,17 +82,40 @@ $ ->
 
   $('#contact form').submit (ev) ->
     ev.preventDefault()
-    $(this).hide()
+    $('#form-wrapper').hide()
     $('#form-success').show()
 
     ResizeHelper.handleResize()
 
-    name     = $('[name="name"]').val()
-    email    = $('[name="email-address"]').val()
-    interest = $('[name="interest"]').val()
-    message  = $('[name="message"]').val()
-
-    body = encodeURIComponent "#{message}\n\n- #{name}\n#{email}"
+    name       = $('[name="name"]').val()
+    title      = $('[name="title"]').val()
+    org        = $('[name="organization"]').val()
+    phone      = $('[name="phone"]').val()
+    email      = $('[name="email"]').val()
+    interest   = $('[name="interest"]').val()
+    message    = $('[name="message"]').val()
+    
+    questions = $('.radiobutton-question').map((i, question) -> 
+      question.textContent
+    ).toArray()
+    answers   = $('.radiobutton > input:radio:checked').map((i, answer) ->
+      answer.value
+    ).toArray()
+    
+    questionText = questions.reduce((str, question, i) -> 
+      str += "#{question}: #{answers[i] || 'Not Answered'}\n"
+    , "")
+      
+    rawBody = "#{message}\n\n\
+    #{questionText}\n\n\
+    -\n\
+    #{name}\n\
+    #{title ? title + '\n' : ''}\
+    #{org}\n\
+    #{phone ? phone + '\n' : ''}\
+    #{email}"
+    
+    body = encodeURIComponent rawBody
 
     mailToLink = "mailto:info@functionalimperative.com?subject=#{interest}&body=" + body + "&target=_blank"
 

@@ -1,30 +1,55 @@
 $ ->
   $body = $('#body')
   $nav  = $('.touch header nav')
-
-  unless $nav.length is 0
-
-    menuActivated = false
-
-    $nav.find('a.has-menu').click (ev) ->
+  $navMenu = $('.nav-menu')    
+  bodyDOM = document.querySelector('body')
+  $navHoverContainer = $('.nav-hover-container')
+  
+  # Need a set width for when we switch to nav-sub-menus (since they are 
+  # positioned absolutely)
+  
+  
+  $(document).scroll (ev) ->
+    distanceTop = bodyDOM.getBoundingClientRect().top
+    if (distanceTop < 0)
+      $('nav').addClass('hidden')
+      $(this).unbind(ev)
+  
+  # This is to prevent the cubies from rotating behind the header text
+  $navMenu.on "mousemove", (ev) ->
+    ev.stopPropagation()
+    
+  $('.nav-logo-container').children().on "mousemove", (ev) ->
+    ev.stopPropagation()
+  
+  $navHoverContainer.on "mouseenter", (ev) ->
+    $('nav').removeClass('hidden')
+  
+  $navHoverContainer.on "mouseleave", (ev) ->
+    width = $navHoverContainer.outerWidth()
+    height = $navHoverContainer.outerHeight()
+    if ev.clientX > width || ev.clientY > height
+      $('nav').addClass('hidden')
+  
+  toggleActive = ($menuLink, shouldBeActive) ->
+    $menuItem = $menuLink.parent()
+    $subMenu = $menuLink.siblings()
+    if shouldBeActive
+      $navMenu.addClass('nav-sub-menu-active')
+      $menuItem.addClass('active')
+      $subMenu.addClass('active')
+      ResizeHelper.resizeNav($menuLink)
+    else
+      $navMenu.removeClass('nav-sub-menu-active')
+      setTimeout(() -> 
+        $navMenu.css('width', '')
+      , 400)
+      $menuItem.removeClass('active')
+      $subMenu.removeClass('active')
+  
+  $('.nav-menu-item-link').click (ev) ->
+    $menuLink = $(ev.target)
+    if $menuLink.hasClass('has-nav-sub-menu')
+      ev.preventDefault()
       ev.stopPropagation()
-
-      $clickedA = $(this)
-      $clickedLi = $clickedA.closest('li')
-      $otherLis = $clickedLi.siblings()
-      $otherAs = $otherLis.find('>a')
-
-      unless $clickedA.hasClass('navigable')
-        ev.preventDefault()
-        $clickedLi.addClass('menu-activated')
-        $clickedA.addClass('navigable')
-        $otherLis.removeClass('menu-activated')
-        $otherAs.removeClass('navigable')
-
-      menuActivated = true
-
-    $('.touch #body').click (ev) ->
-      unless $(this).closest('.sub-menu').length
-        if menuActivated
-          $nav.find('li.menu-activated').removeClass('menu-activated')
-          $nav.find('a.navigable').removeClass('navigable')
+      toggleActive($menuLink, !$menuLink.parent().hasClass('active'))

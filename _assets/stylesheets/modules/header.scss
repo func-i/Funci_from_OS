@@ -1,167 +1,60 @@
+$letter-width: 54px;
+$delay: .2s;
+
+nav {  
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  width: calc(100% - #{$letter-width});
+  
+  @media #{$large-up} {
+    width: auto;
+  }
+  
+  .selected {
+    color: $green;
+  }  
+  
+  &.hidden {
+    
+    @media #{$large-up} {
+      .nav-menu {
+        left: -100%;
+        transition: left $delay;
+      }
+    }
+  }
+  
+  .nav-menu {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: $letter-width;
+    left: $letter-width;
+    background: $dark-gray;
+    border-bottom: solid 1px white;
+    overflow: hidden;
+    z-index: 0;
+    
+    transition: left $delay $delay,
+    width $delay;
+    
+    @media #{$large-up} {
+      display: inline-block;
+      border-right: solid 1px white;
+    }
+  }
+  
+  .nav-hover-container {
+    position: absolute;
+    display: inline-block;
+    top: 0%;
+    width: calc(110% + #{$letter-width});
+    height: 200%;
+  }
+}
+
 header {
   position: relative;
   -webkit-user-select: none;
-
-  nav {
-    @extend .row, .collapse;
-
-    position: relative;
-    z-index: 3;
-
-    .selected {
-      color: $green;
-    }
-
-    > ul {
-      position: relative;
-      z-index: 0;
-      padding: 0;
-      margin: 1.333em 0;
-      text-align: center;
-
-      @media screen and (max-width:640px) {
-        text-align: left;
-        margin: .5em 1em;
-      }
-
-      > li {
-        position: relative;
-        display: inline-block;
-        padding: 1em 0;
-        margin: 0 .75em;
-
-        @media screen and (max-width:640px) { padding: 0; }
-
-        > a {
-          padding: 1em 0;
-
-          @media screen and (max-width:640px) { padding: 0; }
-        }
-
-        &.menu-activated {
-          > .sub-menu {
-            pointer-events: all;
-
-            > ul {
-              -moz-transform: none;
-              -ms-transform: none;
-              -o-transform: none;
-              -webkit-transform: none;
-            }
-          }
-        }
-
-        @media screen and (max-width:640px) {
-          display: block;
-          width: 7em;
-          margin: 0;
-
-          padding: .5em 0 .5em 0;
-
-          > a {
-            padding: .5em 0 .5em 0;
-          }
-        }
-
-        > .sub-menu {
-          pointer-events: none;
-          position: absolute;
-          left: -1em;
-          z-index: 5000;
-          margin-top: 1em;
-
-          -moz-perspective-origin: top;
-          -ms-perspective-origin: top;
-          -o-perspective-origin: top;
-          -webkit-perspective-origin: top;
-          -moz-perspective: 200px;
-          -ms-perspective: 200px;
-          -o-perspective: 200px;
-          -webkit-perspective: 200px;
-
-          @media screen and (max-width:640px) {
-            left: 5em;
-            top: -.6em;
-            margin-top: 0;
-          }
-
-          &:hover {
-            display: block;            
-          }
-
-          > ul {
-            background: $dark-gray;
-            border: solid 1px $green;
-            padding: .5em 1em;
-            text-align: left;
-            width: 11em;
-            height: 11em;
-
-            -moz-transform-style: preserve-3d;
-            -ms-transform-style: preserve-3d;
-            -o-transform-style: preserve-3d;
-            -webkit-transform-style: preserve-3d;
-            -moz-transition: all 0.2s ease-in-out;
-            -ms-transition: all 0.2s ease-in-out;
-            -o-transition: all 0.2s ease-in-out;
-            -webkit-transition: all 0.2s ease-in-out;
-            -moz-transform-origin: top;
-            -ms-transform-origin: top;
-            -o-transform-origin: top;
-            -webkit-transform-origin: top;
-            -moz-transform: rotateX(-90deg);
-            -ms-transform: rotateX(-90deg);
-            -o-transform: rotateX(-90deg);
-            -webkit-transform: rotateX(-90deg);
-
-            > li {
-              position: relative;
-              display: list-item;
-              padding: .5em 0 .5em 0;
-
-              > a {
-                padding: .5em 0 .5em 0;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 }
-
-.no-touch {
-  header nav > ul > li:hover > .sub-menu {
-    pointer-events: all;
-
-    > ul {
-      -moz-transform: none;
-      -ms-transform: none;
-      -o-transform: none;
-      -webkit-transform: none;
-    }
-  }
-}
-
-.no-csstransforms3d {
-  header nav > ul {
-    > li {
-      > .sub-menu {
-        display: none;
-      }
-    }
-
-    > li.menu-activated {
-      > .sub-menu {
-        display: block;
-      }
-    }
-  }
-}
-
-.no-touch.no-csstransforms3d {
-  header nav > ul > li:hover > .sub-menu {
-    display: block;
-  }
-}
-

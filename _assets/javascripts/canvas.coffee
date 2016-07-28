@@ -5,64 +5,16 @@ window.logo = {}
 onHome = ->
   window.location.pathname is "/"
 
-$loading = $('#loading')
-$body    = $('#body')
-
-fadeIn = ->
-  $loading.css('opacity', '0')
-  $body.css('opacity', '1')
-  $loading.remove()
-
 $(window).load ->
   ResizeHelper.handleResize()
 
-##### create logo canvas and context
-if blendingSupported
-  # canvas logo
-  logoCanvas = new LogoCanvas
-    elem: $('#logo-canvas')
-  logoContext = new Context(logoCanvas)
-
-  window.logo = new Logo
-    elem: $('#logo')
-    canvas: logoCanvas
-    context: logoContext
-    screenWidth: $(window).width()
-
-  if onHome() and Modernizr.touch
-    LogoHelper.startAnimation logo
-    logo.popLetters()
-    logo.isPoppin = true
-else
-  # fallback logo imgs
-
-  $logo = $('#logo')
-  anchorHtml = "<a href='http://functionalimperative.com' alt='Functional Imperative'></a>"
-  $logo.append anchorHtml
-  $logoAnchor = $logo.find('a')
-
-  imgFullSrc = $logo.data('imgFull')
-  imgFullHtml = "<img class='full' src='#{imgFullSrc}' alt='Functional Imperative' />"
-  $logoAnchor.append imgFullHtml
-
-  imgSmallSrc = $logo.data('imgSmall')
-  imgSmallHtml = "<img class='small' src='#{imgSmallSrc}' alt='Functional Imperative' />"
-  $logoAnchor.append imgSmallHtml
-
-  $('#logo-canvas').remove()
-
-fadeIn()
-
 ##### make square divs square
-$('.square').each ->
-  $square = $(this)
-  $square.css 'width', ''
-  roundedWidth = Math.round $square.outerWidth()
-  $square.css 'width', roundedWidth
-  $square.css 'height', roundedWidth
+ResizeHelper.resizeSquares($('.square'))
+ResizeHelper.resizeSquares($('.square-no-canvas'))
+ResizeHelper.resizeSquares($('.square-no-canvas-no-fill'))
 
 ##### create canvases and corresponding contexts
-$('.canvas').each (index) ->
+$('#body .canvas').each (index) ->
   canvas = new Canvas
     referenceElem: $(this)
   context = new Context(canvas)
@@ -99,83 +51,6 @@ unless $noTouchIcons.length is 0
     square.context.clear 0, 0, square.canvas.width, square.canvas.height
     for square in square.canvas.squares
       square.draw()
-
-# logo no-touch
-$noTouchLogo = $('.no-touch.canvasblending #logo')
-
-unless $noTouchLogo.length is 0
-  $noTouchLogo.mouseover ->
-    LogoHelper.noTouch.mouseover logo
-
-  $noTouchLogo.mouseout ->
-    LogoHelper.noTouch.mouseout logo
-
-  $noTouchLogo.mousemove (ev) ->
-    LogoHelper.noTouch.mousemove logo, ev
-
-  $noTouchLogo.mousedown (ev) ->
-    LogoHelper.noTouch.mousedown
-      logo: window.logo
-      ev: ev
-      onHome: onHome()
-
-# logo touch
-$touchLogo = $('.touch.canvasblending #logo')
-
-# if on touch device that supports blending
-unless $touchLogo.length is 0
-  $touchLogo.hammer().on 'touch', (ev) ->
-    if logo.isPoppin
-      LogoHelper.reset(logo)
-      logo.isPoppin = false
-
-    mouseX = ev.gesture.touches[0].pageX
-    mouseY = ev.gesture.touches[0].pageY
-
-    # prevent scrolling if playing with logo
-    ev.gesture.preventDefault() if window.logo.isUnderMouse(mouseX, mouseY)
-
-    LogoHelper.startAnimation(window.logo)
-
-  $touchLogo.hammer().on 'tap', (ev) ->
-    LogoHelper.touch.tap
-      logo: window.logo
-      ev: ev
-      onHome: onHome()
-
-    # prevent default hammer release event from firing on tap release
-    ev.gesture.stopDetect()
-
-  holding = false
-  currentHold = undefined
-
-  $('.touch #logo').hammer({hold_timeout: 300}).on 'hold', (ev) ->
-    unless logo.tooDamnSmall()
-      currentHold = new Hold
-        logo: window.logo
-        mouseX: ev.gesture.touches[0].pageX
-        mouseY: ev.gesture.touches[0].pageY
-      window.logo.holding = true
-
-  $touchLogo.hammer().on 'drag', (ev) ->
-    unless logo.tooDamnSmall()
-      LogoHelper.touch.drag
-        logo: window.logo
-        ev: ev
-        hold: currentHold
-
-  pinchStarted = false
-  currentPinch = undefined
-    
-  $touchLogo.hammer().on 'release', (ev) ->
-    window.logo.holding = false
-    currentHold.end() if currentHold isnt undefined
-    currentHold = undefined
-    window.logo.returnHome()
-    setTimeout ->
-      stopAnimations()
-    , 200
-    pinchStarted = false
 
 ##### resize adjustments
 

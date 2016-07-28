@@ -1,0 +1,11 @@
+#webgl-cubes-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+
+  @media #{$large-up} {
+    display: block;
+  }
+}

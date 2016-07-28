@@ -15,27 +15,40 @@ assignTransitionCss = ($paths) ->
     MozTransition: 'fill .5s linear'
     OTransition: 'fill .5s linear'
     transition: 'fill .5s linear'
+    
+onIconMouseEnter = ($paths, $icon) ->
+  (ev) ->
+    # mouseover
+    $paths.css 'fill', BASE_COLORS.darkGray
+    $icon.css { backgroundColor: BASE_COLORS.green } if !Modernizr.csstransitions
+
+onIconMouseOut = ($paths, $icon) ->
+  (ev) ->
+    $paths.css 'fill', ''
+    $icon.css { backgroundColor: "" } if !Modernizr.csstransitions
+    
+applyHoverLogic = ($icon, $hoverElement) ->
+  $object = $icon.find('object')
+  $svgContext = getSvgContext $icon
+  $paths = getPaths $svgContext
+  $svg = getSvg $svgContext
+  assignTransitionCss($paths)
+  
+  $hoverElement.hover onIconMouseEnter($paths, $icon), onIconMouseOut($paths, $icon)
 
 unless Modernizr.touch
   $(window).load ->
+    $cards = $('.card').not('.no-hover')
     $icons = $('.icon').not('.no-hover').not('.logo')
+    
+    # $cards.each ->
+    #   $card = $(this)
+    #   $icon = $card.find('.card-icon')
+    #   applyHoverLogic($icon, $card)
     
     $icons.each ->
       $icon = $(this)
-      $object = $icon.find('object')
-      $svgContext = getSvgContext $icon
-      $paths = getPaths $svgContext
-      $svg = getSvg $svgContext
-      assignTransitionCss($paths)
-
-      $icon.hover (ev) ->
-        # mouseover
-        $paths.css 'fill', BASE_COLORS.darkGray
-        $icon.css { backgroundColor: BASE_COLORS.green } if !Modernizr.csstransitions
-      , ->
-        # mouseout
-        $paths.css 'fill', ''
-        $icon.css { backgroundColor: "" } if !Modernizr.csstransitions
+      applyHoverLogic($icon, $icon)
 
     $logos = $('#business-logos .logo')
     
