@@ -32,7 +32,7 @@
   @extend .medium-5;
   
   @media #{$small-only} {
-    margin-bottom: 2em;
+    margin-bottom: 3em;
   }
 }
 
@@ -41,6 +41,10 @@
   @extend .large-7;
   @extend .medium-7;
   @extend .small-12;
+}
+
+.scene-text-content {
+  font-size: 115%;
 }
 
 .scene-title-square, .scene-graphic-square {
