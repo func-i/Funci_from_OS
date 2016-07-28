@@ -255,7 +255,7 @@ var Cubes = function(htmlScenes) {
     // this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.width, this.height );
     
-    this.waveSim = new Simulation(this.renderer, 2 * this.boxGrid.columnCount, 2 * this.boxGrid.rowCount, waveSimShaderHash);
+    this.waveSim = new WaveSim(this.renderer, 2 * this.boxGrid.columnCount, 2 * this.boxGrid.rowCount, waveSimShaderHash);
     this.waveSim.initSceneAndMeshes();
     
     this.scroller = new Scroller(this.renderer, this.boxGrid.columnCount, this.boxGrid.rowCount, scrollingShaderHash);
@@ -281,6 +281,7 @@ var Cubes = function(htmlScenes) {
     this.mesh = new THREE.Mesh( geometry, this.waveMaterial );
     this.scene.add( this.mesh );
 
+    // If you need to debug the simulation FBOs
     // this.addDebugPlane(this.scene)
     
     this.container.appendChild( this.renderer.domElement );

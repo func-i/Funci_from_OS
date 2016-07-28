@@ -1,6 +1,6 @@
 "use strict";
 
-function Simulation(renderer, width, height, shaderHash) {
+function WaveSim(renderer, width, height, shaderHash) {
   GenericSimulation.call(this, renderer, width, height, shaderHash);
   
   this.getSimulationMaterial = function() {
@@ -49,5 +49,5 @@ function Simulation(renderer, width, height, shaderHash) {
   };
 };
 
-Simulation.prototype = Object.create(GenericSimulation.prototype);
-Simulation.prototype.constructor = Simulation;
+WaveSim.prototype = Object.create(GenericSimulation.prototype);
+WaveSim.prototype.constructor = WaveSim;

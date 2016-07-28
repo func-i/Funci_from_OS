@@ -47,4 +47,4 @@ function Scroller(renderer, width, height, shaderHash) {
 };
 
 Scroller.prototype = Object.create(GenericSimulation.prototype);
-Scroller.prototype.constructor = Simulation;
+Scroller.prototype.constructor = Scroller;

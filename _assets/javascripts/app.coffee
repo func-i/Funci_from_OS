@@ -14,7 +14,7 @@
 #------------ Cubes ------------
 #= require ./cubes/box_grid.js
 #= require ./cubes/generic_simulation.js
-#= require ./cubes/simulation.js
+#= require ./cubes/wave_sim.js
 #= require ./cubes/scroller.js
 
 #------------ Other ------------
