@@ -13,3 +13,5 @@
   medium: 1024
   large: 1440
   xlarge: 1920
+
+@SCREEN_HEIGHT_LOWER_LIMIT = 540

@@ -5,7 +5,8 @@ var Cubes = function(htmlScenes) {
   this.sceneIndex = 0;
   this.loadingManager = new THREE.LoadingManager();
   this.renderer = new THREE.WebGLRenderer({ antialias: false });
-  this.requiredExtensions = ['ANGLE_instanced_arrays', 'OES_texture_float']
+  this.requiredExtensions = ['ANGLE_instanced_arrays', 'OES_texture_float'];
+  this.isInitialized = false;
   // UTILITY FUNCTIONS
 
   //This is the entry point, you should call this to kick everything off.
@@ -40,9 +41,10 @@ var Cubes = function(htmlScenes) {
   this.checkExtensions = function() {
     extensionsAreSupported = [];
     supportedExtensions = this.renderer.getContext().getSupportedExtensions();
-    console.log(supportedExtensions)
+    
     for (var i = 0; i < this.requiredExtensions.length; i++) {
       for (var j = 0; j < supportedExtensions.length; j++) {
+        extensionsAreSupported[i] = false;
         if (this.requiredExtensions[i] === supportedExtensions[j]) {
           extensionsAreSupported[i] = true;
           break;
@@ -90,7 +92,7 @@ var Cubes = function(htmlScenes) {
   };
 
   this.onScroll = function(sceneIndex, sceneDelta) {
-    if (this.isScrolling) return;
+    if (this.isScrolling || !this.isInitialized) return;
     if (sceneIndex - sceneDelta == 0) {
       this.switchToScrollingMaterial();
     }
@@ -282,8 +284,8 @@ var Cubes = function(htmlScenes) {
     // this.addDebugPlane(this.scene)
     
     this.container.appendChild( this.renderer.domElement );
-    
     this.addEventListeners();
+    this.isInitialized = true;
     // this.setUpGui();
     this.animate();
   };

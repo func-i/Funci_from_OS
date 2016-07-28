@@ -12,7 +12,8 @@
       $square.css 'height', widths[i]
   
   isDesktopSized: () ->
-    window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium
+    window.innerWidth > window.SCREEN_WIDTH_UPPER_LIMITS.medium &&
+    window.innerHeight > window.SCREEN_HEIGHT_LOWER_LIMIT
   
   resizeIndex: () ->
     if ResizeHelper.isDesktopSized()

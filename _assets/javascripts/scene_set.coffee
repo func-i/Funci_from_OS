@@ -52,7 +52,7 @@ class SceneSet
     !@isScrolling && @nextSceneIsWithinSet(sceneDelta) && ResizeHelper.isDesktopSized()
   
   shouldCubesRotate: (sceneDelta) ->
-    @sceneIndex is 0 || (@sceneIndex is 1 && sceneDelta > 0)
+    @cubes.isInitialized && (@sceneIndex is 0 || (@sceneIndex is 1 && sceneDelta > 0))
   
   nextSceneIsWithinSet: (sceneDelta) ->
     (sceneDelta > 0 && @sceneIndex < @scenes.length - 1) || (sceneDelta < 0 && @sceneIndex > 0)
@@ -158,13 +158,19 @@ class SceneSet
     if @cubes.checkExtensions()
       @cubes.setOnLoad(onLoadCallback)
       @cubes.loadAndInitialize()
-      @bindEvents()
+    else
+      @overrideSceneBackgrounds()
+      onLoadCallback()
+    @bindEvents()
 
   currentScene: () ->
     @scenes.eq(@sceneIndex)
     
   currentSceneInfo: () ->
     @sceneInfo[@sceneIndex]
+
+  overrideSceneBackgrounds: () ->
+    $('.cube-scene-wrapper-alternate-colors').addClass('lack-of-webgl-override')
 
 $ ->
   if ($('#index').length < 1)

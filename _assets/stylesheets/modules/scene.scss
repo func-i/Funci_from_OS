@@ -140,7 +140,7 @@
     }
   }
   
-  @media #{$large-up} {
+  @media #{$large-up-width-or-height} {
     background: none;
     padding: 0;
     
@@ -161,8 +161,18 @@
   &-alternate-colors {       
   background-color: white;
 
-    @media #{$large-up} {
+    @media #{$large-up-width-or-height} {
       background: none;
     }
   }   
+}
+
+
+// This is the override if they don't have the necessary webgl extensions
+.cube-scene-wrapper-alternate-colors.lack-of-webgl-override {
+  background-color: white;// !important;
+  
+  .fade-out {
+    opacity: 1;//            !important;
+  }
 }
