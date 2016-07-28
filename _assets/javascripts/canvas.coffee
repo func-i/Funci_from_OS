@@ -14,7 +14,7 @@ ResizeHelper.resizeSquares($('.square-no-canvas'))
 ResizeHelper.resizeSquares($('.square-no-canvas-no-fill'))
 
 ##### create canvases and corresponding contexts
-$('.canvas').each (index) ->
+$('#body .canvas').each (index) ->
   canvas = new Canvas
     referenceElem: $(this)
   context = new Context(canvas)
