@@ -155,9 +155,10 @@ class SceneSet
 
   setupWebGLCubes: (onLoadCallback) ->
     @cubes = new Cubes(@sceneInfo)
-    @cubes.setOnLoad(onLoadCallback)
-    @cubes.loadAndInitialize()
-    @bindEvents()
+    if @cubes.checkExtensions()
+      @cubes.setOnLoad(onLoadCallback)
+      @cubes.loadAndInitialize()
+      @bindEvents()
 
   currentScene: () ->
     @scenes.eq(@sceneIndex)

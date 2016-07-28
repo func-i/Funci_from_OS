@@ -85,6 +85,8 @@
         border: solid 2px;
         padding: 0.5em 1em;
         resize: vertical;
+        line-height: 1.7;
+        height: 175px;
       }
     }
     
@@ -152,10 +154,14 @@
       
       position: relative;
       display: inline-block;
-      width: 4em;
-      height: 4em;
-      border: solid 1px $blue;
+      width: 5em;
+      height: 5em;
+      border: solid 2px $blue;
       z-index: 1;
+    
+      @media #{$medium-up} {
+        top: -7em;
+      }
     
       > input {
         color: $blue;

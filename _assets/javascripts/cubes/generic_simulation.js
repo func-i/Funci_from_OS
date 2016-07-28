@@ -8,6 +8,7 @@ var GenericSimulation = function(renderer, width, height, shaderHash) {
 }
 
 GenericSimulation.prototype = {
+  requiredExtensions: ['OES_texture_float'],
   
   setUniform: function(mesh, uniformName, newValue) {
     return mesh.material.uniforms[uniformName].value = newValue;

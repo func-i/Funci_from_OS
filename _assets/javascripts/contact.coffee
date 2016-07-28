@@ -56,14 +56,23 @@ $.fn.funciSelect = ->
     selectedOption.find('a').text(text)
     toggleArrow()
     ul.slideToggle()
+    false
 
   selectedOption.click ->
     toggleArrow()
     ul.slideToggle()
+    false
 
   arrow.click ->
     toggleArrow()
     ul.slideToggle()
+    false
+    
+  $(window).click ->
+    if ul.css('display') != "none"
+      toggleArrow()
+      ul.slideToggle()
+      false
 
 $ ->
   $('#contact select').funciSelect()

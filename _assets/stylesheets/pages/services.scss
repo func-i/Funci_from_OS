@@ -50,19 +50,15 @@
       }
     }
     
-    .scene-graphic-square {
+    .scene-title-square {
       @extend .small-offset-4;
       @extend .medium-offset-5;
     }
     
-    .scene-title-square {
+    .scene-graphic-square {
       @extend .medium-offset-1;
       
       margin-top: -3em;
-      h1 {
-        position: absolute;
-        bottom: 0;
-      }
     }
   }
 

@@ -4,7 +4,8 @@ var Cubes = function(htmlScenes) {
   this.htmlScenes = htmlScenes;
   this.sceneIndex = 0;
   this.loadingManager = new THREE.LoadingManager();
-
+  this.renderer = new THREE.WebGLRenderer({ antialias: false });
+  this.requiredExtensions = ['ANGLE_instanced_arrays', 'OES_texture_float']
   // UTILITY FUNCTIONS
 
   //This is the entry point, you should call this to kick everything off.
@@ -34,6 +35,23 @@ var Cubes = function(htmlScenes) {
     var folder = gui.addFolder("Cube Wave");
     folder.add(this.waveUniforms.min_angle, 'value', 0.01, 0.5).name("Minimum Angle");
     folder.add(this.waveUniforms.min_speed, 'value', 0.01, 0.5).name("Minimum Speed");
+  }
+  
+  this.checkExtensions = function() {
+    extensionsAreSupported = [];
+    supportedExtensions = this.renderer.getContext().getSupportedExtensions();
+    console.log(supportedExtensions)
+    for (var i = 0; i < this.requiredExtensions.length; i++) {
+      for (var j = 0; j < supportedExtensions.length; j++) {
+        if (this.requiredExtensions[i] === supportedExtensions[j]) {
+          extensionsAreSupported[i] = true;
+          break;
+        }
+      }
+    }
+    return extensionsAreSupported.reduce(function(memo, isSupported) {
+      return memo && isSupported;
+    });
   }
 
   this.addDebugPlane = function(scene) {
@@ -231,11 +249,10 @@ var Cubes = function(htmlScenes) {
     
     this.boxGrid = new InstancedBoxGridGeometry(this.width, this.height);
     
-    this.renderer = new THREE.WebGLRenderer({ antialias: false });
     this.renderer.setClearColor( this.htmlScenes[0].end_clear_color );
     // this.renderer.setPixelRatio( window.devicePixelRatio );
     this.renderer.setSize( this.width, this.height );
-
+    
     this.waveSim = new Simulation(this.renderer, 2 * this.boxGrid.columnCount, 2 * this.boxGrid.rowCount, waveSimShaderHash);
     this.waveSim.initSceneAndMeshes();
     
@@ -265,11 +282,6 @@ var Cubes = function(htmlScenes) {
     // this.addDebugPlane(this.scene)
     
     this.container.appendChild( this.renderer.domElement );
-    
-    if (this.renderer.extensions.get( 'ANGLE_instanced_arrays' ) === false ) {
-      alert( "You are missing support for 'ANGLE_instanced_arrays'" );
-      return;
-    }
     
     this.addEventListeners();
     // this.setUpGui();
