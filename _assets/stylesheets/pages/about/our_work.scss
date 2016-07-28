@@ -1,9 +1,11 @@
 #our-work {
   .scene {
-    padding: 6em 0;
+    padding: 8em 0 6em;
     
-    &:first-child {
-      padding-top: 8em;
+    @media #{$large-up} {
+      &:first-child {
+        padding-top: 6em;
+      }
     }
   }
   
