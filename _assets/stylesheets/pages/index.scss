@@ -136,6 +136,12 @@
       }
     }
   }
+  
+  .cube-scene-wrapper:first-child {
+    @media #{$large-up-width-or-height} {
+      background: none;
+    }
+  }
 }
 
 #footer-scene-wrapper {
