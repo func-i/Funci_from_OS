@@ -113,10 +113,15 @@
   }
   
   &-arrow {
+    display: none;
     opacity: 0.5;
     transition: opacity $scene-transition-duration,
                 color $scene-transition-duration,
                 visibility $scene-transition-duration;
+    
+    @media #{$large-up-width-or-height} {
+      display: inline-block;
+    }
     
     &[data-color="white"] {
       color: white;
