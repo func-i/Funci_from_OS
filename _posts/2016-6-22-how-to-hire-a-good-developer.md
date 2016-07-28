@@ -9,9 +9,9 @@ description: Stop getting confused and disoriented when trying to figure out how
 ---
 How on earth does a company or solo entrepreneur find a good developer? For some reason, there’s something about programming and hiring programmers that freak non-tech people out. Perhaps it’s the mystique of it all? 
 
-<center>![programming to non-devs gif]({% asset_path blog_posts/programmer-beep-boop.png %})</center>
-
 <!--more-->
+
+<center>![programming to non-devs gif]({% asset_path blog_posts/programmer-beep-boop.png %})</center>
 
 Afterall, to the non-dev, programming just looks like someone sitting at a computer typing a bunch of alien symbols then doing a bunch of alien things and BAM, somehow we end up with a human relevant app or other piece of software. The fear surrounding finding a good developer seems to be akin to finding a good magician, if being a good magician means having the ability to do magic and x person can do a magical trick, then they can do magic and are a good magician - right?  Similarly, if the developer can do things in this alien language and make human things happen, then it seems they’re a good developer. 
 
