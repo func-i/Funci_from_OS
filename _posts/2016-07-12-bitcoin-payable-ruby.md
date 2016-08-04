@@ -8,6 +8,8 @@ social_image: blog_posts/legaltech.jpg
 description: A Ruby developer's journey into Bitcoin
 ---
 
+# Working with Bitcoin in Ruby
+
 Bitcoin can seem like a complicated technology that is always at the center of one debate or another.
 I was interested in learning to work with Bitcoin and as an experienced developer I was curious as to what kind of barrier I would face as a beginner in the Bitcoin space.
 

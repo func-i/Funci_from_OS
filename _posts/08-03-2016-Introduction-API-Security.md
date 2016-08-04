@@ -5,12 +5,14 @@ author:     kevin
 date:       2016-08-03
 published:  true
 social_image: blog_posts/security3.jpg
-description: Topic: OAUTH 2.0 Social login security. What follows is a step by step introspection of the various HTTP communications that happen between the relevant actors involved, together with a few security considerations where applicable. 
+description: "Topic: OAUTH 2.0 Social login security. What follows is a step by step introspection of the various HTTP communications that happen between the relevant actors involved, together with a few security considerations where applicable."
 ---
 
 # Introduction to API Security with OAUTH 2.0
 
 I recently had a joyous time reading through the RFC6749 Standard Specification for OAuth 2.0. This in combination with RFC6819, OAuth 2.0 Threat Model and Security Considerations and other online resources provide you with a thorough technical understanding of the underlying mechanisms of OAuth 2.0. I recently gave a talk about this topic, a synopsis of which follows below.
+
+<!--more-->
 
 <iframe src="http://www.slideshare.net/func_i/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
 
