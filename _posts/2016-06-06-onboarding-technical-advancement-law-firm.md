@@ -8,6 +8,8 @@ social_image: blog_posts/legaltech.jpg
 description: Taking a look at how law firms can benefit from technical growth, the barriers that prevent widespread adoption and how to avoid these barriers using a concrete methodology. 
 ---
 
+# Getting your Law Firm On board with Technical Growth
+
 Legal technology has turned into #LegalTech… yes, it has its own hashtag.  Whenever a hashtag is involved in something industry specific, and you’re a professional in that industry, you can bet that it is something you should know about.  Of course, “LegalTech” is self explanatory - it simply identifies technical advancements in the legal sphere. 
 
 But, are that many firms really on the #LegalTech train? Or is it simply remaining something fun to talk about when you’re wanting to sound forward thinking and relevant? 
