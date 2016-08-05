@@ -27,6 +27,7 @@ What follows is a step by step introspection of the various HTTP communications 
 ## Authorization Endpoint
 
 At this stage, the client application makes a GET request to the Authorization Server:
+
 ```
 GET /authorize?  
 response_type=code&  
@@ -37,6 +38,7 @@ state=aFodshfj(klMN
 HTTP/1.1 
 Host: server.oauth_provider.com
 ```
+
 In order to invoke the Authorization Code Grant Flow, the `response_type` is set to code. The param: `client_id` is obtained when having registered our client application with the Authorization Server and together with the `redirect_uri` param will ensure that the authorization code that eventually will be issued is confined to our client application.
 
 The specification, RFC6749, states that the Authorization Server MUST ensure that the `redirect_uri` provided corresponds to the one that was registered accordingly. In no case should the Authorization Server allow the client application to be registered without a redirect uri as doing so could potentially be exploited under the Open Redirect Attack see: [OAuth 2.0 Redirection URI Validation](https://hueniverse.com/2011/06/21/oauth-2-0-redirection-uri-validation/). 
@@ -49,12 +51,14 @@ Lastly, the `state` param is an opaque value used by the client to maintain stat
 ## Redirect Endpoint
 
 The response to the above by the Authorization Server to the User Agent is a redirect as follows:
+
 ```
 HTTP/1.1 302 Found  
 Location:https://client.example.com/cb?  
 code=SplxrhJY654090l&  
 state=aFodshfj(klMN
 ```
+
 The browser will extract the relevant redirect URI from the `Location` header, inject it in itself accordingly and thus redirect the user to the corresponding redirect endpoint to rendez-vous with the client application. At this endpoint, the client application should be solely concerned with extracting the authorization code from the URI and if a `state` has been provided, extract the same and verify if it is identical to the one issued in the initial GET request above.
 
 The security considerations of sharing an authorization code as a param in a redirect response are several:
@@ -68,6 +72,7 @@ For this reason, the Authorization Server should submit the Authorization Code w
 ## Token Endpoint
 
 The authorization code only serves as an intermediate step, soon to be traded in for the access token. After the client application has successfully and securely obtained the authorization code, it should forthwith exchange the same for an access token and thus the client application will reach out to the authorization server with a POST request like this:
+
 ```
 POST /token HTTP/1.1  
 Host:server.oauth_provider.com  
@@ -83,7 +88,9 @@ The RFC6749 standard stipulates that a POST request be done as opposed to a GET 
 
 RFC6749 further stipulates that the OAuth Server must support the HTTP Basic authentication scheme for clients that were issued a client secret. In our POST request, this is implemented in the `Authorization` Header that is set to the value: 
 
-`Basic czZCaGRSa3F0MzpnWDFmQmF0M2JWx`
+```
+Basic czZCaGRSa3F0MzpnWDFmQmF0M2JWx
+```
 
 This string is a [Base64 encoding](https://en.wikipedia.org/wiki/Base64) that maps a client identifier together with the client secret of the format: `client_id:client_secret` to a string with characters limited to a subset of 64 ASCII characters that represent the common denominator of most encodings out there and are also printable. RFC2617 confesses that the ‘Basic’ authentication scheme is not a secure method of user authentication, nor that it does in any way protect the entity, which is transmitted in cleartext across the physical network used as the carrier. 
 
@@ -102,6 +109,7 @@ As stated previously, the Authorization Code we obtained in our first interactio
 At this point, a question may come to the reader’s mind that OAuth 2.0 as an Authorization Framework is only concerned with authorization. It does not concern itself with Authentication, thus how does authentication have a place in our OAuth paradigm? The answer is that OAuth 2.0 may not concern itself with User Authentication, as that is handled by another standard such as OpenID, but it does concern itself with the authentication of the client application as this component is one of the main pillars to ensure a secure delivery of the authorization grant to the client application. Over and above that, another advantage of client authentication is the ability to recover from a compromised client by disabling it. An extra security layer can even be introduced by periodic credential rotation. Lastly, it protects the client from substitution of the authorization code.
 
 **If all went well, then the OAuth Server will reply as follows:**
+
 ```
 HTTP/1.1 200 OK  
 Content-Type:application/json;charset=UTF-8  
@@ -116,19 +124,23 @@ Pragma:no-cache
   “example_parameter":"example_value"  
 }
 ```
+
 As we can see, the response body contains our access token and in our case contains a refresh token as well, encoded in JSON format as the `Content-Type` header stipulates. The two remaining headers, `Cache-Control` and `Pragma` are required to be set as such per RFC6749 and both serve the same purpose, namely to communicate that the response should not be cached as per HTTP/1.1 and 1.0 respectively.
 
 ## Obtaining Resources
 
 After having obtained the access token as detailed above, the client application can then use the same to obtain the required resources, and thus may reach out to the resource server as follows:
+
 ```
 GET /resource/1 HTTP/1.1  
 Host: example.com  
 Authorization: Bearer 2YotnFZFEjr1zCsicMWpAA
 ```
+
 The Authorization header in this case contains the access token, signifying that it is a bearer token as opposed to for instance a MAC Token. A bearer token follows the principle, finders keepers, losers weepers, the submission thereof being the final authority in the matter. This of course after a first round trip check with the OAuth Server to confirm the validity of the token as well as the scope thereof. All else equal, the resource server is obliged to comply and will accordingly share the requested resources.
 
 A final note pertains to the Implicit Grant, which as you know pertains to front end web applications that run in the browser without a back end server that is able to securely store a client secret. When a client secret cannot be relied upon, the inclusion thereof falls naught and thus accordingly there is no utility for client authentication. The GET request that the client application will thus make to the OAuth server is more or less the same, with the exception of the `response_type` param to invoke the Implicit Grant instead:
+
 ```
 GET /authorize?  
 response_type=token&  
@@ -137,7 +149,9 @@ state=xyz&
 redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1  
 Host: server.example.com
 ```
+
 Noteworthy to mention here is the response thereof, which shares the access token in the following format:
+
 ```
 HTTP/1.1 302 Found  
 Location:http://example.com/cb#  
@@ -146,6 +160,7 @@ state=xyz&
 token_type=example&  
 expires_in=3600
 ```
+
 The point of consideration is that the `Location` header of the redirect response comes with a hash fragment as opposed to a question mark as we are used to seeing. This fragment is required per RFC6749, as a hash fragment is supposed to be only processed by the browser. Only the browser side client application in Javascript is able to have access to the params that follow. Any potential underlying web server/application server will not have access to them as they get cut out.
 
 It goes without saying that in the absence of client authentication etc., this grant type flow is less secure and should only be resorted to in the case that:
@@ -157,22 +172,22 @@ At most what an attacker could achieve when intercepting your access token is to
 
 ## Further Reading
 
-https://hueniverse.com/2012/07/26/oauth-2-0-and-the-road-to-hell/comment-page-1/
+[https://hueniverse.com/2012/07/26/oauth-2-0-and-the-road-to-hell/comment-page-1/](https://hueniverse.com/2012/07/26/oauth-2-0-and-the-road-to-hell/comment-page-1/)
 
-http://softwaremaniacs.org/blog/2012/07/30/oauth-is-not-a-protocol/en/
+[http://softwaremaniacs.org/blog/2012/07/30/oauth-is-not-a-protocol/en/](http://softwaremaniacs.org/blog/2012/07/30/oauth-is-not-a-protocol/en/)
 
-https://hueniverse.com/2015/09/19/auth-to-see-the-wizard-or-i-wrote-an-oauth-replacement/
+[https://hueniverse.com/2015/09/19/auth-to-see-the-wizard-or-i-wrote-an-oauth-replacement/](https://hueniverse.com/2015/09/19/auth-to-see-the-wizard-or-i-wrote-an-oauth-replacement/)
 
-http://homakov.blogspot.ca/2012/08/saferweb-oauth2a-or-lets-just-fix-it.html
+[http://homakov.blogspot.ca/2012/08/saferweb-oauth2a-or-lets-just-fix-it.html](http://homakov.blogspot.ca/2012/08/saferweb-oauth2a-or-lets-just-fix-it.html)
 
-http://www.oauthsecurity.com/
+[http://www.oauthsecurity.com/](http://www.oauthsecurity.com/)
 
-https://hueniverse.com/2010/09/29/oauth-bearer-tokens-are-a-terrible-idea/ 
+[https://hueniverse.com/2010/09/29/oauth-bearer-tokens-are-a-terrible-idea/](https://hueniverse.com/2010/09/29/oauth-bearer-tokens-are-a-terrible-idea/)
 
 [OAuth 2.0 - Looking Back and Moving On” by Eran Hamme](https://vimeo.com/52882780)  
 
-https://www.youtube.com/watch?v=aBBDW1wsfH0
+[https://www.youtube.com/watch?v=aBBDW1wsfH0](https://www.youtube.com/watch?v=aBBDW1wsfH0)
 
-https://www.youtube.com/watch?v=zAUzVjMhbqw
+[https://www.youtube.com/watch?v=zAUzVjMhbqw](https://www.youtube.com/watch?v=zAUzVjMhbqw)
 
 
