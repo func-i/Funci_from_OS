@@ -154,19 +154,13 @@ class SceneSet
     @arrows.attr('data-color', @sceneInfo[@sceneIndex].arrow_data_color)
 
   setupWebGLCubes: (onLoadCallback) ->
-    contextCreationBombed = false
-    try
-      @cubes = new Cubes(@sceneInfo)
-      hasRequiredExtensions = @cubes.checkExtensions()
-    catch e
-      contextCreationBombed = true
-    
-    if contextCreationBombed
-      @overrideSceneBackgrounds()
-      onLoadCallback()
-    else
+    @cubes = new Cubes(@sceneInfo)
+    if @cubes.initRendererAndCheckExtensions()
       @cubes.setOnLoad(onLoadCallback)
       @cubes.loadAndInitialize()
+    else
+      @overrideSceneBackgrounds()
+      onLoadCallback()
     @bindEvents()
 
   currentScene: () ->

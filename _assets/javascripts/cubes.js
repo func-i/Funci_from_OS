@@ -4,7 +4,6 @@ var Cubes = function(htmlScenes) {
   this.htmlScenes = htmlScenes;
   this.sceneIndex = 0;
   this.loadingManager = new THREE.LoadingManager();
-  this.renderer = new THREE.WebGLRenderer({ antialias: false });
   this.requiredExtensions = ['ANGLE_instanced_arrays', 'OES_texture_float'];
   this.isInitialized = false;
   // UTILITY FUNCTIONS
@@ -38,7 +37,14 @@ var Cubes = function(htmlScenes) {
     folder.add(this.waveUniforms.min_speed, 'value', 0.01, 0.5).name("Minimum Speed");
   }
   
-  this.checkExtensions = function() {
+  this.initRendererAndCheckExtensions = function() {
+    
+    try {
+      this.renderer = new THREE.WebGLRenderer({ antialias: false });
+    } catch (e) {
+      return false;
+    }
+    
     extensionsAreSupported = [];
     supportedExtensions = this.renderer.getContext().getSupportedExtensions();
     
