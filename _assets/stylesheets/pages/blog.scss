@@ -48,6 +48,7 @@
   code {
     background-color: $blue;
     padding: 0.1rem;
+    color: white;
   }
 
   pre, blockquote {
@@ -56,6 +57,7 @@
     code {
       background-color: inherit;
       padding: 0;
+      color: $dark-gray;
     }
   }
 }
