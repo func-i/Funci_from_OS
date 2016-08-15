@@ -47,5 +47,4 @@ I will be perfecting my script on an ongoing basis. Feel free to pit your gaming
 
 ### Additional Documentation
 
-* [RDoc](http://www.rubydoc.info/github/func-i/ruby-schemaverse/master/frames)
 * [Schemaverse tutorial](https://schemaverse.com/tutorial/tutorial.php)
