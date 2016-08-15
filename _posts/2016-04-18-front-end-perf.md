@@ -10,7 +10,7 @@ description: Improve front-end performance through tools, not rules.
 
 ## Follow Up | Owning Your Front-end Performance
 
-My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s [Devmonth](http://devhub.ca/devmonth) about front-end performance.
+My colleague Laith and I recently presented to a healthy crowd at [Devhub](http://devhub.ca)'s Devmonth event about front-end performance.
 
 In our day-to-day work as full-stack devs here at FI, we kept bumping up against front-end performance bottlenecks we couldn't tackle using easy, one-liner, talking point, black and white Rules™. We realized improving front-end performance requires a much deeper understanding of how browsers really work—how we go from an HTML response to pixels on a screen.
 
