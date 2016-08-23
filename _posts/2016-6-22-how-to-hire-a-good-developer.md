@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      How to Hire a Good Dev | Software Programmer
+title:      How to Hire a Good Developer | Software Programmer
 author:     aileen
 date:       2016-06-22
 published:  true
@@ -26,7 +26,7 @@ But, here’s the catch - you don’t exactly want to pay someone and then wait 
 
 Well, first define what “good” means to you. Yeah, of course they need to know how to program and in a way that is going to result in the fulfillment of your development needs - but, what does that really look like *for you*? 
 
-Is your need stylistic? For example, if you need someone who can make your app look pretty - well, then you’re looking for a front-end developer with design experience. If on the other hand you’re looking for something like data management and visibility, well then you’re looking for a developer that knows server side languages like Ruby or Python.  
+Is your need stylistic? For example, if you need someone who can make your app look pretty - well, then you’re looking for a front-end developer with design experience. If on the other hand you’re looking for something like data management and visibility, well then you’re looking for a developer that knows server side languages like Ruby or Python. Likewise, you'll want to take into consideration whether you're hiring for a product developer or someone with vast stack knowledge for [custom software builds](http://www.functionalimperative.com/2016/07/07/why-custom-software-development.html).
 
 Do some research and dig deeper into what exactly a good programmer is to you.  Once you know exactly what you’re looking for in a programmer, then you’re ready to jump into the hunt! But, where to start? 
 
