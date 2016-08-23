@@ -78,7 +78,7 @@ At FI we have a particular methodology for onboarding and completing all project
 
 - Continuous Evolution
 
-Your firm can avoid falling into the status quo rut by adopting a similar process to the onboarding of new technologies in your firm.  Quite simply, here’s a basic blueprint with some suggested specifics to help you succeed in jumping on the progressive #LegalTech train: 
+Your firm can avoid falling into the status quo rut by adopting a similar process to the onboarding of new technologies in your firm; this could mean onboarding [products or custom software development](http://www.functionalimperative.com/2016/04/12/happy-dev-shop.html).  Quite simply, here’s a basic blueprint with some suggested specifics to help you succeed in jumping on the progressive #LegalTech train: 
 
 ### **Targeted Assessment** 
 
