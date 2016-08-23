@@ -9,9 +9,9 @@ description: As co-owner of Lighthouse Labs and Functional Imperative, I am in t
 
 Note: This is a cross-post from the [Lighthouse Labs blog](http://www.lighthouselabs.ca/blog/).
 
-As co-owner of [Lighthouse Labs](http://lighthouselabs.ca) and Functional Imperative, I am in the unique position to understand the realities of hiring students from developer bootcamps like ours. Therefore, one of the questions I get asked most often is what we look for when hiring. To us, hiring a good developer comes down to culture and certain, critical characteristics that we value at FI. In the paragraphs below, I’ll take you through Functional Imperative’s decision to invest in talent emanating from bootcamps.
+As co-owner of [Lighthouse Labs](http://lighthouselabs.ca) and Functional Imperative, I am in the unique position to understand the realities of hiring students from developer bootcamps like ours. Therefore, one of the questions I get asked most often is what we look for when hiring. To us, [hiring a good developer](http://www.functionalimperative.com/2016/06/22/how-to-hire-a-good-developer.html) comes down to culture and certain, critical characteristics that we value at FI. In the paragraphs below, I’ll take you through Functional Imperative’s decision to invest in talent emanating from bootcamps.
 
-Over the past year, Functional Imperative has grown from a small team of senior developers to a larger more diverse group, with different backgrounds, skills levels and interests. This growth, fueled by our investment in the bootcamp model, has had a drastic impact on our company’s culture and processes, mostly for the better. In fact, some of Functional Imperative’s best talent has come from bootcamps.
+Over the past year, Functional Imperative has grown from a small team of senior developers to a larger more diverse group, with different backgrounds, skill levels and interests. This growth, fueled by our investment in the bootcamp model, has had a drastic impact on our company’s culture and processes, mostly for the better. In fact, some of Functional Imperative’s best talent has come from bootcamps.
 
 <!--more-->
 
