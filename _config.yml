@@ -19,7 +19,8 @@ exclude: [
   README.md,
   README-Editors.md,
   Gemfile,
-  Gemfile.lock
+  Gemfile.lock,
+  drafts
 ]
 
 redcarpet:
