@@ -60,7 +60,7 @@
     }
   }
   
-  .alternate-colors & {
+  .alternate-colors &, .alternate-color-scheme-wrapper & {
     &:hover {
       .inline-icon {
         text-decoration: none;

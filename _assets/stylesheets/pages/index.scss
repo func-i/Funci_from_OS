@@ -77,22 +77,57 @@
       }
     }
   }
-  
-  #mcmaster {
-    width: 80%;
-  }
-  
-  #canlii {
-    width: 75%;  
-  }
-  
-  .cube-scene-3 {
-    h1 {
-      text-align: center;
-      color: $yellow;
+
+  .cube-scene-2 {
+    p {
+      font-size: 1.1em;
     }
   }
   
+  .cube-scene-3 {
+    h2 {
+      text-align: center;
+      color: $yellow;
+    }
+
+    #mcmaster {
+      width: 80%;
+    }
+
+    #canlii {
+      width: 75%;
+    }
+  }
+
+  .cube-scene-4 {
+    .call-to-action {
+      font-size: 1.3em;
+    }
+
+    .scene-text-content {
+      font-size: 1.2em;
+    }
+
+    .scene-title-square {
+      @extend .medium-9;
+      @extend .large-8;
+      top: 2em;
+      left: 1em;
+    }
+
+    .scene-graphic-square {
+      @extend .medium-9;
+      @extend .large-8;
+      top: -1em;
+      left: 4em;
+
+      object {
+        display: block;
+        margin: auto;
+      }
+    }
+  }
+
   #footer-scene {
     .footer {
       position: relative;
@@ -130,10 +165,6 @@
       #footer-logo {
         width: 600px;
       }
-      
-      .footer-list {
-        color: #6a6a6a;
-      }
     }
   }
   
@@ -146,10 +177,6 @@
 
 #footer-scene-wrapper {
   background: $dark-gray;
-  
-  @media #{$large-up-width-or-height} {
-    background: white;
-  }
 }
 
 @media screen and (max-width:1024px) {
