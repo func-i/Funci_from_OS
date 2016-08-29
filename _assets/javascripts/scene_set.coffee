@@ -34,6 +34,12 @@ class SceneSet
       start_clear_color: BASE_COLORS.white,
       end_clear_color: BASE_COLORS.white,
       arrow_data_color: "yellow"
+    },
+    {
+      final_scroll_value: 0.5,
+      start_clear_color: BASE_COLORS.white,
+      end_clear_color: BASE_COLORS.darkGray,
+      arrow_data_color: "white"
     }
   ]
   

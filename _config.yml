@@ -19,15 +19,18 @@ exclude: [
   README.md,
   README-Editors.md,
   Gemfile,
-  Gemfile.lock
+  Gemfile.lock,
+  drafts
 ]
 
 redcarpet:
   extensions: ["tables"]
 
 paginate: 5
-paginate_path: "blog/page:num"
+paginate_path: "custom-software-development-company-blog/page:num"
 excerpt_separator: <!--more-->
+
+permalink: "/custom-software-development-company-blog/:title"
 
 assets:
   cache: false

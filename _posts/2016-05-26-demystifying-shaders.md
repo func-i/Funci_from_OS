@@ -34,9 +34,9 @@ You can access the slides
 These are some invaluable resources for learning more about shaders and seeing more advanced examples:
 
 * [Shader School](https://github.com/stackgl/shader-school)
-* [Book of Shaders](www.thebookofshaders.com) by Patricio Gonzalez Vivo
-* [Jaume Sanchez's Blog](www.clicktorelease.com/blog/)
-* [ShaderToy](www.shadertoy.com)
+* [Book of Shaders](http://www.thebookofshaders.com) by Patricio Gonzalez Vivo
+* [Jaume Sanchez's Blog](http://www.clicktorelease.com/blog/)
+* [ShaderToy](http://www.shadertoy.com)
 * [Three.js docs](http://threejs.org/docs)
 
 Figures taken from:

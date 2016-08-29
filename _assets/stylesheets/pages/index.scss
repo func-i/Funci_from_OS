@@ -77,22 +77,78 @@
       }
     }
   }
-  
-  #mcmaster {
-    width: 80%;
-  }
-  
-  #canlii {
-    width: 75%;  
-  }
-  
-  .cube-scene-3 {
-    h1 {
+
+  .cube-scene-2 {
+    h2 {
       text-align: center;
-      color: $yellow;
+    }
+
+    p {
+      font-size: 1.1em;
     }
   }
   
+  .cube-scene-3 {
+    h2 {
+      text-align: center;
+      color: $yellow;
+    }
+
+    #mcmaster {
+      width: 80%;
+    }
+
+    #canlii {
+      width: 75%;
+    }
+  }
+
+  .cube-scene-4 {
+    .call-to-action {
+      font-size: 1.3em;
+    }
+
+    .cube-scene-squares {
+      @extend .row;
+      margin-bottom: -2em;
+
+      @media #{$medium-up} {
+        flex-shrink: 3;
+      }
+    }
+
+    .cube-scene-squares-text {
+      font-size: 1.1em;
+
+      @media #{$medium-up} {
+        padding-left: 2.5em;
+        flex-shrink: 2;
+      }
+    }
+
+    .cube-scene-title-square, .cube-scene-graphic-square {
+      @extend .small-7;
+      @extend .medium-9;
+      @extend .large-8;
+      mix-blend-mode: multiply;
+    }
+
+    .cube-scene-title-square {
+      @extend .small-offset-1;
+    }
+
+    .cube-scene-graphic-square {
+      @extend .small-offset-5;
+      @extend .medium-offset-3;
+
+      top: -2em;
+    }
+
+    @media #{$small-only} {
+      flex-wrap: wrap;
+    }
+  }
+
   #footer-scene {
     .footer {
       position: relative;
@@ -118,8 +174,6 @@
     }
     
     @media #{$large-up-width-or-height} {
-      color: $dark-gray;
-      
       .footer {
         background: none;
         padding-top: 0;
@@ -129,10 +183,6 @@
       
       #footer-logo {
         width: 600px;
-      }
-      
-      .footer-list {
-        color: #6a6a6a;
       }
     }
   }
@@ -146,10 +196,6 @@
 
 #footer-scene-wrapper {
   background: $dark-gray;
-  
-  @media #{$large-up-width-or-height} {
-    background: white;
-  }
 }
 
 @media screen and (max-width:1024px) {

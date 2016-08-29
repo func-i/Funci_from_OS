@@ -9,7 +9,7 @@ description: I've trained a number of Junior Developers, mostly out of Bootcamps
 ---
 
 I've trained a number of Junior Developers, mostly out of Bootcamps.  In fact, the owners of Functional Imperative have also founded
-a coding school in Toronto called [Lighthouse Labs](http://lighthouselabs.ca).  So I expect that I'll be training even more Junior Developers.
+a coding school in Toronto called [Lighthouse Labs](http://lighthouselabs.ca).  So I expect that I'll be training even more Junior Developers and continuing to help companies [build better expieriences for their developers](http://www.functionalimperative.com/2016/04/12/happy-dev-shop.html).
 
 <!--more-->
 

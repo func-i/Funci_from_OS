@@ -4,9 +4,9 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1em;  
-  
-  
+  margin-bottom: 1em;
+
+
   &[data-color="blue"] {
     @include set-colors-for-cta($blue)
   }
@@ -14,20 +14,20 @@
   &[data-color="yellow"] {
     @include set-colors-for-cta($yellow);
   }
-  
+
   &:hover {
     text-decoration: none;
-    
+
     .inline-icon {
       i {
         color: $dark-gray;
-      }          
+      }
       &:before {
         max-height: 100%;
       }
     }
   }
-  
+
   .inline-icon {
     display: inline-flex;
     position: relative;
@@ -39,14 +39,14 @@
     font-size: 50%;
     border: solid 2px;
     margin-left: 10px;
-    top: -1px; //This is adhoc -- it appears to sits too low 
-    
+    top: -1px; //This is adhoc -- it appears to sits too low
+
     i {
       position: relative;
       top: 1px; //This is adhoc -- it appears to sits too high
       transition: color $transition-duration linear;
     }
-    
+
     &:before {
       content: " ";
       position: absolute;
@@ -59,12 +59,12 @@
       // z-index: -1;
     }
   }
-  
-  .alternate-colors & {
+
+  .alternate-colors &, .alternate-color-scheme-wrapper & {
     &:hover {
       .inline-icon {
         text-decoration: none;
-        
+
         i {
           color: white;
         }

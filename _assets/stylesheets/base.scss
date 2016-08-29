@@ -345,6 +345,11 @@ a {
   &.fill {
     @include square-fill-color();
   }
+
+  object {
+    display: block;
+    margin: auto;
+  }
 }
 
 .square-no-canvas-no-fill {
