@@ -34,10 +34,10 @@ permalink: "/custom-software-development-company-blog/:title.html"
 
 assets:
   cache: false
-  
+
   assets:
     - "*.glsl"
-  
+
   sources:
     - _assets
     - _assets/fonts
@@ -51,4 +51,3 @@ assets:
     css: false
     js: false
     glsl: false
-
