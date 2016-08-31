@@ -30,7 +30,7 @@ paginate: 5
 paginate_path: "custom-software-development-company-blog/page:num"
 excerpt_separator: <!--more-->
 
-permalink: "/custom-software-development-company-blog/:title"
+permalink: "/custom-software-development-company-blog/:title.html"
 
 assets:
   cache: false
