@@ -7,7 +7,7 @@
 
   #offering-cards {
     @extend .row;
-    margin-bottom: 2em;
+    margin-bottom: 1.3em;
   }
 
   #cube-scenes {
@@ -85,6 +85,14 @@
 
     p {
       font-size: 1.1em;
+    }
+    
+    .cube-scene-header {
+      margin-bottom: 0.7em;
+    }
+    
+    .call-to-action {
+      margin: 0;
     }
   }
 
