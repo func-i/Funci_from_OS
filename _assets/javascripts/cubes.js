@@ -87,7 +87,8 @@ var Cubes = function(htmlScenes) {
   
   this.onMouseMove = function(event) {
     if (!this.isScrolling && this.sceneIndex === 0) {
-      var mouse = new THREE.Vector2(event.clientX / this.width, 1 - ((event.clientY) / this.height));
+      var mouse = new THREE.Vector2(event.pageX / this.width, 1 - ((event.pageY) / this.height));
+      
       // Need to make it scale properly for arbitrary aspect ratio
       horizontalScaling = Math.min(this.width / this.height / this.boxGrid.columnRowRatio(), 1.0);
       verticalScaling = Math.min(this.height / this.width * this.boxGrid.columnRowRatio(), 1.0);
@@ -121,12 +122,6 @@ var Cubes = function(htmlScenes) {
     this.camera.updateProjectionMatrix();
     
     this.renderer.setSize( this.width, this.height );
-    
-    if (this.width < SCREEN_WIDTH_UPPER_LIMITS.medium) {
-      this.stopAnimating();
-    } else if (this.animationID === undefined) {
-      this.animate();
-    }
   }
   
   this.setOnLoad = function(loadCallback) {
