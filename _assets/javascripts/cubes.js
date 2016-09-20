@@ -122,12 +122,6 @@ var Cubes = function(htmlScenes) {
     this.camera.updateProjectionMatrix();
     
     this.renderer.setSize( this.width, this.height );
-    
-    // if (this.width < SCREEN_WIDTH_UPPER_LIMITS.medium) {
-    //   this.stopAnimating();
-    // } else if (this.animationID === undefined) {
-    //   this.animate();
-    // }
   }
   
   this.setOnLoad = function(loadCallback) {
