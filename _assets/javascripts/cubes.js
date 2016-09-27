@@ -86,7 +86,7 @@ var Cubes = function(htmlScenes) {
   };
   
   this.onMouseMove = function(event) {
-    if (!this.isScrolling && this.sceneIndex === 0) {
+    if (this.mesh.material === this.waveMaterial) {
       var mouse = new THREE.Vector2(event.pageX / this.width, 1 - ((event.pageY) / this.height));
       
       // Need to make it scale properly for arbitrary aspect ratio
@@ -122,6 +122,12 @@ var Cubes = function(htmlScenes) {
     this.camera.updateProjectionMatrix();
     
     this.renderer.setSize( this.width, this.height );
+    
+    if(this.needsToSwitchToWave()) {
+      this.switchToWaveMaterial()
+    }
+    else if (this.needsToSwitchToScrolling())
+      this.switchToScrollingMaterial()
   }
   
   this.setOnLoad = function(loadCallback) {
@@ -169,6 +175,18 @@ var Cubes = function(htmlScenes) {
   
   this.getScrollDurationInSeconds = function() {
     return this.scroller.scrollDuration;
+  }
+
+  this.needsToSwitchToWave = function() {
+    return this.height < SCREEN_HEIGHT_LOWER_LIMIT
+      && this.mesh.material == this.scrollingMaterial;
+  }
+  
+  this.needsToSwitchToScrolling = function() {
+    console.log(this.sceneIndex)
+    return this.height > SCREEN_HEIGHT_LOWER_LIMIT
+      && this.sceneIndex > 0
+      && this.mesh.material == this.waveMaterial;
   }
   
   // MATERIALS AND UNIFORMS
