@@ -27,7 +27,7 @@
       $scene.css('height', "")
       if $scene.attr('id') != "footer-scene" || ResizeHelper.isDesktopSized()
         # Set size of each scene to window height
-        $scene.css('height', Math.max(window.innerHeight, $scene.innerHeight()))
+        $scene.css('height', Math.max(Math.min(window.innerHeight, 1080), $scene.innerHeight()))
     )
     
   toggleSceneTransform: () ->

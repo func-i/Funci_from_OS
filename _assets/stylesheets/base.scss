@@ -21,8 +21,8 @@ $footer-height-medium: 350px;
 $footer-height-small: 650px;
 $scene-transition-duration: 0.7s;
 
-$min-height: 660px;
-$max-height: 659px;
+$min-height: 10000px;
+$max-height: 10001px;
 $large-up-width-or-height: '#{$large-up} and (min-height: #{$min-height})';
 
 ////////// fonts //////////
