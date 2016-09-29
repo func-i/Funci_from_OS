@@ -8,6 +8,8 @@ social_image: blog_posts/machine-learning.jpg
 description: In an effort to make big technology topics more accessible our managing partner did a talk on machine learning classification models, an introduction to what machine learning is. This is a summary of the talk and link to machine learning information resources.
 ---
 
+#Introduction to Machine Learning Classifiers | A Talk Summary
+
 Machine learning, machine intelligence...machines taking over the world…okay perhaps that last one is stretching it. But we sure have been hearing more and more about machine learning and are seemingly getting farther and farther away from a general understanding of what it actually is.  In an attempt to demystify (we love that word here at FI) the topic of machine learning our managing partner Josh Borts did a talk last month on An [Introduction to Machine Learning Classifiers](https://www.meetup.com/Devhub/events/233471401/) as part of our monthly Lunch and Learn series that we run out of [Devhub](http://devhub.ca) here in Toronto. 
 <!--more--> 
 [machine learning overwhelming]({% asset_path blog_posts/machine-learning.jpg%})
