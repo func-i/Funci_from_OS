@@ -14,7 +14,7 @@ I recently had a joyous time reading through the RFC6749 Standard Specification 
 
 <!--more-->
 
-<iframe src="http://www.slideshare.net/func_i/slideshelf" width="615px" height="470px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:none;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/xJjdt8mQVr4HwK" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
 In this exposition, I assume that the reader is already acquainted with a basic implementation of OAuth 2.0, understands the difference between authorization and authentication, the password anti pattern, consent form and has a general understanding of the Authorization Code Grant Flow. 
 
@@ -189,5 +189,3 @@ At most what an attacker could achieve when intercepting your access token is to
 [https://www.youtube.com/watch?v=aBBDW1wsfH0](https://www.youtube.com/watch?v=aBBDW1wsfH0)
 
 [https://www.youtube.com/watch?v=zAUzVjMhbqw](https://www.youtube.com/watch?v=zAUzVjMhbqw)
-
-
