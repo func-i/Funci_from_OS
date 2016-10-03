@@ -29,6 +29,7 @@ These are just a few examples.
 * Colour contrast between text and background should be strong enough for those with low vision or colourblindness.
 
 * Colour alone should never convey meaning or intent. Additional cues should be added.
+
 ![percentage of users web accessibility]({% asset_path blog_posts/Pie-chart-depicting-percentage-need-accessible-technology.png %})
 
 ### Auditory
