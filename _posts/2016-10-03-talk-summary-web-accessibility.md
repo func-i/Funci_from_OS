@@ -10,9 +10,7 @@ description: This is a talk summary on the topic of introducing the importance a
 
 # Intro to the Importance of Web Accessibility | A Talk Summary
 
->The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
-
-**Tim Berners-Lee, W3C Director and inventor of the World Wide Web**
+"The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect." - Tim Berners-Lee, W3C Director and inventor of the World Wide Web
 
 A disability is a mental or physical condition that limits a persons senses, movements, or activities. An estimated 3.8 million Canadians report as having a disability. The limits of a disability vary from person to person, and one person may have any combination of conditions that affect their daily life. A person with a disability may face limitations and barriers when they use the web.
 
@@ -36,6 +34,7 @@ These are just a few examples.
 ### Auditory
 
 * Multimedia content should be supplemented  with transcriptions or captions.
+
 ![Screenshot of a Facebook video with captions added]({% asset_path blog_posts/video-captions.png %})
 
 ### Motor
@@ -59,6 +58,7 @@ Take a look at the [Best Buy 404 page](http://www.bestbuy.com/404) - it clearly 
 ### Seizure
 
 * Strobing or flashing lights can trigger seizures in some people and should be avoided. If you MUST use this effect, be like Kanye West and warn people.
+
 ![Screenshot of a YouTube video warning that it has the potential to cause seizures in people with photosensitive epilepsy]({% asset_path blog_posts/seizure-warning.png %})
 
 ## Why do we need an accessible web?
@@ -102,7 +102,7 @@ We should teach each other and hold each other accountable for baking accessibil
 VoxMedia's [Accessibility Checklist](http://accessibility.voxmedia.com/) holds everyone, from Project Managers to Editorial to QA, responsibile for accessibilty.
 
 Web accessibility shouldn’t be treated like a ramp propped up on stairs…
-![An image of a flimsy portable ramp propped up on a staircase](ramp pic)
+![An image of a flimsy portable ramp propped up on a staircase]({% asset_path blog_posts/accessibility-ramp.png %}) 
 
-… but a creation from the ground up that takes into account people of all abilities
-![An image of a staircase with ramps built in.](staircase pic)
+… but a creation from the ground up that takes into account people of all abilities 
+![An image of a staircase with ramps built in.]({% asset_path blog_posts/accessible-staircase.png %})
