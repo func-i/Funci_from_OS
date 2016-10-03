@@ -1,3 +1,13 @@
+---
+layout:     post
+title:      Introduction to API Security with OAUTH 2.0
+author:     kevin
+date:       2016-08-03
+published:  true
+social_image: blog_posts/security3.jpg
+description: "Topic: OAUTH 2.0 Social login security. What follows is a step by step introspection of the various HTTP communications that happen between the relevant actors involved, together with a few security considerations where applicable."
+---
+
 # Intro to the Importance of Web Accessibility
 
 >The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
@@ -5,6 +15,8 @@
 **Tim Berners-Lee, W3C Director and inventor of the World Wide Web**
 
 A disability is a mental or physical condition that limits a persons senses, movements, or activities. An estimated 3.8 million Canadians report as having a disability. The limits of a disability vary from person to person, and one person may have any combination of conditions that affect their daily life. A person with a disability may face limitations and barriers when they use the web.
+
+<!--more-->
 
 A user may not identify with a disability but still benefit from accessible technology.  Any user may find themselves situationally or temporarily benefitting from an accessible product.
 
@@ -19,14 +31,12 @@ These are just a few examples.
 * Colour contrast between text and background should be strong enough for those with low vision or colourblindness.
 
 * Colour alone should never convey meaning or intent. Additional cues should be added.
-![Pie chart depicting the likely percentage of all users who may need accessible technology. None 56.2 million, Not likely 43%. Mild 51.6 million, Likely 40%. Severe 22.6 million, Very likely, 17%.](piechart pic)
-
-
+![percentage of users web accessibility]({% asset_path blog_posts/Pie-chart-depicting-percentage-need-accessible-technology.png %})
 
 ### Auditory
 
 * Multimedia content should be supplemented  with transcriptions or captions.
-![Screenshot of a Facebook video with captions added](cbc caption video)
+![Screenshot of a Facebook video with captions added]({% asset_path blog_posts/video-captions.png %})
 
 ### Motor
 
@@ -43,12 +53,13 @@ This is a very broad category but there are still things developers, designers, 
 * Content should be as clear and easy to comprehend as possible.
 
 * Descriptive error messages can prevent someone with problem-solving difficulties from getting frustrated and leaving the site altogether.
+
 Take a look at the [Best Buy 404 page](http://www.bestbuy.com/404) - it clearly explains what may have gone wrong, and provides a list of solutions.
 
 ### Seizure
 
 * Strobing or flashing lights can trigger seizures in some people and should be avoided. If you MUST use this effect, be like Kanye West and warn people.
-![Screenshot of a YouTube video warning that it has the potential to cause seizures in people with photosensitive epilepsy.](screenshot of yt video)
+![Screenshot of a YouTube video warning that it has the potential to cause seizures in people with photosensitive epilepsy]({% asset_path blog_posts/seizure-warning.png %})
 
 ## Why do we need an accessible web?
 
@@ -56,7 +67,7 @@ We pride ourselves on having a Web that is open and free to all.  When a web sit
 
 As more and more of our important daily activities move to the web, users may find themselves unable to do simple things such as pay a bill, or apply for a job.
 
-![Screenshots of tweets from users frustrated with inaccessible websites](tweets)
+![Screenshots of tweets from users frustrated with inaccessible websites]({% asset_path blog_posts/inaccessible-website-tweets.png %})
 
 Ensuring the accessibility of your product is simply the right, moral, compassionate thing to do. If you’re still not convinced though, consider this - almost 20% of users probably need to use some form of assistive technology. Is this a market you’re willing to alienate?
 
