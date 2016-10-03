@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      Introduction to API Security with OAUTH 2.0
-author:     kevin
-date:       2016-08-03
+title:      Introduction to Web Accessibility 
+author:     kristen
+date:       2016-10-03
 published:  true
-social_image: blog_posts/security3.jpg
-description: "Topic: OAUTH 2.0 Social login security. What follows is a step by step introspection of the various HTTP communications that happen between the relevant actors involved, together with a few security considerations where applicable."
+social_image: blog_posts/accessible-staircase.png
+description: This is a talk summary on the topic of introducing the importance and best practices for creating web accessible projects.
 ---
 
 # Intro to the Importance of Web Accessibility
