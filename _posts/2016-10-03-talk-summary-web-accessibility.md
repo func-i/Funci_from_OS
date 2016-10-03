@@ -8,7 +8,7 @@ social_image: blog_posts/accessible-staircase.png
 description: This is a talk summary on the topic of introducing the importance and best practices for creating web accessible projects.
 ---
 
-# Intro to the Importance of Web Accessibility
+# Intro to the Importance of Web Accessibility | A Talk Summary
 
 >The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.
 
