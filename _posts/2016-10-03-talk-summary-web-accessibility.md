@@ -102,7 +102,9 @@ We should teach each other and hold each other accountable for baking accessibil
 VoxMedia's [Accessibility Checklist](http://accessibility.voxmedia.com/) holds everyone, from Project Managers to Editorial to QA, responsibile for accessibilty.
 
 Web accessibility shouldn’t be treated like a ramp propped up on stairs…
+
 ![An image of a flimsy portable ramp propped up on a staircase]({% asset_path blog_posts/accessibility-ramp.png %}) 
 
 … but a creation from the ground up that takes into account people of all abilities 
+
 ![An image of a staircase with ramps built in.]({% asset_path blog_posts/accessible-staircase.png %})
