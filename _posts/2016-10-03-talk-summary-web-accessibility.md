@@ -52,9 +52,7 @@ This is a very broad category but there are still things developers, designers, 
 
 * Content should be as clear and easy to comprehend as possible.
 
-* Descriptive error messages can prevent someone with problem-solving difficulties from getting frustrated and leaving the site altogether.
-
-Take a look at the [Best Buy 404 page](http://www.bestbuy.com/404) - it clearly explains what may have gone wrong, and provides a list of solutions.
+* Descriptive error messages can prevent someone with problem-solving difficulties from getting frustrated and leaving the site altogether. Take a look at the [Best Buy 404 page](http://www.bestbuy.com/404) - it clearly explains what may have gone wrong, and provides a list of solutions.
 
 ### Seizure
 
@@ -116,6 +114,6 @@ Web accessibility shouldn’t be treated like a ramp propped up on stairs…
 
 ![An image of a flimsy portable ramp propped up on a staircase]({% asset_path blog_posts/accessibility-ramp.png %}) 
 
-… but a creation from the ground up that takes into account people of all abilities 
+… but a creation from the ground up that takes into account people of all abilities. 
 
 ![An image of a staircase with ramps built in.]({% asset_path blog_posts/accessible-staircase.png %})
