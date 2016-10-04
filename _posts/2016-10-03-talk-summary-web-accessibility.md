@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Introduction to Web Accessibility 
-author:     kristen
+author:     kristin
 date:       2016-10-03
 published:  true
 social_image: blog_posts/accessible-staircase.png
@@ -30,7 +30,7 @@ These are just a few examples.
 
 * Colour alone should never convey meaning or intent. Additional cues should be added.
 
-![percentage of users web accessibility]({% asset_path blog_posts/Pie-chart-depicting-percentage-need-accessible-technology.png %})
+![Pie chart depicting the likely percentage of all users who may need accessible technology. None 56.2 million, Not likely 43%. Mild 51.6 million, Likely 40%. Severe 22.6 million, Very likely, 17%.]({% asset_path blog_posts/Pie-chart-depicting-percentage-need-accessible-technology.png %})
 
 ### Auditory
 
@@ -68,7 +68,7 @@ We pride ourselves on having a Web that is open and free to all.  When a web sit
 
 As more and more of our important daily activities move to the web, users may find themselves unable to do simple things such as pay a bill, or apply for a job.
 
-![Screenshots of tweets from users frustrated with inaccessible websites]({% asset_path blog_posts/inaccessible-website-tweets.png %})
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/WellsFargo">@WellsFargo</a> please fix your website. It has broken screen reader accessibility. THis is urgent. Site so inaccessible I can&#39;t even email you.</p>&mdash; Travis Roth (@travisroth) <a href="https://twitter.com/travisroth/status/774236980758532097">September 9, 2016</a></blockquote> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Ensuring the accessibility of your product is simply the right, moral, compassionate thing to do. If you’re still not convinced though, consider this - almost 20% of users probably need to use some form of assistive technology. Is this a market you’re willing to alienate?
 
